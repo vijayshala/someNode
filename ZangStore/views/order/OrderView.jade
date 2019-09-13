@@ -1,0 +1,108 @@
+extends ../index
+block styles
+  link(href='/public_nocache/stylesheets/order/order-view.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/order/order-summary.css', rel='stylesheet')
+block mainbody
+  - var officeItem = order.items.filter(function (item) { return item.product.slug === 'zang-office' })[0];
+  - var ipofficeItem = order.items.filter(function (item) { return item.product.slug === 'ip-office' })[0];
+  - var spacesItem = order.items.filter(function (item) { return item.product.slug === 'zang-spaces' })[0];
+  //if CONSTANTS.SPECIAL_OFFER_STATES.indexOf(order.billingInformation.billingStateProvince) > -1 || CONSTANTS.SPECIAL_OFFER_COUNTRIES.indexOf(order.billingInformation.billingCountry) > -1 && query.success
+  //  include ../components/HurricaneHarveyNotification
+  .order-top
+    .container
+      div.row
+        div.col-md-12
+          if query.success
+            .row
+              .col-md-12
+                h1.text-center.text-danger.zo-main-title.text-uppercase #{localizer.get('ORDER_COMPLETE')}
+          .row
+            .col-md-12
+              if order.status === 'INVALID'
+                .order-success-confirm-number
+                  h1.text-center.text-uppercase #{localizer.get('INVALID_ORDER')}
+              else
+                .order-success-confirm-number
+                  h1.text-center #{localizer.get('ORDER_CONFIRMATION')} # 
+                    strong #{order.confirmationNumber}
+                 //.text-center #{localizer.get('DONT_WORRY_WE_VE_ALSO_EMAILED_THIS_TO_YOU')}
+          .row
+            .col-md-12
+              h4.text-300 #{localizer.get('HELLO')} #{order.accountInformation.firstName},
+          if query.success
+            include ./OrderViewTopInfo
+          
+          .row
+            .col-md-12
+              br
+          
+          .row
+            .col-md-4
+              h4.info-title #{localizer.get('ACCOUNT_INFORMATION')}
+              p.text-500 #{order.accountInformation.firstName} #{order.accountInformation.lastName}
+              p.text-500 #{order.accountInformation.emailAddress}
+              p.text-500 #{order.accountInformation.phoneNumber.formatUSPhone()}
+              p.text-500 #{order.accountInformation.companyName}
+              p.text-500 #{order.accountInformation.industryType}
+            .col-md-4
+              h4.info-title #{localizer.get('BILLING_INFORMATION')}
+              p.text-500 #{order.billingInformation.billingAddress}
+              p.text-500 #{order.billingInformation.billingCountry}
+              p.text-500 #{order.billingInformation.billingCity}
+              p.text-500 #{order.billingInformation.billingStateProvince}
+              p.text-500 #{order.billingInformation.billingPostalCode}
+            if officeItem || ipofficeItem
+              .col-md-4
+                h4.info-title #{localizer.get('SHIPPING_INFORMATION')}
+                p.text-500 #{order.shippingInformation.shippingAddress}
+                p.text-500 #{order.shippingInformation.shippingCountry}
+                p.text-500 #{order.shippingInformation.shippingCity}
+                p.text-500 #{order.shippingInformation.shippingStateProvince}
+                p.text-500 #{order.shippingInformation.shippingPostalCode}
+          .row
+            if partnerOrder
+              .col-md-4              
+                h4.info-title #{localizer.get('PARTNER')}
+                p.text-500 #{partnerOrder.partner.fields.companyName}
+                p.text-500 #{partnerOrder.agent.user.account.username}
+                p.text-500 #{partnerOrder.agent.user.account.displayname}
+            if officeItem              
+              .col-md-4
+                h4.info-title #{localizer.get('SHIPPING_TYPE')}
+                p.text-500 #{localizer.get('FREE_SHIPPING')}
+                p.text-500 #{localizer.get('TRACKING_DETAIL_WILL_BE_SENT_ONCE_YOUR_ITEMS_HAVE_SHIPPED_FROM_OUR_WAREHOUSE')}
+            .col-md-4
+          .row
+            .col-md-12
+              h3.info-title
+              .order-notes #{order.notes}
+  case order.type
+    when CONSTANTS.ORDER_TYPES.ZANG_OFFICE_DEVICES
+      include ./OrderSummaryZangOfficeDevices
+    when CONSTANTS.ORDER_TYPES.USER_CREATED
+    when CONSTANTS.ORDER_TYPES.SUBSCRIPION_UPDATE
+      - var total = 0
+      each item, i in items
+        - var itemPrice = (item.item.product.price.intervalAfterTax && item.item.product.price.oneTimeAfterTax) ? item.item.product.price.intervalAfterTax + item.item.product.price.oneTimeAfterTax : item.item.product.price.interval + item.item.product.price.oneTime;
+        - total += item.item.quantity * itemPrice
+        - var cartItemDetails = item.details
+        - var cartItem = item.item
+        - var isCheckout = false
+        - var summaryViewType = "order"
+        include ../order/OrderSummary
+      if partner
+        include ../partner/PartnerOrderDiscountInfo
+      if items.length > 1 
+        .order-bottom 
+          .container
+            .row
+              .col-lg-12
+                h3.text-center.text-300 #{localizer.get('TOTAL')} #{currency.symbol}#{(total/100).formatDollars(2)}
+block scripts
+  if utagData
+    script.
+      var utag_data = !{JSON.stringify(utagData, undefined, 4)};
+          
+                  
+          
+        

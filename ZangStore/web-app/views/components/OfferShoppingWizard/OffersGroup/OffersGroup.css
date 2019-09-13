@@ -1,0 +1,7 @@
+.offers-group{
+    display: grid;    
+    width: 100%;
+    justify-content: center;
+    grid-gap: 50px;
+    grid-template-columns: 350px 350px;
+}

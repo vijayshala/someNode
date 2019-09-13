@@ -1,0 +1,147 @@
+extends ../index
+block styles
+  link(href='/public_nocache/stylesheets/order-view/order-view.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/order-view/order-summary.css', rel='stylesheet')  
+  link(href='/public_nocache/stylesheets/cart/cart-checkout.css', rel='stylesheet')
+  
+block mainbody
+  - var shippingEnabled = true;
+  //if CONSTANTS.SPECIAL_OFFER_STATES.indexOf(order.billingInformation.billingStateProvince) > -1 || CONSTANTS.SPECIAL_OFFER_COUNTRIES.indexOf(order.billingInformation.billingCountry) > -1 && query.success
+  //  include ../components/HurricaneHarveyNotification
+  .order-top
+    .container
+      div.row
+        div.col-md-12
+          if query.success
+            .row
+              .col-md-12
+                h1.text-center.text-danger.zo-main-title.text-uppercase #{localizer.get('ORDER_COMPLETE')}
+          .row
+            .col-md-12
+              if order.status === 'INVALID'
+                .order-success-confirm-number
+                  h1.text-center.text-uppercase #{localizer.get('INVALID_ORDER')}
+              else
+                .order-success-confirm-number
+                  h1.text-center #{localizer.get('ORDER_CONFIRMATION')} # 
+                    strong #{order.confirmationNumber}
+                 //.text-center #{localizer.get('DONT_WORRY_WE_VE_ALSO_EMAILED_THIS_TO_YOU')}
+          .row
+            .col-md-12
+              if selectedLanguage == 'de-DE'
+                h4.text-300 #{localizer.get('SALUTATIONS')} #{order.contact.firstName + ' ' + order.contact.lastName}, 
+              else
+                h4.text-300 #{localizer.get('HELLO')} #{order.contact.firstName}, 
+              p #{localizer.get('AVAYA_CLOUD_ORDER_MESSAGE')}
+              if (orderRegion == 'DE')
+                p !{localizer.get('QUESTION_CUSTOMER_SERVICE').replace(/\{SUPPORT_EMAIL\}/g, CONSTANTS.SUPPORT_EMAILS.GSMB_SUPPORT_ORDER)}
+              else
+                p !{localizer.get('QUESTION_CUSTOMER_SERVICE').replace(/\{SUPPORT_EMAIL\}/g, CONSTANTS.SUPPORT_EMAILS.CLOUD_CS)}
+              
+          if query.success
+            include ./OrderViewTopInfo
+          
+          .row
+            .col-md-12
+              br
+          
+          .row
+            .col-md-4
+              h4.info-title #{localizer.get('ACCOUNT_INFORMATION')}
+              p.text-500 #{order.contact.firstName} #{order.contact.lastName}
+              p.text-500 #{order.contact.email}
+              p.text-500 #{order.contact.phone && order.contact.phone.formatUSPhone()}
+              p.text-500 #{order.company.name}
+              p.text-500 #{order.company.domain}
+              p.text-500 #{order.company.industry}
+            .col-md-4
+              h4.info-title #{localizer.get('BILLING_INFORMATION')}
+              p.text-500 #{order.billingAddress.address1}
+              p.text-500 #{order.billingAddress.country}
+              p.text-500 #{order.billingAddress.city}
+              p.text-500 #{order.billingAddress.state}
+              p.text-500 #{order.billingAddress.zip}
+            if shippingEnabled
+              .col-md-4
+                h4.info-title #{localizer.get('SHIPPING_INFORMATION')}
+                p.text-500 #{order.shippingAddress.address1}
+                p.text-500 #{order.shippingAddress.country}
+                p.text-500 #{order.shippingAddress.city}
+                p.text-500 #{order.shippingAddress.state}
+                p.text-500 #{order.shippingAddress.zip}
+          .row
+            if partnerOrder
+              .col-md-4
+                h4.info-title #{localizer.get('PARTNER')}
+                p.text-500 #{partnerOrder.partner && partnerOrder.partner.fields && partnerOrder.partner.fields.companyName}
+                p.text-500 #{partnerOrder.agent && partnerOrder.agent.user && partnerOrder.agent.user.account && partnerOrder.agent.user.account.username}
+                p.text-500 #{partnerOrder.agent && partnerOrder.agent.user && partnerOrder.agent.user.account && partnerOrder.agent.user.account.displayname}
+            if shippingEnabled
+              .col-md-4
+                h4.info-title #{localizer.get('SHIPPING_TYPE')}
+                p.text-500 #{localizer.get('FREE_SHIPPING')}
+                p.text-500 #{localizer.get('TRACKING_DETAIL_WILL_BE_SENT_ONCE_YOUR_ITEMS_HAVE_SHIPPED_FROM_OUR_WAREHOUSE')}
+            - var payment = order.payment.metadata
+            if payment.paymentType == 'PURCHASE_ORDER'
+              .col-md-4
+                h4.info-title #{localizer.get(payment.paymentType)}
+                p.text-500 ID: #{payment.purchaseOrder._id}
+                p.text-500 #{payment.purchaseOrder.refNumber}
+                p.text-500 #{payment.purchaseOrder.status}
+                p.text-500 #{moment(payment.purchaseOrder.updated.on).format(CONSTANTS.UI_ONLY_DATE_FORMAT)}
+                
+            if payment.paymentType == 'CREDIT_CARD' && payment.sourceId
+              .col-md-4
+                h4.info-title #{localizer.get(payment.paymentType)}
+                if order && order.payment && order.payment.metadata && order.payment.metadata.creditCard
+                  p.text-500 #{order.payment.metadata.creditCard.name}
+                  p.text-500 #{order.payment.metadata.creditCard.brand}
+                  p.text-500 **** **** **** #{order.payment.metadata.creditCard.last4}
+                else
+                  each card,i in cards
+                    if card.id == payment.sourceId
+                      p.text-500 #{card.name}
+                      p.text-500 #{card.brand}
+                      p.text-500 **** **** **** #{card.last4}
+
+            if payment && payment.IBAN
+              .col-md-4
+                h4.info-title #{localizer.get('IBAN')}
+                p.text-500 #{payment.IBAN}
+                    
+        if order.notes !== ''
+          .col-md-4
+            h4.info-title #{localizer.get('ADDITIONAL_NOTES')}
+            .row
+              .col-md-12
+                h3.info-title
+                .order-notes.addnotes #{order.notes}
+  //- .row
+    each cartItem,pd in order.items
+      .col-md-12 #{cartItem.title.text} #{cartItem.quantity} #{cartItem.price}
+  - var cart = order //{items: order.items}      
+  - var isCheckout = false
+  - var summaryViewType = "order"
+  include ../cart-view/CartSummary
+  if partner
+    include ../partner/PartnerOrderDiscountInfo
+  //- case order.type
+    when CONSTANTS.ORDER_TYPES.ZANG_OFFICE_DEVICES
+      include ./OrderSummaryZangOfficeDevices
+    when CONSTANTS.ORDER_TYPES.USER_CREATED
+    when CONSTANTS.ORDER_TYPES.SUBSCRIPION_UPDATE      
+      
+      if items.length > 1 
+        .order-bottom 
+          .container
+            .row
+              .col-lg-12
+                h3.text-center.text-300 #{localizer.get('TOTAL')} #{currency.symbol}#{(total/100).formatDollars(2)}
+block scripts
+  if utagData
+    script.
+      var utag_data = !{JSON.stringify(utagData, undefined, 4)};
+          
+                  
+          
+        

@@ -1,0 +1,95 @@
+.top-container{
+  padding:20px 0;
+}
+
+.partner-btn-lg{
+  border: 1px solid #c00;
+  padding: 12px 36px;
+}
+
+.features-table th .agent-th{
+  padding:10px;
+  background-color:#fff;
+  color:#c00;
+  font-weight:500;
+  text-transform: uppercase;
+  margin:5px;
+  text-align: center;
+}
+
+.features-table td{
+  position:relative;
+  vertical-align: middle !important;
+}
+
+.features-table td.percentage{
+  color:#73c1c7;
+  font-weight:600;
+  font-size:21px;
+  text-align: center;
+}
+
+
+
+.features-table td .dot{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translateX(-50%) translateY(-50%);
+  width:15px;
+  height:15px;
+  background-color:#73c1c7;
+  border-radius:50px;
+}
+
+
+.PENDING{
+  color: #FFAF2E;
+}
+.APPROVED{
+  color: #63AD58;
+}
+.REJECTED{
+  color: #c00;
+}
+
+.bg-PENDING{
+  background-color: #FFAF2E;
+}
+.bg-APPROVED{
+  background-color: #63AD58;
+}
+.bg-REJECTED{
+  background-color: #c00;
+}
+
+.dnb-link{
+  background-color: #FFAF2E;
+    padding: 20px;
+    font-size: 27px;
+    margin-top: 20px;
+    font-weight: 300;
+}
+
+.agent{
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+}
+
+.partnerFooter {
+  display: none;
+}
+
+@media(min-width: 1200px) {
+  .selectRegion {
+    margin-top: 1em;
+  }
+}
+
+@media (max-width:768px){
+  .top-container{
+    padding: 10px 0;
+  }
+}

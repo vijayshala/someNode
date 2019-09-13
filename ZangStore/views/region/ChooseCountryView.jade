@@ -1,0 +1,31 @@
+- var chooseRegionPage=true
+extends ../index
+
+block styles
+
+
+block mainbody
+
+
+  .top-container.buttons-container
+    if userInfo
+      .container.change-langauge
+        .row
+          .col-lg-12
+            br
+            h2.text-center.text-300 #{localizer.get('CHOOSE_YOUR_LANGUAGE')}            
+            select.langauge-switcher#langauge-switcher2
+            
+    .container
+      .row
+        .col-lg-12
+          h2.text-center.text-300 #{localizer.get('CHOOSE_YOUR_COUNTRY_OR_REGION')}
+      .row
+        .col-lg-12.choose-your-region
+          each region, i in regions
+            a.region_link(href="/" + region.shortCode.toLowerCase(),  data=JSON.stringify(region))
+              span.country-flag
+                img.img-flag(width=32 src="/public_nocache/images/regions-flags/" + region.shortCode + ".svg")
+              span.text-capitalize #{region.name.resource ? localizer.get(region.name.resource): region.name.text}
+              
+  

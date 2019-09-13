@@ -1,0 +1,31 @@
+if customers.length
+  .table-responsive
+    //pre #{JSON.stringify(customers, null, 4)}
+    input(type='hidden' name='UI_ONLY_DATE_FORMAT' value=CONSTANTS.UI_ONLY_DATE_FORMAT)
+    input(type='hidden' name='CURRENCY_SYMBOL' value=currency.symbol)
+    input(type='hidden' name='_csrf' value=_csrf)
+    table.table.zs-main-table
+      thead
+        tr
+          th.text-uppercase #{localizer.get('CUSTOMER')}
+          th.text-uppercase #{localizer.get('COMPANY_DETAILS')}
+          th.text-uppercase #{localizer.get('START_DATE')}
+          th.text-uppercase #{localizer.get('AGENT')}
+      tbody#partnerCustomerTableBody
+        each customer, c in customers
+          if customer.customer
+            tr
+              td
+                h5.text-500 #{customer.customer.account.displayname}
+                h6.text-300 #{customer.customer.account.username}
+              td
+                if customer.company
+                  h5.text-500 #{customer.company.name}
+                  h5.text-300 #{customer.company.address}
+              td
+                h5.text-400 #{moment(customer.created).format(CONSTANTS.UI_ONLY_DATE_FORMAT)}
+              td
+                h5.text-500 #{customer.agent.user.account.displayname}
+                h5.text-300 #{customer.partner.fields.companyName}
+else
+  h3.text-center.text-300 #{localizer.get('NO_CUSTOMERS_FOUND')}

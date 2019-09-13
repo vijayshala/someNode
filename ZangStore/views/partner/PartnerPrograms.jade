@@ -1,0 +1,116 @@
+extends ../index
+
+block styles
+  link(href='/public_nocache/stylesheets/partner/partner.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/partner/partner-programs.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/common/tabs.css', rel='stylesheet')
+block mainbody
+  .top-container.titles
+    .container
+      .row
+        .col-lg-12
+          h1.text-center.text-danger.text-uppercase.text-300 !{page.title}
+          h3.text-center.text-300.test-cls #{page.subtitle}
+  .top-container.programs
+    .container
+      .row
+        .col-lg-12
+          .programs-box   
+              - var partner = page.metadata.partners[CONSTANTS.PARTNER_TYPES.referral]
+              .program
+                .image(style="background-image:url('" + partner.image + "')")
+                .title
+                  h2.text-center.text-danger.text-uppercase.text-300 !{partner.title.replace(/\|/, '<br />')}
+                .subtitle
+                  h4.text-center.text-300 #{partner.subtitle1}
+                    br
+                    | #{partner.subtitle2}
+                .buttons
+                  a.btn.btn-danger.btn-lg.partner-btn-lg(href='/partners/' + CONSTANTS.PARTNER_TYPES.referral) Get Started
+              - partner = page.metadata.partners[CONSTANTS.PARTNER_TYPES.sales]
+              .program
+                .image(style="background-image:url('" + partner.image + "')")
+                .title
+                  h2.text-center.text-danger.text-uppercase.text-300 !{partner.title.replace(/\|/, '<br />')}
+                .subtitle
+                  h4.text-center.text-300 #{partner.subtitle1}
+                    br
+                    | #{partner.subtitle2}
+                .buttons
+                  a.btn.btn-danger.btn-lg.partner-btn-lg(href='/partners/' + CONSTANTS.PARTNER_TYPES.sales) Get Started
+  .top-container.partnership
+    .container
+      .row
+        .col-lg-12
+          h1.text-center.text-danger.text-300 #{page.metadata.partnership.title}
+          h4.text-center.text-300 #{page.metadata.partnership.subtitle}
+      .row
+        .col-lg-12
+          .content
+            each paragraph, p in page.metadata.partnership.paragraphs
+              p #{paragraph}
+            
+  .top-container.breakdown(style="background-color:#f1f1f1;")
+    .container
+      .row
+        .col-lg-12
+          .tabs
+            .links
+              a(href='#whyjoin') Why join
+              a.active(href='#which') Which program is best for me
+              a(href='#support') Support
+            .content
+              .box#whyjoin(style='display:none')
+                each benefit, b in page.metadata.benefits
+                  .row.benefit
+                    .col-lg-1
+                      .img
+                        img.img-circle(src=benefit.image)
+                    .col-lg-11
+                      h4.text-danger #{benefit.title}
+                      p #{benefit.description}
+                                  
+              .box#which
+                .table-responsive
+                  table.table.features-table
+                    thead
+                      tr
+                        th &nbsp;
+                        th
+                          .agent-th Referral Agent
+                        th
+                          .agent-th Sales Agent
+                    tbody
+                      each feature, f in page.metadata.features
+                        tr
+                          td #{feature.title}
+                          if feature.type === 'percentage'
+                            td.percentage #{(feature.referral*100) + '%'}
+                          else
+                            if feature.referral === '.'
+                              td
+                                .dot
+                            else
+                              td &nbsp;
+                          if feature.type === 'percentage'
+                            td.percentage #{(feature.sales*100) + '%'}
+                          else
+                            if feature.sales === '.'
+                              td
+                                .dot
+                            else
+                              td &nbsp;
+                  each hint,h in page.metadata.featureHints
+                    p.hint #{hint}
+                      
+              .box#support(style='display:none')
+                h4.text-400.text-danger #{page.metadata.support.description}
+                ul
+                  each item, i in page.metadata.support.items
+                    li !{item}
+            
+          
+
+block scripts
+  script(src='/public_nocache/javascripts/common/tabs.js')
+  

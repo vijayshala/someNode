@@ -1,0 +1,36 @@
+.offer-user-step {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.offer-user-step .min-qty {
+  font-weight: 600;
+}
+
+.offer-user-step .max-qty {
+  font-weight: 600;
+}
+
+.offer-user-step .user-count {
+  border-radius: 5px;
+  /* background-color: #efeeee; */
+  height: 51px;
+  border-style: ridge;
+  padding: 10px;
+  width: 100px;
+  text-align: center;
+  margin-left: 20px;
+  font-weight: 600;
+  font-size: 26px;
+  box-shadow: 3px 3px 5px 2px #ddd inset;
+}
+
+.offer-user-step .range-input-slider {
+  margin: auto 20px;
+}
+
+.offer-user-step .range-input-slider .slider {
+  width: 200px;
+}
+

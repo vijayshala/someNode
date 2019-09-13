@@ -1,0 +1,130 @@
+- var cartOrderItems = {}
+- var level2Items = {}
+- for(let item of cart.items) {
+-   if(item.salesModel && item.salesModelItem && item.attribute)    {
+-    level2Items[item.salesModel.identifier + '..' + item.salesModelItem.identifier] = item;
+-   }
+-}
+- let items = cart.items.filter(function(item){
+-    return item.level==0
+-})
+- var subscription = cart.subscriptions.length && cart.subscriptions[0] || {}
+
+block styles
+  link(href='/public_nocache/stylesheets/cart/cart-checkout.css', rel='stylesheet')
+
+.row
+    .col-lg-12
+        table.cart-table.cart-items
+            thead
+                tr.cart-table-header
+                    th.remove-btn
+                    th.title
+                    th.quantity
+                    th.subtotal #{localizer.get('ONETIME_FEE')}
+                    th.subtotal #{localizer.get('RECURRING_FEE')}
+            tbody
+                each cartItem,pd in cart.items
+                    - var itemPrice = cartItem.price ? formatCurrency(cartItem.price, cart.currency) : '';
+                    - var itemOnetimeSubtotal = cartItem.price && cartItem.isOneTimeCharge ? formatCurrency(cartItem.price * cartItem.quantity, cart.currency) : '';
+                    - var itemRecurringSubtotal = cartItem.price && !cartItem.isOneTimeCharge ? formatCurrency(cartItem.price * cartItem.quantity, cart.currency) : '';
+                    - var isDiscount = ""
+                    - if( cartItem.price < 0 ) {
+                    -   isDiscount="isDiscount"    
+                    - }
+                    //- - var detailRowClass = 'detail-row'
+                    tr(class='cart-item level' + cartItem.level + ' ' + cartItem.attribute.tags[0] + ' ' + isDiscount)
+                        td.remove-btn
+                        td.title
+                            if cartItem.title
+                                - var itemTitle = cartItem.title.resource ? localizer.get(cartItem.title.resource) : cartItem.title.text
+                                span #{itemTitle} #{itemPrice ? '@' : ''} #{itemPrice} #{cartItem.additionalInformation && cartItem.additionalInformation.text ? ': ' + cartItem.additionalInformation.text : ''}
+                        td.quantity
+                            if cartItem.level
+                                span #{cartItem.quantity}
+                        td.subtotal.onetime
+                            span #{itemOnetimeSubtotal}
+                        td.subtotal.recurring
+                            span #{itemRecurringSubtotal}
+            tfoot
+                tr.total-divider
+                    td.remove-btn
+                    td
+                    td.total-label(colspan=3)
+                        hr
+
+                tr.sub-total
+                    td.remove-btn
+                    td
+                    td.total-label #{localizer.get('SUB_TOTAL')}
+                    td.total #{formatCurrency(cart.onetime.subTotal, cart.currency)}
+                    td.total #{formatCurrency(subscription.subTotal, cart.currency)}
+
+                tr.total-divider
+                    td.remove-btn
+                    td
+                    td.total-label(colspan=3)
+                //- tr.promotion-total
+                //-     td(colspan="2")
+                //-     td.total-label #{localizer.get('PROMOTION')}
+                //-     td.total #{formatCurrency(cart.onetime.discount, cart.currency)}
+                //-     td.total #{formatCurrency(subscription.discount, cart.currency)}
+
+                - var taxDetails = {};
+                - if (cart && cart.onetime && cart.onetime.taxDetails)  {
+                -    for (var taxItem of cart.onetime.taxDetails)  {
+                -       taxDetails[taxItem.tid] = {onetimeTax: taxItem.amount,title: taxItem.title,recurringTax:0}
+                -   }
+                - }
+                
+                - if (cart && cart.subscriptions[0] && cart.subscriptions[0].taxDetails)    {
+                -    for (var taxItem of cart.subscriptions[0].taxDetails)  {
+                -       if (taxDetails.hasOwnProperty(taxItem.tid)) {
+                -            taxDetails[taxItem.tid].recurringTax = taxItem.amount;
+                -       } else {
+                -         taxDetails[taxItem.tid] = {recurringTax: taxItem.amount, title: taxItem.title,onetimeTax:0}
+                -       }
+                -   }
+                - }
+                
+                each taxItem, stxi in taxDetails
+                    tr.tax-details
+                        td.remove-btn
+                        td
+                        td(style="text-transform:capitalize") #{localizer.get(taxItem.title.text)}
+                        td.total(style="font-weight:normal") #{formatCurrency(taxItem.onetimeTax, cart.currency)}
+                        td.total(style="font-weight:normal") #{formatCurrency(taxItem.recurringTax, cart.currency)}
+                        
+                tr.total-divider.taxDetailsBefore
+                    td.remove-btn
+                    td
+                    td.total-label(colspan=3)
+
+                
+                if region && region.toUpperCase() != 'DE'
+                    tr.tax-total
+                        td.remove-btn
+                        td
+                        td.total-label #{localizer.get('TAXES')}
+                        td.total.onetime.cart-taxes #{formatCurrency(cart.onetime.tax, cart.currency)}
+                        td.total.subscription.cart-taxes #{formatCurrency(subscription.tax, cart.currency)}
+                tr
+                    td.remove-btn
+                    td
+                    td.total-label #{localizer.get('TOTAL')}  #{`(${cart.currency})`}
+                    td.total.onetime.cart-total #{formatCurrency(cart.onetime.total, cart.currency)}
+                    td.total.subscription.cart-total #{formatCurrency(subscription.total, cart.currency)}
+                if isCheckout
+                    tr.checkout-notes-submit
+                        td.remove-btn
+                        td
+                            div.form-group
+                            label #{localizer.get('ADDITIONAL_NOTES')}
+                            textarea.form-control(class='order-notes', name='notes', maxlength='500')
+                        td.total-label(colspan=3)
+                            include ./CheckoutLegalCheckboxes       
+                            //- - var totalAmount = cart.product.price.oneTimeAfterTax + cartItem.product.price.intervalAfterTax
+                            button.btn.btn-green.btn-checkout(type='submit', id="CheckoutSubmitBtn") #{localizer.get('PLACE_MY_ORDER')}
+
+
+                    

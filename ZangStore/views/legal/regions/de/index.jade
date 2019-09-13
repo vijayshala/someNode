@@ -1,0 +1,11 @@
+extends ../../../index
+block styles
+  link(href='/public_nocache/stylesheets/legal/legal.css', rel='stylesheet')
+
+block mainbody
+    if selectedLanguage=='de-DE'
+        if doc=='cookie-statement'
+          include ./de-DE/cookie-statement.html
+    else  
+        if doc=='cookie-statement'
+          include ../us/en-US/cookie-statement.html

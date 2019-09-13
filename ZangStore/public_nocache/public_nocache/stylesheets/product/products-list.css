@@ -1,0 +1,211 @@
+body{
+  background-image: url('/images/background-home.png');
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 100%;
+}
+
+.products{
+
+}
+
+.products-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.product-container{
+  flex: 1;
+  text-align: center;
+  padding: 10px 40px 40px 40px;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border:1px solid #ddd;
+  border-right:none;
+  background-color:#fff;
+  border-left:none;
+  position:relative;
+  overflow: hidden;
+}
+
+.product-container:first-child{
+  border-left:1px solid #ddd;
+}
+
+.product-container:last-child{
+  border-right:1px solid #ddd;
+}
+
+.product-container .promotion-banner{
+  position: absolute;
+  top: 38px;
+  right: -51px;
+  background-color: #c00;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 5px 60px;
+  transform: rotate(45deg);
+  box-shadow: 0 0 5px rgba(0,0,0, .3);
+  font-weight: 400;
+}
+
+
+
+.product-container .logo{
+  text-align: center;
+}
+
+.product-container .logo img {
+  width: 250px;
+  margin: 0px auto;
+}
+
+
+.product-container .main-image{
+  text-align: center;
+  margin-top: -20px;
+}
+
+.product-container .main-image img{
+
+}
+
+.product-container .description{
+  margin-top:20px;
+}
+
+.product-container .buttons{
+  margin-top:20px;
+}
+
+.product-container .buttons a{
+  margin: 5px;
+    /* border-radius: 1px !important; */
+    min-width: 120px;
+    background-color: #c00;
+    color: white;
+    border: none;
+    font-size: 18px;
+    border-radius: 3px !important;
+    font-weight: 500;
+    border: 1px solid #c00;
+    padding: 12px 36px;
+}
+
+.downloads{
+  background-color:#f1f1f1;
+  padding-top:80px;
+  margin-top:-50px;
+}
+
+.downloads .filters{
+  text-align: center;
+  margin-top:20px;
+}
+
+.downloads .filters a.filter-btn{
+  text-decoration: none;
+  color:#aaa;
+  font-size:21px;
+  display: inline-block;
+  padding:0 5px;
+  margin:0 10px;
+}
+
+.downloads .filters a.filter-btn.selected{
+  border-bottom:1px solid #333;
+  font-weight: 500;
+  color:#333;
+}
+
+.download{
+  display: flex;
+  margin: 10px auto;
+  background-color: white;
+  box-shadow: 0 0 30px rgba(0,0,0,.2);
+  padding: 30px;
+  width: 80%;
+}
+
+
+.downloads-container .row:last-child .download{
+  margin-bottom: 50px;
+}
+
+.download:hover{
+  box-shadow: 0 0 30px rgba(0,0,0,.4);
+}
+
+.download .info{
+flex: 3.5;
+}
+
+.download .info .logo{
+  float: left;
+  margin-right: 10px;
+}
+
+.download .info .logo img{
+  width:30px;
+  border-radius:5px;
+}
+
+.download .info .description{
+  float: left;
+  font-size: 21px;
+      font-weight: 500;
+}
+
+.download .info .brief-description{
+float:none;
+padding: 10px 10px 0px 0;
+}
+
+.download .info .requirements{
+  float: none;
+      padding: 10px 10px 5px 0;
+      font-size: 12px;
+      color: #aaa;
+}
+
+.download .links{
+flex: 1;
+text-align: center;
+}
+
+.download .links a{
+  margin:5px 0;
+  text-decoration: none;
+}
+
+.download .links a.download-btn{
+  display: block;
+  padding:10px 20px;
+  color:white;
+  background-color:#73c1c7;
+  border-radius: 3px !important;
+}
+
+.download .links a img{
+  width: 130px;
+    margin:3px 0;
+}
+
+@media (max-width:768px){
+  .products-container{
+    flex-direction: column;
+  }
+
+  .download{
+    width:100%;
+    flex-direction: column;
+  }
+
+  .download .info .brief-description{
+    float:none;
+    padding: 0px 0px 0px 0;
+  }
+}

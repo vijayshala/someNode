@@ -1,0 +1,38 @@
+.zs-stepper
+  .container
+    .row.hidden
+      .col-md-6.col-md-offset-3
+        .logo
+          img.img-responsive(src='https://accounts.zang.io/images/dashboard/logo-office.svg')
+    .row
+      .col-md-12.col-lg-12
+        .text-center.zs-step-title !{title}
+        br
+        br
+        br
+    .row
+      .col-md-6.col-md-offset-3.zs-steps
+        .step(class=passed.indexOf('plan')>-1 ? 'passed' : '')
+          a(href='/ip-office/view')
+            .circle(class=selected === 'plan' ? 'selected' : '')
+              .inner
+          .title #{localizer.get('PLAN')}
+          .triangle(class=selected === 'plan' ? 'selected' : '')
+        .step(class=passed.indexOf('number')>-1 ? 'passed' : '')
+          a(href='/ip-office/number')
+            .circle(class=selected === 'number' ? 'selected' : '')
+              .inner
+          .title #{localizer.get('NUMBER')}
+          .triangle(class=selected === 'number' ? 'selected' : '')
+        .step(class=passed.indexOf('devices')>-1 ? 'passed' : '')
+          a(href='/ip-office/users')
+            .circle(class=selected === 'devices' ? 'selected' : '')
+              .inner
+          .title #{localizer.get('DEVICES')}
+          .triangle(class=selected === 'devices' ? 'selected' : '')
+        .step(class=passed.indexOf('billing')>-1 ? 'passed' : '')
+          a(href='/ip-office/checkout')
+            .circle(class=selected === 'billing' ? 'selected' : '')
+              .inner
+          .title #{localizer.get('BILLING')}
+          .triangle(class=selected === 'billing' ? 'selected' : '')

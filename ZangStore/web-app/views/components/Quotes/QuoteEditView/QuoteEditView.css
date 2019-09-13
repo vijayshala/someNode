@@ -1,0 +1,9 @@
+.quote-view{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.customer-info .h3, .customer-info h3 {
+    font-size: 18px;
+}

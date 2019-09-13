@@ -1,0 +1,39 @@
+.table-responsive
+  table.table.table-hover.zs-main-table
+    thead 
+      tr
+        th #{localizer.get('PURCHASE_ORDER')} ID
+        th #{localizer.get('PO_NUMBER')}
+        th Date #{localizer.get('UPDATED')}
+        th #{localizer.get('COMPANY')}
+        th.sr-only #{localizer.get('USER')}
+        th #{localizer.get('LIMIT')}
+        th #{localizer.get('STATUS')}
+        th 
+          div(style='width:130px') #{localizer.get('ACTIONS')}                  
+    tbody
+        each billing, i in pos
+            - var po = billing.purchaseOrder
+            if po
+              tr 
+                td #{po._id} 
+                td #{po.refNumber} 
+                //- td #{moment(po.updated.on).format(CONSTANTS.UI_ONLY_DATE_FORMAT)}
+                td #{localizer.getDate(po.updated.on)}
+                td #{po.company && po.company.name}
+                td.sr-only User's email   
+                td $#{(po.approvedLimit ? po.approvedLimit : 0)} 
+                td.text-lowercase.text-capitalize 
+                  case po.status
+                    when "PENDING"
+                      span.label.label-warning #{localizer.get(po.status)}
+                    when "APPROVED"
+                      span.label.label-success #{localizer.get(po.status)} 
+                    when "REJECTED"
+                      span.label.label-danger #{localizer.get(po.status)} 
+                    default
+                      span.label.label-warning #{localizer.get(po.status)} 
+
+                td
+                  a.btn.btn-default(href='/purchase-orders/' + billing._id) #{localizer.get('VIEW_DETAILS')}
+

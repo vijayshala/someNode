@@ -1,0 +1,146 @@
+
+
+include ./footer.html
+//.footer-container-top
+  .container
+    //- .row
+      .col-md-3.col-lg-3 &nbsp;
+      .col-md-2.col-lg-2
+        .text-center
+          img(src='https://storage.googleapis.com/avayastore/public_files/avaya-logo-vertical-grey.png')
+      .col-md-2.col-lg-2
+        .text-center.text-muted.text-small #{localizer.get('IN_ASSOCIATION_WITH_ZANG_TM')}
+      .col-md-2.col-lg-2
+        .text-center
+          img(src='https://storage.googleapis.com/avayastore/public_files/zang-logo-vertical-grey.png')
+      .col-md-3.col-lg-3 &nbsp;
+    .row
+      .col-md-12.col-lg-12
+        br
+    .row
+      .col-lg-3.col-md-3.col-sm-3
+        ul.footer-nav-list
+          li 
+            h5 #{localizer.get('DISCOVER')}
+          //-li
+            a(href="https://www.avaya.com/de/products/" target="_blank") #{localizer.get('PRODUCTS')}
+          //-li
+            a(href="https://www.avaya.com/de/solutions/" target="_blank") #{localizer.get('SOLUTIONS')}
+          //-li
+            a(href="https://www.avaya.com/de/services/" target="_blank") #{localizer.get('SERVICES')}
+          li
+            a(href="https://www.avaya.com/de/loesungen/industry/" target="_blank") #{localizer.get('INDUSTRIES')}
+          li
+            a(href="https://www.avaya.com/de/case-studies/" target="_blank") #{localizer.get('CASE_STUDIES')}
+          li
+            a(href="https://www.avaya.com/en/about-avaya/doing-business/promotions/" target="_blank") #{localizer.get('PROGRAMS_AND_PROMOTIONS')}
+          li
+            a(href="https://www.avaya.com/en/about-avaya/doing-business/#1399676201225" target="_blank") #{localizer.get('AUTHENTIC_AVAYA')}
+          li
+            a(href="https://www.avaya.com/de/faqs/" target="_blank") #{localizer.get('AVAYA_FAQ')}
+          li
+            a(href="http://www2.avaya.de/kundenmagazin/avaya-blog" target="_blank") #{localizer.get('AVAYA_CONNECTED_BLOG')}
+          li
+            a(href="https://www.avaya.com/en/videos/category/?category=deutsch&id=1379388814330&language=Deutsch" target="_blank") #{localizer.get('AVAYA_TV')}
+      .col-lg-3.col-md-3.col-sm-3
+        ul.footer-nav-list
+          li
+            h5 #{localizer.get('INFO_FOR')}
+          li
+            a(href="https://www.avaya.com/devconnect" target="_blank") #{localizer.get('DEVELOPERS')}
+          //-li
+            a(href="https://www.avaya.com/de/prospectivepartners/" target="_blank") #{localizer.get('CHANNEL_PARTNERS')}
+          //-li
+            a(href="http://www.devconnectmarketplace.com/" target="_blank") #{localizer.get('TECHNOLOGY_PARTNERS')}
+          li
+            a(href="https://www.avaya.com/de/partner/consultants/" target="_blank") #{localizer.get('CONSULTANTS')}
+          li
+            a(href="https://www.avaya.com/de/about-avaya/contacts/#1399676337766" target="_blank") #{localizer.get('INVESTORS')}
+          li
+            a(href="https://www.avaya.com/de/about-avaya/contacts/#1399676335826" target="_blank") #{localizer.get('MEDIA_ANALYSTS')}
+      .col-lg-3.col-md-3.col-sm-3
+        ul.footer-nav-list
+          li
+            h5 #{localizer.get('CONNECT_WITH_US')}
+          li
+            a(href=`mailto:${regFlag == 'US' ?  'cloudsupport@avaya.com' : 'servicecloud@avaya.com '}`) #{localizer.get('SUPPORT_OVERVIEW')}
+              i.fa.fa-sign-out
+              
+          //- li
+           a(href="https://www.avaya.com/de/partner-locator/" target="_blank") #{localizer.get('FIND_A_CHANNEL_PARTNER')}
+         
+          //- li
+           a(href="http://www.devconnectmarketplace.com/" target="_blank") #{localizer.get('FIND_A_TECHNOLOGY_PARTNER')}
+              i.fa.fa-sign-out
+          li
+            a(href="https://www.avaya.com/de/bedienungsanleitungen" target="_blank") #{localizer.get('MANUALS')}
+              i.fa.fa-sign-out
+          li
+            a(href="http://www.meinavaya.de" target="_blank") #{localizer.get('CUSTOMER_PORTAL_GSMB')}
+          li
+            a(href="http://www2.avaya.de/kundenmagazin/angebote/avaya-digital-experience-center" target="_blank") #{localizer.get('DIGITAL_EXPERIENCE_CENTER')}
+          li
+            a(href="https://www.avaya.com/de/about-avaya/contacts/" target="_blank") #{localizer.get('CONTACTS')}
+      .col-lg-3.col-md-3.col-sm-3
+        ul.footer-nav-list
+          li
+            h5 #{localizer.get('ABOUT_AVAYA')}
+          li
+            a(href="https://www.avaya.com/de/about-avaya/" target="_blank") #{localizer.get('OUR_COMPANY')}
+          li
+            a(href="https://www.avaya.com/de/about-avaya/corporate-responsibility/" target="_blank") #{localizer.get('CORPORATE_RESPONSIBILITY')}
+          li
+            a(href="https://www.avaya.com/de/events/" target="_blank") #{localizer.get('EVENTS')}
+          li
+            a(href="https://www.avaya.com/de/about-avaya/newsroom/" target="_blank") #{localizer.get('NEWSROOM')}
+          li
+            a(href="http://investors.avaya.com/" target="_blank") #{localizer.get('INVESTOR_RELATIONS')}
+              i.fa.fa-sign-out
+          //-li
+            a(href="https://www.avaya.com/de/about-avaya/doing-business/iaug/" target="_blank") #{localizer.get('INTERNATIONAL_AVAYA_USERS_GROUP_IAUG')}
+          li
+            a(href="https://avaya.com/de/careers/" target="_blank") #{localizer.get('CAREERS')}
+              i.fa.fa-sign-out
+    .row
+      .col-lg-12.col-md-12
+        hr
+    .row
+      .col-lg-7.col-md-7
+        .text-center.bottom-list
+          //-a(href='https://www.avaya.com/de/sitemap/' target="_blank") #{localizer.get('SITEMAP')}
+          a(href='https://www.avayacloud.de/datenschutz/rechtliche-hinweise' target="_blank") #{localizer.get('TERMS_OF_USE')}
+          a(href='https://www.avayacloud.de/datenschutz/privacy-statement' target="_blank") #{localizer.get('PRIVACY_STATEMENT')}
+          a(class="optanon-show-settings" data-ignore-geolocation="true"  href='#') #{localizer.get('COOKIES')}
+          a(href='https://www.avayacloud.de/impressum' target="_blank") #{localizer.get('IMPRESSUM')}
+          a(href='https://www.avayacloud.de/agb' target="_blank") #{localizer.get('AGB')}
+          span &copy; #{new Date().getFullYear()} 
+          p #{localizer.get('AVAYA_GSMB_CO')}
+      .col-lg-3.col-md-3
+        .text-center.footer-social-list          
+          a(href='https://twitter.com/avaya', target='_blank')
+            i.fa.fa-twitter            
+          a(href='https://www.facebook.com/avaya', target='_blank')
+            i.fa.fa-facebook            
+          a(href='https://www.youtube.com/Avaya', target='_blank')
+            i.fa.fa-youtube            
+          a(href='https://www.linkedin.com/company/Avaya', target='_blank')
+            i.fa.fa-linkedin            
+          a(href='https://plus.google.com/+avaya', target='_blank')
+            i.fa.fa-google-plus            
+          a(href='https://www.instagram.com/avayainc/', target='_blank')
+            i.fa.fa-instagram            
+          a(href='https://www.pinterest.com/AvayaInc/', target='_blank')
+            i.fa.fa-pinterest-p
+      .col-lg-3.col-md-3
+        .text-center.footer-choose-region
+          a.nav-link.nav-flag-icon(href='/regions/choose', tooltip=localizer.get('CHANGE_YOUR_COUNTRY_OR_REGION'))
+            img.main-menu-region-flag(src='/public_nocache/images/regions-flags/' + (region ? region.toUpperCase() : 'DE') + '.svg', width='22') 
+            | #{localizer.get('CHANGE_REGION')}
+          //- a.optanon-toggle-display #{"Cookie Preference"}
+        
+//.zs-global-mask
+  h1.text-center.text-300
+
+script(src='https://cdn.cookielaw.org/consent/f7d62e11-d7ab-4d82-8ec6-b6924f7baa33.js' type="text/javascript" charset="UTF-8")
+script(type="text/javascript").
+  function OptanonWrapper() {}

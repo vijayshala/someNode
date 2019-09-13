@@ -1,0 +1,19 @@
+if(subscription.meta && subscription.meta.lastActionSteps)
+  h3.text-danger #{localizer.get('LAST_ACTION_STEPS')}
+  table.table
+    thead
+      tr
+        th #{localizer.get('TYPE')}
+        th #{localizer.get('DESCRIPTION')}
+        th #{localizer.get('SUCCESS')}
+    tbody
+      each step,i in subscription.meta.lastActionSteps
+        tr(class=step.error ? 'text-danger' : 'text-success')
+          td.text-capitalize= step.type
+          td.text-capitalize= step.description
+          td
+            if step.error
+              i.fa.fa-times-circle
+            else
+              i.fa.fa-check-circle
+  

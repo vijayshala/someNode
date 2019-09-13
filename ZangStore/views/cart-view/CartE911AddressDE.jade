@@ -1,0 +1,53 @@
+.e911-address
+    h3.text-danger #{localizer.get('E911_ADDRESS')}
+    div.form-group
+        div.radio
+            label.radio-label         
+                input.copy-billing-address(id='e911Address.sameAs' name='e911Address.sameAs' type='radio', value='billing')
+                | &nbsp;#{localizer.get('SAME_AS_BILLING_ADDRESS')}
+            label.radio-label 
+                input.copy-billing-address(id='e911Address.sameAs' name='e911Address.sameAs' type='radio', value='shipping')
+                | &nbsp;#{localizer.get('SAME_AS_SHIPPING_ADDRESS')}
+            label.radio-label 
+                input.copy-billing-address(id='e911Address.sameAs', name='e911Address.sameAs', type='radio', value='other')
+                | &nbsp;#{localizer.get('OTHER')}
+            
+    div.form-group
+        label  
+            span.text-danger 
+            |  * #{localizer.get('ADDRESS')}
+        input.form-control(name='e911Address.address1', type='text', value=e911Information.address)
+        span.error-msg
+    div.form-group
+        label  
+            span.text-danger 
+            |  * #{localizer.get('COUNTRY')}
+        input.form-control(type='hidden', name='e911Address.country' value=currentRegion.name.text)
+        input.form-control(type='hidden', name='e911Address.countryISO' value=currentRegion.countryISO)
+        .e911Address.country.read-only-value
+            | #{currentRegion.name && currentRegion.name.resource ? localizer.get(currentRegion.name.resource) : currentRegion.name.text}
+        //select.form-control(name='e911Address.country')
+            option(value='') #{localizer.get('SELECT_ONE')}
+            each country in countries
+                option(value=country.keyValue selected=country.keyValue === e911Information.country)= country.description        
+        span.error-msg
+    div.form-group
+        label  
+            span.text-danger 
+            |  * #{localizer.get('CITY')}
+        input.form-control(name='e911Address.city', type='text', value=e911Information.city)
+        span.error-msg
+    if currentRegion.addressFormClass==0 || currentRegion.addressFormClass==1   
+        div.form-group
+            label  
+                span.text-danger 
+                |  * #{localizer.get('STATE_PROVINCE')}
+            input.form-control(type='hidden', name='e911Address.state' value=e911Information.state)
+            select.form-control(name='e911Address.stateISO')
+            span.error-msg
+    div.form-group
+        label  
+            span.text-danger 
+            |  * #{localizer.get('ZIP_POSTAL_CODE')}
+        input.form-control(name='e911Address.zip', type='text', value=e911Information.postalCode)
+        span.error-msg

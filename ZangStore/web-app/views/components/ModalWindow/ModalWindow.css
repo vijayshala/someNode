@@ -1,0 +1,127 @@
+.modal-window {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255,255,255,.6);
+  display:none;
+  z-index:334000;
+}
+
+.modal-window.show {
+  display:block;
+}
+
+.modal-window .content{
+  width: 600px;
+  background-color: #fff;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-60%);
+  box-shadow: 0px 0px 30px rgba(0,0,0,.3);
+  border-radius: 2px;
+  max-width: 1024px;
+}
+
+.modal-window.wide .content {
+  width: 80%;
+}
+
+.modal-window .content .title {
+  font-size: 28px;
+  font-weight: 300;
+  text-align: center;
+  letter-spacing: -1px;
+  color: #304050;
+  margin-bottom: 20px;
+}
+
+.modal-window .content .subtitle{
+  font-size: 18px;
+  font-weight: 300;
+  text-align: center;
+  margin: 10px 0;
+  letter-spacing: -1px;
+}
+
+.modal-window .content .help{
+
+}
+
+.modal-window .content input[name='modalNumber']{
+  text-align: center;
+  font-size: 41px;
+  height: auto;
+  margin-bottom:10px;
+}
+.modal-window .content input[name='searchText']{
+
+}
+.modal-window .content select[name='searchSelect']{
+  margin-bottom:10px;
+}
+
+
+.modal-window .content .buttons{
+  text-align: center;
+  margin-top: 20px;
+}
+
+.modal-window .content .buttons a{
+  margin: 0 10px;
+  text-decoration: none;
+  padding: 6px 20px;
+  display: inline-block;
+  text-transform: uppercase;
+  cursor:pointer;
+  font-size: 14px;
+  line-height: 1.42857143;
+}
+
+.modal-window .content .buttons a.cancel-btn{
+  background-color: #fff;
+  border: 1px solid #304050;
+  color: #304050;
+  font-weight: 400;
+}
+.modal-window .content .buttons a.set-btn{
+  background-color: #4BAA39;
+  color: white;
+  font-weight: 400;
+}
+
+.disabled {
+  pointer-events: none;
+}
+
+/* mobile */
+@media (max-width:768px){
+
+}
+
+/* mobile */
+@media (max-width: 600px) {
+  .modal-window .content {
+    width: 25em !important;
+  }
+
+  .modal-window .content .buttons {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .buttons a {
+    margin: 5px 0 5px 0 !important;
+  }
+
+}
+
+/* ipad */
+@media (max-width:1024px){
+  .modal-window.wide .content {
+    width: 95%;
+  }
+}

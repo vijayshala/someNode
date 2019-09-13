@@ -1,0 +1,45 @@
+extends ../index
+
+block styles
+  link(href='/public_nocache/libs/jquery-ui/jquery-ui.min.css', rel='stylesheet')
+  link(href='/public_nocache/libs/jquery-ui/jquery-ui.theme.min.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/partner/partner.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/partner/partner-portal.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/partner/partner-application.css', rel='stylesheet')
+
+block mainbody
+  include ./AgentInfoTop
+  .top-container
+    .container
+      .row
+        .col-md-12.col-lg-12
+          .partner-orders-filters
+            .row
+              input(type='hidden' name='filterType' value='agent')
+              input(type='hidden' name='partner' value=partner._id)
+              input(type='hidden' name='agent' value=agent._id)
+              .col-md-3.col-lg-4
+                select.form-control.input-lg(name='product')
+                  option(value='') #{localizer.get('SELECT_PRODUCT')}
+                    each product, prd in productlist
+                      option(value=product.slug) #{product.title.text ? product.title.text : product.title} (#{ product.allowed_regions[0] })
+              .col-md-2.col-lg-2
+                input.form-control.input-lg(type='text' name='from' placeholder=localizer.get('FROM'))
+              .col-md-2.col-lg-2
+                input.form-control.input-lg(type='text' name='to' placeholder=localizer.get('TO'))
+              .col-md-2.col-lg-2
+                a.btn.btn-lg.btn-default.export-report-btn.text-500(href='/partners/orders/agent?partner=' + partner._id + '&agent=' + agent._id + '&export=true' disabled=orders.length === 0) #{localizer.get('EXPORT_REPORT')}        
+      .row
+        .col-lg-12
+          br
+          include ../partner/PartnerOrdersTable
+      .row
+        .col-lg-12
+          p.text-center.text-small.text-muted #{localizer.get('PARTNER_ORDERS_RECORDS_HINT')}
+                      
+                      
+block scripts
+  script(src='/public_nocache/libs/jquery-ui/jquery-ui.min.js')
+  script(src='/public_nocache/libs/momentjs/moment.min.js')
+  script(src='/public_nocache/javascripts/partner/partner-portal.js')
+  script(src='/public_nocache/javascripts/partner/partner-orders.js')

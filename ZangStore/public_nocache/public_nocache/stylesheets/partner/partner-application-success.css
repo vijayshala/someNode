@@ -1,0 +1,10 @@
+.titles{
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, .40) 0%, rgba(255, 255, 255, .35) 60%, rgba(255, 255, 255, 1) 100%), url('/public_nocache/images/background-home.png') no-repeat;
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, .40) 0%, rgba(255, 255, 255, .35) 60%, rgba(255, 255, 255, 1) 100%), url('/public_nocache/images/background-home.png') no-repeat;
+  background: -o-linear-gradient(top, rgba(255, 255, 255, .40) 0%, rgba(255, 255, 255, .35) 60%, rgba(255, 255, 255, 1) 100%), url('/public_nocache/images/background-home.png') no-repeat;
+  background: -ms-linear-gradient(top, rgba(255, 255, 255, .40) 0%, rgba(255, 255, 255, .35) 60%, rgba(255, 255, 255, 1) 100%), url('/public_nocache/images/background-home.png') no-repeat;
+  background: linear-gradient(top, rgba(255, 255, 255, .40) 0%, rgba(255, 255, 255, .35) 60%, rgba(255, 255, 255, 1) 100%), url('/public_nocache/images/background-home.png') no-repeat;
+  background-position: center center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}

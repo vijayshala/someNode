@@ -1,0 +1,30 @@
+.well
+  .table-responsive
+    table.table.zs-main-table
+      caption #{item.product.name} #{localizer.get('ITEM_DETAILS')}
+      thead
+        tr
+          th #{localizer.get('FEE')}
+          th #{localizer.get('ITEMS')}
+          th #{localizer.get('TOTAL')}
+      tbody
+      each detailType, i in item.details
+        if i !== 'links' && i !=='extra'
+          tr
+            td #{detailType.frequency}
+            td
+              each detailItem, it in detailType.items
+                p= detailItem
+              td #{currency.symbol}  #{(detailType.total/100).formatDollars(2)}
+        else if i === 'links'
+          each link, l in item.details.links
+            tr
+              td(colspan=5) 
+                a(href=link.link) #{link.text}
+        else if i === 'extra'
+          each ex, x in item.details.extra
+            tr
+              td(colspan=5)
+                strong= ex
+              
+      

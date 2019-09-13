@@ -1,0 +1,22 @@
+#LegalModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel' data-backdrop='static')
+  .modal-dialog.modal-lg(role='document')
+    .modal-content
+      .modal-header
+        h4#LegalModalTitle.modal-title.text-300 &nbsp;
+      .modal-body
+        .contents
+        br
+        p.text-small.text-right #{localizer.get('PLEASE_CAREFULLY_READ_OUR_TERMS_OF_SERVICE_BEFORE_ACCEPTING')}
+      .modal-footer
+        .row
+          .col-md-5
+            button.btn.btn-default.pull-left#declineBtn(type='button' data-dismiss='modal') #{localizer.get('DECLINE')}
+          .col-md-2
+            button.btn.btn-default#printBtn(type='button') 
+              i.fa.fa-print
+              | &nbsp;#{localizer.get('PRINT')}
+            a.btn.btn-default#downloadLink(style='display:none;')
+              i.fa.fa-download
+              | &nbsp;#{localizer.get('DOWNLOAD')}
+          .col-md-5
+            button.btn.btn-primary.pull-right#acceptBtn(type='button' disabled='disabled') #{localizer.get('ACCEPT')}

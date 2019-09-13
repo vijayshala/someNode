@@ -1,0 +1,13 @@
+.zs-progress-modal.contract-modal(id='ContractConfirmationModal')
+  .content
+    h1.title(id='ContractConfirmationModalTitle')
+    div.text-center.text-info(style='margin-top:20px') #{localizer.get('THIS_ACTION_WILL_HAVE_THE_FOLLOWING_RESULTS')}
+    br
+    ul.text-left.text-muted(id='ContractConfirmationModalResults')
+      li #{localizer.get('DELETE_THE_SUBSCRIPTION_FOR_THIS_PLAN')}
+      li #{localizer.get('DISABLE_ANY_ACCOUNT_ON_ANY_THIRD_PARTY_SYSTEMS')}
+      li #{localizer.get('CHANGE_THE_STATUS_OF_THIS_PLAN_TO_DISABLED')}
+    h3.subtitle Are you sure you want to proceed?
+    div(style='margin-top:20px')
+      button.btn.btn-danger(id='ContractConfirmationModalNoBtn') #{localizer.get('NO_THANKS')}
+      button.btn.btn-default(id='ContractConfirmationModalYesBtn') #{localizer.get('YES')}

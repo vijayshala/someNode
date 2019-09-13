@@ -1,0 +1,38 @@
+.table-responsive
+  table.table.table-hover.zs-main-table
+    thead 
+      tr
+        th #{localizer.get('PLAN')} #
+        th #{localizer.get('DATE')}
+        th #{localizer.get('PRODUCT')}
+        th #{localizer.get('COMPANY')}
+        th.sr-only #{localizer.get('USER')}
+        th #{localizer.get('STATUS')}
+        th 
+          div(style='width:130px') #{localizer.get('ACTIONS')}              
+    tbody
+      each subscription, i in purchasedPlans
+        tr
+          td #{subscription.confirmationNumber}          
+          td #{moment(subscription.created.on).format(CONSTANTS.UI_ONLY_DATE_FORMAT)}          
+          td.text-capitalize
+            each item, i in subscription.items
+              if item.level==0
+                p.text-capitalize #{item.title.resource ? localizer.get(item.title.resource): item.title.text}
+                break
+          td 
+            div #{subscription.company && subscription.company.name}
+            div 
+              b #{subscription.company && subscription.company.domain}
+          td.sr-only User's email        
+          td.text-lowercase.text-capitalize
+            case subscription.status
+              when CONSTANTS.PLANS_STATUS_TYPES.SUCCESS
+              when CONSTANTS.PLANS_STATUS_TYPES.NEW
+                  span.label.label-success #{localizer.get(subscription.status.toUpperCase())}
+              when CONSTANTS.PLANS_STATUS_TYPES.CANCELED
+                  span.label.label-danger #{localizer.get(CONSTANTS.PLANS_STATUS_TYPES.CANCELED)}
+              default
+                  span.label.label-warning #{localizer.get(subscription.status.toUpperCase())}
+          td
+            a.btn.btn-default(href='/purchased-plans/' + subscription._id) #{localizer.get('VIEW_DETAILS')}

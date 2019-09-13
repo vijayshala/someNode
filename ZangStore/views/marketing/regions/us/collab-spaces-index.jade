@@ -1,0 +1,12 @@
+extends ../../../index
+
+block styles
+  link(href='/public_nocache/marketing/us/css/collab-spaces.css', rel='stylesheet')
+
+block mainbody  
+  if selectedLanguage=='en-US'
+    include ./en-US/collab-spaces-index.html
+  else  
+    include ./en-US/collab-spaces-index.html
+
+

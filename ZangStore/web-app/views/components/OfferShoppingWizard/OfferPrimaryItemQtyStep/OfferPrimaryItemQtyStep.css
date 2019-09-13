@@ -1,0 +1,58 @@
+.offer-user-step {
+
+}
+
+.offer-user-step .primayitem-addon-features {
+
+}
+
+.offer-user-step .input-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.offer-user-step .min-qty {
+  font-weight: 600;
+}
+
+.offer-user-step .max-qty {
+  font-weight: 600;
+}
+.offer-user-step .info {
+  width: 80%;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.offer-user-step .info .sub-info {
+  font-weight: 400;
+}
+
+.offer-user-step .user-count {
+  border-radius: 5px;  
+  height: 51px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  width: 200px !important;
+  text-align: center;
+}
+
+.offer-user-step .range-input-slider {
+  margin: auto 20px;
+  width: 80%;
+}
+
+.offer-user-step .range-input-slider .slider {
+  width: 100%;
+}
+
+.offer-user-step .sellable-addons {
+  grid-template-columns: 50% 50%;
+}
+
+.offer-user-step .sellable-addon {
+  border: 1px solid #304050;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: 600;  
+}

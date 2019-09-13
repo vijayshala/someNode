@@ -1,0 +1,43 @@
+.payment-frequency-options {
+
+}
+
+
+.payment-frequency-options .radio-options {
+  display: flex;
+}
+
+.payment-frequency-options .radio-options .radio-option {
+  padding: 10px;
+  border: 0px solid #30405000;
+  border-radius: 4px;
+  margin: 5px;
+  width: 50%;
+  color: #9595a1;
+}
+
+.payment-frequency-options .radio-option .checkbox-container {
+  margin-top: initial;
+}
+
+.payment-frequency-options .radio-options .radio-option.selected {
+  opacity: 1;
+  color: #304050;
+  border: 0px solid #304050;
+  background: transparent;
+}
+
+.payment-frequency-options .radio-options .radio-option .option-label {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.payment-frequency-options .radio-options .radio-option .option-sublabel {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.payment-frequency-options .radio-options .radio-option.selected .checkbox-container .box .tick {
+  background-color: #304050;
+  border: 3px solid #304050;
+}

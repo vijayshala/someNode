@@ -1,0 +1,27 @@
+extends ../index
+block styles
+  link(href='/public_nocache/stylesheets/legal/legal.css', rel='stylesheet')
+
+block mainbody
+  .container
+    .row
+      .col-md-12.col-lg-12
+        h1.text-300.text-center.text-white #{localizer.get('LEGAL')}
+  br
+  .container.bg-white
+      .row
+        .col-md-12.col-lg-12
+          each doc,dc in docs
+            .text-center
+              br
+              if doc.external === true
+                a(href=doc.externalUrl target="_blank")
+                  h4.text-400 #{localizer.get(doc.title)}
+                br
+              else
+                a(href='/legal/' + doc.slug)
+                  h4.text-400 #{localizer.get(doc.title)}
+                br
+  br
+  br
+  br

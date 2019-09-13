@@ -1,0 +1,15 @@
+.page-title {
+  border-bottom: 1px solid #333;
+}
+
+.page-title .right-nav {
+  float: right;
+  line-height: 40px;
+  font-size: 14px;
+  color: #3E8CFF;
+}
+
+.page-title .right-nav .nav-item {
+  color: #3E8CFF;
+  text-decoration: underline;
+}

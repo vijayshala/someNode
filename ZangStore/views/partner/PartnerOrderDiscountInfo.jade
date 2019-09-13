@@ -1,0 +1,9 @@
+.partner-discount
+  .container
+    .row
+      .col-lg-12
+        .text-center #{localizer.get('THIS_ORDER_WAS_PLACED_BY_A')}  
+          span.text-capitalize.text-500 #{partner.type} #{localizer.get('AGENT')}. 
+          | #{localizer.get('A_DISCOUNT_OF')}
+          span.percent #{(partner.discount*100)}% 
+          | #{localizer.get('WAS_APPLIED_TO_THE_TOTAL_AMOUNT')}.

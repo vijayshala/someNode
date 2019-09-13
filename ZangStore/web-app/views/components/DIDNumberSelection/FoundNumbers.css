@@ -1,0 +1,50 @@
+
+.did-number-selection .loader-container {
+  min-height: 180px;
+}
+.did-number-selection .number-list{
+  margin:10px 0;
+  height:180px;
+  overflow-y: scroll;
+  border:1px solid #ddd;
+}
+
+.did-number-selection .number-list ul {
+  list-style-type: none;
+      padding: 0;
+      margin: 0;
+}
+
+.did-number-selection .number-list ul li{
+  padding: 15px;
+      border-bottom: 0;
+      cursor:pointer;
+      border-bottom: 1px solid #ddd;
+      font-weight: 500;
+}
+
+.did-number-selection .number-list ul li:hover{
+  color:#304050;
+}
+
+.did-number-selection .number-list ul li:last-child{
+  border-bottom: none;
+}
+
+.did-number-selection .number-list ul li.selected{
+  background: #337ab7;
+    color: white;
+    font-weight: 500;
+}
+
+.not-found-number-err {
+  text-align: center;
+  color: #ddd;
+}
+
+.did-number-selection .stepper-foot-note {
+  text-align: center;
+  padding: 1em;
+  font-size: 14px;
+  color: #929292;
+}

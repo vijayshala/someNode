@@ -1,0 +1,45 @@
+.content-limit-view {
+  max-height: 150px;
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 30px;
+}
+
+.content-limit-view.open {
+  max-height: initial;
+  overflow: hidden;
+}
+
+
+.content-limit-view .showhide-toggle {
+  position: absolute;
+  bottom: 0px;
+  background-color: #ffffffd4;
+  display: block;
+  padding: 5px;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+}
+
+.content-limit-view .showhide-toggle img {
+  cursor: pointer;
+}
+
+.content-limit-view .showhide-toggle a {
+  cursor: pointer;
+  color: #304050;
+  font-weight: bold;
+}
+
+
+.content-limit-view.open .showhide-toggle a .arrow-up,
+.content-limit-view .showhide-toggle a .arrow-down {
+  display: inline;
+  margin-left: 5px;
+}
+
+.content-limit-view .showhide-toggle a .arrow-up,
+.content-limit-view.open .showhide-toggle a .arrow-down {
+  display: none;
+}

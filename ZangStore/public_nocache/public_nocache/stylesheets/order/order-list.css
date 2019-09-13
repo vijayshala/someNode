@@ -1,0 +1,14 @@
+.confirmation {
+    width: 13em;
+}
+
+.product {
+    width: 6em;
+}
+
+td, th {
+    text-align: center;
+    padding: 8px 2px 8px 2px !important;
+}
+
+

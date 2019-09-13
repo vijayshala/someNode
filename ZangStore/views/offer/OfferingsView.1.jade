@@ -1,0 +1,133 @@
+extends ../index
+block styles
+  link(href='/public_nocache/stylesheets/ip-office/ip-office-view.css', rel='stylesheet')
+block mainbody
+  .vantage-phone-callout-container.hidden
+    .container
+      .col-md-2.col-md-offset-2
+        img.img-responsive(src='https://storage.googleapis.com/avayastore/public_files/desktopVantageHardphone_wCord.png')
+      .col-md-6
+        h3.text-danger.text-500 
+          span.text-italic #{localizer.get('NEW')} 
+          span #{localizer.get('NEW_AVAYA_VANTAGE_IS_NOW_AVAILABLE')}
+        p.text-mute #{localizer.get('EXPERIENCE_THE_BEST_OF_ZANG_OFFICE_WITH_THIS_ALL_GLASS_EASY_TO_USE_VOICE_VIDEO_AND_CHAT_COLLABORATION_PHONE')}
+        
+  .plan-container
+    .container
+      .row
+        input(type='hidden', name='product' value=JSON.stringify(product))
+        input(name='deviceTypes', type='hidden', value=JSON.stringify(deviceTypes))
+        input(type='hidden' name='ipOfficeCartItem' value=ipOfficeCartItem ? JSON.stringify(ipOfficeCartItem) : '')
+        input(type='hidden' name='currency' value=JSON.stringify(currency))
+        input(type='hidden' name='PRODUCTS_MAXIMUM_USERS' value=CONSTANTS.PRODUCTS_MAXIMUM_USERS)
+        .col-md-12
+          .zo-top-icon.hidden
+            img(src='/public_nocache/images/icon-office.svg')
+            br
+          h1.text-center.text-500.text-white !{localizer.get('GET_STARTED_WITH_AVAYA_IP_OFFICE_TM_PLATFORM')}
+          h3.text-center.text-300.text-white #{localizer.get('IP_OFFICE_DONT_PAY_TILL')}
+          .center-content
+              select.form-control.input-lg.plan-options-select(name='planOption')
+                each planOption in product.planOptions              
+                  if(planOption.active)
+                    - var deviceDiscountAmount = currency.symbol + (planOption.perDeviceDiscount/100).formatDollars(2) 
+                    - var deviceDiscountDisplay = '(' + localizer.get('UP_TO_DEVICE_CREDITE_PER_USER').replace('{$}', deviceDiscountAmount)+ ')';
+                    option(value=planOption.value selected=planOption.value === product.planOption) #{localizer.get(planOption.label)} #{(planOption.perDeviceDiscount) ? deviceDiscountDisplay : ''}
+              h5.text-center.text-300.text-white #{localizer.get('SELECT_AN_1_YEAR_PLAN_OR_MORE_AND_RECEIVE_A_CREDIT_PER_USER_TOWARDS_THE_PURCHASE_OF_ANY_DEVICE_LIMITED_TIME_OFFER')}
+              br
+              br
+          br
+  .top-container
+    .container      
+      .row.plans-tiers
+        .col-md-12
+          .plans-note1
+            span #{localizer.get('HAVE_LARGE_NUMBERS_OF_USERS')} 
+            a.info-link() #{localizer.get('REVIEW_OUR_VOLUME_DISCOUNT_BREAKDOWN')}
+          .zo-pricechart-modal
+            .content
+              img(src='/public_nocache/images/ip-office-pricechart.png', width='100%')
+              .buttons
+                a.cancel-btn #{localizer.get('CLOSE')}
+              
+          .zo-plans
+            - var plan = null
+            - var p = null
+            - plan = product.salesmodel.basicUser
+            - p = 'basicUser'
+            include ./IPOfficeViewPlan
+            - plan = product.salesmodel.standardUser
+            - p = 'standardUser'
+            include ./IPOfficeViewPlan
+            - plan = product.salesmodel.powerUser
+            - p = 'powerUser'
+            include ./IPOfficeViewPlan
+      //- .row(class=ipOfficeCartItem ? '': 'sr-only')
+      //-   .col-md-12
+      //-     h4.text-center.text-300.text-danger #{localizer.get('TO_ADJUST_YOUR_USER_QUANTITIES_YOU_MUST_EITHER_CLEAR_YOUR_ORDER_OR_CONTINUE_TO_THE_DEVICES_STEP')}
+      .row
+        .col-md-12
+          .zo-error-prompt(id='errorPrompt')
+            i.fa.fa-exclamation-circle
+            span #{localizer.get('PLEASE_SELECT_AT_LEAST_ONE_USER_TO_CONTINUE')}
+      .row
+        .col-md-12
+          .product-total-wrapper
+            .product-total
+              .total-wrapper
+                .currency-symbol #{currency.symbol}
+                .total 61
+                .cents .88
+                .interval #{localizer.get('MONTHLY')}              
+          .product-device-discount-info            
+            //- - var planDeviceDiscountAmount = ''
+            //- - var planDeviceDiscountDisplay = ''
+            //- - var planDeviceName = ''
+            //- - if(selectedPlan) {
+            //-   - planDeviceName = (planDiscountedDevice)  ? localizer.get(planDiscountedDevice.label) : ''
+            //-   - planDeviceDiscountAmount = currency.symbol + (selectedPlan.perDeviceDiscount/100).formatDollars(2) 
+            //-   - planDeviceDiscountDisplay = '(' + localizer.get('UP_TO_DEVICE_CREDITE_PER_USER').replace('{$}', planDeviceDiscountAmount)+ ')';
+            //- - }            
+            //- - var planDeviceInfo = localizer.get('FREE_DEVICES_PER_USER_INFO').replace('{0}', totalUsersQty).replace('{1}', planDeviceName)
+            //- - var planDeviceInfo2 = localizer.get('VALUE_OF_DEVICE_CREDIT').replace('{0}', planDeviceDiscountAmount)
+            span  #{''}               
+      .row(class='sr-only')
+        .col-md-4.col-md-offset-4
+          select.form-control.input-lg(name='contractType' style='margin-bottom:20px;')
+            each planOption, pt in product.planOptions              
+              if(planOption.active)              
+                - var deviceDiscountAmount = currency.symbol + (planOption.perDeviceDiscount/100).formatDollars(2) 
+                - var deviceDiscountDisplay = '(' + localizer.get('UP_TO_DEVICE_CREDITE_PER_USER').replace('{$}', deviceDiscountAmount)+ ')';
+                option(value=planOption.value selected=planOption.value === product.planOption) ? deviceDiscountDisplay : ''}
+
+      .row
+        .col-md-12
+          .text-center
+            //- if ipOfficeCartItem
+            //-   a.btn.btn-danger.btn-lg.zo-getstarted-btn(href='/ip-office/number') #{localizer.get('CONTINUE_TO_PHONE_NUMBER_SELECTION')} &rightarrow;
+            //-   br
+            //-   a.btn.btn-link(style="margin-top:10px;text-decoration:underline;color:#666;" href='/cart/' + product._id + '/remove?delete=true&next=/ip-office/view') #{localizer.get('CLEAR_MY_ORDER')}
+            //- else
+            button.btn.btn-danger.btn-lg.zo-getstarted-btn(id='GetStartedTodayBtn') #{localizer.get('CONTINUE_TO_PHONE_NUMBER_SELECTION')} &rightarrow;
+      .row(class=ipOfficeCartItem ? '' : 'hidden')
+        .col-md-12.text-center
+          br
+          a.clear-order-link(href='/cart/' + product._id + '/remove?delete=true') #{localizer.get('CLEAR_MY_ORDER')}
+          br
+  include ./IPOfficeViewFeaturesContainer
+  include ./IPOfficeViewAddonsContainer
+  include ./IPOfficeViewDevicesContainer
+  //- include ./IPOfficeViewLinksContainer
+  include ../components/ProductTermsModal  
+  //- include ./IPOfficeViewFeaturesContainer
+  //- include ./IPOfficeViewAddonsContainer
+  //- include ./IPOfficeViewLongDistanceContainer
+  
+            
+      
+          
+                  
+  
+        
+block scripts
+  script(src='/public_nocache/javascripts/ip-office/ipofficeview.js')

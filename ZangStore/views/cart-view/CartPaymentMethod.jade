@@ -1,0 +1,61 @@
+div.form-group
+    h3.text-danger #{localizer.get('PAYMENT_METHOD')}
+    if currentRegion.countryISO === 'DE'
+        p.text-muted(style='font-size:11px') #{localizer.get('IBAN_CREDITOR_ID')}
+    if currentRegion.countryISO !== 'DE'
+        span.explanationcc
+            a(href=('/' + currentRegion.countryISO.toLowerCase() + '/billingaccount/creditcard')) #{localizer.get('MANAGE_BILLING_ACCOUNT')}
+
+    if currentRegion.countryISO !== 'DE'
+        div.radio
+            label.radio-label         
+                input.payment-method-form(id='paymentType' name='paymentType' type='radio', value='creditCard' checked=true)
+                | &nbsp;#{localizer.get('CREDIT_CARD')}
+            label.radio-label 
+                input.payment-method-form(id='paymentType' name='paymentType' type='radio', value='purchaseOrder')
+                | &nbsp;#{localizer.get('PURCHASE_ORDER')}
+
+if currentRegion.countryISO == 'DE'
+    div.form-group
+        label  
+            span.text-danger 
+            | * #{localizer.get('INVOICING_EMAIL')}
+        input.form-control(type='text', name='billingAddress.email' value=billingAddress.email)
+        span.error-msg
+    div.iban-area
+        div.form-group
+            div.credit-card-input
+                label  
+                    span.text-danger 
+                    | * #{localizer.get('IBAN')}
+                input.form-control(name='IBAN', type='text')
+                span.error-msg
+        div.form-group
+            label
+                input.checker.box(type='checkbox' name='IBANAuthorization' checked=false value=true)
+                | &nbsp;&nbsp;#{localizer.get('IBAN_AUTHORIZATION')}
+                br
+                span.error-msg
+else
+    div.credit-card-area
+        div.credit-cards(class=creditCards.length ? 'form-group': 'hidden')
+            label  
+                span.text-danger 
+            select.form-control(name='creditCardId')
+                option(value='') #{localizer.get('SELECT_ONE')}
+                each card,i in creditCards
+                    option(value=card.id data-payment-method=card.paymentMethodObject) **** **** **** #{card.last4} #{card.brand}
+            span.error-msg
+
+        if creditCards.length == 0
+            div.credit-card-input
+                include ./CartCheckoutCreditCard
+
+    div.purchase-order-area(style="display:none;")
+        div.purchase-order.form-group
+            label  
+                span.text-danger 
+                | * #{localizer.get('PURCHASE_ORDER')}
+            - var refNumber = purchaseOrder && purchaseOrder.refNumber
+            input.form-control(name='purchaseOrder.refNumber', type='text', value=refNumber, disabled=(purchaseOrder && purchaseOrder.refNumber))
+            span.error-msg

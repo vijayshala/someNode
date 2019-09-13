@@ -1,0 +1,38 @@
+extends ../index
+
+block styles
+  link(href='/public_nocache/stylesheets/partner/partner.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/partner/partner-portal.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/partner/partner-application.css', rel='stylesheet')
+
+block mainbody
+  if success
+    include ./PartnerInfoTopSuccess
+  else
+    include ./PartnerInfoTop
+  form.application-form
+    - var partnerType = partner.type
+    - var fieldsReadOnly = true
+    - var fields = partner.fields
+    - var fieldsUserInfo = { firstName: agent.user.account.name.givenname, lastName: agent.user.account.name.familyname, emailAddress: agent.user.account.username }
+    include ./PartnerFields
+  .container
+    .row
+      .col-md-12.col-lg-12
+        if hasPartnerApproverPermission || canChangeStatus
+            .row
+              .col-lg-12
+                .partner-status(class="bg-" + partner.status)
+                  .row
+                    .col-lg-8
+                      .text-center
+                        select.form-control(name="partnerStatus" data-url="/partners/" + partner._id + "/status/{PARTNER_STATUS_TYPE}")
+                          each st in CONSTANTS.PARTNER_STATUS_TYPES
+                            option(value=st selected=st === partner.status) #{localizer.get(st)}
+                    .col-lg-4
+                      .text-center
+                        button.btn.btn-block.btn-black(id="SaveStatusBtn") #{localizer.get('CHANGE_STATUS')}
+block scripts
+  script(src='/public_nocache/javascripts/partner/partner-portal.js')
+  if hasPartnerApproverPermission || canChangeStatus
+    script(src='/public_nocache/javascripts/partner/partner-admin-actions.js')

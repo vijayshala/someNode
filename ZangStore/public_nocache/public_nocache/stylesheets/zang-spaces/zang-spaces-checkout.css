@@ -1,0 +1,81 @@
+
+.checkbox-label{
+  line-height: 28px;
+  font-size:17px;
+}
+
+.checkout-top{
+  padding-bottom:50px;
+}
+
+
+.checkout-bottom{
+  padding-top:50px;
+}
+
+
+.order-notes{
+  max-width: 100%;
+  max-height: 300px;
+  min-height: 150px;
+}
+
+span.error-msg{
+  color:red;
+  font-size:12px;
+}
+
+span.explanation {
+  color: #929292;
+      font-size: 12px;
+}
+
+span.explanationcc {
+  color: #929292;
+      font-size: 12px;
+      /* margin-left: 10px; */
+      position: absolute;
+      right: 0;
+      top: 1px;
+      text-decoration: underline;
+}
+
+.place-order-form .form-control{
+  border: none;
+      background-color: inherit;
+      box-shadow: none;
+      border-bottom: 2px solid #ddd;
+      padding: 5px;
+      font-size: 19px;
+      color: #000;
+}
+
+
+.place-order-form .has-error .form-control{
+  border-bottom:2px solid #c00;
+}
+
+.place-order-form label{
+  color:#828282;
+  font-weight:300
+}
+
+.checkout-btn{
+  margin:20px 0;
+  padding:10px 20px;
+  border-radius: 50px !important;
+}
+
+.checkout-btn:hover{
+  color: white;
+    box-shadow: 0px 0px 30px rgba(0,0,0,.2);
+}
+
+p.free-shipping-text{
+  padding: 5px;
+    color: #828282;
+}
+
+.place-order-form textarea{
+  border:2px solid #ddd !important;
+}

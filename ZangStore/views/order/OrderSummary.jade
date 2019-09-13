@@ -1,0 +1,295 @@
+.order-summary  
+  //- var oneTimeTotal = (cartItemDetails.oneTimeTotal/100).formatDollars(2);
+  - var oneTimeTotal = (cartItemDetails.oneTimeAfterTax/100).formatDollars(2);
+  - var subtotal = (cartItemDetails.oneTimeBeforeTax/100).formatDollars(2);
+  - var oneTimeTotalWithoutDiscountDollar = (cartItemDetails.oneTimeTotalWithoutDiscount/100).formatDollars(2);  
+  - var intervalTotalWithoutDiscountDollar = (cartItemDetails.intervalTotalWithoutDiscount/100).formatDollars(2);  
+  - var intervalTotal = (cartItemDetails.intervalTotal/100).formatDollars(2);
+  - var intervalTax = (cartItemDetails.intervalTax/100).formatDollars(2);
+  - var oneTimeTax = (cartItemDetails.oneTimeTax/100).formatDollars(2);
+  - var intervalBeforeTax = (cartItemDetails.intervalBeforeTax/100).formatDollars(2);
+  - var intervalTaxTypes = (cartItemDetails.intervalTaxTypes) ? cartItemDetails.intervalTaxTypes : [];
+  - var oneTimeTaxTypes = (cartItemDetails.oneTimeTaxTypes) ? cartItemDetails.oneTimeTaxTypes : [];
+  - var showTotalStyle = ''
+  if summaryViewType === 'checkout'
+    - showTotalStyle = 'display:none;'
+  .container
+    if summaryTitle
+      .main-title #{summaryTitle}
+    else
+      if isQuote
+        .main-title #{cartItem.product.title + ' Quote'}
+      else
+        .main-title #{isCheckout ? localizer.get('ORDER_SUMMARY') : cartItem.product.title + ' ' + localizer.get('SUMMARY')}
+    .row
+      .col-lg-6.col-md-6
+        .row
+          .col-lg-12
+            .detail-row
+              h3.pull-left.text-300 #{localizer.get('PLAN_DETAILS')}
+              a.pull-right.edit-link.text-uppercase(href=cartItemDetails.editLinks.planDetails class=isCheckout ? '' : 'sr-only') #{localizer.get('EDIT')}
+        .row
+          .col-lg-12
+            hr
+        each planDetail,pd in cartItemDetails.planDetails
+          if planDetail.value
+            .row
+              .col-lg-12
+                .detail-row
+                  .pull-left #{planDetail.key}
+                  .pull-right #{planDetail.value}
+        .row
+          .col-lg-12
+            .spacer
+        if cartItemDetails.oneTimeFees.length
+          .oneTimeFeeContainer
+            .row
+              .col-lg-12
+                .detail-row
+                  h3.pull-left.text-300 #{localizer.get('ONE_TIME_FEE')}
+                  a.pull-right.edit-link.text-uppercase(href=cartItemDetails.editLinks.oneTimeFee class=isCheckout ? '' : 'sr-only') #{localizer.get('EDIT')}
+            .row
+              .col-lg-12
+                hr
+
+            each oneTimeFee,otf in cartItemDetails.oneTimeFees
+              - var oneTimeFeeAmount = (oneTimeFee.value/100).formatDollars(2);
+              .row
+                .col-lg-12
+                  .detail-row
+                    .pull-left
+                      span.qty #{oneTimeFee.qty}
+                      span #{oneTimeFee.key}                    
+                    .pull-right.amount
+                      .currency #{currency.symbol}
+                      .whole #{oneTimeFeeAmount.split('.')[0]}
+                      .decimals .#{oneTimeFeeAmount.split('.')[1]}
+            .row
+              .col-lg-12
+                .spacer
+            if cartItemDetails.oneTimeDiscount>0
+              .row
+                .col-lg-12
+                  .detail-row.promotion.warning
+                    - var oneTimeDiscountDollar = ((cartItemDetails.oneTimeDiscount)/100).formatDollars(2);
+                    .pull-left #{localizer.get('PROMOTION')}
+                    .pull-right.amount.subtotal
+                      | -
+                      .currency #{currency.symbol}
+                      .whole #{oneTimeDiscountDollar.split('.')[0]}
+                      .decimals .#{oneTimeDiscountDollar.split('.')[1]}
+            .row
+              .col-lg-12
+                .detail-row
+                  .pull-left #{localizer.get('SUB_TOTAL')}
+                  .pull-right.amount.subtotal#oneTimeBeforeTax               
+                    .currency #{currency.symbol}
+                    .whole #{subtotal.split('.')[0]}
+                    .decimals .#{subtotal.split('.')[1]}
+            
+            if ENABLE_PLAN_B_SOFT_LAUNCH_MODE && ENABLE_PLAN_B_SOFT_LAUNCH_MODE != "planc"
+              .row
+                .col-lg-12
+                  .detail-row
+                    .pull-left #{localizer.get('TAXES')}
+                    .pull-right.withTaxField.text-muted.text-italic.text-300.amount(style=showTotalStyle) #{localizer.get('PLUS_APPLICABLE_TAXES')}
+            else
+              .row
+                .col-lg-12#oneTimeTaxArea
+                  .detail-row.taxCalculation(style='display:none;')
+                    .pull-left #{localizer.get('TAXES')}
+                    .pull-right
+                      img(src="/public_nocache/images/loading-spinner-grey.gif", height='16') 
+                      span.hidden #{localizer.get('CALCULATING')}
+                  each taxType,otf in oneTimeTaxTypes
+                    - var taxAmount = (taxType.tax/100).formatDollars(2);
+                    .detail-row.taxDetail
+                      .pull-left(style='text-transform: capitalize;') #{taxType.name}
+                      .pull-right.withTaxField.text-muted.text-italic.text-300.amount(style=showTotalStyle)                    
+                        .currency #{currency.symbol}
+                        .whole #{taxAmount.toString().split('.')[0]}
+                        .decimals .#{taxAmount.toString().split('.')[1]}
+            .row
+              .col-lg-12
+                .spacer
+            .row
+              .col-lg-12
+                .detail-row
+                  .pull-left #{localizer.get('TOTAL')} (#{currency.symbol}#{currency.value.toUpperCase()})
+                  .pull-right.taxCalculation(style='display:none;')
+                    img(src="/public_nocache/images/loading-spinner-grey.gif", height='16') 
+                    span.hidden #{localizer.get('CALCULATING')}
+                  .pull-right.withTaxField.amount.total#oneTimeAfterTax(style=showTotalStyle)                    
+                    .currency #{currency.symbol}
+                    .whole #{oneTimeTotal.split('.')[0]}
+                    .decimals .#{oneTimeTotal.split('.')[1]}
+            .row
+              .col-lg-12
+                .detail-row
+                  .pull-left &nbsp;
+                  .pull-right.text-muted.text-italic.text-300 (#{localizer.get('ONE_TIME_FEE')})
+
+            - var oneTimeDiscountDisplay = currency.symbol + (cartItemDetails.maxOneTimeDiscount/100).formatDollars(2) 
+            - var remainintOneTimeDiscount = cartItemDetails.maxOneTimeDiscount - cartItemDetails.oneTimeDiscount;
+            - var remainingOneTimeDiscountDisplay = currency.symbol + (remainintOneTimeDiscount/100).formatDollars(2) 
+            - var infoLine1 = localizer.get('PROMOTION_DETAIL_INFO').replace('{0}', cartItemDetails.totalUsersLength).replace('{1}', oneTimeDiscountDisplay)
+            - var infoLine2 = localizer.get('PROMOTION_REMAINING_DETAIL_INFO').replace('{0}', remainingOneTimeDiscountDisplay)
+            if remainintOneTimeDiscount>0 && summaryViewType === 'checkout'
+              .row
+                .col-lg-12
+                  .spacer
+                  .detail-row.align-left.promotion-info
+                      //- span !{infoLine1}
+                      //- br                  
+                      span !{infoLine2}
+      .col-lg-6.col-md-6
+        if cartItemDetails.diff.length
+          .row
+            .col-lg-12.col-md-12
+              .detail-row
+                h3.pull-left.text-300 #{localizer.get('CHANGES')}
+          .row
+            .col-lg-12.col-md-12
+              hr
+          each diff, d in cartItemDetails.diff
+            .row
+              .col-lg-12.col-md-12
+                .detail-row
+                  .pull-left
+                    span.qty #{diff.qty}
+                    span.text-capitalize #{diff.key.ucFirst().replace(/\_/g, ' ')}
+                  .pull-right #{diff.value} 
+          .row
+            .col-lg-12.col-md-12
+              .spacer
+        .row
+          .col-lg-12
+            .detail-row
+              h3.pull-left.text-300 #{localizer.get('QUANTITIES')}
+              a.pull-right.edit-link.text-uppercase(href=cartItemDetails.editLinks.quantities class=isCheckout ? '' : 'sr-only') #{localizer.get('EDIT')}
+        .row
+          .col-lg-12
+            hr
+        each quantity,q in cartItemDetails.quantities
+          - var quantityAmount = (quantity.value/100).formatDollars(2)
+          .row
+            .col-lg-12
+              .detail-row
+                .pull-left 
+                  span.qty #{quantity.qty}
+                  span #{quantity.key}
+                
+                .pull-right.amount
+                  .currency #{currency.symbol}
+                  .whole #{quantityAmount.split('.')[0]}
+                  .decimals .#{quantityAmount.split('.')[1]}
+        .row
+          .col-lg-12
+            .spacer
+        .row
+          .col-lg-12
+            .detail-row
+              .pull-left #{localizer.get('SUB_TOTAL')}
+              .pull-right.amount.subtotal#intervalBeforeTax
+                .currency #{currency.symbol}
+                .whole #{intervalTotalWithoutDiscountDollar.split('.')[0]}
+                .decimals .#{intervalTotalWithoutDiscountDollar.split('.')[1]}
+        if cartItemDetails.intervalDiscount>0
+          .row
+            .col-lg-12
+              .detail-row.promotion.warning
+                - var intervalDiscountDollar = ((cartItemDetails.intervalDiscount)/100).formatDollars(2);
+                .pull-left #{localizer.get('PROMOTION')}
+                .pull-right.amount.subtotal
+                  | -
+                  .currency #{currency.symbol}
+                  .whole #{intervalDiscountDollar.split('.')[0]}
+                  .decimals .#{intervalDiscountDollar.split('.')[1]}
+        if ENABLE_PLAN_B_SOFT_LAUNCH_MODE && ENABLE_PLAN_B_SOFT_LAUNCH_MODE != "planc"
+          .row
+            .col-lg-12
+              .detail-row
+                .pull-left #{localizer.get('TAXES')}
+                .pull-right.withTaxField.text-muted.text-italic.text-300.amount(style=showTotalStyle) #{localizer.get('PLUS_APPLICABLE_TAXES')}
+        else
+          .row
+            .col-lg-12#intervalTaxArea
+              .detail-row.taxCalculation(style='display:none;')
+                .pull-left #{localizer.get('TAXES')}
+                .pull-right
+                  img(src="/public_nocache/images/loading-spinner-grey.gif", height='16') 
+                  span.hidden #{localizer.get('CALCULATING')}
+              each taxType,otf in intervalTaxTypes
+                - var taxAmount = (taxType.tax/100).formatDollars(2);
+                .detail-row.taxDetail
+                  .pull-left(style='text-transform: capitalize;') #{taxType.name}
+                  .pull-right.withTaxField.text-muted.text-italic.text-300.amount(style=showTotalStyle)                
+                    .currency #{currency.symbol}
+                    .whole #{taxAmount.toString().split('.')[0]}
+                    .decimals .#{taxAmount.toString().split('.')[1]}
+        .row
+          .col-lg-12
+            .spacer
+        .row
+          .col-lg-12
+            .detail-row
+              - var totalToShow = intervalTotal
+              - var additionalText = ""
+              - if (order && order.type === "SUBSCRIPION_UPDATE") {
+              -   totalToShow = (cartItem.product.price.intervalAfterTax || cartItem.product.price.interval/100).formatDollars(2)
+              -   additionalText = localizer.get('TOTAL_INCLUDES_THE_PRICES_OF_PLAN_FEATURES')
+              - }
+              .pull-left Total (#{currency.symbol}#{currency.value.toUpperCase()})
+              .pull-right.amount.total.taxCalculation(style='display:none;')
+                img(src="/public_nocache/images/loading-spinner-grey.gif", height='16') 
+                span.hidden #{localizer.get('CALCULATING')}
+              .pull-right.withTaxField.amount.total#intervalAfterTax(style=showTotalStyle)                
+                .currency #{currency.symbol}
+                .whole #{totalToShow.split('.')[0]}
+                .decimals .#{totalToShow.split('.')[1]}
+        .row
+          .col-lg-12
+            .detail-row
+              .pull-left &nbsp;
+              .pull-right.text-muted.text-italic.text-300 (#{localizer.get('BILLED')} #{localizer.get('ACCORDING_TO_PLAN')})
+              p.text-muted.text-300(style="font-size:12px;") #{additionalText}
+        if summaryViewType === 'quote'
+          .row
+            .col-lg-12
+              .spacer
+        if cartItemDetails.bundledProduct
+          case cartItemDetails.bundledProduct.slug
+            when 'zang-spaces'
+              include ../zang-spaces/ZangSpacesBundleInfo
+        .row.hidden
+          .col-lg-12
+            .pull-right
+              br
+              a.create-a-quote-link(href='/quote/' + cartItem.product.slug class=isCheckout ? '' : 'sr-only' target="_blank"  data-error-msg=localizer.get('PLEASE_FILL_OUT_YOUR_PHONE_NUMBER_BEFORE_YOU_CREATE_A_QUOTE'))  #{localizer.get('CREATE_A_QUOTE')}
+
+    if summaryViewType === 'quote'
+      div.row(style='margin-top:20px;')
+        div.col-md-12
+          div.form-group
+            label #{localizer.get('ADDITIONAL_NOTES')}
+            textarea.form-control(class='order-notes', name='notes', maxlength='500', readonly=true, rows="4") #{notes}
+
+    //- if summaryViewType === 'order'
+    //-   .extra
+    //-     if cartItemDetails.extraLinks.length
+    //-       .row
+    //-         .col-lg-12
+    //-           h3.text-300 Links
+    //-           each exLink, exl in cartItemDetails.extraLinks
+    //-             if exLink.type && exLink.type === 'button'
+    //-               a.btn.btn-danger.button-link(href=exLink.link target="_blank") #{exLink.text}
+    //-             else
+    //-               a.btn-link.file-link(href=exLink.link target="_blank")
+    //-                 i.fa.fa-file-pdf-o 
+    //-                 | #{exLink.text}
+    //-     if cartItemDetails.extraInfo.length && order && order.type !== "SUBSCRIPION_UPDATE"
+    //-       .row
+    //-         .col-lg-12
+    //-           h3.text-300 #{localizer.get('EXTRA_INFORMATION')}
+    //-           each exInfo, exi in cartItemDetails.extraInfo
+    //-             p.extra-info #{exInfo}

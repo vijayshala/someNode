@@ -1,0 +1,123 @@
+- var cartOrderItems = {}
+- var level2Items = {}
+- var currencyCode = subscription.currency
+- for(let item of subscription.items) {
+-   if(item.salesModel && item.salesModelItem && item.attribute)    {
+-    level2Items[item.salesModel.identifier + '..' + item.salesModelItem.identifier] = item;
+-   }
+-}
+- let items = cart.items.filter(function(item){
+-    return item.level==0
+-})
+- priceObject = subscription.subscriptions[0] || {}
+
+.row.total-summary
+    span #{localizer.get('PURCHASE_HISTORY')}    
+    hr
+    .col-lg-12
+        .detail-row(class='level')
+            .col-sm-2.item-title
+                span #{"Company Name: "}
+            .col-sm-4.item-qty
+                span #{subscription.company.name}
+        .detail-row(class='level')
+            .col-sm-2.item-title
+                span #{"Domain: "}
+            .col-sm-4.item-qty
+                span #{subscription.company.domain}
+        .detail-row(class='level')
+            .col-sm-2.item-title
+                span #{"Created: "}
+            .col-sm-4.item-qty
+                span #{subscription.created.on}
+        .detail-row(class='level')
+            .col-sm-2.item-title
+                span #{"Status: "}
+            .col-sm-4.item-qty
+                case subscription.status
+                    when CONSTANTS.PLANS_STATUS_TYPES.SUCCESS
+                    when CONSTANTS.PLANS_STATUS_TYPES.NEW
+                        span.label.label-success #{localizer.get(subscription.status.toUpperCase())}
+                    when CONSTANTS.PLANS_STATUS_TYPES.CANCELED
+                        span.label.label-danger #{localizer.get(CONSTANTS.PLANS_STATUS_TYPES.CANCELED.toUpperCase())}
+                    default
+                        span.label.label-warning #{localizer.get(subscription.status.toUpperCase())}
+        .detail-row(class='level')
+            .col-sm-2.item-title
+                span #{"Confirmation: "}
+            .col-sm-4.item-qty
+                span #{subscription.confirmationNumber}
+
+.row
+    .col-lg-12
+        .row
+            .col-lg-12
+                .detail-row.cart-header
+                    .col-sm-8.item-title                        
+                    .col-sm-2.item-qty
+                    //- .col-sm-2.header-title
+                        span #{localizer.get('ONETIME_FEE')}
+                    .col-sm-2.header-title
+                        //-span #{localizer.get('RECURRING_FEE')}
+        hr
+        
+        each item,pd in subscription.items
+            - var itemPrice = item.price ? (item.price) : '';
+            - var itemOnetimeSubtotal = item.price && item.isOneTimeCharge ? (item.price * item.quantity).formatDollars(2) : '';
+            - var itemRecurringSubtotal = item.price && !item.isOneTimeCharge ? (item.price * item.quantity).formatDollars(2) : '';
+            //- - var detailRowClass = 'detail-row'            
+            .row
+                .col-lg-12                    
+                    .detail-row(class=`level${item.level} ${item.title && item.title.text=='Device Discount' ? 'isDiscount' : ''} `)
+                        .col-sm-8.item-title
+                            if item.title
+                                - var itemTitle = item.title.resource ? localizer.get(item.title.resource) : item.title.text
+                                span #{itemTitle} #{itemPrice ? '@' : ''} #{formatCurrency(itemPrice, currencyCode)} #{item.additionalInformation && item.additionalInformation.text ? ': ' + item.additionalInformation.text : ''}
+                        .col-sm-2.item-qty
+                            .qty #{item.level ? item.quantity : ''}                           
+                        .col-sm-2.item-onetime-subtotal 
+                            if (item.title.text=='Device Discount')
+                                span #{itemOnetimeSubtotal ? '- ': ''} #{formatCurrency(itemOnetimeSubtotal.split('--')[1], currencyCode)}
+                            else
+                                span #{itemOnetimeSubtotal == 0 ? '' : formatCurrency(itemOnetimeSubtotal, currencyCode)}
+                        .col-sm-2.item-recurring-subtotal 
+                            span #{itemRecurringSubtotal == 0 ? '' : formatCurrency(itemRecurringSubtotal, currencyCode)}
+        .row.total-summary
+            .col-lg-12
+                .detail-row.total-detail-row
+                    .col-sm-8
+                    .col-sm-2.item-title.cart-subtotal
+                        span #{localizer.get('SUB_TOTAL')}                    
+                    //- .col-sm-2.cart-subtotal
+                        span #{(cart.onetime.subTotal).formatDollars(2)}
+                    .col-sm-2.cart-subtotal
+                        span #{formatCurrency(priceObject.subTotal, currencyCode)}
+                if currentRegion != 'DE'
+                    .detail-row.total-detail-row 
+                        .col-sm-8
+                        .col-sm-2.item-title 
+                            //- fix me
+                            span #{localizer.get('PROMOTION')}                    
+                        //- .col-sm-2.cart-promotion
+                            span #{(cart.onetime.discount).formatDollars(2)}
+                        .col-sm-2.cart-promotion
+                            span #{formatCurrency(priceObject.discount, currencyCode)}
+
+                .detail-row.total-detail-row 
+                    .col-sm-8
+                    .col-sm-2.item-title
+                        span #{localizer.get('TAXES')}                    
+                    //- .col-sm-2.cart-taxes
+                        span #{(cart.onetime.tax).formatDollars(2)}
+                    .col-sm-2.cart-taxes
+                        span #{formatCurrency(priceObject.tax, currencyCode)}
+
+                .detail-row.total-detail-row
+                    .col-sm-8
+                    .col-sm-2.item-title
+                        span #{localizer.get('TOTAL')} (#{currencyCode})                 
+                    //- .col-sm-2.cart-total
+                        span #{(cart.onetime.total).formatDollars(2)}
+                    .col-sm-2.cart-total
+                        span #{formatCurrency(priceObject.total, currencyCode)}
+        

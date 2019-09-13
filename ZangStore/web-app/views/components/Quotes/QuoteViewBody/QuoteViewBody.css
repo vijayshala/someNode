@@ -1,0 +1,95 @@
+.quote-view-body {
+  /* padding: 20px; */
+  background-color: #fff;
+  width: 100%;
+  min-height: 100vh;
+  /* margin-top: 15px; */
+}
+
+.quote-view-body .section-title { 
+  
+}
+
+.quote-view-body .continue-shopping {
+  color: #3E8CFF;
+  text-decoration: underline;
+}
+.quote-view-items {
+  width: 95%;
+  margin: 20px 10px;
+}
+.quote-view-items thead {
+
+}
+
+.quote-view-items thead th {  
+  padding: 5px;
+  color: #aaa;  
+}
+.quote-view-items thead .remove-btn {
+  
+}
+
+.quote-view-items thead .title {
+  
+}
+
+.quote-view-items thead .quantity {  
+  width: 110px;
+  text-align: center;
+  
+}
+
+.quote-view-items thead .subtotal {
+  width: 110px;
+  text-align: right;
+}
+
+.quote-view-items tfoot td {
+  padding: 5px;
+}
+
+.quote-view-items .btn-checkout{
+  width: 100%;  
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.quote-view-items .checkout-info {
+  color: #aaaaaf;
+  font-size: 12px;
+}
+
+.quote-view-items .total-divider {
+
+}
+
+.quote-view-items .promotion-total {
+  color: orange;
+}
+
+.quote-view-items  .total-label {
+  font-weight: bold;
+}
+
+.quote-view-items .total  {
+  font-weight: bold;
+  text-align: right;
+}
+
+.quote-view-items .total-divider .total,
+.quote-view-items .total-divider .total-label {  
+  padding: 0px;
+}
+
+.quote-view-body h3 {
+  font-size: 20px;
+}
+
+#quoteLink {
+  cursor: pointer;
+}
+
+.quote-link {
+  padding-top: 1em;
+}

@@ -1,0 +1,52 @@
+extends ../index
+block styles
+  link(href='/public_nocache/stylesheets/cart/cart-display.css', rel='stylesheet')
+block mainbody
+  .container
+    div.row
+      div.col-md-12
+        //pre 
+          //#{JSON.stringify(items, undefined, 1)}
+    div.row
+      div.col-md-12
+        h1.zo-main-title Cart #{cart.count} #{cart.count === 1 ? 'item' : 'items'} #{currency.symbol} #{(cart.total/100).formatDollars(2)}
+    div.row 
+      div.col-md-12
+        table(class='table cart-table')
+          thead
+            tr
+              th(width=100)
+              th Product 
+              th Quantity
+              th Sub Total
+              th 
+          tbody
+          - var totalAmount = 0
+          each item, i in cart.items
+           - var subTotal = item.quantity * (item.product.price.interval + item.product.price.oneTime)
+           tr
+            td
+              img(src=item.product.image)
+            td
+              h3 #{item.product.title}
+            td
+              if item.product.advanced            
+                a(href=item.product.slug + '/buy') Edit
+              else
+                  div.cart-item-quantity
+                  a(class='btn btn-default btn-xs', href='/cart/' + item.productId + '/remove' ) &#65293;
+                  span.quantity #{item.quantity}
+                  a(class='btn btn-default btn-xs', href='/cart/' + item.productId + '/add' ) &#65291;
+            td
+              div.cart-item-subtotal #{currency.symbol} #{(subTotal/100).formatDollars(2)}
+            td
+              a(href='/cart/' + item.productId + '/remove?delete=true') Delete
+    div.row
+      div.col-md-12
+        if userInfo
+          a(class='btn btn-default btn-lg', href='/cart/checkout') Checkout - #{currency.symbol} #{(cart.total/100).formatDollars(2)}
+        else
+          a(class='btn btn-default btn-lg', href='#{urls.identityProviderURL + "/account/login?next=" + escapedCurrentURL}') Sign in      
+        
+          
+      

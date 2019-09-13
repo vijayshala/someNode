@@ -1,0 +1,23 @@
+.offer-wizard-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.shoping-wizard {
+    width: 100%;
+    margin-top: 25px;
+    text-align: center;
+}
+
+.shoping-wizard .header2 {
+    margin: 20px 40px;
+}
+
+
+.offer-configurator .customer-info label {
+    color: #828282;
+    font-weight: 300;
+    font-size: 11px;
+    /* text-transform: uppercase; */
+}

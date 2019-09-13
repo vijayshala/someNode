@@ -1,0 +1,33 @@
+.zs-progress-modal.contract-modal .content{
+
+}
+
+.zs-progress-modal.contract-modal .content ul {
+  font-weight:600;
+}
+
+.zs-progress-modal.contract-modal .content ul li {
+
+}
+
+.zs-progress-modal.contract-modal .content button{
+  margin-right:5px;
+}
+
+.successMSG, .failMSG {
+  display: none;
+  align-self: center;
+  padding: 1em;
+  margin-top: 1em;
+  color: white;
+  width: 80%;
+  text-align: center;
+}
+
+.failMSG {
+  background-color: #a94442;
+}
+
+.successMSG {
+  background-color: #5cb85c;
+}

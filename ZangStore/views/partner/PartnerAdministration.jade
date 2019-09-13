@@ -1,0 +1,73 @@
+extends ../index
+
+block styles
+  link(href='/public_nocache/stylesheets/partner/partner.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/partner/partner-administration.css', rel='stylesheet')
+  
+block mainbody
+  .top-container.titles
+    .container
+      .row
+        .col-lg-12
+          h1.text-center.text-300 #{localizer.get('PARTNERS')}
+  .top-container
+    .container
+      .row
+        .col-md-12.col-lg-12
+          input(type='hidden' name='PARTNER_STATUS_TYPES' value=JSON.stringify(CONSTANTS.PARTNER_STATUS_TYPES))
+          input(type='hidden' name='PARTNER_TYPES' value=JSON.stringify(CONSTANTS.PARTNER_TYPES))
+          button.btn.btn-danger.text-400(data-toggle='modal' data-target='#newPartnerModal') &plus; #{localizer.get('ADD_A_PARTNER')}
+          br
+          form.bg-white(action="/partners/administration" method="GET")
+            .container
+              br
+              br
+              .row
+                .col-lg-5
+                  .form-group
+                    select.form-control(name="field")
+                      option(value="type" selected=query.field === "type") #{localizer.get('TYPE')}
+                      option(value="fields.companyName" selected=query.field === "fields.companyName") #{localizer.get('COMPANY')}
+                      option(value="status" selected=query.field === "status") #{localizer.get('STATUS')}
+                .col-lg-5
+                  .form-group
+                    input.form-control(name="search" value=query.search)
+                .col-lg-2
+                  button.btn.btn-primary.btn-space(type="submit") #{localizer.get('SEARCH')}
+                  a.btn.btn-danger(href="/partners/administration") #{localizer.get('CLEAR')}
+    .container
+      .row
+        .col-lg-12
+          if partners.length
+            .table-responsive.bg-white
+              table.table.zs-main-table.partner-table
+                thead
+                  tr
+                    th #{localizer.get('PARTNER')}
+                    th #{localizer.get('TYPE')}
+                    th #{localizer.get('STATUS')}
+                    th #{localizer.get('ACTIONS')}
+                tbody
+                  each partner,i in partners
+                    tr
+                      td
+                        h5.text-400 #{partner.fields.companyName}                      
+                      td.text-capitalize #{partner.type}
+                      td               
+                        case partner.status
+                          when CONSTANTS.PARTNER_STATUS_TYPES.PENDING
+                            span.label.label-warning #{partner.status}
+                          when CONSTANTS.PARTNER_STATUS_TYPES.APPROVED
+                            span.label.label-success #{partner.status}
+                          when CONSTANTS.PARTNER_STATUS_TYPES.REJECTED
+                            span.label.label-danger #{partner.status}
+                          when CONSTANTS.PARTNER_STATUS_TYPES.DELETED
+                            span.label.label-default #{partner.status}
+                      td 
+                        a.btn.btn-default(href='/partners/' + partner._id + '/info') #{localizer.get('VIEW_DETAILS')}
+          else
+            h3.text-center.text-300 #{localizer.get('NO_PARTNERS_FOUND')}
+  include ./PartnerAdministrationNewPartnerModal
+
+block scripts
+  script(src='/public_nocache/javascripts/partner/partner-administration.js')

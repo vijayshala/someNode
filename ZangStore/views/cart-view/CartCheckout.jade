@@ -1,0 +1,118 @@
+extends ../index
+
+block styles
+  link(href='/public_nocache/libs/select2/select2-4.0.3.min.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/cart/cart-checkout.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/order-view/order-summary.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/partner/partner-checkout.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/common/checkout-legal-checkboxes.css', rel='stylesheet')
+block mainbody
+
+  //- - var e911Information = cartItem.product.salesmodel.system.e911Information || {}
+  input(type='hidden' name='stripeKey' value=stripeKey)
+  input(type='hidden' name='creditCartGateWay' value=creditCartGateWay)
+  input(type='hidden' name='states' value=JSON.stringify(states))
+  input(type='hidden' name='cart' value=JSON.stringify(cart))
+  input(type='hidden' name='currentRegion' value=JSON.stringify(currentRegion))
+  //- input(type='hidden' name='cartItemDetails' value=JSON.stringify(cartItemDetails))
+  input(type='hidden' name='companies' value=JSON.stringify(companies))
+  input(type='hidden' name='creditCards' value=JSON.stringify(creditCards))
+  input(type='hidden' name='userContactInfo' value=JSON.stringify(userContactInfo))
+  input(type='hidden' name='legalSlugs' value=JSON.stringify(legalSlugs))
+  input(type='hidden' name='selectedBillingStateProvince' value=cart.billingAddress.stateISO)
+  input(type='hidden' name='selectedShippingStateProvince' value=cart.shippingAddress.stateISO)
+  input(name='selectedE911StateProvince' type='hidden' value=e911Information.stateISO)
+  form.place-order-form(method='POST', action='#' id='PlaceOrderForm')
+    input(type='hidden', name='_csrf', value=_csrf)
+    input(type='hidden' name='companyType' value=companies.length ? 'existing': 'new')
+    - var title = localizer.get('BILLING_AND_SHIPPING')
+    - var selected = 'billing'
+    - var passed = ['plan', 'number', 'devices']
+    - let billingAddress = cart.billingAddress
+    - let shippingAddress = cart.shippingAddress
+    - let contact = cart.contact
+    - let company = cart.company
+    //- include ./CartStepper
+    .checkout-top
+      .container
+        div.row
+          div.col-md-12
+            .zo-error-prompt(id='errorPrompt')
+              i.fa.fa-exclamation-circle
+        div.row          
+          if currentRegion.countryISO == 'DE'
+            div.col-md-4            
+              include ./CartAccountInfoDE
+              include ./CartAccountAddressDE
+            div.col-md-4
+              include ./CartBillingInfoDE
+              include ./CartPaymentMethodDE
+            div.col-md-4
+              include ./CartShippingInfoDE
+              include ../partner/PartnerCheckout      
+          else
+            div.col-md-4            
+              include ./CartAccountInfo
+            div.col-md-4
+              include ./CartBillingInfo
+              include ./CartPaymentMethod
+            div.col-md-4
+              include ./CartShippingInfo
+              include ./CartE911Address
+              div.form-group
+                div.checkbox
+                  label.checkbox-label         
+                    input.copy-billing-address(type='checkbox' name='allowToContact' checked="checked")
+                    | &nbsp;#{localizer.get('YES_SEND_ME_EMAIL_REGARDING_ZANG_NEWS_APPLICATIONS_DEALS_AND_SPECIAL_EVENTS')}
+        p * #{localizer.get('THIS_FIELD_IS_REQUIRED')}
+        br
+        //- div.row(style='margin-top:0;')
+          div.col-md-12
+            
+    - var isCheckout = true
+    - var summaryViewType = "checkout"
+    - var summaryTitle = localizer.get('ORDER_SUMMARY')
+    include ./CartSummary
+    .checkout-bottom
+      .container        
+        div.row
+          .col-lg-8
+            
+          .col-lg-4
+            
+        .row
+          .col-lg-12
+            .text-center
+              //- a.btn.btn-default.btn-lg.create-a-quote-link(href='/quote/' + cartItem.product.slug class=isCheckout ? '' : 'sr-only' target="_blank" data-partner-error-msg=localizer.get('PLEASE_SELECT_A_SALES_AGENT_TO_CREATE_A_QUOTE')  data-error-msg=localizer.get('PLEASE_FILL_OUT_YOUR_PHONE_NUMBER_BEFORE_YOU_CREATE_A_QUOTE'))  #{localizer.get('CREATE_A_QUOTE')}
+              br
+              br
+        div.row
+          div.col-md-12.text-center
+            //- a.clear-order-link(href='/cart/' + cartItem.productId + '/remove?delete=true') #{localizer.get('CLEAR_MY_ORDER')}
+            //button.btn.checkout-btn(style='margin-top:5px', class='', type='submit', id="CheckoutSubmitBtn") Place Your Order - #{currency.value.toUpperCase()}#{currency.symbol} #{(cart.total/100).formatDollars(2)}
+            
+        div.row
+          div.col-md-12
+            div.alert(id='checkoutAlert')
+        .zs-progress-modal#ProcessModal
+          .content
+            h1.title #{localizer.get('PLACING_YOUR_ORDER')}
+            h3.subtitle #{localizer.get('PLEASE_BE_PATIENT_THIS_PROCESS_MIGHT_TAKE_SOME_TIME')}
+            .spinner
+              img.img-responsive(src='/public_nocache/images/loading-spinner-blue.svg')
+    //- include ../components/ProductTermsModal
+    include ./CartCheckoutConfirmationModal
+        
+block append scripts
+  script(src='/public_nocache/libs/formatter/jquery.formatter.min.js')
+  script(src='/public_nocache/libs/select2/select2.-4.0.3.min.js')
+  //- script(src='/public_nocache/javascripts/common/common.js') 
+  script(src='/public_nocache/javascripts/creditcard/creditcard.js')
+  script(src='/public_nocache/javascripts/cart/countries-states.js')
+  script(src='/public_nocache/javascripts/cart/cart-checkout.js')
+  script(src='/public_nocache/javascripts/cart/get-checkout-totals.js')
+  script(src='/public_nocache/javascripts/partner/partner-checkout.js')  
+  script(src='/public_nocache/javascripts/common/create-quote.js')  
+  script(src='/public_nocache/javascripts/cart/checkout-legal-checkboxes.js')  
+      
+      

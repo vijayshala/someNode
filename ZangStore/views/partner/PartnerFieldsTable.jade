@@ -1,0 +1,8 @@
+.table-responsive
+  table.table.text-left
+    each field, f in partner.metadata.fields
+      - var val = field.value.indexOf(",") === 0 ? field.value.substring(1) : field.value
+      - val = val === "on" ? localizer.get('YES') : val
+      tr
+        td.va-middle #{field.label}
+        td.va-middle #{val}

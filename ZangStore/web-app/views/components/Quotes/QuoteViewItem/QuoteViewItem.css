@@ -1,0 +1,91 @@
+.quote-view-item {
+  cursor: default;
+  border-bottom: solid 2px transparent;
+}
+
+.quote-view-item:hover {
+  border-bottom: solid 2px #ddd;
+  transition: width .3s;
+}
+
+.quote-view-item .title {
+  padding: 5px;
+  display: flex;
+}
+.quote-view-item.level0 .title {
+  font-weight: 700;
+  /* text-decoration: underline; */
+}
+
+.quote-view-item.level1 .title {
+  padding-left: 30px;
+  font-weight: 700;
+}
+
+.quote-view-item.level2 .title {
+  padding-left: 60px;
+  font-style: italic;
+}
+
+.quote-view-item.level3 .title {
+  padding-left: 60px;
+}
+
+.quote-view-item .quantity {
+  text-align: center;
+}
+
+
+.quote-view-item .subtotal {
+  text-align: right;
+  font-weight: 700;  
+}
+
+.quote-view-item .remove-btn {
+  cursor: pointer;
+}
+
+.quote-view-item .remove-btn img {
+  width: 16px;
+}
+
+
+
+.quote-view-item .react-number-spinner .input {
+  font-weight: 500;
+  font-size: 14px;
+  box-shadow: 2px 2px 6px 0px #ddd inset;
+}
+
+.quote-view-item .input {
+  font-weight: 500;
+  font-size: 14px;
+  box-shadow: 2px 2px 6px 0px #ddd inset;
+  width: 50px;
+  text-align: center;
+}
+
+.quote-view-item .input:read-only {
+  box-shadow: none;
+  border: 1px solid #eee;
+}
+
+.quote-view-item .edit-btn {  
+  font-size: 12px;
+  font-weight: 400;
+  vertical-align: middle;
+  align-items: center;
+  /* align-content: center; */
+  /* justify-content: center; */
+  display: flex;
+  margin-left: 10px;
+  text-decoration: underline;
+}
+
+.quantity span {
+  font-weight: 700;
+}
+
+.discount {
+  color: orange;
+}

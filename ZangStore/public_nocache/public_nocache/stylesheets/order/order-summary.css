@@ -1,0 +1,207 @@
+.order-summary{
+  background-color: #f1f1f1;
+  padding:50px 0;
+  position: relative;
+}
+
+.order-summary .main-title{
+  position: absolute;
+      top: -23px;
+      padding: 10px 15px;
+      background-color: #fff;
+      color: #304050;
+      font-weight: 500;
+      font-size: 16px;
+      box-shadow: 0 0 20px rgba(0,0,0,.4);
+}
+
+.order-summary .pull-left{
+  font-weight: 500 !important;
+  color: #304050;
+}
+
+.order-summary .detail-row{
+  line-height: 28px;
+    font-size: 16px;
+    padding:0 10px;
+    overflow: hidden;
+}
+
+.order-summary .detail-row span.qty{
+  font-weight: 600;
+  color:#304050;
+  font-size:18px;
+  vertical-align: top;
+  margin-right:5px;
+}
+
+.order-summary a.edit-link{
+  text-decoration: underline;
+      margin-top: 5px;
+      color: #304050;
+      font-weight: 500;
+      font-size: 12px;
+}
+
+.order-summary .spacer{
+  height:25px;
+}
+
+.order-summary .detail-row.promotion{
+  background-color: #fcf8e3;
+    padding: 5px 10px;
+    color: #304050;
+    font-weight: 400 !important;
+    font-size: 17px;
+    text-transform: uppercase;
+    margin: 5px 0;
+}
+
+.order-summary h3{
+  margin:0;
+  padding-bottom:10px;
+}
+
+.order-summary .detail-row.promotion .pull-left{
+  font-weight: 600 !important;
+}
+
+.order-summary .detail-row.promotion .amount.subtotal{
+  color:#304050;
+}
+
+.order-summary .detail-row.promotion-info {
+  background-color: #fcf8e3;
+    padding: 5px 10px;    
+    font-weight: 400 !important;
+    font-size: 17px;    
+    margin: 5px 0;
+    text-align: center;
+}
+
+.promotion-pay-delay {
+  text-align: center;
+  color:#304050;
+  font-weight: 600;
+  text-align: center;
+  width: 80%;
+  margin: auto;
+}
+
+.order-top .promotion-pay-delay {
+  padding: 5px 100px;    
+  font-size: 17px;        
+  background-color: #fcf8e3;  
+  width: 100%;
+}
+
+.order-summary hr{
+  margin: 0;
+  border-top: 1px solid #aaa;
+  margin-bottom: 10px;
+}
+
+.order-summary .clear-order-link{
+  display:block;
+  padding:10px 20px;
+  text-decoration: underline;
+  color:#666;
+  background-color:#ddd;
+}
+
+.order-summary .create-a-quote-link{
+  display:block;
+  padding:10px 20px;
+  text-decoration: underline;
+  color:#fff;
+  background-color:#73c1c7;
+}
+
+.order-summary .amount.total{
+  font-size: 32px;
+    color: #304050;
+    font-weight: 600;
+    letter-spacing: -1px;
+}
+
+.order-summary .amount.subtotal{
+  font-size: 21px;
+      color: #000;
+      font-weight: 600;
+}
+
+.order-summary .amount .currency{
+  display: inline-block;
+  vertical-align: super;
+  font-size:50%;
+}
+
+.order-summary .amount .whole{
+  display: inline-block;
+}
+
+.order-summary .amount .decimals{
+  display: inline-block;
+}
+
+.order-summary .extra h3 {
+  margin-top:20px;
+  border-bottom:1px solid #aaa;
+  padding:10px;
+}
+
+.order-summary .extra a{
+  color: #304050;
+  text-decoration: underline;
+  display: block;
+  font-weight: 500;
+  font-size: 17px;
+  margin:20px auto;
+  width:300px;
+  text-align: center;
+}
+
+.order-summary .extra a.button-link{
+  color:#fff;
+  padding:15px 0;
+  text-decoration: none;
+}
+
+.order-summary .extra a.file-link{
+
+}
+
+
+.order-summary .extra a.file-link i{
+  margin-right:5px;
+  font-size:25px;
+  vertical-align: middle;
+}
+
+.order-summary .extra p{
+  color: #304050;
+    display: block;
+    font-weight: 400;
+    font-size: 15px;
+    margin: 10px 0;
+}
+
+.checkout-bundle-info{
+  background-color: #fcf8e3;
+    padding: 20px 15px;
+    margin: 20px 0 0 0;
+}
+
+.row.summary-action {
+  width: 100%;
+}
+
+
+@media (max-width:900px){
+  .promotion-pay-delay {
+    width: 100%;
+  }
+  .order-top .promotion-pay-delay {
+    padding: 5px 10px; 
+  }
+}

@@ -1,0 +1,35 @@
+extends ../index
+
+block styles
+  link(href='/public_nocache/stylesheets/order/order-list.css', rel='stylesheet')
+
+block mainbody
+  .container.bg-white
+    div.row
+      div.col-md-12
+        div.row
+          div.col-md-12
+            h1.text-center.text-300 #{localizer.get('ORDER_STATUS_PROCESS')}
+        div.row(style='margin-bottom:10px')
+          div.col-md-12
+            include ../components/BackButton
+        div.row
+          div.col-md-12
+            .table-responsive
+              table.table.table-hover.zs-main-table
+                thead 
+                  tr
+                    th.text-center #{localizer.get('SUCCESS')}
+                    th #{localizer.get('STATUS')}
+                    th #{localizer.get('CREATED_ON')}              
+                tbody
+                each status, i in statuses              
+                  tr(class=status.error ? 'text-danger' : 'text-success')
+                    td.text-center
+                      if status.error
+                        i.fa.fa-times-circle
+                      else
+                        i.fa.fa-check-circle
+                    td #{status.status.replace(/_/g, ' ').toLowerCase().ucFirst()}
+                    td #{moment(status.created.on).format(UI_DATE_FORMAT)}
+                    

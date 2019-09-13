@@ -1,0 +1,108 @@
+.offer-panel-container {
+  width: 100%;
+  padding-right: 10px;
+  position: relative;
+  min-height: 300px; 
+}
+.offer-panel-content {
+  flex-direction: column;
+  border: 1px solid #ddd;
+  margin-right: 10px;
+  background-color: #fff;
+  width: 100%;
+  padding: 40px 20px;
+  text-align: center;
+  min-height: 300px;  
+}
+
+.offer-panel-container.unselected .offer-panel-content{
+  opacity: .2;
+}
+
+.offer-panel-container.selected .offer-panel-content{
+  border-bottom: 1px solid #fff;
+}
+
+.offer-panel-container.first .offer-panel-content {
+  margin-right: 10px;
+}
+
+.offer-panel-container.last .offer-panel-content {
+  margin-right: 0px;
+}
+
+.offer-panel-container.first {
+  padding-right: 10px;
+}
+
+.offer-panel-container.last {
+  padding-right: 0px;
+}
+
+.offer-panel-content-overlay {
+  width: 33%;
+  display: none;
+}
+
+.offer-panel-container.unselected .offer-panel-container-overlay {
+  position: absolute;
+  width: calc(100% - 20px);
+  height: 100%;
+  background-color: #eee;
+  top: 0px;
+  display: block;
+  /* left: -10px; */
+}
+
+
+.offer-panel-container.selected .offer-panel-container-overlay {
+  
+}
+.offer-panel-container.last .offer-panel-container-overlay {
+  width: 100%;
+}
+
+.offer-panel-content .offer-icon {
+  width: 75px;
+}
+
+.offer-panel-content .short-title {
+  color: #c00;
+  font-size: 22px;
+  text-transform: uppercase;
+  font-weight: 500;
+    margin-bottom: 5px;
+
+}
+
+.offer-panel-content .short-description {
+    margin: 20px;
+    color: #535353;
+    font-weight: 500;
+    min-height: 40px;
+}
+
+.offer-panel-content .panel-total {
+  font-size: 20px;
+}
+
+.select-btn {
+    border: 1px solid #304050;
+    color: #304050;
+    background-color: #fff;
+    width: 50%;
+    font-weight: 500;
+}
+
+.offer-panel-container.selected .select-btn {    
+    /* color: #fff;
+    background-color: #304050; */
+}
+
+.panel-price {
+  padding: 10px;
+}
+
+.panel-from {
+  padding: 10px;
+}

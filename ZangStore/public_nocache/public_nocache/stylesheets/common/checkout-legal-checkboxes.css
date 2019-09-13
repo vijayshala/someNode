@@ -1,0 +1,92 @@
+.checkout-legal-checks {
+  width: 350px;
+  margin: 15px auto;
+}
+
+.checkout-legal-checks label.tos-container {
+  position: relative;
+  padding:3px;
+  margin:0px;
+  display:block;
+  cursor: pointer;
+}
+
+.checkout-legal-checks label.tos-container a {
+  vertical-align: top;
+    line-height: 20px;
+    margin-left: 10px;
+    font-size: 12px;
+    color: #333;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.checkout-legal-checks label.tos-container p.inlineTOS a{
+  vertical-align: baseline;
+  margin-left: 0px;
+}
+
+.checkout-legal-checks label.tos-container p.inlineTOS  {
+  display: inline;
+  font-size:14px;
+}
+
+.checkout-legal-checks label.tos-container input[type='checkbox'] {
+  display:none;
+}
+
+.checkout-legal-checks label.tos-container input[type='checkbox']:checked ~ .checker {
+  display:block;
+}
+
+.checkout-legal-checks label.tos-container .box {
+  display: inline-block;
+  border:1px solid #ccc;
+  width:20px;
+  height:20px;
+}
+
+.checkout-legal-checks label.tos-container .checker {
+  position: absolute;
+  top: 3px;
+  left: 8px;
+  border-left: 1px solid #304050;
+  border-bottom: 1px solid #304050;
+  border-top: 0px;
+  border-right: 0px;
+  transform: rotate(-45deg);
+  display: none;
+  width: 25px;
+  height: 10px;
+}
+
+.checkout-legal-checks label.tos-container span {
+  display: block;
+}
+
+#LegalModal .contents {
+  height:400px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+#LegalModal .contents *{
+  font-size:14px;
+}
+
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+  cursor: not-allowed;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  /* opacity: .3; */
+  background-color: #cccccc;
+  border: 1px solid #cccccc;
+ }
+
+ /* mobile */
+@media (max-width:768px){
+  .checkout-legal-checks {
+    width: 250px;
+  }
+}

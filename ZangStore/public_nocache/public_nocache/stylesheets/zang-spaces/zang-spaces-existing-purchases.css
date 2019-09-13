@@ -1,0 +1,88 @@
+.plans{
+  margin-top:-190px;
+}
+
+.existing-purchases-title{
+  color:white;
+  border-top:2px dotted white;
+  border-bottom:2px dotted white;
+  display: inline-block;
+  margin-left:50%;
+  transform: translateX(-50%);
+  padding:10px 50px;
+}
+
+.purchase-container{
+  display: flex;
+  margin: 25px auto;
+  background-color: white;
+  box-shadow: 0 0 30px rgba(0,0,0,.2);
+  padding: 30px;
+  width: 80%;
+}
+
+.purchase-container .info{
+  flex:3.5;
+}
+
+.purchase-container .info .title{
+  font-size: 31px;
+  font-weight: 300;
+}
+
+.purchase-container .info .domain{
+  font-size: 21px;
+  font-weight: 300;
+}
+
+.purchase-container .info .date {
+  font-size:17px;
+  font-weight:300;
+}
+
+
+
+.purchase-container .info .contract-number{
+  font-size: 12px;
+    color: #aaa;
+    margin: 10px 0;
+}
+
+.purchase-container .link{
+  flex: 1;
+      display: flex;
+      justify-content: center;
+}
+
+.purchase-container .link a{
+  text-decoration: none;
+    color: white;
+    background-color: #73c1c7;
+    align-self: center;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 15px;
+}
+
+@media (max-width:600px){
+  .purchase-container{
+    flex-direction: column;
+  }
+
+  .titles .second-title{
+    font-size:21px;
+  }
+
+  .titles .third-title{
+    font-size:17px;
+  }
+
+  .existing-purchases-title{
+    color:black;
+    display:block;
+    margin-left:0;
+    transform: translateX(0%);
+    padding:0;
+  }
+}

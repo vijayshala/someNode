@@ -1,0 +1,70 @@
+.range-input-slider {
+
+}
+
+.slider {
+  width: 230px;
+  height: 230px;
+}
+
+.slider {
+  width: 300px;
+}
+
+.slider {
+  height: 300px;
+}
+
+.u-slider {
+  position: relative;
+  display: inline-block;
+  background-color: #CBCBCB;
+  border-radius: 3px;
+}
+
+.u-slider .value {
+  position: absolute;
+  background-color: #304050;
+  border-radius: 3px;
+}
+
+
+.u-slider-x {
+  height: 3px;
+}
+
+.u-slider-x .value {
+  top: 0;
+  height: 100%;
+}
+
+.u-slider-x .handle {
+  height: 100%;
+}
+
+.u-slider .handle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+}
+
+
+
+.u-slider-x .handle:after {
+    top: -8px;
+    left: -12px;
+}
+
+.u-slider-x .handle:after, .u-slider-y .handle:after {
+    width: 18px;
+    height: 18px;
+    background-color: #304050;
+    border: 0px solid #304050;
+    border-radius: 50%;
+}
+
+.u-slider .handle:after {
+    position: relative;
+    display: block;
+    content: "";
+}

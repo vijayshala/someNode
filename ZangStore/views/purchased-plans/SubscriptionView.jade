@@ -1,0 +1,57 @@
+extends ../index
+
+block styles
+  link(href='/public_nocache/stylesheets/subscription/subscription.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/order-view/order-view.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/order-view/order-summary.css', rel='stylesheet')  
+  
+block mainbody
+  br
+  .container
+    .row
+      .col-lg-12
+        include ../components/BackButton
+        br
+        br
+        br
+  include ./SubscriptionSummary
+  br
+  .container
+    input(type='hidden', name='ppid', value=subscription._id)
+    div.row(class=subscription.created.by.toString() === userInfo.userId.toString() && subscription.status !== CONSTANTS.PLANS_STATUS_TYPES.CANCELED && subscription.status !== CONSTANTS.PLANS_STATUS_TYPES.REQUESTED_CANCEL ? '' : 'sr-only')
+      div.col-md-12.text-center
+        a.btn.btn-danger.btn-lg.btn-space#requestcancelplan #{localizer.get('REQUEST_CANCELATION')}
+        br
+        br
+    - var showActions = hasAdminPermission && subscription.status !== CONSTANTS.PLANS_STATUS_TYPES.CANCELED
+    - var showCancelButton = subscription.status !== CONSTANTS.PLANS_STATUS_TYPES.CANCELED
+    - var showKazooProvisioningButton = subscription.status === CONSTANTS.PLANS_STATUS_TYPES.SUCCESS && isKazooPlan && provisionStatus != 'COMPLETED'
+    if showActions
+      div.row
+        div.col-md-12
+          div.row
+            div.col-md-12
+              h3.text-danger #{localizer.get('ADMIN_ACTIONS')}
+          .row
+            .col-md-12
+              p #{localizer.get('PROVISION_STATUS')} : #{provisionStatus}
+          div.row
+            div.col-md-12
+              a.btn.btn-danger.btn-space.contract-action(class=showCancelButton ? '' : 'sr-only' data-action='cancel') #{localizer.get('CANCEL_PLAN')}
+              a.btn.btn-warning.btn-space.provision-action(class=showKazooProvisioningButton ? '' : 'sr-only' data-action='retry') #{localizer.get('RETRY_PROVISIONING')}
+          div.row
+            div.col-md-12
+              include ./SubscriptionActionProcessSteps
+  
+  include ./SubscriptionRequestCancellationModal
+
+  if hasAdminPermission            
+    include ./SubscriptionActionProcessModal
+    include ./SubscriptionActionConfirmationModal
+
+block scripts
+  script(src='/public_nocache/javascripts/purchased-plan/purchased-plan-actions.js')
+  if hasAdminPermission
+    script(src='/public_nocache/javascripts/purchased-plan/purchased-plan-admin-actions.js')
+          
+          

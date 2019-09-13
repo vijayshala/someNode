@@ -1,0 +1,13 @@
+extends ../../../index
+
+block styles
+  link(href='/public_nocache/marketing/uc-solution/css/style.css', rel='stylesheet')
+
+block mainbody  
+  if selectedLanguage=='en-US'
+    include ./en-US/uc-solution-index.html
+  else  
+    include ./en-US/uc-solution-index.html
+
+  include ../../../ip-office/IPOfficeViewLongDistanceModal
+

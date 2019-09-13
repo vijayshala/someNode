@@ -1,0 +1,12 @@
+block styles
+  link(href='/public_nocache/stylesheets/contract/request-cancelation.css', rel='stylesheet')
+
+.zs-progress-modal.contract-modal(id='RequestCancellationConfirmationModal')
+  .content
+    h3.title
+        div.text-center.text-info(style='margin-top:20px') #{localizer.get('WELL_THIS_ISNT_GOOD_SORRY_TO_HEAR_THAT_YOU_WANT_TO_LEAVE')}
+    br
+    h4.subtitle #{localizer.get('ARE_YOU_SURE_YOU_WANT_TO_PROCEED')}
+    div(style='margin-top:20px')
+      button.btn.btn-danger(id='RequestCancellationConfirmationModalNoBtn') #{localizer.get('NO_THANKS')}
+      button.btn.btn-default(id='RequestCancellationConfirmationModalYesBtn') #{localizer.get('YES')}

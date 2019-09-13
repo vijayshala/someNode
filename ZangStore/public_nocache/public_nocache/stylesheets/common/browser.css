@@ -1,0 +1,23 @@
+.browsers {
+    display: flex;
+    justify-content: center;
+}
+
+.browser-container {
+    display: flex;
+    padding: 1em;
+    height: 40vh;
+    color: white;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    color: black;
+}
+
+a.btn.solid.green {
+    text-transform: uppercase;
+    border: 1px solid #4BAA39;
+    background-color: #4BAA39;
+    color: #fff;
+    margin: 1em;
+}

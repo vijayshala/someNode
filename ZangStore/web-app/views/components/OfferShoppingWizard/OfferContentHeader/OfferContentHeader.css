@@ -1,0 +1,48 @@
+.offer-content-header {
+    
+}
+
+.offer-content-header.header1 {
+    padding: 10px 20px;
+    margin-bottom: 0px;
+    /*
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    background-color: #fff;
+    */
+
+    color: #081723;
+    font-size: 38px;
+    text-transform: uppercase !important;
+    font-weight: 300 !important;
+    color: red;
+}
+
+
+.offer-content-header .price-component .subinfo {
+    font-size: 12px;
+    margin-left: -30px;
+    display: inline-block;
+    float: sub;
+}
+
+.offer-content-header .left-content {
+
+}
+
+.offer-content-header .left-content .h1 {
+    display: inline;
+}
+
+.offer-content-header .right-content {
+    float: right;
+}
+
+.offer-content-header .right-content .btn {
+    margin-top: -15px;
+    margin-right: 10px;
+}
+
+.offer-content-header .right-content * {
+    display: inline-block;
+}

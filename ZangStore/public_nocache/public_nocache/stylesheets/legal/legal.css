@@ -1,0 +1,19 @@
+body {
+  background-image: none;
+  background-color:#333;
+}
+
+.doc-container{
+  margin: 1em 5em 1em 5em
+}
+
+.doc-container * {
+  font-size:14px;
+}
+
+iframe {
+  border: none;
+  background: white !important;
+  height: 100vh;
+  width: 100%;
+}

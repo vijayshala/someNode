@@ -1,0 +1,46 @@
+.tabs{
+margin-top: -57px;
+}
+
+.tabs .links{
+  text-align: center;
+}
+
+.tabs .links a{
+  display: inline-block;
+  padding: 8px 25px;
+  color: #666;
+  text-decoration: none;
+}
+
+.tabs .links a.active{
+  background-color: #f1f1f1;
+    color: #000;
+    font-weight: 500;
+}
+
+.tabs .content{
+  background-color: #f1f1f1;
+  overflow: hidden;
+}
+
+.tabs .content .box{
+  padding:20px 200px;
+  overflow: hidden;
+}
+
+
+@media (max-width:768px){
+
+  .tabs{
+    margin-top:-40px;
+  }
+
+  .tabs .links a{
+    padding:5px 7px;
+  }
+
+  .tabs .content .box{
+    padding:10px;
+  }
+}

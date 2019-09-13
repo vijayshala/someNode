@@ -1,0 +1,50 @@
+extends ../index
+block styles
+  link(href='/public_nocache/stylesheets/product/products-list.css', rel='stylesheet')
+block mainbody
+  div.products
+    input(type="hidden" name="downloads" value=JSON.stringify(downloads))
+    .container
+      .row
+        .col-md-12(style='padding:15px 0')
+          h1.text-center.text-uppercase.zs-main-title #{localizer.get('IMAGINE_A_BETTER_WAY')}
+            br
+            | #{localizer.get('OF_DOING_THINGS')}
+    //include ../components/HurricaneHarveyNotification
+    .container  
+      .row
+        .col-md-12
+          .products-container
+            - products = products.reverse()
+            each product, p in products
+              .product-container(style='background-image:url(' + product.metadata.ui.backgroundImage + ')')
+                .promotion-banner(class=product.slug === 'zang-office' ? '' : 'sr-only') #{localizer.get('PROMOTION')}
+                .logo
+                  img.img-responsive(src=product.metadata.ui.logoImage)
+                .main-image
+                  img.img-responsive(src=product.metadata.ui.mainImage)
+                .description
+                  p !{product.description}
+                .buttons
+                  a.btn.btn-default(href='/' + product.slug + '/view') #{localizer.get('GET_STARTED')}
+                  a.btn.btn-danger.sr-only(href='/' + product.slug + '/add') #{localizer.get('PURCHASE')}
+  div.downloads
+    .container
+      .row
+        .col-md-12
+          h1.text-center.zo-main-title.text-uppercase #{localizer.get('DOWNLOADS_AND_EXTENSIONS')}
+          h3.text-center(style='font-weight:300;') #{localizer.get('MAKE_THE_MOST_OF_YOUR_ZANG_PRODUCTS_WITH_THESE_MUST_HAVE_ADDONS')}
+      .row
+        .col-md-12
+          .filters
+            a.filter-btn.selected(href='#' data-product='all') #{localizer.get('ALL')}
+            each product, p in products
+              a.filter-btn(href='#' data-product=product.slug) #{product.title.replace('Zang', '')}
+      .downloads-container
+      
+block scripts
+  script(src="/public_nocache/javascripts/product/product-list.js")
+            
+          
+
+        

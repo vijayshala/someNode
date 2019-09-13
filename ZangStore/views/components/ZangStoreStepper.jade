@@ -1,0 +1,31 @@
+.zs-stepper
+  .container
+    .row
+      .col-md-12.col-lg-12
+        .text-center.zs-step-title #{title}
+    .row
+      .col-md-12.col-lg-12.zs-steps
+        .step(class=passed.indexOf('plan')>-1 ? 'passed' : '')
+          a(href='/')
+            .circle(class=selected === 'plan' ? 'selected' : '')
+              .inner
+          .title Plan
+          .triangle(class=selected === 'plan' ? 'selected' : '')
+        .step(class=passed.indexOf('number')>-1 ? 'passed' : '')
+          a(href='/zang-office/number')
+            .circle(class=selected === 'number' ? 'selected' : '')
+              .inner
+          .title Number
+          .triangle(class=selected === 'number' ? 'selected' : '')
+        .step(class=passed.indexOf('devices')>-1 ? 'passed' : '')
+          a(href='/zang-office/users')
+            .circle(class=selected === 'devices' ? 'selected' : '')
+              .inner
+          .title Devices
+          .triangle(class=selected === 'devices' ? 'selected' : '')
+        .step(class=passed.indexOf('billing')>-1 ? 'passed' : '')
+          a(href='/cart/checkout')
+            .circle(class=selected === 'billing' ? 'selected' : '')
+              .inner
+          .title Billing
+          .triangle(class=selected === 'billing' ? 'selected' : '')

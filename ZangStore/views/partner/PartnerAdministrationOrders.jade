@@ -1,0 +1,21 @@
+extends ../index
+
+block styles
+  link(href='/public_nocache/stylesheets/partner/partner.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/partner/partner-administration.css', rel='stylesheet')
+  
+block mainbody
+  .top-container.titles
+    .container
+      .row
+        .col-lg-12
+          h1.text-center.text-300 #{localizer.get('PARTNER_ORDERS')}
+  .top-container
+    .container
+      .row
+        .col-lg-12
+          - var isAdminOrders = true
+          include ./PartnerOrdersTable
+
+block scripts
+  script(src='/public_nocache/javascripts/partner/partner-admin-actions.js')

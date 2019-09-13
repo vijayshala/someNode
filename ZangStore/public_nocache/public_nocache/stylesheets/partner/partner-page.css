@@ -1,0 +1,33 @@
+.main .counter {
+  width: 30px;
+      height: 30px;
+      border-radius: 30px;
+      background-color: #73c1c7;
+      line-height: 30px;
+      text-align: center;
+      color: white;
+      font-weight: 600;
+      margin-top: 10px;
+      margin-left: 10px;
+}
+
+.main .apply-btn {
+  margin-top:40px;
+}
+
+.main .features-table{
+  width:80%;
+  margin:10px auto;
+}
+
+
+@media (max-width:768px){
+  .main .features-table{
+    width:100%;
+    margin:0 auto;
+  }
+
+  .top-container.main{
+    margin-top:20px;
+  }
+}

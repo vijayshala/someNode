@@ -1,0 +1,20 @@
+.quote-btn{
+  border-radius: 30px !important;
+  outline: none;
+  padding: 10px 30px;
+}
+
+.quote-table td{
+  border-top: none !important;
+}
+
+.quote-table td.tdw{
+  width:200px;
+}
+
+
+@media print {
+  .quote-btn {
+    display: none;
+  }
+}

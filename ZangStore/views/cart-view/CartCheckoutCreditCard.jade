@@ -1,0 +1,20 @@
+div.form-group
+  label * #{localizer.get('NAME_ON_CREDIT_CARD')}
+  input.form-control(type='text', name='creditCardName', maxlength=255)
+  span.error-msg
+if summaryViewType == 'managecards'
+  div.form-group
+    label * #{localizer.get('ZIP_POSTAL_CODE')}
+    input.form-control(type='text', name='billingPostalCode')
+    span.error-msg
+div.form-group
+  label 
+   | * #{localizer.get('CREDIT_CARD')}
+   span.explanationcc
+   if summaryViewType == 'checkout'
+     a(href='/billingaccount/creditcard') #{localizer.get('MANAGE_CREDIT_CARDS')}
+  div#card-element(name="creditCard")
+  span.error-msg#card-errors
+
+script(src='https://js.stripe.com/v3/')
+script(src='/public_nocache/javascripts/creditcard/stripe_integration.js')

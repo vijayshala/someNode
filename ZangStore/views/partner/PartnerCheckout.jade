@@ -1,0 +1,22 @@
+.form-group.agent-container
+  .mask
+  if currentRegion.countryISO == 'DE'
+    label #{localizer.get('AGENT')}
+    input(type='hidden' id='partnerConnection' value=partnerConnection ? JSON.stringify(partnerConnection) : (defaultPartner ? JSON.stringify(defaultPartner) : null))
+    input(type='hidden' id='PICTURE_URL_DOMAIN' value=CONSTANTS.PICTURE_URL_DOMAIN)
+    input(type='hidden' id='NO_PICTURE_URL' value=CONSTANTS.NO_PICTURE_URL)
+    input(type='hidden' id='bucket' value=urls.bucket)
+    select.form-control#partnersList(name='partnerId')
+    a.clear-agent-btn(href='#') #{localizer.get('CLEAR_SELECTION')}
+    span.error-msg
+  else
+    label * #{localizer.get('AGENT')}
+    input(type='hidden' id='partnerConnection' value=partnerConnection ? JSON.stringify(partnerConnection) : null)
+    input(type='hidden' id='PICTURE_URL_DOMAIN' value=CONSTANTS.PICTURE_URL_DOMAIN)
+    input(type='hidden' id='NO_PICTURE_URL' value=CONSTANTS.NO_PICTURE_URL)
+    input(type='hidden' id='bucket' value=urls.bucket)
+    select.form-control#partnersList(name='partnerId')
+    a.clear-agent-btn(href='#' class=partnerConnection ? "sr-only" : "") #{localizer.get('CLEAR_SELECTION')}
+    span.error-msg
+    
+  

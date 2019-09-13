@@ -1,0 +1,41 @@
+.top-container.agent(style="background-image:url('" + page.metadata.partners[partner.type].backgroundImage + "')")
+  .container
+    case partner.status
+      when CONSTANTS.PARTNER_STATUS_TYPES.APPROVED
+        .row
+          .col-lg-8.col-lg-offset-2
+            h1.text-danger.text-300.zs-main-title #{localizer.get('CONGRATULATIONS')}!
+            h4.text-danger.text-center.text-600 #{localizer.get('YOU_ARE_NOW_AN_OFFICIAL_ZANG_AGENT')}
+            h3.text-center.text-300(style="line-height:1.5;") #{localizer.get('GET_STARTED_BY_SHARING_YOUR_PERSONAL_LINK_WITH_ALL_OF_OUR_LEADS')}
+              br
+              | #{localizer.get('AND_HELP_THEM_EXPERIENCE_A_BETTER_WAY_OF_DOING_THINGS')}
+      when CONSTANTS.PARTNER_STATUS_TYPES.PENDING
+        case partner.type
+          when CONSTANTS.PARTNER_TYPES.referral            
+            .row
+              .col-lg-8.col-lg-offset-2
+                h1.text-danger.text-300.zs-main-title #{localizer.get('MY_PARTNER_PORTAL')}
+          when CONSTANTS.PARTNER_TYPES.sales
+          when CONSTANTS.PARTNER_TYPES.msa
+            .row
+              .col-lg-8.col-lg-offset-2
+                h1.text-danger.text-300.zs-main-title #{localizer.get('THANK_YOU_FOR_APPLYING')}
+                h3.text-center.text-300(style="line-height:1.5;") #{localizer.get('ONE_MORE_STEP_AND_YOU_RE_DONE_TO_COMPLETE_YOUR_SALES_AGENT_APPLICATION_PLEASE_FOLLOW_THE_LINK_BELOW_AND_ANSWER_ALL_QUESTIONS')}
+                p.text-center.text-500 #{localizer.get('PLEASE_GIVE')}
+                  strong 3-5 
+                  | #{localizer.get('BUSINESS')} 
+                  strong days 
+                  | !{localizer.get('FOR_A_SENIOR_MANAGEMENT_TO_REVIEW_YOUR_APPLICATION_IN_THE_MEANTIME_ALL_QUESTIONS_CAN_BE_SENT_TO')} 
+                  a.text-danger(href="mailto:" + CONSTANTS.SUPPORT_EMAILS.PARTNER_PROGRAM) #{CONSTANTS.SUPPORT_EMAILS.PARTNER_PROGRAM}.
+            .row.hidden
+              .col-lg-12
+                p.text-center.text-500.text-danger !{localizer.get('IF_YOU_ARE_AN_EXISTING_AVAYA_PARTNER_PLEASE_DO_NOT_FOLLOW_THE_LINK_BELOW')}
+                a.btn.btn-block.btn-lg.btn-warning.dnb-link(href=page.metadata.dnbLink target="_blank") #{localizer.get('COMPLETE_MY_APPLICATION')}
+      when CONSTANTS.PARTNER_STATUS_TYPES.REJECTED
+        .row
+          .col-lg-8.col-lg-offset-2
+            h1.text-danger.text-300.zs-main-title #{localizer.get('THANK_YOU_FOR_APPLYING')}
+            p.text-center.text-500 #{localizer.get('WE_HAVE_REVIEWED_YOUR_APPLICATION_UNFORTUNATELY_AT_THIS_TIME_WE_HAVE_DETERMINED_THAT_IT_IS_UNFIT_FOR_OUR_PROGRAM_ITS_PROBABLY_NOTHING_SERIOUS_BUT_WE_CANNOT_MOVE_FORWARD_WITH_OUR_PARTNERSHIP_UNTIL_WE_FIGURE_THIS_OUT_WE_UNDERSTAND_THIS_MIGHT_BE_FRUSTRATING_PLEASE_BE_AWARE_THAT_WE_ARE_LOOKING_INTO_THE_REASONING_AND_WILL_CONTACT_YOU_AS_SOON_AS_WE_HAVE_MORE_INFORMATION_IN_THE_MEANTIME_FEEL_FREE_TO_CONTACT')} 
+              a.text-danger(href="mailto:" + CONSTANTS.SUPPORT_EMAILS.PARTNER_PROGRAM) #{CONSTANTS.SUPPORT_EMAILS.PARTNER_PROGRAM}   
+              | #{localizer.get('WITH_ANY_QUESTIONS_REGARDING_THIS_PROCESS')}
+include ./PartnerInfoTopTabs

@@ -1,0 +1,11 @@
+div.row
+  div.col-md-12
+    ul.nav.nav-tabs.nav-justified
+      li(class=active === 'info' ? 'active' : '')
+        a(href='/user/' + userId + '/info') #{localizer.get('INFORMATION')}
+      li(class=active === 'orders' ? 'active' : '')
+        a(href='/user/' + userId + '/orders/') #{localizer.get('ORDER_HISTORY')}
+      li(class=active === 'contracts' ? 'active' : '')
+        a(href='/user/' + userId + '/plans') #{localizer.get('PLANS')}
+    
+    

@@ -1,0 +1,31 @@
+.price-component {
+  padding: 0;
+  padding-bottom: 0;
+  color: #000;
+  /* text-decoration: line-through; */
+  letter-spacing: -1px;
+  /* margin-top: -5px; */
+}
+
+.price-component .symbol {
+  display: inline-block;
+  font-size: 23px;
+  vertical-align: super;
+  margin-right: 5px;
+  font-weight: 500;
+}
+.price-component .value {
+  display: inline-block;
+  font-size: 50px;
+  line-height: 14px;
+  font-weight: 700;
+}
+
+.price-component .decimals {
+    font-size: 23px;
+    font-weight: 500;
+    vertical-align: super;
+}
+.price-component .subinfo {
+
+}

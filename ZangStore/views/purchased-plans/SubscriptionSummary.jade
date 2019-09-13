@@ -1,0 +1,20 @@
+.order-summary    
+  .container
+    .successMSG
+      h4 Success
+    .failMSG
+      h4 Error
+    if summaryTitle
+      .main-title #{summaryTitle}
+    //- else
+      if isQuote
+        .main-title #{cartItem.product.title + ' Quote'}
+      else
+        .main-title #{isCheckout ? localizer.get('ORDER_SUMMARY') : localizer.get(cartItem.title.resource) + ' ' + localizer.get('SUMMARY')}
+    .row
+      .col-md-12
+        h1.text-center.text-capitalize.text-300 #{localizer.get('PLAN_INFORMATION')}
+    .row
+      .col-lg-12.col-md-12              
+        include ./SubscriptionSummaryItemsDetails 
+    

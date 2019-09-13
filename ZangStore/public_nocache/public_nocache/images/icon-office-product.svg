@@ -1,0 +1,115 @@
+<svg width="48" height="48" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <style type="text/css">.st0{fill:#66B9BE;}</style>
+ <title>48-icon-small</title>
+ <desc>Created with Sketch.</desc>
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g id="svg_1">
+   <g id="App-Icons">
+    <g id="_x34_8-icon-small">
+     <g id="Group-3">
+      <g id="Group-2">
+       <path d="m7,0l34,0c3.9,0 7,3.1 7,7l0,34c0,3.9 -3.1,7 -7,7l-34,0c-3.9,0 -7,-3.1 -7,-7l0,-34c0,-3.9 3.1,-7 7,-7z" class="st0" id="Rectangle-1054"/>
+      </g>
+     </g>
+    </g>
+   </g>
+  </g>
+  <g id="svg_2">
+   <g id="svg_3">
+    <g id="svg_4">
+     <g id="svg_5">
+      <defs>
+       <path d="m33.5,26.5c1.9,0.5 3.7,-1.2 3.2,-3.2c-0.2,-0.9 -1,-1.7 -1.9,-1.9c-1.9,-0.5 -3.7,1.2 -3.2,3.2c0.3,1 1,1.7 1.9,1.9z" id="SVGID_1_"/>
+      </defs>
+      <use id="svg_6" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" xlink:href="#SVGID_1_"/>
+      <clipPath id="SVGID_2_">
+       <use id="svg_7" xlink:href="#SVGID_1_"/>
+      </clipPath>
+     </g>
+    </g>
+    <g id="svg_8">
+     <g id="svg_9">
+      <defs>
+       <path d="m13.2,16.3c1.9,0.5 3.7,-1.2 3.2,-3.2c-0.2,-0.9 -1,-1.7 -1.9,-1.9c-1.9,-0.5 -3.6,1.2 -3.2,3.2c0.2,1 0.9,1.7 1.9,1.9z" id="SVGID_3_"/>
+      </defs>
+      <use id="svg_10" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" xlink:href="#SVGID_3_"/>
+      <clipPath id="SVGID_4_">
+       <use id="svg_11" xlink:href="#SVGID_3_"/>
+      </clipPath>
+     </g>
+    </g>
+    <g id="svg_12">
+     <g id="svg_13">
+      <defs>
+       <path d="m23.3,16.3c1.9,0.5 3.7,-1.2 3.2,-3.2c-0.2,-0.9 -1,-1.7 -1.9,-1.9c-1.9,-0.5 -3.7,1.2 -3.2,3.2c0.3,1 1,1.7 1.9,1.9z" id="SVGID_5_"/>
+      </defs>
+      <use id="svg_14" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" xlink:href="#SVGID_5_"/>
+      <clipPath id="SVGID_6_">
+       <use id="svg_15" xlink:href="#SVGID_5_"/>
+      </clipPath>
+     </g>
+    </g>
+    <g id="svg_16">
+     <g id="svg_17">
+      <defs>
+       <path d="m33.5,16.3c1.9,0.5 3.7,-1.2 3.2,-3.2c-0.2,-0.9 -1,-1.7 -1.9,-1.9c-1.9,-0.5 -3.7,1.2 -3.2,3.2c0.3,1 1,1.7 1.9,1.9z" id="SVGID_7_"/>
+      </defs>
+      <use id="svg_18" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" xlink:href="#SVGID_7_"/>
+      <clipPath id="SVGID_8_">
+       <use id="svg_19" xlink:href="#SVGID_7_"/>
+      </clipPath>
+     </g>
+    </g>
+    <g id="svg_20">
+     <g id="svg_21">
+      <defs>
+       <path d="m13.2,26.5c1.9,0.5 3.7,-1.2 3.2,-3.2c-0.2,-0.9 -1,-1.7 -1.9,-1.9c-1.9,-0.5 -3.7,1.2 -3.2,3.2c0.2,1 0.9,1.7 1.9,1.9z" id="SVGID_9_"/>
+      </defs>
+      <use id="svg_22" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" xlink:href="#SVGID_9_"/>
+      <clipPath id="SVGID_10_">
+       <use id="svg_23" xlink:href="#SVGID_9_"/>
+      </clipPath>
+     </g>
+    </g>
+    <g id="svg_24">
+     <g id="svg_25">
+      <defs>
+       <path d="m13.2,36.7c1.9,0.5 3.7,-1.2 3.2,-3.2c-0.2,-0.9 -1,-1.7 -1.9,-1.9c-1.9,-0.5 -3.7,1.2 -3.2,3.2c0.2,0.9 0.9,1.7 1.9,1.9z" id="SVGID_11_"/>
+      </defs>
+      <use id="svg_26" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" xlink:href="#SVGID_11_"/>
+      <clipPath id="SVGID_12_">
+       <use id="svg_27" xlink:href="#SVGID_11_"/>
+      </clipPath>
+     </g>
+    </g>
+    <g id="svg_28">
+     <g id="svg_29">
+      <defs>
+       <path d="m23.2,36.7c1.9,0.5 3.7,-1.2 3.2,-3.2c-0.2,-0.9 -1,-1.7 -1.9,-1.9c-1.9,-0.5 -3.7,1.2 -3.2,3.2c0.3,1 1,1.7 1.9,1.9z" id="SVGID_13_"/>
+      </defs>
+      <use id="svg_30" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" xlink:href="#SVGID_13_"/>
+      <clipPath id="SVGID_14_">
+       <use id="svg_31" xlink:href="#SVGID_13_"/>
+      </clipPath>
+     </g>
+    </g>
+    <g id="svg_32">
+     <g id="svg_33">
+      <defs>
+       <path d="m33.5,36.7c1.9,0.5 3.7,-1.2 3.2,-3.2c-0.2,-0.9 -1,-1.7 -1.9,-1.9c-1.9,-0.5 -3.7,1.2 -3.2,3.2c0.3,1 1,1.7 1.9,1.9z" id="SVGID_15_"/>
+      </defs>
+      <use id="svg_34" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" xlink:href="#SVGID_15_"/>
+      <clipPath id="SVGID_16_">
+       <use id="svg_35" xlink:href="#SVGID_15_"/>
+      </clipPath>
+     </g>
+    </g>
+   </g>
+  </g>
+ </g>
+</svg>

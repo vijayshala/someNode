@@ -1,0 +1,43 @@
+
+.table-responsive
+  table.table.table-hover.zs-main-table
+    thead 
+      tr
+        th #{localizer.get('CONFIRMATION')} #
+        th #{localizer.get('ITEMS')}
+        th #{localizer.get('PRODUCT')}
+        th #{localizer.get('DATE')}
+        th #{localizer.get('USER')}
+        th #{localizer.get('STATUS')}
+        th 
+          div(style='width:130px') #{localizer.get('ACTIONS')}
+    tbody.orderTable
+      each order, i in orders
+        tr
+          td.confirmation #{order.confirmationNumber}
+          each item, i in order.items
+            if item.level==0
+              td 
+                span.text-capitalize #{item.title.resource ? localizer.get(item.title.resource): item.title.text}
+              if item.engines && item.engines[0]
+                td.product
+                  span.text-capitalize #{item.engines[0].startsWith('zang-') ? 'Spaces' : localizer.get(item.engines[0])}
+          //- td #{moment(order.created.on).format(UI_DATE_FORMAT)}
+          td #{localizer.getDate(order.created.on)}
+          td #{order.contact ? order.contact.email : ''}
+          td.text-lowercase.text-capitalize
+            case order.status
+              when "pending_approval"
+                span.label.label-warning #{localizer.get('PENDING')}
+              when 'success'
+                span.label.label-success #{localizer.get(order.status.toUpperCase())}
+              when 'new'
+                span.label.label-success #{localizer.get(order.status.toUpperCase())}
+              when 'canceled'
+                span.label.label-warning #{localizer.get(order.status.toUpperCase())}
+              when 'failed'
+                span.label.label-danger #{localizer.get(order.status.toUpperCase())}
+              default
+                span.label.label-warning #{localizer.get(order.status.toUpperCase())}
+          td 
+            include ./OrdersTableActionMenu

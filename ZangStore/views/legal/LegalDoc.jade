@@ -1,0 +1,28 @@
+extends ../index
+block styles
+  link(href='/public_nocache/stylesheets/legal/legal.css', rel='stylesheet')
+
+block mainbody
+  .container
+    .row
+      .col-md-12.col-lg-12
+        h1.text-center.text-300.text-white #{localizer.get(doc.title)}
+  br
+  .container.bg-white
+    .row
+      .col-md-12.col-lg-12
+        //- iframe(src=src class='legal-iframe')
+        .doc-container
+
+  br
+  br
+  br
+
+  block scripts
+    script.
+      $(function () {
+        $('body').removeAttr('class')
+        $.get('#{doc.htmlUrl}', function(html) {
+          $('.doc-container').html(html);
+        });
+      })

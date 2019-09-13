@@ -1,0 +1,42 @@
+extends ../index
+
+block styles
+  link(href='/public_nocache/stylesheets/partner/partner.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/partner/partner-portal.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/partner/partner-application.css', rel='stylesheet')
+
+block mainbody
+  include ./AgentInfoTop
+  .top-container
+    .container
+      .row
+        .col-md-6.col-lg-6
+          h4.text-400 #{localizer.get('ACTIVE')}: #{agent.active ? localizer.get('YES') : localizer.get('NO')}
+          h4.text-400 #{localizer.get('RELATION')}: #{localizer.get(agent.relation)}
+          h4.text-400 #{localizer.get('APPLIED_ON')}: #{moment(partner.created).format(CONSTANTS.UI_ONLY_DATE_FORMAT)}
+          br
+      if canUpdateAgentInfo
+        .row
+          .col-md-6.col-lg-6
+            form(action='/partners/' + partner._id + '/agents/' + agent._id + '/info', method='POST')
+              input(type='hidden' name='_csrf' value=_csrf)
+              .form-group
+                label #{localizer.get('RELATION')}
+                select.form-control(name='accessLevel')
+                  each level,l in CONSTANTS.AGENT_LEVELS
+                    option(value=level selected=level===agent.accessLevel) #{localizer.get(l)} 
+              .form-group
+                .checkbox
+                  label
+                    input(type='checkbox' name='active' checked=agent.active) 
+                    | #{localizer.get('ACTIVE')}
+              button.btn.btn-danger(type='submit') 
+                | #{localizer.get('UPDATE_AGENT_INFO')}
+              br
+              br
+    
+block scripts
+  script(src='/public_nocache/javascripts/partner/partner-portal.js')
+  
+              
+        

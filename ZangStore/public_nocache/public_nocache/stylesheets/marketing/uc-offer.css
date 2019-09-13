@@ -1,0 +1,716 @@
+body {color: #4B4B4B; line-height: 1.6;}
+
+section.banner-top{
+    /*
+    background: rgba(19,19,19,0.2);
+    background: -moz-linear-gradient(top, rgba(19,19,19,0.2) 0%, rgba(76,76,76,0.2) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(19,19,19,0.2)), color-stop(100%, rgba(76,76,76,0.2)));
+    background: -webkit-linear-gradient(top, rgba(19,19,19,0.2) 0%, rgba(76,76,76,0.2) 100%);
+    background: -o-linear-gradient(top, rgba(19,19,19,0.2) 0%, rgba(76,76,76,0.2) 100%);
+    background: -ms-linear-gradient(top, rgba(19,19,19,0.2) 0%, rgba(76,76,76,0.2) 100%);
+    background: linear-gradient(to bottom, rgba(19,19,19,0.2) 0%, rgba(76,76,76,0.2) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#131313', endColorstr='#4c4c4c', GradientType=0 );
+    */
+    padding-top: 0;
+}
+
+.banner-copy { padding: 50px 0;}
+
+.callout-content h1,
+.banner h1 {	
+    color: #FFFFFF;	
+    font-size: 38px;	
+    text-align: center !important;
+    text-transform: capitalize !important;
+    font-weight: 300;
+    margin: 10px auto;
+    width: 70%;
+}
+
+#network-tool div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#network-tool p {
+    width: 70%;
+}
+
+.h2,h2 {	
+    color: #FFFFFF;	
+    font-size: 26px;	
+    text-align: center !important;
+    text-transform: none !important;
+    font-weight: 300;
+    text-align: center;
+    color: #304050;
+    width: 750px;
+    margin: 0 auto;
+    font-weight: 400;
+    padding: 24px 0;
+}
+
+h3 {font-size: 19px;}
+
+h4 {font-size: 15px;}
+
+.section-sub-title {
+    margin-top:-16px !important;
+    text-align: center;
+}
+
+
+.banner p {
+    color: #FFFFFF;	
+    font-size: 17px;
+    text-align: center;
+    font-weight: 300;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.banner-nav {display: inline-table; width: 100%; padding-top:20px;}
+
+.offer-title a {font-size: 19px;font-weight: 300;display: inline-block; color:#fff !important;}
+
+ul.download-equinox-desktop,
+.banner-nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    float: right;
+    font-weight: 400;
+}
+
+ul.download-equinox-desktop {
+    float: left;
+}
+
+ul.download-equinox-desktop li,
+.banner-nav li {
+    float: left;
+}
+.ul.download-equinox-desktop li a,
+.banner-nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+a.btn {
+    color: white;
+    text-align: center;
+    padding: 8px 16px;
+    text-decoration: none;
+    margin: 20px 0;
+    border-radius: 0px !important;
+}
+
+.center { margin: auto 0; text-align: center;}
+.p {margin: 16px 0 32px 0;}
+.strong {font-weight: bold;}
+
+
+/* Change the link color to #111 (black) on hover */
+.banner-nav li a:hover {
+    color:#f2f2f2;
+    text-decoration: none;
+}
+
+a.btn.outline.white,
+.banner-nav li a.outline.white {
+    text-transform: uppercase;
+    border: 1px solid #FFFFFF;
+}
+
+ul.download-equinox-desktop a.btn.outline.blue {
+    text-transform: uppercase;
+    border: 1px solid #304050;
+    color: #304050;
+    margin-right: 16px;
+}
+
+a.btn.solid.green,
+.banner-nav li a.solid.green {
+    text-transform: uppercase;
+    border: 1px solid #4BAA39;
+    background-color: #4BAA39;
+    color: #fff;
+}
+
+ul.download-equinox-desktop a.btn.solid.blue,
+a.btn.solid.blue,
+.banner-nav li a.solid.blue {
+    text-transform: uppercase;
+    border: 1px solid #304050;
+    background-color: #304050;
+    color: #fff;
+}
+
+.banner-nav li a.outline.white:hover,
+.banner-nav li a.solid.green:hover {
+    text-decoration: none;
+}
+
+section {min-height: 100px; padding: 20px 0 40px 0;}
+
+.bg-white {background: #fff;}
+.bg-cream {background: #f2f2f2;}
+
+.features-list {padding: 50px;}
+.features-list .col-sm {width: 33%; float: left; text-align: center; padding: 16px 24px ;}
+.features-list .col-sm .feature-img { width:50px; height: 50px; margin: 0 auto; }
+.features-list .col-sm h3{ color: #304050;font-size: 19px;}
+.features-list .col-sm p { padding:0 16px;}
+
+#pricing h2 { width: 100%;}
+#pricing h4 { width: 750px; margin: 0 auto; color: #304050; margin-top: -16px; line-height: 1.4;}
+
+
+/* cards */
+
+.pricing-cards {margin: auto;}
+
+.pricing-cards .col-sm {
+    width: 355px; 
+    float: left; 
+    text-align: center; 
+    padding: 16px 24px; 
+    border: 1px solid #ccc;
+    background: #FFFFFF;
+    box-shadow: 0 0 20px 0 rgba(0,0,0,0.20);
+    margin: 8px 0;
+    min-height: 420px;
+}
+
+.pricing-cards .col-sm:nth-child(2) {
+    margin-left:16px;
+    margin-right:16px;
+}
+
+.pricing-cards h2 {margin-bottom: -16px;}
+.pricing-cards p {min-height: 90px}
+
+
+.card-price {}
+.card-price .from {	color: #4B4B4B;	font-size: 12px;font-weight: 300; padding-right: 160px;}
+.card-price .p-wrapper { margin: 0 auto; padding-bottom:24px;}
+.card-price .dollar {color: #000; font-size: 85px;margin-top: -20px; height: 24px; width: 80px; position: relative; left: 50px}
+.card-price .dollar.first {left: 70px}
+.card-price sup {color: #000; font-size: 30px;vertical-align: super;}
+.card-price .p-details {width: 80px; text-align: left; line-height: 1.4; position: relative;left: 176px;}
+.card-price .cents {color: #000; font-size: 32px;}
+.card-price .user {color: #4B4B4B;	font-size: 12px;font-weight: 300;}
+.card-price .month {color: #4B4B4B; font-size: 12px;font-weight: 300;}
+
+a.compare { padding: 8px 16px;}
+
+#pricing a.btn {margin: 8px 0; width: 130px;}
+
+
+/* comparison chart */
+
+.comparision-table { margin: 40px 0 !important;}
+
+.comparision-table th {color: #304050;	font-size: 18px; font-weight: bold; text-align: center;}
+
+
+td.dot-cell {
+    width: 200px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+td.dot-cell span.feature-dot {
+    width: 24px;
+    height: 24px;
+    background-color: #304050;
+    display: inline-block;
+    background: transparent url("/public_nocache/images/marketing/checkmark.png") no-repeat center center;
+    vertical-align: middle;
+}
+
+.option-cell {
+    color: #304050;
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+
+section#features,
+section#pricing,
+section#compare,
+section#devices { padding: 40px 0;}
+
+.devices-callout {
+    background: transparent url("/public_nocache/images/marketing/equinox-mobile.png") no-repeat 30px center;
+     width: 100%;
+     height: 580px;
+     margin-bottom:-70px;
+}
+.devices-callout { padding-top:60px;}
+.devices-callout .callout-content {width: 50%; margin-left:50%; text-align: left;}
+.callout-content h1 { color: #304050;text-align: left !important; margin: 0; padding:0}
+
+.callout-content h2 {
+    padding: 12px 0 24px 0;
+    margin: 0;
+    width:100%;
+    text-align: left !important;
+    
+}
+.callout-content p { padding-right: 50px;}
+ul.download-equinox-mobile {
+    list-style-type: none;
+    text-align: left;
+    padding: 0;
+    margin-top: 24px;
+}
+ul.download-equinox-mobile li{ float: left; margin-right: 8px;}
+li.a img {}
+
+.devices-wrapper { padding: 8px 0;}
+
+.devices-wrapper .col-sm {
+    width: 100%; 
+    text-align: center; 
+    padding: 16px 24px; 
+    border: 1px solid #ccc;
+    background: #FFFFFF;
+    box-shadow: 0 0 20px 0 rgba(0,0,0,0.20);
+    margin-bottom: 8px;
+    min-height: 250px;
+}
+
+.devices-wrapper .col-sm.xl {min-height: 290px;}
+
+.devices-wrapper .col-sm .img {
+    width: 240px;
+    height: auto;
+    padding: 20px 0px;
+    float: left;
+}
+
+
+.devices-wrapper .col-sm .img img.icon{
+    width: 140px;
+    height: auto;
+    margin-left: 60px;
+}
+
+.devices-wrapper .col-sm .img img.icon.shadow{
+    box-shadow: 0 0 20px 0 rgba(0,0,0,0.20);
+    border-radius: 28px;
+}
+.devices-wrapper .col-sm .content {margin-left: 280px; text-align: left; padding-right: 20px;}
+.devices-wrapper .col-sm .content h2 {padding: 24px 0 16px 0;}
+.devices-wrapper .col-sm .content h2.device-name {width: 70%; text-align: left !important; float: left; }
+.devices-wrapper .col-sm .content h2.device-price {width: 100%; text-align: right !important;}
+.devices-wrapper .col-sm .content .device-description {text-align: left;}
+
+
+.hide{
+    display: inline !important;
+}
+
+
+.table-responsive {
+
+    border: none;
+}
+
+@media (max-width: 1200px) {
+    .devices-wrapper .col-sm.xl {min-height: 24em;}
+
+    .callout-content h1, .banner h1 {
+        font-size: 28px;
+    }
+
+}
+
+
+
+@media (min-width:1200px){
+
+    .devices-callout {
+        background: transparent url("/public_nocache/images/marketing/equinox-mobile.png") no-repeat 100px center;
+        width: 100%;
+        height: 580px;
+        margin-bottom:-70px;
+    }
+}
+
+  @media (max-width:1024px){
+
+         body {font-size: 13px;}
+
+        .callout-content h1, .banner h1 {
+            font-size: 28px;
+        }
+
+        h2 {
+            font-size: 22px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        #pricing h4 {
+            width: 100%;
+        }
+        .pricing-cards h2 ,
+        .section-sub-title {
+            margin-top: 0px !important;
+        }
+        .banner p {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+/*
+       .hide{
+            display: none !important;
+        }
+*/
+
+        .ul.download-equinox-desktop li a, .banner-nav li a {
+            padding: 4px 4px;
+            font-size: 12px;
+        }
+
+        .banner-nav ul li a.solid.green{
+            padding: 4px 8px;
+            margin-right: 4px;
+        }
+
+        .banner-copy{
+            padding: 20px 0;
+        }
+
+        .features-list .col-sm {
+            width: 100%;
+        }
+
+        .pricing-cards h2 {
+             margin-bottom: 0px; 
+        }
+        .pricing-cards .col-sm {
+            margin: auto;
+            float: none;
+            margin-top: 20px;
+        }
+        .pricing-cards .col-sm:nth-child(2) {
+            margin: auto;
+            margin-top: 20px;
+        }
+
+        .devices-callout {
+            background: none;
+             width: 100%;
+             height: 580px;
+             margin-bottom:-70px;
+        }
+        .devices-callout { padding-top:60px;text-align: center;}
+        .devices-callout .callout-content {width: 100%; margin-left:0%; text-align: center;}
+        .callout-content h1 { color: #304050;text-align: center !important; margin: 0; padding:0}
+        
+        .callout-content h2 {
+            padding: 12px 0 12px 0;
+            margin: 0;
+            width:100%;
+            text-align: center !important;
+            
+        }
+        .callout-content p { padding: 0 10px;}
+        ul.download-equinox-mobile {
+            display:inline-block;
+        }
+
+
+        .devices-wrapper .col-sm .img {
+            width: 200px;
+            height: auto;
+            float: none;
+            margin: auto;
+        }
+
+        .devices-wrapper .col-sm .content {
+            margin-left: 0;
+            text-align: left;
+            padding-right: 0;
+        }
+        .devices-wrapper .col-sm .content h2.device-price,
+        .devices-wrapper .col-sm .content h2.device-name {
+            width: 100%;
+            float: none;
+            text-align: center !important;
+            margin: 5px;
+        }
+
+        .devices-wrapper .col-sm .content h2 {
+            padding: 16px 0 8px 0;
+        }
+        .devices-wrapper .col-sm .content .device-description {
+            text-align: left;
+            display: -webkit-inline-box;
+        }
+
+        .devices-wrapper .col-sm .img img.icon {
+            width: 100px;
+            height: auto;
+            margin-left: 0px;
+            margin: auto;
+        }
+
+        ul.download-equinox-desktop {
+            display: none;
+        }
+
+    }
+  
+    @media (max-width:448px){
+        .callout-content h1, .banner h1 {
+            font-size: 12px !important;
+        }
+
+        .callout-content p, .banner p {
+            font-size: 12px !important;
+        }
+
+    }
+
+    @media (max-width:767px) {
+
+
+        body {font-size: 13px;}
+
+        .callout-content h1, .banner h1 {
+            font-size: 28px;
+        }
+
+        .callout-content h1, .banner h1 {
+            font-size: 18px;
+        }
+
+        h2 {
+            font-size: 22px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        #pricing h4 {
+            width: 100%;
+        }
+        .pricing-cards h2 ,
+        .section-sub-title {
+            margin-top: 0px !important;
+        }
+        .banner p {
+            width: 100%;
+            margin: 0 auto;
+            font-size: 14px;
+        }
+
+        .hide{
+            display: none !important;
+        }
+
+        .banner-nav ul li a.solid.green{
+            padding: 4px 8px;
+            margin-right: 4px;
+        }
+
+        .banner-copy{
+            padding: 20px 0;
+        }
+
+        .features-list .col-sm {
+            width: 100%;
+        }
+
+        .pricing-cards h2 {
+             margin-bottom: 0px; 
+        }
+        .pricing-cards .col-sm {
+            margin: auto;
+            float: none;
+            margin-top: 20px;
+        }
+        .pricing-cards .col-sm:nth-child(2) {
+            margin: auto;
+            margin-top: 20px;
+        }
+
+        .devices-callout {
+            background: none;
+             width: 100%;
+             height: 580px;
+             margin-bottom:-70px;
+        }
+        .devices-callout { padding-top:60px;text-align: center;}
+        .devices-callout .callout-content {width: 100%; margin-left:0%; text-align: center;}
+        .callout-content h1 { color: #304050;text-align: center !important; margin: 0; padding:0}
+        
+        .callout-content h2 {
+            padding: 12px 0 12px 0;
+            margin: 0;
+            width:100%;
+            text-align: center !important;
+            
+        }
+        .callout-content p { padding: 0 10px;}
+        ul.download-equinox-mobile {
+            display:inline-block;
+        }
+
+
+        .devices-wrapper .col-sm .img {
+            width: 200px;
+            height: auto;
+            float: none;
+            margin: auto;
+        }
+
+        .devices-wrapper .col-sm .content {
+            margin-left: 0;
+            text-align: left;
+            padding-right: 0;
+        }
+        .devices-wrapper .col-sm .content h2.device-price,
+        .devices-wrapper .col-sm .content h2.device-name {
+            width: 100%;
+            float: none;
+            text-align: center !important;
+            margin: 5px;
+        }
+
+        .devices-wrapper .col-sm .content h2 {
+            padding: 16px 0 8px 0;
+        }
+        .devices-wrapper .col-sm .content .device-description {
+            text-align: left;
+            display: -webkit-inline-box;
+        }
+
+        .devices-wrapper .col-sm .img img.icon {
+            width: 100px;
+            height: auto;
+            margin-left: 0px;
+            margin: auto;
+        }
+
+        ul.download-equinox-desktop {
+            display: none;
+        }
+
+        .offer-title {
+            font-size: 15px;
+        }
+
+        .features-list {
+            padding: 0px;
+        }
+
+        ul.download-equinox-mobile li a img {
+            width: 205;
+            margin: auto;
+        }
+
+        ul.download-equinox-mobile li a{
+            display: inline-block;
+
+        }
+        
+      }
+
+
+      @media (max-width: 600px) and (min-width: 320px) {
+
+        .pricing-cards .col-sm {
+            width: 100%;
+        }
+    
+    }
+
+    /* discount tables */
+    
+    .userVolumeDiscountWrapper,
+    .planCreditPromotionWrapper
+    {font-size: 110%; float: left; display: block; width: 100%;margin: 30px 0px 10px 0;}
+
+    table.planCreditPromotion, 
+    table.userVolumeDiscount { 
+        border-spacing: 0;
+        border-collapse: collapse;
+        border: none;
+        margin-top: 20px;
+        color: #000;
+        width: 100%;
+        }
+        
+    table.planCreditPromotion th, 
+    table.planCreditPromotion td,
+    table.userVolumeDiscount th, 
+    table.userVolumeDiscount td
+    {
+        vertical-align: top;
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #ccc;
+        background: white;
+    }
+    table.planCreditPromotion th, 
+    table.planCreditPromotion td {
+        text-align: left;
+        width: 50%
+    }
+
+
+    table.planCreditPromotion tr:first-child th,
+    table.userVolumeDiscount tr:first-child th {
+        background: #f3f3f3;
+
+    }
+
+    table.planCreditPromotion tr td:first-child,
+    table.userVolumeDiscount tr td:first-child{
+        width: 100px;
+        color: #333;
+    }
+
+    table.planCreditPromotion tr td .users-mini,
+    table.userVolumeDiscount tr td .users-mini{
+        font-size: 80%;
+        line-height: 1;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        min-width: 13em;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: #262626 !important;
+        font-size: 14px;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left !important;
+    }
+    
+    .dropdown-content a:hover {background-color: #F7F5F5;}
+
+    .dropdown:hover .dropdown-content {display: block;}

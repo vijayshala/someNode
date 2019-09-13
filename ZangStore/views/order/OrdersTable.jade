@@ -1,0 +1,23 @@
+.table-responsive
+  table.table.table-hover.zs-main-table
+    thead 
+      tr
+        th #{localizer.get('CONFIRMATION')} #
+        th #{localizer.get('ITEMS')}
+        th #{localizer.get('DATE')}
+        th #{localizer.get('USER')}
+        th #{localizer.get('TYPE')}
+        th 
+          div(style='width:130px') #{localizer.get('ACTIONS')}
+    tbody
+      each order, i in orders
+        tr
+          td #{order.confirmationNumber}
+          td
+            each item, i in order.items
+              p.text-capitalize #{item.product.slug.replace('-', ' ')}
+          td #{moment(order.created.on).format(UI_DATE_FORMAT)}
+          td #{order.accountInformation ? order.accountInformation.emailAddress : ''}
+          td #{order.type.replace(/_/g, ' ').toLowerCase().ucFirst()}
+          td 
+            include ./OrdersTableActionMenu

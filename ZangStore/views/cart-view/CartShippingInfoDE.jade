@@ -1,0 +1,73 @@
+h3.text-danger #{localizer.get('SHIPPING_ADDRESS')}
+div.form-group
+    div.checkbox
+        label.checkbox-label    
+            input.copy-billing-address(type='checkbox' id='shippingAddress.sameAsAccount' name='shippingAddress.sameAsAccount', checked=shippingAddress.sameAsAccount)
+            | &nbsp;#{localizer.get('SAME_AS_ACCOUNT')}
+div.form-group
+    label  
+        span.text-danger 
+        |  * #{localizer.get('FIRMA')}
+    input.form-control(type='text', name='shippingAddress.addressee' value=shippingAddress.addressee)
+    span.error-msg
+div.form-group
+    label  
+        span.text-danger 
+        |  * #{localizer.get('ADDRESS')}
+    input.form-control(type='text', name='shippingAddress.address1' value=shippingAddress.address1)
+    span.error-msg
+if currentRegion.addressFormClass==0 || currentRegion.addressFormClass==1
+    div.row
+        div.col-md-6
+            div.form-group
+                label  
+                    span.text-danger 
+                    |  * #{localizer.get('STATE_PROVINCE')}
+                    
+                input.form-control(type='hidden', name='shippingAddress.state' value=shippingAddress.state)
+                select.form-control(name='shippingAddress.stateISO')
+                span.error-msg
+        div.col-md-6
+            div.form-group
+                label  
+                    span.text-danger 
+                    |  * #{localizer.get('ZIP_POSTAL_CODE')}
+                input.form-control(type='text', name='shippingAddress.zip' value=shippingAddress.zip)
+                span.error-msg
+else
+    div.row
+        div.col-md-6
+            div.form-group
+                label  
+                    span.text-danger 
+                    |  * #{localizer.get('POSTAL_CODE')}
+                input.form-control(type='text', name='shippingAddress.zip' value=shippingAddress.zip)
+                span.error-msg
+div.form-group
+    label  
+        span.text-danger 
+        |  * #{localizer.get('CITY')}
+    input.form-control(type='text', name='shippingAddress.city' value=shippingAddress.city)
+    span.error-msg
+div.form-group
+    label  
+        span.text-danger 
+        |  * #{localizer.get('COUNTRY')}
+    input.form-control(type='hidden', name='shippingAddress.country' value=currentRegion.name.text)
+    input.form-control(type='hidden', name='shippingAddress.countryISO' value=currentRegion.countryISO)
+    .shippingAddress.country.read-only-value
+        | #{currentRegion.name && currentRegion.name.resource ? localizer.get(currentRegion.name.resource) : currentRegion.name.text}
+
+div.form-group
+    div.checkbox
+        label.checkbox-label
+            input.checker.box(type='checkbox' name='company.isExistingCustomer' checked=(company.existingCustomerReference ? true : false) value='true' onchange="$('#customerContractId').toggle()")
+            | &nbsp;#{localizer.get('I_AM_EXISTING_AVAYA_CUSTOMER')}
+            span.error-msg
+div.form-group#customerContractId(style='display:none;')
+    label  
+        span.text-danger 
+        | #{localizer.get('CUSTOMER_OR_CONTRACT_ID')}
+    input.form-control(type='text', name='company.existingCustomerReference', value=company.existingCustomerReference)
+    span.error-msg
+br

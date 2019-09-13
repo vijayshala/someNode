@@ -1,0 +1,47 @@
+.sellable-items-horizontal {  
+  position: relative;
+  /* padding: 10px;   */
+  width: 100%;
+  overflow: hidden;
+}
+
+.sellable-items-horizontal .sellable-scroller {
+  padding: 10px;
+  display: flex;  
+  margin: auto;
+  /*  border: 1px solid #ddd; */
+  border: none;
+   width: calc(100% - 70px);  
+}
+
+
+.sellable-items-horizontal .checkbox-div.checked {
+  background-image: url(/images/check-white.svg);
+  background-color: #304050;
+  color: #fff;
+}
+
+.sellable-items-horizontal .leftButton,
+.sellable-items-horizontal .leftButton:active,
+.sellable-items-horizontal .rightButton,
+.sellable-items-horizontal .rightButton:active {
+  background-color: #f1f1f1;
+  border: 0;
+}
+
+.sellable-items-horizontal .leftButton,
+.sellable-items-horizontal .rightButton {
+  position: absolute;
+  top: 0px;
+  height: 100%;
+  padding: 10px;
+  z-index: 2;
+
+}
+.sellable-items-horizontal .leftButton {
+  left: 0px;
+}
+
+.sellable-items-horizontal .rightButton {
+  right: 0px;
+}

@@ -1,0 +1,8 @@
+.zs-progress-modal(id='ConfirmationModal')
+  .content
+    h1.title #{confirmationTitle || localizer.get('SAVE_CHANGES')}
+    h3.subtitle #{confirmationQuestion || localizer.get('ARE_YOU_SURE_YOU_WANT_TO_PROCEED')}
+    h4.text-300.extra-text #{confirmationExtraText || ''}
+    div(style='margin-top:20px')
+      button.btn.btn-danger.btn-space(id='ConfirmationModalNoBtn') #{localizer.get('NO_THANKS')}
+      button.btn.btn-default(id='ConfirmationModalYesBtn') #{localizer.get('YES')}

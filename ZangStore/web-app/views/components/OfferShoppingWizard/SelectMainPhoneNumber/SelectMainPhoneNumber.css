@@ -1,0 +1,71 @@
+.select-main-phonenumber {  
+  padding: 10px;
+  /* border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd; */
+  /* display: grid;  
+  grid-gap: 8px 20px;
+  grid-template-columns: auto auto; */
+}
+
+.select-main-phonenumber .radio-options {
+  /* display: flex; */
+}
+
+
+.select-main-phonenumber .radio-options .radio-option{
+  padding: 10px;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  margin: 5px;
+  /* width: 33%; */
+  /* color: #9595a1; */
+}
+
+.select-main-phonenumber .radio-options .radio-option:hover div {
+  text-decoration: none;
+}
+
+.select-main-phonenumber .radio-options .radio-option:hover {
+  border: 1px solid #304050;
+  text-decoration: none;
+}
+
+
+.select-main-phonenumber .radio-options .radio-option.selected {
+  opacity: 1;
+  color: #304050;
+  border: 1px solid #304050;
+  background: transparent;
+  box-shadow: 0 0 16px 0 rgba(0,0,0,0.20);
+}
+
+.select-main-phonenumber .radio-options .radio-option .option-label {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.select-main-phonenumber .radio-options .radio-option .option-sublabel {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.select-main-phonenumber .radio-options .radio-option.selected .checkbox-container .box .tick {
+  background-color: #304050;
+  border: 3px solid #304050;
+  box-shadow: 0 0 16px 0 rgba(0,0,0,0.20);
+}
+
+/* mobile */
+@media (max-width:768px){
+
+}
+
+/* ipad */
+@media (max-width:1024px){
+  .select-main-phonenumber .radio-options {
+    display: block;
+  }  
+  .select-main-phonenumber .radio-options .radio-option {
+    width: initial;
+  }
+}

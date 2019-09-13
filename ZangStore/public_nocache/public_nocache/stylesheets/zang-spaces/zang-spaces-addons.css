@@ -1,0 +1,88 @@
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+
+
+.addons-table{
+  margin-top:20px;
+}
+
+.addons-table .qty-container {
+  display:flex;
+}
+
+.addons-table .qty-container .addon-qty{
+  display: inline-block;
+  text-align: center;
+  border: 1px solid #f1f1f1;
+  border-radius: 5px;
+  background-color: #f1f1f1;
+  font-size: 41px;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;
+
+}
+
+
+.addons-table .qty-container a.bt{
+  font-size: 41px;
+  font-weight: 300;
+  cursor: pointer;
+  color: #999;
+  background: none;
+  border:none;
+  outline:none;
+  text-decoration: none;
+  display:inline-block;
+  text-align: center;
+  flex:1;
+}
+
+.addons-table .qty-container a.bt.minus{
+
+}
+
+.addons-table .qty-container a.bt.plus{
+
+}
+
+
+
+
+.zsp-bottom-buttons{
+  text-align: center;
+  margin:30px 0;
+}
+
+.zsp-bottom-buttons .btn{
+  border-radius: 50px !important;
+      margin: 0 10px;
+      padding: 10px 60px;
+}
+
+.zsp-bottom-buttons .btn:hover{
+  color: white;
+    box-shadow: 0px 0px 30px rgba(0,0,0,.2);
+}
+
+.zsp-back-btn{
+  border: 1px solid #aaa;
+      color: #333 !important;
+      font-weight: 500;
+}
+
+.zsp-next-btn{
+  background-color: #c00;
+    color: white;
+    font-weight: 500;
+}

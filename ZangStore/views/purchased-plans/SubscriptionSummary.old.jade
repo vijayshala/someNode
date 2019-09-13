@@ -1,0 +1,59 @@
+.order-summary  
+  - var intervalTotal = (contractSummary.intervalTotal/100).formatDollars(2);
+  .container
+    .main-title #{localizer.get('SUMMARY')}
+    .row
+      .col-lg-6.col-md-6
+        .row
+          .col-lg-12
+            .detail-row
+              h3.pull-left.text-300 #{localizer.get('PLAN_DETAILS')}
+        .row
+          .col-lg-12
+            hr
+        each planDetail,pd in contractSummary.planDetails
+          if planDetail.value
+            .row
+              .col-lg-12
+                .detail-row
+                  .pull-left #{planDetail.key}
+                  .pull-right #{planDetail.value}
+      .col-lg-6.col-md-6
+        .row
+          .col-lg-12
+            .detail-row
+              h3.pull-left.text-300 #{localizer.get('QUANTITIES')}
+        .row
+          .col-lg-12
+            hr
+        each quantity,q in contractSummary.quantities
+          - var quantityAmount = quantity.value ? (quantity.value/100).formatDollars(2) : null
+          .row
+            .col-lg-12
+              .detail-row
+                .pull-left 
+                  span.qty #{quantity.qty}
+                  span #{quantity.key}                
+                .pull-right.amount &nbsp;
+        .row
+          .col-lg-12
+            .spacer
+        .row
+          .col-lg-12
+            .spacer
+        .row.sr-only
+          .col-lg-12
+            .detail-row
+              - var totalToShow = intervalTotal
+              - var additionalText = localizer.get('TOTAL_INCLUDES_THE_PRICES_OF_PLAN_FEATURES');
+              .pull-left.text-danger #{localizer.get('TOTAL')} (#{currency.symbol}#{currency.value.toUpperCase()})
+              .pull-right.amount.total
+                .currency #{currency.symbol}
+                .whole #{intervalTotal.split('.')[0]}
+                .decimals .#{intervalTotal.split('.')[1]}
+        .row.sr-only
+          .col-lg-12
+            .detail-row
+              .pull-left &nbsp;
+              .pull-right.text-muted.text-italic.text-300 (#{localizer.get('BILLED')} #{contractSummary.frequency})
+              p.text-muted.text-300(style="font-size:12px;") #{additionalText}

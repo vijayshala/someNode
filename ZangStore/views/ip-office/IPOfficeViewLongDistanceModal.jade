@@ -1,0 +1,35 @@
+#longDistanceRatesModal.modal(tabindex='-1', role='dialog')
+    .modal-dialog(role="document")
+        .modal-content
+            .modal-header
+                button.close(type='button', data-dismiss='modal', aria-label='Close')
+                    span(aria-hidden='true') ×
+                h4.modal-title(style='') #{localizer.get('INTERNATIONAL_LONG_DISTANCE_RATES')}
+            .modal-body
+                .row
+                    .col-md-3
+                    .col-md-6
+                        input.form-control.input-lg#long-distance-search-bar(type='text', placeholder="#{localizer.get('ENTER_COUNTRY_NAME')}")
+                br
+                .row
+                    .col-md-12
+                        .table-responsive
+                            input#long-distance-pagination(type='hidden')
+                            table.table.table-condensed#long-distance-table
+                                thead(style='color:#c00000;')
+                                    tr
+                                        th #{localizer.get('COUNTRY')}
+                                        th #{localizer.get('AREA_CODE')}
+                                        th(style='text-align:right;') #{localizer.get('RATE_MIN_STARTING_FROM_1')}
+                                tbody#long-distance-rates-table-content
+                                    tr.special-row.initial-row
+                                        td(style='text-align:center;width:100%;', colspan='3') #{localizer.get('LONG_DISTANCE_RATE_CHOOSE_COUNTRY')}
+                                    tr.special-row.loading-row(style='display:none;')
+                                        td(style='text-align:center;width:100%;', colspan='3')
+                                            img.img-responsive.center-block(src='/public_nocache/images/loading-spinner-red.svg', style='height:40px;')
+                                    tr.special-row.not-found-row(style='display:none;')
+                                        td(style='text-align:center;width:100%;', colspan='3') #{localizer.get('LONG_DISTANCE_RATE_NOT_FOUND').replace('{CUSTOMER_SUCCESS_EMAIL}', customerSuccessEmail)}
+            .modal-footer
+                p(style='text-align:left;') #{localizer.get('RATES_SUBJECT_TO_CHANGE')}
+
+script(src='/public_nocache/javascripts/ip-office/longdistancerates.js')

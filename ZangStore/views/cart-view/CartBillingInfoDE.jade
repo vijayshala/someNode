@@ -1,0 +1,78 @@
+
+h3.text-danger #{localizer.get('BILLING_INFORMATION')}
+div.billing-information
+    div.form-group
+        div.checkbox
+            label.checkbox-label         
+                input.copy-billing-address(type='checkbox' id='billingAddress.sameAsAccount' name='billingAddress.sameAsAccount', checked=billingAddress.sameAsAccount)
+                | &nbsp;#{localizer.get('SAME_AS_ACCOUNT')}
+    div.form-group
+        label  
+            span.text-danger 
+            |  * #{localizer.get('FIRMA')}
+        input.form-control(type='text', name='billingAddress.addressee' value=billingAddress.addressee)
+        span.error-msg
+    div.form-group
+        label  
+            span.text-danger 
+            |  * #{localizer.get('ADDRESS')}
+        input.form-control(type='text', name='billingAddress.address1' value=billingAddress.address1)
+        span.error-msg
+    if currentRegion.addressFormClass==0 || currentRegion.addressFormClass==1
+        div.row
+            div.col-md-6
+                div.form-group
+                    label  
+                        span.text-danger
+                        if currentRegion.addressFormClass==0
+                            |  * #{localizer.get('STATE')}
+                        else if currentRegion.addressFormClass==1
+                            |  * #{localizer.get('PROVINCE')}
+                        else
+                            |  * #{localizer.get('STATE_PROVINCE')}
+                       
+                    
+                    input.form-control(type='hidden', name='billingAddress.state' value=billingAddress.state)
+                    select.form-control(name='billingAddress.stateISO')
+                    span.error-msg
+            div.col-md-6
+                div.form-group
+                    label  
+                        span.text-danger 
+                        if currentRegion.addressFormClass==0
+                            |  * #{localizer.get('ZIP_CODE')}
+                        else if currentRegion.addressFormClass==1
+                            |  * #{localizer.get('POSTAL_CODE')}
+                        else
+                            |  * #{localizer.get('ZIP_POSTAL_CODE')}
+                    input.form-control(type='text', name='billingAddress.zip' value=billingAddress.zip)
+                    span.error-msg
+    else
+        div.row
+            div.col-md-6
+                div.form-group
+                    label  
+                        span.text-danger 
+                        |  * #{localizer.get('POSTAL_CODE')}
+                    input.form-control(type='text', name='billingAddress.zip' value=billingAddress.zip)
+                    span.error-msg
+    div.form-group
+        label  
+            span.text-danger 
+            |  * #{localizer.get('CITY')}
+        input.form-control(type='text', name='billingAddress.city' value=billingAddress.city)
+        span.error-msg
+    div.form-group
+        label  
+            span.text-danger             
+            |  * #{localizer.get('COUNTRY')}
+
+        input.form-control(type='hidden', name='billingAddress.country' value=currentRegion.name.text)
+        input.form-control(type='hidden', name='billingAddress.countryISO' value=currentRegion.countryISO)
+        .read-only-value
+            | #{currentRegion.name && currentRegion.name.resource ? localizer.get(currentRegion.name.resource) : currentRegion.name.text}
+        //- select.form-control(name='billingAddress.country')
+        //-     option(value='')  #{localizer.get('SELECT_ONE')}
+        //-     each country in countries
+        //-         option(value=country.keyValue selected=country.keyValue === billingAddress.country)= country.description
+        span.error-msg

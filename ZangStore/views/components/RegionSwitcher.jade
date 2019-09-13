@@ -1,0 +1,33 @@
+- var SUPPORTED_COUNTRIES
+.region-switcher
+  .container
+    .region-close
+      .region-sw-copy #{localizer.get('CHOOSE_REGION_WARNING')}
+      button(id="ac-ls-close", class="region-sw-close region-sw-item ")
+        span.ac-ls-close-text &times;
+    .region-sw-actions
+      select.countries-switcher#countries-switcher
+      if userInfo
+        select.langauge-switcher#langauge-switcher
+        //- each region in activeRegions
+        //-     option(value=region.shortCocde, data=JSON.stringify(region), selected=region.shortCocde==viewerOrigin) #{localizer.get(region.name.resource)}
+        //- option(value="CA") Canada
+      //- .ac-ls-dropdown.ac-ls-actions-item.select-collapsed
+        .ac-ls-dropdown-select.ac-ls-dropdown-nav-item          
+          span#ac-ls-dropdown-title
+            span.ac-ls-flag.ac-ls-flag-ca
+            span.ac-ls-dropdown-copy #{'Canada'}
+            span#ac-ls-dropdown-icon.ac-ls-dropdown-icon.ac-ls-icon.ac-ls-icon-chevron-down.caret
+        .ac-ls-dropdown-options#ac-ls-dropdown-options
+          ul.ac-ls-itemlist
+            span.ac-ls-dropdown-icon.ac-ls-icon.ac-ls-icon-chevron-up
+            li.ac-ls-dropdown-option.ac-ls-dropdown-nav-item#ac-ls-dropdown-option-1
+              a(href="/ca/")                
+                span.ac-ls-flag.ac-ls-flag-ca
+                span.ac-ls-dropdown-copy  #{'Canada'}           
+            li.ac-ls-dropdown-option.ac-ls-dropdown-nav-item#ac-ls-dropdown-option-country-region
+              span.ac-ls-flag.ac-ls-flag-default
+              span.ac-ls-dropdown-copy #{localizer.get('OTHER_COUNTRY_REGION')}
+      a(id="region-sw-continue", class="btn region-sw-item region-sw-continue", role="button", href="javascript:;") #{localizer.get('CONTINUE')} 
+      div(class="btn region-sw-item region-sw-load")
+          img(src="/public_nocache/images/loading-spinner-grey.gif", height='16') 

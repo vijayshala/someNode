@@ -1,0 +1,17 @@
+.sellable-addons {  
+  padding: 10px;
+  /* border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd; */
+  display: grid;  
+  grid-gap: 8px 20px;
+  grid-template-columns: auto auto;
+  clear: both;
+}
+
+
+.sellable-addons .checkbox-div.checked {
+  background-image: url(/images/check-white.svg);
+  background-color: #304050;
+  color: #fff;
+}
+

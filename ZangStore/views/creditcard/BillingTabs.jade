@@ -1,0 +1,13 @@
+block styles
+  link(href='/public_nocache/stylesheets/creditcard/creditcard-list.css', rel='stylesheet')
+
+div.row.topmargin
+  div.col-md-12
+    ul.nav.nav-tabs.nav-justified
+      li(class=active === 'card' ? 'active' : '')
+        a(href='/' + region.toLowerCase() +'/billingaccount/creditcard') #{localizer.get('CREDIT_CARD')}
+      li(class=active === 'purchaseorder' ? 'active' : '')
+        a(href='/' + region.toLowerCase() +'/billingaccount/po') #{localizer.get('PURCHASE_ORDER')}
+        
+    
+    

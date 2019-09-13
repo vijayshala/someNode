@@ -1,0 +1,107 @@
+.zs-stepper{
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.zs-stepper .logo{
+  margin:5px 0;
+}
+
+.zs-stepper .logo img{
+  width:100px;
+  margin:0 auto;
+}
+
+.zs-step-title{
+  color:white;
+  font-size:31px;
+  font-weight: 300;
+}
+
+.zs-steps{
+  display: flex;
+}
+
+.zs-steps .step{
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.zs-steps .step.passed{
+  opacity: .5;
+}
+
+.zs-steps .step.passed .circle{
+  border: 1px solid #ddd;
+    background-color: #ddd;
+}
+
+.zs-steps .step .circle{
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  margin: 10px auto;
+  position: relative;
+  background-color: inherit;
+  border:1px solid #fff;
+}
+
+.zs-steps .step .circle.selected{
+  border:1px solid #fff;
+  background-color: #fff;
+}
+
+.zs-steps .step .circle .inner{
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #fff;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.zs-steps .step .circle.selected .inner{
+  background-color: #000;
+}
+
+.zs-steps .step .title{
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #fff;
+}
+
+.zs-steps .step .triangle{
+  width: 20px;
+      height: 20px;
+      background-color: none;
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-45deg);
+}
+
+.zs-steps .step .triangle.selected{
+  background-color: #fff;
+}
+
+@media (max-width:1440px) {
+  .zs-steps {
+    margin-top:-30px;
+  }
+}
+
+
+@media (max-width:768px) {
+  .zs-steps {
+    margin-top:-30px;
+  }
+}

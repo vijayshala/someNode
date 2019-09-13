@@ -1,0 +1,13 @@
+extends ../../../index
+
+block styles
+  link(href='/public_nocache/marketing/us/css/index.css', rel='stylesheet')
+
+block mainbody  
+  if selectedLanguage=='en-US'
+    include ./en-US/index.html
+  else  
+    include ./en-US/index.html
+
+  include ../../../ip-office/IPOfficeViewLongDistanceModal
+

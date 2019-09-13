@@ -1,0 +1,75 @@
+.titles {
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+
+.application-form .form-control{
+  border: none;
+  background-color: inherit;
+  box-shadow: none;
+  border-bottom: 2px solid #ddd;
+  padding: 5px;
+  font-size: 19px;
+  color: #000;
+}
+
+.application-form .form-group label{
+  font-weight: 400;
+    color: #999;
+    padding-left: 5px;
+    font-size:12px;
+}
+
+.application-form span.error-msg {
+  color: #c00;
+  font-size: 12px;
+}
+
+.application-form .checkbox span.checkbox-label{
+  font-size: 13px;
+  color: #000;
+  font-weight: 500;
+  margin-left: 25px;
+}
+
+.application-form .checkbox input[type='checkbox']{
+  margin-left: 0;
+    width: 18px;
+    height: 18px;
+    margin-top: -1px;
+}
+
+.application-form label.extra-fields-label{
+  font-weight: 500;
+  color:#000;
+}
+
+
+.application-form .radio{
+  display:inline-block;
+  width:60px;
+}
+
+.application-form .radio input[type='radio']{
+  width: 18px;
+  height: 18px;
+  margin-left:0;
+  margin-top:2px;
+}
+
+
+.application-form .radio span {
+  vertical-align: middle;
+  font-size:16px;
+  margin-left:20px;
+}
+
+.application-form .question-container{
+  padding:10px 0;
+}
+
+
+.application-form .question-container:hover{
+  background-color:#f8f8f8;
+}

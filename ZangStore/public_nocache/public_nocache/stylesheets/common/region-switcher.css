@@ -1,0 +1,228 @@
+.region-switcher {
+  display:none;
+  position:relative;  
+  width:100%;
+  font-size:17px;
+  background-color:#444;
+  margin: auto;
+  color: #fff;
+}
+.region-switcher.show {
+  display: block;
+}
+
+.region-switcher .region-sw-copy {
+  font-size:12px;
+  line-height:1.5;
+  font-weight:400;
+  letter-spacing:0em;  
+  padding-right:2%;
+  display:inline-block;
+  word-break:initial;
+  padding: 20px;
+}
+
+.region-switcher .region-sw-actions{
+  display:inline-flex;
+  -webkit-box-flex:1;
+  -webkit-flex:1;
+  -ms-flex:1;
+  flex:1;
+  padding: 10px;
+}
+
+.region-switcher .countries-loader {
+
+}
+
+.region-sw-actions .region-sw-item{
+  display:inline-block;
+  margin-left:17px
+}
+
+.region-sw-actions .region-sw-continue{  
+  text-decoration:none;
+  text-transform: uppercase;
+  border: 1px solid #4BAA39;
+  background-color: #4BAA39;
+  color: #fff;
+  margin: 0;
+  margin-left: 17px;
+  width: 8em;
+  height: 2.6em;
+}
+
+.region-sw-actions .region-sw-load {  
+  background-color: #f1f1f1;
+  color: #000;
+  margin: 0;
+  margin-left: 17px;
+  width: 8em;
+  height: 2.6em;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.region-switcher .region-sw-close{
+  font-size:36px;
+  line-height:20px;
+  font-weight: lighter;
+  color:#999;
+  display:block;
+  width:auto;
+  height:20px;
+  margin-top:auto;
+  margin-bottom:auto;
+  background-color: transparent;
+  border: 0;
+}
+/* .region-switcher .region-sw-close::before,
+.region-switcher .region-sw-close::after{  
+  color:inherit;
+  display:inline-block;
+  font-style:normal;
+  font-weight:inherit;
+  font-size:inherit;
+  line-height:1;
+  text-decoration:underline;
+  position:relative;
+  z-index:1;
+  alt:''
+}
+.region-switcher .region-sw-close::before,
+.region-switcher .region-sw-close::after{
+  text-decoration:none
+}
+.region-switcher .region-sw-close::before{
+  display:none
+}
+.region-switcher .region-sw-close::before,
+.region-switcher .region-sw-close::after{
+  
+} */
+.region-sw-actions .select2-container .select2-selection--single {
+  height: initial;
+}
+.country-select2-option {
+  white-space: nowrap;
+}
+
+.country-select2-option .country-flag {
+  display: inline-block;
+  width: 32px;
+  margin-right: 5px !important;
+}
+
+.country-select2-option .country-flag img{
+  width: 32px;
+  height: 32px;
+  border-radius: 50px;
+}
+
+.region-switcher select { 
+  width: 250px;
+  height: 2em;
+  color: #333;
+  background: white;
+  margin-left: 10px;
+}
+
+
+.navbar-region {
+  display: inline-block;
+  line-height: 51px;
+  padding: 15px 5px;
+}
+
+.navbar-region img {
+  width: 22px;
+}
+.nav-flag-icon:hover {
+  border: 1px;
+}
+
+.region-switcher .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.choose-your-region {
+  /* padding: 50px; */
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+.container.change-langauge {
+  text-align: center;
+}
+.container.change-langauge .langauge-switcher{
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.choose-your-region .region_link  {
+  white-space: nowrap;
+  font-size: 18px;
+  padding: 10px;
+  margin-right: 20px;
+}
+
+.choose-your-region .region_link .country-flag {
+  display: inline-block;
+  width: 32px;
+  margin-right: 5px !important;
+}
+
+.choose-your-region .region_link .country-flag img{
+  width: 32px;
+  height: 32px;
+  border-radius: 50px;
+}
+
+.footer-choose-region a {
+  color: #A2A2A4;
+  font-weight: 300;
+}
+
+.footer-choose-region a img {
+  margin-right: 10px;
+}
+
+.region-close {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 650px) {
+  .region-switcher .region-sw-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .region-switcher select { 
+    margin-left: 0px;
+    margin: .3em;
+  }
+
+  .region-sw-actions .region-sw-continue, .region-sw-load {
+    margin-left: 0px !important;
+  }
+
+}
+
+@media (max-width: 1200px) {
+  .region-switcher .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+ .region-switcher .region-sw-actions {
+    display: inline-flex;
+    justify-content: center;
+  }
+
+}

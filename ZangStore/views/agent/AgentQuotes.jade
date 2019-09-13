@@ -1,0 +1,23 @@
+extends ../index
+
+block styles
+  link(href='/public_nocache/stylesheets/partner/partner.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/partner/partner-portal.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/partner/partner-application.css', rel='stylesheet')
+
+block mainbody
+  include ./AgentInfoTop
+  .top-container.no-top-padding
+    .container
+      .row
+        .col-lg-12
+          //- .name #{JSON.stringify(preloadedData)}
+          input(type='hidden', id='preloadedData' value=JSON.stringify(preloadedData))
+          .offer-wizard-app
+            
+                      
+block scripts
+  script(src='/public_nocache/libs/jquery-ui/jquery-ui.min.js')
+  script(src='/public_nocache/libs/momentjs/moment.min.js')
+  script(src='/public_nocache/javascripts/partner/partner-portal.js')
+  script(src='/public_nocache/javascripts/partner/partner-orders.js')

@@ -1,0 +1,37 @@
+extends ../index
+block styles
+  
+block mainbody
+  .bg-white
+    div.row
+      div.col-md-12
+        h1= title
+    div.row
+      div.col-md-12
+        form(method='GET', action='')
+          .input-group
+            input.form-control(type='text', placeholder='Search by name or email...')
+            span.input-group-btn
+              button.btn.btn-default(type='submit') Search
+    .row
+      .col-md-12
+        table.table.table-bordered
+          thead
+            tr
+              th Name
+              th Email
+              th Access Level
+              th Actions
+          tbody
+            each user, u in users
+              tr
+                td #{user.account.displayName}
+                td #{user.account.username}
+                td
+                  select.form-control(disabled)
+                  each userLevel, ul in userLevels
+                    option(value=userLevel selected=userLevel === user.accessLevel) #{ul}
+                td &nbsp;
+            
+        
+  

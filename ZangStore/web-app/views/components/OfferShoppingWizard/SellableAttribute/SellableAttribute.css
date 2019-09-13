@@ -1,0 +1,65 @@
+.sellable-addon {
+  line-height: 20px;  
+  /* display: flex;
+  align-items: center; */
+
+}
+
+.sellable-addon.with-price {
+/*
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+*/
+}
+
+
+
+.sellable-addon .addon-label {
+  float: left;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+.sellable-addon .quantity-input {
+  float: right;
+  width: 60px;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 0px;
+  text-align: center;
+  margin-right: 5px;
+}
+
+.sellable-addon .react-numeric-input b {
+  right: 7px !important;
+}
+
+.sellable-addon .checkbox-div {
+  /* float: left; */
+  border-radius: 3px;
+}
+
+.sellable-addon .price-component {
+  float: right;
+  margin-top:0px;
+}
+
+
+.sellable-addon .price-component .value{
+  font-size: 20px;
+  font-weight: 600;
+  vertical-align: initial;
+}
+.sellable-addon .price-component .decimals,
+.sellable-addon .price-component .symbol {
+  font-size: 12px;
+  font-weight: 500;
+  margin-right: 2px;  
+}
+
+.sellable-addon.disabled .price-component,
+.sellable-addon.disabled .addon-label {
+  color: #aaa;
+}

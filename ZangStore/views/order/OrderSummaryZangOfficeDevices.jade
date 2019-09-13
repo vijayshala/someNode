@@ -1,0 +1,55 @@
+.order-summary
+  .container
+    .main-title #{localizer.get('ORDER_SUMMARY')}
+    .row
+      .col-md-8.col-md-offset-2
+        .row
+          .col-lg-12.col-md-12
+            .detail-row
+              h3.pull-left.text-300 #{localizer.get('DEVICES')}
+        .row
+          .col-lg-12
+            hr
+        each item,it in order.items
+          - var itemSubTotal = (item.subtotal/100).formatDollars(2);
+          .row
+            .col-lg-12.col-md-12
+              .detail-row
+                .pull-left
+                  span.qty #{item.quantity}
+                  span #{item.label} @ #{currency.symbol}#{(item.price/100).formatDollars(2)}             
+                .pull-right.amount
+                  .currency #{currency.symbol}
+                  .whole #{itemSubTotal.split('.')[0]}
+                  .decimals .#{itemSubTotal.split('.')[1]}
+        .row
+          .col-lg-12
+            .spacer
+        .row
+          .col-lg-12.col-md-12
+            - var totalBeforeTax = (order.metadata.totalBeforeTax/100).formatDollars(2)
+            .detail-row
+              .pull-left #{localizer.get('SUB_TOTAL')}
+              .pull-right.amount
+                .currency #{currency.symbol}
+                .whole #{totalBeforeTax.split('.')[0]}
+                .decimals .#{totalBeforeTax.split('.')[1]}
+        .row
+          .col-lg-12.col-md-12
+            - var tax = (order.metadata.tax/100).formatDollars(2)
+            .detail-row
+              .pull-left #{localizer.get('TAXES')}
+              .pull-right.text-muted.text-italic.text-300.amount
+                .currency #{currency.symbol}
+                .whole #{tax.split('.')[0]}
+                .decimals .#{tax.split('.')[1]}
+        .row
+          .col-lg-12.col-md-12
+            - var totalAfterTax = (order.metadata.totalAfterTax/100).formatDollars(2)
+            .detail-row
+              .pull-left.text-danger #{localizer.get('TOTAL')} (#{currency.symbol}#{currency.value.toUpperCase()})
+              .pull-right.amount.total
+                .currency #{currency.symbol}
+                .whole #{totalAfterTax.split('.')[0]}
+                .decimals .#{totalAfterTax.split('.')[1]}
+            

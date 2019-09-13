@@ -1,0 +1,79 @@
+
+.container.pocontainer
+    .row.col-lg-4
+      div.form-group
+        label  *#{localizer.get('FIRST_NAME')}
+        input.form-control(type='text', name='contact.firstName', maxlength=255,  disabled=(pos.contact ? true : false) value=(pos.contact ? pos.contact.firstName : ""))
+        span.error-msg
+
+      div.form-group
+        label  *#{localizer.get('LAST_NAME')}
+        input.form-control(type='text', name='contact.lastName', maxlength=255,  disabled=(pos.contact ? true : false) value=(pos.contact ? pos.contact.lastName : "" ))
+        span.error-msg
+
+      div.form-group
+        label  *#{localizer.get('CONTACT_PHONE_NUMBER')}
+        input.form-control(type='text', name='contact.phone', maxlength=255,  disabled=(pos.contact ? true : false) value=(pos.contact ? pos.contact.phone : "" ))
+        span.error-msg
+
+      div.form-group
+        label  *#{localizer.get('EMAIL_ADDRESS')}
+        input.form-control(type='text', name='contact.email', maxlength=255,  disabled=(pos.contact ? true : false) value=(pos.contact ? pos.contact.email : "" ))
+        span.error-msg
+
+    .row.col-lg-4
+      div.form-group
+        label *#{localizer.get('PO_NUMBER')}
+        input.form-control(type='text', name='purchaseOrderRefNumber', maxlength=255,  disabled=(pos.contact ? true : false) value=(pos.refNumber ? pos.refNumber : ""))
+        span.error-msg
+
+      div.form-group
+        label *#{localizer.get('COMPANY_NAME')}
+        input.form-control(type='text', name='company.name', maxlength=255,  disabled=(pos.contact ? true : false) value=(pos.company ? pos.company.name : ""))
+        span.error-msg
+
+      div.form-group
+        label *#{localizer.get('COMPANY_IS_INCORPORATED')}
+        br
+        label.radio-label
+            input(name='company.isIncorporated' type='radio', value='true' disabled=(pos.contact ? true : false) checked=(pos.company ? pos.company.isIncorporated==true : false ))
+            | &nbsp;#{localizer.get('YES')}
+        label.radio-label
+            input(name='company.isIncorporated' type='radio', value='false' disabled=(pos.contact ? true : false) checked=(pos.company ? pos.company.isIncorporated==false : false ))
+            | &nbsp;#{localizer.get('NO')}
+        br
+        span.error-msg
+        
+    .row.col-lg-4
+      div.form-group
+        label *#{localizer.get('ADDRESS')}
+        input.form-control(type='text', name='billingAddress.address1', maxlength=255,  disabled=(pos.contact ? true : false) value=(pos.billingAddress ? pos.billingAddress.address1 : ""))
+        span.error-msg
+
+      div.form-group
+        label *#{localizer.get('CITY')}
+        input.form-control(type='text', name='billingAddress.city', maxlength=255,  disabled=(pos.contact ? true : false) value=(pos.billingAddress ? pos.billingAddress.city : ""))
+        span.error-msg
+
+      div.form-group
+          label  *#{localizer.get('STATE_PROVINCE')}
+          select.form-control(name='billingAddress.state' value=(pos.billingAddress ? pos.billingAddress.state : "") disabled=(pos.contact ? true : false))
+            option(value='') #{localizer.get('SELECT_ONE')}
+                each country, i in states
+                  option(value=country.keyValue disabled=(pos.contact ? true : false) selected=country.keyValue ===(pos.billingAddress ? pos.billingAddress.state : null))= country.description
+          span.error-msg
+
+      div.form-group
+        label *#{localizer.get('ZIP_POSTAL_CODE')}
+        input.form-control(type='text', name='billingAddress.zip', maxlength=255,  disabled=(pos.contact ? true : false) value=(pos.billingAddress ? pos.billingAddress.zip : ""))
+        span.error-msg
+
+      div.form-group
+        label *#{localizer.get('COUNTRY')}
+
+      select.form-control(name='billingAddress.country' disabled=(pos.contact ? true : false) )
+        option(value='') #{localizer.get('SELECT_ONE')}
+            each country, i in countries
+              option(value=country.keyValue disabled=(pos.contact ? true : false) selected=country.keyValue ===(pos.billingAddress ? pos.billingAddress.country : null))= country.description
+        span.error-msg
+

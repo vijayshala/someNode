@@ -1,0 +1,81 @@
+.sellable-item {  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0px 20px 0px 0px;  
+  padding: 10px;
+  border-radius: 2px;
+  min-width: 200px;
+  max-width: 200px;
+  border: 1px solid transparent;  
+}
+
+.sellable-item.active {
+
+}
+.sellable-item.active,
+.sellable-item:focus {
+  border: 1px solid #304050;  
+  box-shadow: 5px 5px 20px #bbb;
+}
+
+.sellable-item:hover {
+  border: 1px solid #304050;    
+}
+
+.sellable-item .addon-label {
+  font-weight: 700;
+  min-height: 40px;
+}
+
+.sellable-item .addon-image {
+  min-height: 110px;
+}
+
+.sellable-item .addon-image img{
+  height: 100px;
+  max-width: 200px;
+}
+
+.sellable-item .quantity-input {
+  float: right;
+  width: 110px;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 5px;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.sellable-item .react-numeric-input b {
+  right: 12px !important;
+}
+
+.sellable-item .checkbox-div {
+  /* float: left; */
+  border-radius: 3px;
+}
+
+.sellable-item .addon-price {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.sellable-item .price-component {
+  float: right;
+  margin-top:0px;
+}
+
+
+.sellable-item .price-component .value{
+  font-size: 20px;
+  font-weight: 600;
+  vertical-align: initial;
+}
+.sellable-item .price-component .decimals,
+.sellable-item .price-component .symbol {
+  font-size: 12px;
+  font-weight: 500;
+  margin-right: 2px;  
+}

@@ -1,0 +1,37 @@
+.open-editor-btn{
+  position:fixed;
+  bottom:10px;
+  right:10px;
+  border-radius:50px !important;
+  padding:15px 20px;
+  font-size:21px;
+  z-index:1000;
+}
+
+.editor{
+  display:none;
+  position:absolute;
+  top:0;
+  left:0;
+  height:100vh;
+  width:100vw;
+  z-index:1001;
+}
+
+.editor .buttons{
+  position:fixed;
+  bottom:5px;
+  right:5px;
+  z-index:1002;
+}
+
+
+.editor .htmlEditor{
+  position: absolute;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}

@@ -1,0 +1,141 @@
+extends ../index
+
+block styles
+  link(href='/public_nocache/stylesheets/purchaseorders/view-puchase-order.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/order-view/order-view.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/order-view/order-summary.css', rel='stylesheet')  
+  
+block mainbody
+  br
+  .container
+    .row
+      .col-md-12
+        h1.text-center.text-capitalize.text-300.text-white #{localizer.get('PURCHASE_ORDER')}
+    .row
+      .col-lg-12
+        include ../components/BackButton
+        br
+        br
+        br
+
+  - var pos = account.purchaseOrder
+  input(type='hidden' name='purchase-order' value=(JSON.stringify(account)))
+  input(type='hidden' name='selectedPOStateProvince' value="United States")
+  input(type='hidden' name='states' value=JSON.stringify(states))
+  input(type='hidden' name='postate' value=(pos.billingAddess ? pos.billingAddress.state : undefined))
+  .order-summary   
+    .container
+        .successMSG 
+            h4 Purchase Order Successfully Updated 
+        .failMSG 
+            h4 Saving Purchase Order Failed
+        div.purchaseorder
+            h4 #{localizer.get('STATUS')}:
+            select.form-control.status-form(name='po-status' class='access-level' title="Change this User's access level")
+                option(value="PENDING" selected=pos.status==="PENDING") #{localizer.get('PENDING')}
+                option(value="APPROVED" selected=pos.status==="APPROVED") #{localizer.get('APPROVED')}
+                option(value="REJECTED" selected=pos.status==="REJECTED") #{localizer.get('REJECTED')}
+        .row
+            .col-lg-4
+                span #{localizer.get('COMPANY')}
+                hr
+                div.form-group
+                    label *#{localizer.get('COMPANY_NAME')}
+                    input.form-control(type='text', name='company.name', maxlength=255, value=(pos.company ? pos.company.name : ""))
+                    span.error-msg
+
+                div.form-group
+                    label *#{localizer.get('PO_NUMBER')}
+                    input.form-control(type='text', name='purchaseOrderRefNumber', maxlength=255, value=(pos.refNumber ? pos.refNumber : ""))
+                    span.error-msg
+
+                div.form-group
+                    label *#{localizer.get('COMPANY_IS_INCORPORATED')}
+                    br
+                    label.radio-label
+                        input(name='company.isIncorporated' type='radio', value='true' checked=(pos.company ? pos.company.isIncorporated==true : false ))
+                        | &nbsp;#{localizer.get('YES')}
+                    label.radio-label
+                        input(name='company.isIncorporated' type='radio', value='false' checked=(pos.company ? pos.company.isIncorporated==false : false ))
+                        | &nbsp;#{localizer.get('NO')}
+                    br
+                    span.error-msg
+
+                div.form-group
+                    label *#{localizer.get('LIMIT')} (USD) :
+                    input.form-control(name='purchase-order-limit' type='text', oninput="this.value = this.value.replace(/[^0-9]/g, '');", maxlength=255, value=(pos.approvedLimit ? pos.approvedLimit : ""))  
+                    span.error-msg  
+            
+                .porow
+                    span #{localizer.get('UPDATED')}
+                    p #{moment(pos.updated.on).format(CONSTANTS.UI_ONLY_DATE_FORMAT)}
+
+            .col-lg-4
+                span #{localizer.get('CONTACT')}
+                hr
+                div.form-group
+                    label  *#{localizer.get('FIRST_NAME')}
+                    input.form-control(type='text', name='contact.firstName', maxlength=255, value=(pos.contact ? pos.contact.firstName : ""))
+                    span.error-msg
+
+                div.form-group
+                    label  *#{localizer.get('LAST_NAME')}
+                    input.form-control(type='text', name='contact.lastName', maxlength=255, value=(pos.contact ? pos.contact.lastName : "" ))
+                    span.error-msg
+
+                div.form-group
+                    label  *#{localizer.get('CONTACT_PHONE_NUMBER')}
+                    input.form-control(type='text', oninput="this.value = this.value.replace(/[^0-9]/g, '');", name='contact.phone', maxlength=255, value=(pos.contact ? pos.contact.phone : "" ))
+                    span.error-msg
+
+                div.form-group
+                    label  *#{localizer.get('EMAIL_ADDRESS')}
+                    input.form-control(type='email', name='contact.email', maxlength=255, value=(pos.contact ? pos.contact.email : "" ))
+                    span.error-msg
+
+        
+            .col-lg-4
+                span #{localizer.get('BILLING_INFORMATION')}
+                hr
+                div.form-group
+                    label *#{localizer.get('ADDRESS')}
+                    input.form-control(type='text', name='billingAddress.address1', maxlength=255, value=(pos.billingAddress ? pos.billingAddress.address1 : ""))
+                    span.error-msg
+
+                div.form-group
+                    label *#{localizer.get('CITY')}
+                    input.form-control(type='text', name='billingAddress.city', maxlength=255, value=(pos.billingAddress ? pos.billingAddress.city : ""))
+                    span.error-msg
+
+                div.form-group
+                    label  *#{localizer.get('STATE_PROVINCE')}
+                    select.form-control(name='billingAddress.state')
+                        option(value='') #{localizer.get('SELECT_ONE')}
+                        each state, i in states
+                            option(value=state.name  selected=state.name ===(pos.billingAddress ? pos.billingAddress.state : null))= state.name
+                    span.error-msg
+
+                div.form-group
+                    label *#{localizer.get('ZIP_POSTAL_CODE')}
+                    input.form-control(type='text', name='billingAddress.zip', maxlength=255, value=(pos.billingAddress ? pos.billingAddress.zip : ""))
+                    span.error-msg
+
+                div.form-group
+                    label *#{localizer.get('COUNTRY')}
+        
+                select.form-control(name='billingAddress.country')
+                  option(value='') #{localizer.get('SELECT_ONE')}
+                    each country, i in countries
+                      if country.name && country.name.text && country.countryISO != 'DE'
+                        option(value=`${country.name.text}-${country.countryISO}`  selected=country.name.text ===(pos.billingAddress ? pos.billingAddress.country : null))= country.name.text
+                span.error-msg
+
+        .row.purchaseorder
+            p.loader
+            a.btn.btn-primary.btn-space#savepo #{localizer.get('SAVE')}
+        p
+            * #{localizer.get('THIS_FIELD_IS_REQUIRED')}
+
+block scripts
+  script(src='/public_nocache/javascripts/purchaseorders/purchaseorder-list.js')
+  script(src='/public_nocache/javascripts/common/countries-states.js')

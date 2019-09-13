@@ -1,0 +1,34 @@
+.top-container.agent
+  .container
+    .row
+      .col-md-12.col-lg-12
+        h1.text-danger.text-500.text-center #{localizer.get('AGENT_PORTAL')}
+.top-container
+  .container
+    .row.partner-info
+      .col-lg-12.col-md-12
+        h1.text-300.text-center #{agent.user.account.displayname}
+        h4.text-300.text-center #{agent.user.account.username}
+        h4.text-300.text-center #{localizer.get('COMPANY')}:  #{partner.fields.companyName}
+if agent.active && partner.status === CONSTANTS.PARTNER_STATUS_TYPES.APPROVED
+  .top-container.partner-link-container
+      .container
+        .row
+          .col-lg-12
+              h5.text-300.text-uppercase #{localizer.get('AGENTS_PERSONAL_CONNECTION_LINK')}:
+              .partner-link
+                input.form-control.input-lg#partnerLink(data-toggle="tooltip" title=`${localizer.get('CLICK_TO_COPY_THIS_LINK')}` type='text' readonly value=siteURL + '/referrallink/' + agent.code)      
+.top-container.tabs-navigation
+  .container
+    .row
+      .col-md-12
+        ul.nav.nav-tabs.nav-justified
+          li(class=active === 'info' ? 'active' : '')
+            a(href='/partners/' + partner._id + '/agents/' + agent._id + '/info') #{localizer.get('AGENT_DETAILS')}
+          li(class=active === 'orders' ? 'active' : '')
+            a(href='/partners/' + partner._id + '/agents/' + agent._id + '/orders') #{partner.type === CONSTANTS.PARTNER_TYPES.referral ? localizer.get('REFERRALS') : localizer.get('SALES')}
+          if partner.type === CONSTANTS.PARTNER_TYPES.sales || partner.type === CONSTANTS.PARTNER_TYPES.msa
+            li(class=active === 'customers' ? 'active' : '')
+              a(href='/partners/' + partner._id + '/agents/' + agent._id + '/customers') #{localizer.get('CUSTOMERS')}
+            li(class=active === 'quotes' ? 'active' : '')
+              a(href='/partners/' + partner._id + '/agents/' + agent._id + '/quotes') #{localizer.get('QUOTES')}

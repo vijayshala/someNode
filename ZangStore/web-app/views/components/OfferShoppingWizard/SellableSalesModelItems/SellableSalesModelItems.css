@@ -1,0 +1,27 @@
+.sellable-salesmodel-items {  
+  padding: 10px;
+  /* border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd; */
+  display: grid;  
+
+}
+
+.sellable-salesmodel-items .checkbox-div.checked {
+  background-image: url(/images/check-white.svg);
+  background-color: #304050;
+  color: #fff;
+  margin: 4px 0 0 10px;
+}
+
+
+/* mobile */
+@media (max-width:768px){
+
+}
+
+/* ipad */
+@media (max-width:1024px){
+  .sellable-salesmodel-items {
+    padding: 0px;
+  }
+}

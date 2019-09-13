@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  input(type='hidden' name='activeRegions' value=JSON.stringify(activeRegions))
+  script(src='/public_nocache/javascripts/common/region-switcher.js')
+  input(type='hidden' name='requestId' value=requestId)
+  input(type='hidden' name='APP_VERSION' value=CONSTANTS.APP_VERSION)
+  input(type='hidden' name='CHECK_OUT_GENERAL_FATAL_ERROR' value=localizer.get('CHECK_OUT_GENERAL_FATAL_ERROR').replace(/\{SUPPORT_EMAIL\}/g, CONSTANTS.SUPPORT_EMAILS.CLOUD_SUPPORT))
+  input(type='hidden' name='APPLICATION_GENERAL_FATAL_ERROR' value=localizer.get('APPLICATION_GENERAL_FATAL_ERROR').replace(/\{SUPPORT_EMAIL\}/g, CONSTANTS.SUPPORT_EMAILS.CLOUD_SUPPORT))
+  input(type='hidden' name='LOCALIZER' value=JSON.stringify(localizer.messages))
+  input(type='hidden' name='DEFAULT_LOCALE' value=JSON.stringify(defaultLocale))
+  input(type='hidden' name='VIEWER_LANGUAGE' value=selectedLanguage)
+  
+  div.header-wrapper
+    include ./components/RegionSwitcher
+    include ./components/MainMenu
+  
+  .page-loader-switcher(style="position: fixed;top: 0;width: 100vw;height: 100vh;display: none;justify-content: center;z-index: 100;background-color: #fff;")
+    img(src="/public_nocache/images/loading-spinner-blue.svg")
+  //pre #{JSON.stringify(userInfo, null, 4)}
+  //pre #{JSON.stringify(partnerInfo, null, 4)}
+  //pre #{JSON.stringify(partnerConnection, null, 4)}
+  //pre #{JSON.stringify(developers, null, 4)}
+  //pre #{siteURL}
+  block mainbody  
+  //include ./components/Footer
+

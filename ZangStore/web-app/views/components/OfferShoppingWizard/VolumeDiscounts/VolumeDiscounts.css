@@ -1,0 +1,27 @@
+.volume-discount-table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    border: none;
+    margin-top: 20px;
+    color: #000;
+    width: 100%;
+}
+
+.volume-discount-table  thead th,
+.volume-discount-table  td {
+    vertical-align: top;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+    background: white;
+}
+
+.volume-discount-table  thead th {
+    background: #f3f3f3;
+}
+
+.volume-discount-table tr td:first-child {
+    width: 100px;
+    color: #333;
+}
+

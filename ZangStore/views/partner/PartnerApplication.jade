@@ -1,0 +1,67 @@
+extends ../index
+
+block styles
+  link(href='/public_nocache/stylesheets/partner/partner.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/partner/partner-application.css', rel='stylesheet')
+
+block mainbody
+  input(type='hidden' name='states' value=JSON.stringify(data.states))
+  input(type='hidden' name='ERROR_CODES' value=JSON.stringify(CONSTANTS.ERROR_CODES))
+  input(type='hidden', name='_csrf', value=_csrf)
+  form.application-form(method="POST" action="/partners/" + partnerType + "/application" id="PartnerApplicationForm")    
+    input(type="hidden" name="partnerType" value=partnerType data-label="Partner Program")
+    input(type='hidden' name='invitation_id' value=data.invitation._id)
+    .top-container.agent(style="background-image:url('" + data.page.metadata.partners[partnerType].backgroundImage + "')")
+      .container
+        .row
+          .col-lg-12
+            h1.text-center.text-danger.zs-main-title #{data.partner.fields.companyName} #{localizer.get('SALE_AGENT_REGISTRATION')}
+            h3.text-center.text-300 #{localizer.get('SIMPLY_FILL_OUT_THE_FORM_BELOW_TO_BECOME_A_SALES_AGENT_FOR')} #{data.partner.fields.companyName}
+    - var fields = {}
+    - var fieldsUserInfo = { firstName: userInfo.firstName, lastName: userInfo.lastName, emailAddress: userInfo.username }
+    include ./NewPartnerFields
+    .top-container
+      .container
+        .row
+          .col-lg-12
+            .zo-error-prompt(id='errorPrompt')
+              i.fa.fa-exclamation-circle
+              span.checkoutAlert
+        .row
+          .col-lg-6 &nbsp;
+          .col-lg-6
+            br
+            .form-group.hidden
+              .checkbox
+                label       
+                  input(type='checkbox' name="tosAgree" style="margin-top:3px;") 
+                  span.checkbox-label &nbsp;#{localizer.get('I_HAVE_READ_AND_AGREE_WITH_THE')}&nbsp;
+                  a.text-capitalize.tos-link(href="https://www.zang.io/headless/legal/privacy-statement" target="_blank") #{localizer.get('ZANG_PRIVACY_STATEMENT')}
+                  span.error-msg(style='display:block')
+            .form-group.hidden
+              .checkbox
+                label       
+                  input(type='checkbox' name="agentProgramAgree" style="margin-top:3px;") 
+                  span.checkbox-label &nbsp;I have read and accept&nbsp;
+                  a.text-capitalize.tos-link(href=data.page.metadata.partners[partnerType].tosLink target="_blank") #{partnerType} #{localizer.get('AGENT_PROGRAM_TERMS_OF_SERVICE')}
+                  span.error-msg(style='display:block')
+            .row
+              .col-lg-12
+                br
+                button.btn.btn-danger.btn-lg.pull-right(id="SubmitBtn"  type="submit") #{localizer.get('SUBMIT_APPLICATION')}
+                button.btn.btn-danger.btn-lg.pull-right(style='display:none' id="LoadingBtn" ) #{localizer.get('SUBMITTING')}...
+            .row.hidden
+              .col-lg-12
+                br
+                p.hint #{data.page.metadata.partners[partnerType].applicationFormHint}
+  include ../components/ProductTermsModal
+  - var processTitle = localizer.get('PROCESSING')
+  - var processMessage = localizer.get('SUBMITTING_YOUR_APPLICATION') + "..."
+  include ../components/ProcessModal
+                  
+          
+
+block scripts
+  script(src='/public_nocache/libs/formatter/jquery.formatter.min.js')
+  script(src='/public_nocache/javascripts/common/countries-states.js')
+  script(src='/public_nocache/javascripts/partner/partner-application.js')

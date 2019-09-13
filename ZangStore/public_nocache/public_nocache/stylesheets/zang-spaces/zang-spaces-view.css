@@ -1,0 +1,487 @@
+
+*{
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: #fff;
+
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.titles{
+  background-image: url('https://storage.googleapis.com/avayastore/public_files/background-spaces.jpg');
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 100%;
+  padding:50px 0;
+  text-align: center;
+  padding-bottom:200px;
+}
+
+.titles .first-title{
+text-align: center;
+}
+
+.titles .first-title img{
+  width:350px;
+  margin:0 auto;
+}
+
+.titles .second-title{
+  color: white;
+  text-align: center;
+  font-size: 42px;
+  font-weight: 300;
+}
+
+.titles .third-title{
+  color: white;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 300;
+}
+
+
+
+.plans{
+  margin-top:-120px;
+
+}
+
+
+
+.zsp-plans{
+  display: flex;
+  justify-content: center;
+  margin:20px auto;
+  width:900px;
+}
+
+.zsp-plan {
+  flex:1;
+  min-height:250px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  box-shadow: 0 0 30px rgba(0,0,0,.3);
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;
+  position:relative;
+  border: 10px solid #fff;
+    /*border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;*/
+    margin-top: 0px;
+}
+
+.zsp-plan.best-deal{
+  border: 10px solid #73c1c7;
+    /*border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;*/
+    padding-top: 10px;
+    margin-top: -10px;
+}
+
+
+
+.zsp-plan .best-deal-banner{
+  position: absolute;
+    top: -55px;
+    right: -10px;
+    left: -10px;
+    background-color: #73c1c7;
+    color: white;
+    font-size: 19px;
+    text-transform: uppercase;
+    padding: 5px 45px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    text-align: center;
+}
+
+.zsp-plan .icon {
+  margin:10px 0;
+}
+
+.zsp-plan .icon img{
+  margin:0 auto;
+  width:50px;
+  height:50px;
+}
+
+
+.zsp-plan .title{
+  padding: 0px 15px 5px 15px;
+    font-size: 19px;
+    color: #c00;
+    font-weight: 500;
+    letter-spacing: -1px;
+    border-bottom: 1px dashed #ddd;
+    text-transform: uppercase;
+}
+.zsp-plan .price{
+  padding: 15px;
+    padding-bottom: 0;
+    color: black;
+    font-weight: 500;
+    font-size: 21px;
+    letter-spacing: -1px;
+}
+
+.zsp-plan .price .symbol{
+  display: inline-block;
+      font-size: 23px;
+      vertical-align: super;
+      margin-right: 5px;
+      font-weight: 500;
+}
+
+.zsp-plan .price .value{
+  display: inline-block;
+      font-size: 50px;
+}
+
+
+.zsp-plan .duration{
+  color:#999;
+  font-size:11px;
+}
+.zsp-plan .description{
+  padding: 5px 20px;
+    height: 150px;
+    font-size: 13px;
+    color: #777;
+}
+
+.zsp-plan .users-label{
+  color:#999;
+  padding:15px 0;
+}
+.zsp-plan .users{
+  display: flex;
+  padding:0 30px;
+}
+
+.zsp-plan .free-label{
+
+}
+
+.zsp-plan .free-label a{
+  display: block;
+    padding: 15px 10px;
+    background-color: #73c1c7;
+    color: #fff;
+    font-weight: 400;
+    font-size: 18px;
+    width: 200px;
+    margin: 0 auto;
+    text-decoration: none;
+    margin-top: 50px;
+    border-radius: 3px;
+    padding: 18px 30px;
+}
+
+.zsp-plan .users .bt{
+  font-size: 41px;
+  font-weight: 300;
+  cursor: pointer;
+  color: #999;
+}
+
+.zsp-plan .users .bt.minus{
+  flex:5;
+}
+.zsp-plan .users .bt.plus{
+  flex:5;
+}
+.zsp-plan .users input[type='number']{
+  /*flex: 10;*/
+    width: 60%;
+    text-align: center;
+    border: 1px solid #f1f1f1;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    font-size: 41px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;
+}
+
+
+
+.product-total-wrapper{
+  text-align: center;
+}
+
+.product-total{
+  margin: 0px auto 30px;
+    position: relative;
+    text-align: center;
+    display: inline-block;
+}
+
+.product-total .total-wrapper{
+  display: inline-block;
+    position: relative;
+}
+
+.product-total .currency-symbol{
+  display: inline-block;
+    vertical-align: top;
+    font-size: 31px;
+    letter-spacing: -1px;
+    font-weight: 300;
+    margin-top: 12px;
+    color: #c00;
+}
+
+.product-total .total{
+  display: inline-block;
+  font-size: 81px;
+  letter-spacing: -2px;
+  color: #c00;
+  font-weight: 300;
+}
+
+.product-total .cents{
+  display: inline-block;
+  vertical-align: top;
+  font-size: 41px;
+  letter-spacing: -1px;
+  font-weight: 300;
+  margin-top: 12px;
+  color: #c00;
+}
+
+.product-total .interval{
+  text-transform: uppercase;
+  display: inline-block;
+    color: #c00;
+    margin-left: -50px;
+}
+
+.product-total .discount{
+  font-size: 16px;
+  color: #aaa;
+  font-weight: 400;
+}
+
+.product-total .discount span{
+
+}
+
+.product-total .saved{
+  color: red;
+      font-size: 21px;
+}
+
+.product-total .saved span{
+
+}
+
+
+a.zsp-getstarted-btn{
+  border-radius: 30px !important;
+    background-color: #c00;
+    border: none;
+    padding: 16px 35px;
+    outline: none;
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+
+
+.zsp-features{
+  background-color: #f1f1f1;
+    margin-top: -26px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.zsp-features .main-title{
+  font-weight: 300;
+      /* font-size: 32px; */
+      font-style: italic;
+      letter-spacing: -2px;
+}
+
+.zsp-features .main-subtitle{
+  font-weight: 300;
+  letter-spacing: -1px;
+}
+
+
+
+.zsp-features-table{
+  margin:10px auto;
+}
+
+.zsp-features-table .no-border{
+  border: none;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.zsp-features-table th{
+  text-align: center;
+    font-size: 19px;
+    color: #e40f0f;
+    font-weight: 500;
+    letter-spacing: -1px;
+    border-bottom:none !important;
+}
+
+.zsp-features-table td{
+  text-align: center;
+  border-top:none !important;
+  border-bottom: 1px solid #ddd !important;
+  vertical-align: middle !important;
+}
+
+.zsp-features-table td .text{
+  font-style: italic;
+    font-weight: 300;
+    text-transform: capitalize;
+    color: #aaa;
+    font-size: 16px;
+}
+
+.zsp-features-table td.price{
+  color:#000;
+  font-weight: 500;
+  font-size:17px;
+}
+
+.zsp-features-table .feature-cell{
+  width:300px;
+  text-align: left;
+  vertical-align: middle;
+  height:50px;
+}
+
+.zsp-features-table .dot-cell{
+  width:200px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.zsp-features-table .dot-cell span{
+  width:10px;
+  height:10px;
+  border-radius:30px;
+  background-color:#73c1c7;
+  display:inline-block;
+}
+
+.zsp-features-table .dot{
+  margin:0 auto;
+  width:10px;
+  height:10px;
+  border-radius:30px;
+  background-color:#73c1c7;
+  display:inline-block;
+}
+
+.zsp-features-table .feature-hint {
+  font-style: italic;
+  color:#aaa;
+}
+.zsp-features-table .feature-qty {
+  font-weight: 500;
+  font-size:19px;
+  text-transform: capitalize;
+  color:#73c1c7;
+}
+.zsp-features-table .feature-price {
+  font-weight: 500;
+  font-size:19px;
+  text-transform: capitalize;
+  color:#73c1c7;
+}
+
+.zsp-features-table td.td-point-out{
+  background-color:#73c1c7 !important;
+}
+
+.zsp-features-table td.td-point-out .feature-hint, .zsp-features-table td.td-point-out .feature-price{
+  color:white;
+}
+
+
+.zs-links-container{
+  background-color: #f1f1f1;
+    padding: 50px 0px 50px 0;
+    margin-top: -26px;
+
+}
+
+.zs-links-container a{
+  color: #73c1c7;
+      font-size: 19px;
+      font-weight: 400;
+}
+
+
+
+
+
+
+.zs-links-container{
+  background-color: #f1f1f1;
+    padding: 50px 0px 50px 0;
+    margin-top: -26px;
+
+}
+
+.zs-links-container a{
+  color: #73c1c7;
+      font-size: 19px;
+      font-weight: 400;
+}
+
+
+
+
+
+
+
+@media (max-width:900px){
+  .zo-plans{
+    width:100%;
+  }
+}
+
+@media (max-width:600px){
+
+  .zsp-plans{
+    display:block;
+    width:100%;
+  }
+  .zsp-plan{
+    width:100%;
+    max-width: 100%;
+    border-radius: 15px;
+    margin-bottom:20px;
+  }
+
+}

@@ -1,0 +1,14 @@
+.row
+  .col-md-12.col-lg-12
+    div.legal-info #{localizer.get('I_HAVE_READ_AND_I_AGREE_TO_THE_FOLLOWING')}
+    .checkout-legal-checks
+      //- each legalDoc, ld in legalDocs
+        label.tos-container(data-legal=JSON.stringify(legalDoc))
+          input(type='checkbox' name='legal-checkbox-' + legalDoc.slug checked=legalDoc.preChecked)
+          .checker
+          .box                
+          a(href='javascript:void;') #{localizer.get(legalDoc.title)}
+.row
+  .col-md-12.col-lg-12
+    p.legal-validation.text-danger.text-center
+  include ../components/LegalModal 

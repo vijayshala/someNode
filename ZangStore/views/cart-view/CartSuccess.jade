@@ -1,0 +1,9 @@
+extends ../index
+block styles
+  link(href='/public_nocache/stylesheets/cart/cart-success.css', rel='stylesheet')
+block mainbody
+  div.row
+    div.col-md-12
+      h3 Order placed successfully!
+      pre
+        // #{JSON.stringify(order, undefined, 1)}

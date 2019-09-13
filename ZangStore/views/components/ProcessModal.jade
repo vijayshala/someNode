@@ -1,0 +1,6 @@
+.zs-progress-modal(id='ProcessModal')
+  .content
+    h1.title #{processTitle || localizer.get('PROCESSING')}
+    h3.subtitle #{processMessage || localizer.get('PLEASE_BE_PATIENT_THE_PROCESS_MIGHT_TAKE_SOME_TIME')}
+    .spinner
+      img.img-responsive(src='/public_nocache/images/loading-spinner-blue.svg')

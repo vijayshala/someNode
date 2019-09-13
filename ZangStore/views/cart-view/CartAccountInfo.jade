@@ -1,0 +1,102 @@
+h3.text-danger #{localizer.get('ACCOUNT_INFORMATION')}
+div.form-group
+    label  
+        span.text-danger 
+        | * #{localizer.get('FIRST_NAME')}
+    .input-icon.right.native
+    input.form-control(type='text', name='contact.firstName', value=contact.firstName, autocomplete='new-password')
+    span.error-msg
+div.form-group
+    label  
+        span.text-danger 
+        | * #{localizer.get('LAST_NAME')}
+    .input-icon.right.native
+    input.form-control(type='text', name='contact.lastName', value=contact.lastName, autocomplete='new-password')
+    span.error-msg
+div.form-group#companyIdField(style=companies.length ? '' : 'display:none;')
+    label  
+        span.text-danger 
+        | * #{localizer.get('COMPANY_NAME')}
+    span.explanationcc
+        a.add-new-company(href='#') #{localizer.get('CREATE_A_NEW_COMPANY')}
+    select.form-control(name='company.nid')
+        option(value='') #{localizer.get('SELECT_ONE')}
+        each cmnp,cmp in companies
+            option(value=cmnp.id, selected=cmnp.id==company.nid) #{cmnp.name}
+    span.error-msg
+    
+div.form-group#companyNameField(style=companies.length ? 'display:none;' : '')
+    label  
+        span.text-danger 
+        | * #{localizer.get('COMPANY_NAME')}
+    span.explanationcc
+        a.choose-an-existing-company(href='#' style=companies.length ? '' : 'display:none;') #{localizer.get('CHOOSE_AN_EXISTING_COMPANY')}
+    input.form-control(type='text', name='company.name', value=company.name, autocomplete='off' data-toggle="tooltip" data-placement="top" title=localizer.get('THIS_WILL_BE_YOUR_IP_OFFICE_ACCOUNT_NAME'))
+    span.error-msg
+
+if currentRegion.countryISO == 'DE'
+    div.form-group
+        label  
+            span.text-danger 
+            | * #{localizer.get('VAT_NUMBER')}
+        input.form-control(type='text', name='company.vatNumber', value=company.vatNumber)
+        span.error-msg
+else
+    div.form-group
+        label  
+            span.text-danger 
+            | * #{localizer.get('COMPANY_IS_INCORPORATED')} #{company.isIncorporated}
+        br
+        label.radio-inline
+            input(name='company.isIncorporated' type='radio', value='true' checked=company.isIncorporated==true)
+            | &nbsp; #{localizer.get('YES')}
+        br
+        label.radio-inline
+            input(name='company.isIncorporated' type='radio', value='false' checked=company.isIncorporated==false)
+            | &nbsp; #{localizer.get('NO')}
+        br
+        span.error-msg
+div.form-group
+    label  
+        span.text-danger 
+        | * #{localizer.get('COMPANY_DOMAIN')}
+    input.form-control(type='text', name='company.domain', value=company.domain autocomplete='new-password')
+    span.error-msg
+if currentRegion.countryISO != 'DE'
+    div.form-group
+        label  
+            span.text-danger 
+            | * #{localizer.get('INDUSTRY')}
+        select.form-control(name='company.industry')
+            option(value='') #{localizer.get('SELECT_ONE')}
+            each industryType in industryTypes
+                option(value=industryType.keyValue selected=company.industry === industryType.keyValue) #{industryType.description}
+    span.error-msg
+div.form-group
+    label  
+        span.text-danger 
+        | * #{localizer.get('CONTACT_PHONE_NUMBER')}
+    input.form-control(type='text', oninput="this.value = this.value.replace(/[^0-9]/g, '');", name='contact.phone', value=contact.phone data-toggle="tooltip" data-placement="top" title=localizer.get('IF_YOUR_VE_CHOSEN_TO_USE_YOUR_EXISTING_OR_A_TOLLFREE_NUMBER_WE_WILL_TRY_TO_FIND_A_LOCAL_NUMBER_WITH_THE_EXTENSION_USED_IN_THIS_FIELD'))
+    span.error-msg
+div.form-group
+    label  
+        span.text-danger 
+        | * #{localizer.get('EMAIL_ADDRESS')}
+    .input-icon.right.native
+    i.fa.fa-lock
+    input.form-control(type='text', name='contact.email', value=userInfo.username readonly autocomplete='new-password')
+    span.error-msg
+if currentRegion.countryISO == 'DE'
+    div.form-group
+        label
+            input.checker.box(type='checkbox' name='company.isExistingCustomer' checked=(company.existingCustomerReference ? true : false) value='true' onchange="$('#customerContractId').toggle()")
+            | &nbsp;&nbsp;#{localizer.get('I_AM_EXISTING_AVAYA_CUSTOMER')}
+            br
+            span.error-msg
+    div.form-group#customerContractId(style='display:none;')
+        label  
+            span.text-danger 
+            | #{localizer.get('CUSTOMER_OR_CONTRACT_ID')}
+        input.form-control(type='text', name='company.existingCustomerReference', value=company.existingCustomerReference)
+        span.error-msg
+include ../partner/PartnerCheckout

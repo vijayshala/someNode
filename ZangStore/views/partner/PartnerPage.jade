@@ -1,0 +1,75 @@
+extends ../index
+
+block styles
+  link(href='/public_nocache/stylesheets/partner/partner.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/partner/partner-page.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/common/tabs.css', rel='stylesheet')
+
+block mainbody
+  .top-container.agent(style="background-image:url('" + page.metadata.partners[partnerType].backgroundImage + "')")
+    .container
+      .row
+        .col-lg-12
+          h1.text-center.text-danger.zs-main-title #{page.metadata.partners[partnerType].title.replace(/\|/, ' ')}
+          h3.text-center.text-300 #{page.metadata.partners[partnerType].subtitle1}
+          br
+      .row
+        .col-lg-12
+          .text-center
+            a.btn.btn-danger.btn-lg.partner-btn-lg(href='/partners/' + partnerType + '/application') #{page.metadata.partners[partnerType].applicationButtonText}
+      .row
+        .col-lg-12
+          br
+          h4.text-center.text-300 #{page.metadata.partners[partnerType].subtitle2}
+  .top-container.main(style="background-color:#f1f1f1;")
+    .container
+      .row
+        .col-lg-12
+          .tabs
+            .links
+              a.active(href='#howitworks') How it works
+              a(href='#whatyouget') What you get
+              a(href='#support') Support
+            .content
+              .box#howitworks
+                - var counter = 1
+                each step, s in page.metadata.steps
+                  - var display = step.types.indexOf(partnerType) > -1;
+                  if display
+                    .row
+                      .col-lg-1.col-md-1.col-sm-1
+                        .counter #{counter}                        
+                      .col-lg-10.col-md-10.col-sm-10
+                        h4.text-primary #{step.title}
+                        p #{step.description}
+                      if counter==1
+                        .col-lg-1.col-md-1.col-sm-1
+                          a.btn.btn-danger.btn-sm.apply-btn(href='/partners/' + partnerType + '/application') #{page.metadata.partners[partnerType].applicationButtonText}
+                      - counter++;
+                
+              .box#whatyouget(style='display:none')
+                .table-responsive
+                  table.table.features-table
+                    tbody
+                      each feature, f in page.metadata.features
+                        if feature[partnerType] !== ''
+                          tr
+                            td #{feature.title}
+                            if feature.type === 'percentage'
+                              td.percentage #{(feature[partnerType]*100) + '%'}
+                            else
+                              if feature[partnerType] === '.'
+                                td
+                                  .dot
+                              else
+                                td &nbsp;
+                  each hint,h in page.metadata.featureHints
+                    p.hint #{hint}
+              .box#support(style='display:none')
+                h4.text-400.text-danger #{page.metadata.support.description}
+                ul
+                  each item, i in page.metadata.support.items
+                    li !{item}
+
+block scripts
+  script(src='/public_nocache/javascripts/common/tabs.js')

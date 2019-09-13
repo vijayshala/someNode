@@ -1,0 +1,53 @@
+extends ../index
+
+block styles
+  link(href='/public_nocache/stylesheets/purchaseorders/manage-purchase-order.css', rel='stylesheet')
+
+block mainbody
+  input(type='hidden' name='selectedPOStateProvince')
+  input(type='hidden' name='billingAccount' value=billingAccount)
+  input(type='hidden' name='states' value=JSON.stringify(states))
+  input(type='hidden' name='postate' value=(pos.billingAddess ? pos.billingAddress.state : undefined))
+  .container
+    #deletedModal(class="modal fade" tabindex="-1" role="dialog" aria-hidden="true")
+      .modal-dialog(role="document")
+        .modal-content
+          .modal-header 
+            h4(class="model-title" id="ModelTitle") #{localizer.get('DELETE_PURCHASE_ORDER')}?
+          .model-body.poModal
+            button.btn.btn-primary.btn-space(id='deletePurchaseOrder' type='submit') #{localizer.get('DELETE')}
+            button.btn.btn-default.btn-space(id="cancelDelete"  data-dismiss="modal") #{localizer.get('CANCEL')}
+    
+    div.row.bg-white
+      h1.text-center.text-300 #{localizer.get('MANAGE_BILLING_ACCOUNT')}
+      include ./BillingTabs
+      .successMSG 
+          h4 Purchase Order Successfully Deleted 
+      .failMSG 
+          h4 Saving Purchase Order Failed
+      div.row.po-container
+        if pos.contact
+         h4 #{localizer.get('STATUS')}: #{pos.status}
+         p  #{localizer.get('LIMIT')}: $ #{(pos.approvedLimit ? pos.approvedLimit : 0)} 
+            input(type='hidden' name='_csrf' value=_csrf)
+            include ../cart-view/CartCheckoutPurchaseOrder
+            div.row.po-button
+              if cart.items.length
+                  a.btn.btn-primary.btn-space(href='/' + region + '/shop/cart/checkout') #{localizer.get('BACK_TO_CHECKOUT')}
+              button.btn.btn-primary.btn-space(id='delete' data-toggle="modal" data-target="deleteModal") #{localizer.get('DELETE')}
+        else
+          form(method='POST', action='/' + region.toLowerCase() + '/billingaccount/po' id='addNewPurchaseOrder')
+            input(type='hidden' name='_csrf' value=_csrf)
+            include ../cart-view/CartCheckoutPurchaseOrder
+            div.row.po-button
+              if cart.items.length
+                  a.btn.btn-primary.btn-space(href='/' + region + '/shop/cart/checkout') #{localizer.get('BACK_TO_CHECKOUT')}
+              button.btn.btn-primary.btn-space(id='addNewCCBtn' type='submit') #{localizer.get('SAVE')}
+        p * #{localizer.get('THIS_FIELD_IS_REQUIRED')}
+               
+            
+block scripts
+  script(src='/public_nocache/libs/formatter/jquery.formatter.min.js')
+  script(src='/public_nocache/javascripts/purchaseorders/purchaseorder-list.js')
+  script(src='/public_nocache/javascripts/cart/countries-states.js')
+

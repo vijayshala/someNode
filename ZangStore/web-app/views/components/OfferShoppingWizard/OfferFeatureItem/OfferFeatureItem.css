@@ -1,0 +1,13 @@
+.feature-item {
+  /* display: inline-grid; */
+  /* margin-right: 20px; */
+  
+}
+
+.feature-item .feature-label {
+  margin-left: 30px;
+}
+
+.feature-item .checkbox-div {
+  float: left;
+}

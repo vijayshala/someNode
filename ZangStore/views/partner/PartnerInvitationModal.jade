@@ -1,0 +1,42 @@
+.modal.fade(tabindex='-1', role='dialog' id='inviteAgentModal')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-label='Close')
+          span(aria-hidden='true') ×
+        h4.modal-title.text-400.text-danger #{localizer.get('INVITE_A_NEW_AGENT')}
+      .modal-body
+        form.agent-invitation-form#AgentInvitationForm(method='post' action='/partners/' + partner._id + '/invite')
+          input(type='hidden' name='_csrf' value=_csrf)
+          if partner.type === CONSTANTS.PARTNER_TYPES.msa
+            .form-group
+              label #{localizer.get('I_WANT_TO_INVITE_A')}
+              select.form-control.input-lg(name='inviteeType')
+                option(value='') #{localizer.get('SELECT_ONE')}
+                each inviteeType in CONSTANTS.PARTNER_INVITEE_TYPES
+                  option(value=inviteeType) #{localizer.get(inviteeType)}
+          else
+            input(type='hidden' name='inviteeType' value=CONSTANTS.PARTNER_INVITEE_TYPES.INDIVIDUAL)
+          .form-group#inviteeRelationContainer(class=partner.type === CONSTANTS.PARTNER_TYPES.sales ? '' : 'hidden')
+            label #{localizer.get('RELATION')}
+            select.form-control.input-lg(name='inviteeRelation')
+                option(value='') #{localizer.get('SELECT_ONE')}
+                each inviteeRelation, ir in CONSTANTS.AGENT_LEVELS
+                  option(value=inviteeRelation) #{localizer.get(ir)}
+          .form-group
+            label #{localizer.get('CONTACT_NAME')}
+            input.form-control.input-lg(type='text' name='inviteeName') 
+          .form-group
+            label #{localizer.get('CONTACT_EMAIL')}
+            input.form-control.input-lg(type='email' name='inviteeEmail')
+          
+          .checkbox
+            label
+              input(type='checkbox' name='autoActivate' checked)
+              |  #{localizer.get('AUTO_APPROVE_ACTIVATE_AGENT')}
+          .alert.hidden.response
+          .text-right.buttons
+            button.btn.btn-default#inviteBtn(type='button', data-dismiss='modal') #{localizer.get('CANCEL')}
+            &nbsp;&nbsp;
+            button.btn.btn-danger.text-400(type='submit') #{localizer.get('SEND_INVITATION_EMAIL')}
+        

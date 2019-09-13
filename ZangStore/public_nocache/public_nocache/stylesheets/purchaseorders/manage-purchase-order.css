@@ -1,0 +1,73 @@
+.pocontainer {
+    display: flex;
+    justify-content: space-around;
+}
+
+@media (max-width: 992px) {
+    .container {
+        flex-direction: column !important;
+    }
+}
+
+.po-container, .po-button  {
+    padding: 1em;
+    margin-top: 1em;
+}
+
+.poclm {
+    padding: 1em 2em 1em 2em;
+}
+
+.radio-label {
+    padding: .5em;
+}
+
+.po-container, #addNewPurchaseOrder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.topmargin {
+    margin-top: 3em;
+  }
+
+.successMSG, .failMSG {
+    display: none;
+    align-self: center;
+    padding: 1em;
+    margin-top: 1em;
+    color: white;
+    width: 80%;
+    text-align: center;
+}
+
+.failMSG {
+    background: #a94442;
+}
+
+.successMSG {
+    background: #5cb85c;
+}
+
+.modal-content {
+    border-top: 5px solid #333;
+}
+
+#deletedModal {
+    top: 40%;
+}
+
+.bg-white {
+    display: flex;
+    flex-direction: column;
+}
+
+.poModal {
+    padding: 1em;
+    display: flex;
+}
+
+.fade {
+    opacity: 100  !important;
+}

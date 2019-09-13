@@ -1,0 +1,32 @@
+extends ../index
+block styles
+  link(href='/public_nocache/stylesheets/ip-office/ip-office-view.css', rel='stylesheet')
+block mainbody  
+  .page-loader
+    img(src="/public_nocache/images/loading-spinner-blue.svg")
+  .plan-container.hidden
+    .container
+      .row        
+        .col-md-12          
+          h1.text-center.text-500.text-white !{localizer.get('GET_STARTED_WITH_AVAYA_IP_OFFICE_TM_PLATFORM')}
+          h3.text-center.text-300.text-white #{localizer.get('IP_OFFICE_DONT_PAY_TILL')}
+          .center-content              
+              h5.text-center.text-300.text-white #{localizer.get('SELECT_AN_1_YEAR_PLAN_OR_MORE_AND_RECEIVE_A_CREDIT_PER_USER_TOWARDS_THE_PURCHASE_OF_ANY_DEVICE_LIMITED_TIME_OFFER')}
+              br
+              br
+          br
+  .top-container
+    .container      
+      .row
+        .col-md-12
+          input(type='hidden', id='offer-identifier' value=slug)
+          .offer-wizard-app           
+            span  #{''}   
+
+      
+          
+                  
+  
+        
+//- block scripts
+//-   script(src='/public_nocache/javascripts/ip-office/ipofficeview.js')

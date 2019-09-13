@@ -1,0 +1,38 @@
+.top-container{
+  padding:20px 0;
+}
+
+
+.quote-btn{
+  border-radius: 30px !important;
+  outline: none;
+  padding: 10px 30px;
+}
+
+.quote-table{
+  font-size: 21px;
+  font-weight: 300;
+
+}
+
+.quote-table td{
+  border-top: none !important;
+}
+
+.buttons-container{
+  padding-top:40px;
+}
+
+
+
+
+@media print {
+  .quote-btn {
+    display: none;
+  }
+
+  .quote-table{
+    width:40%;
+    margin:0 auto;
+  }
+}

@@ -1,0 +1,39 @@
+.zang-office-buy-table{
+  margin-bottom: 40px;
+}
+
+.zang-office-buy-table table {
+  margin-bottom:0;
+}
+
+.zang-office-buy-table thead{
+
+}
+
+.zang-office-buy-table thead tr th{
+  vertical-align: middle !important;
+}
+
+.zang-office-buy-table tr td{
+  vertical-align: middle !important;
+}
+
+.zang-office-buy-table select[name='deviceType']{
+  display:inline-block;
+  width:80%;
+}
+
+.zang-office-buy-table .phone-image{
+  display: inline-block;
+  width:40px;
+}
+
+.zang-office-add-user-btn{
+  text-align:left;
+  font-style: italic;
+}
+
+.zang-office-buy-table input[name='mine']{
+  width:20px;
+  height:20px;
+}

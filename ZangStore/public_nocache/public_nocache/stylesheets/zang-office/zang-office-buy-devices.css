@@ -1,0 +1,92 @@
+.zo-devices-list{
+  
+}
+
+.zo-devices-table{
+
+}
+
+.zo-devices-table td {
+  border-top: none !important;
+  vertical-align: middle !important;
+  text-align: center;
+}
+
+.zo-devices-table th {
+  text-align: center;
+  border-bottom:none !important;
+}
+
+.zo-devices-table .form-control{
+  border-radius: 0px !important;
+}
+
+.amount {
+  font-size: 21px;
+  text-align: center;
+  font-weight: 300;
+}
+
+.amount .currency{
+  display: inline-block;
+  vertical-align: super;
+  font-size:50%;
+}
+
+.amount .whole{
+  display: inline-block;
+}
+
+.amount .decimals{
+  display: inline-block;
+}
+
+.zo-devices-table .device-image {
+  margin:0 auto;
+  width:100px;
+}
+
+.zo-devices-table .remove-image {
+  width:20px;
+  margin:0 auto;
+}
+
+.zo-devices-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,255,255,.8);
+  display: none;
+  z-index: 125000;
+}
+
+.zo-devices-mask h1 {
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+
+.order-total-amount {
+  font-weight: 300;
+  font-size:27px;
+
+}
+
+
+.zo-devices-status-text {
+  color:#fff;
+  padding:20px;
+  font-size:19px;
+}
+
+.zo-devices-status-text.info{
+  background-color: #73c1c7;
+}
+
+.zo-devices-status-text.error {
+  background-color:#c00;
+}

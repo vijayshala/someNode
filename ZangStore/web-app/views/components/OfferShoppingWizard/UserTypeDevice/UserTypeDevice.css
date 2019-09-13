@@ -1,0 +1,98 @@
+.usertype-device {
+  padding: 5px;
+  line-height: 20px;
+  min-height: 65px;
+  padding: 3px;
+  /* display: flex; */
+  align-items: center;
+  border: 1px solid #ddd;
+  margin: 5px 0px;
+}
+
+.three-columns  .usertype-device {
+  /* padding: 5px 0px; */
+}
+
+
+.usertype-device .addon-label {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 13px;
+  margin-right: 10px;
+  width: calc(100% - 125px);
+}
+
+.usertype-device .quantity-readonly {
+  display: inline-block;
+  /* width: 50px; */
+  font-size: 16px;
+  font-weight: 600;
+  padding: 5px;
+  margin-right: 5px;
+}
+
+.usertype-device .quantity-input {
+  float: right;
+  width: 60px;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 5px;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.usertype-device .react-numeric-input b {
+  right: 12px !important;
+}
+
+
+.usertype-device .addon-image {
+  min-height: 60px;
+  float: left;
+}
+
+.usertype-device .addon-image img{
+  height: 55px;
+  max-width: 100px;
+}
+
+.usertype-device .addon-price {
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-block;
+  margin: 0px 5px;
+  color: #444;
+}
+
+.usertype-device .per-each {
+  color: #aaa;
+}
+
+.usertype-device .checkbox-div {
+  /* float: left; */
+  border-radius: 3px;
+}
+
+.usertype-device .price-component {
+  display: inline-block;
+  /* float: right; */
+  margin-top: 0px;
+}
+
+
+.usertype-device .price-component .value{
+  font-size: 20px;
+  font-weight: 600;
+  vertical-align: initial;
+}
+.usertype-device .price-component .decimals,
+.usertype-device .price-component .symbol {
+  font-size: 12px;
+  font-weight: 500;
+  margin-right: 2px;  
+}
+
+.usertype-device.disabled .price-component,
+.usertype-device.disabled .addon-label {
+  color: #aaa;
+}

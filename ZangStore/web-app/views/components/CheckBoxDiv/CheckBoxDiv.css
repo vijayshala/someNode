@@ -1,0 +1,26 @@
+.checkbox-div {
+	width: 20px;
+	height: 20px;
+  background-size: 16px 16px;
+	display: inline-block;
+	border: 1px solid #333;
+	border-radius: 50px;
+	float: left;
+	margin-right: 10px;
+	background-color:#fff;
+	cursor:pointer;  
+  background-position:center center;
+  background-repeat: no-repeat;
+}
+
+.checkbox-div.checked{
+	background-image: url('/images/check.svg');		
+}
+
+.checkbox-div:hover{
+	box-shadow: 2px 2px 20px #C0BEBE;
+}
+
+.checkbox-div.disabled {
+	border-color: #aaa;
+}

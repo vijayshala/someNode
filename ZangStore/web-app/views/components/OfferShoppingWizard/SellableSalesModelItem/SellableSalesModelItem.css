@@ -1,0 +1,182 @@
+.sellable-salesmodel-item {
+  line-height: 20px;
+  /* display: flex; */
+  align-items: top;
+  border: 1px solid transparent;
+  padding: 24px 20px;
+  position: relative;
+  /* min-height: 150px; */
+  display: block;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sellable-salesmodel-item.bestdeal {
+  border: 1px solid #ddd;
+}
+
+.sellable-salesmodel-item:hover {
+  cursor: default;
+  border: 1px solid #304050; 
+  border-radius: 4px;
+}
+.sellable-salesmodel-item:focus,
+.sellable-salesmodel-item.selected {  
+  border: 1px solid #304050;
+  box-shadow: 0 0 16px 0 rgba(0,0,0,0.20);
+  border-radius: 4px;
+}
+
+.sellable-salesmodel-item .sellable-salesmodel-item-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.sellable-salesmodel-item .item-label {
+  float: left;
+  font-weight: 700;
+  max-width: calc(100% - 170px);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* .sellable-salesmodel-item .quantity-input {
+  float: left;
+  width: 60px;
+  font-size: 14px !important;
+  font-weight: 600;
+  width: 110px !important;
+  padding: 0px;
+  text-align: center;
+  margin-right: 5px; 
+  border: 1px solid #ddd;
+  border-radius: 5px; 
+} */
+.sellable-salesmodel-item .react-numeric-input {
+  float: left;
+}
+
+.sellable-salesmodel-item .quantity-input {
+  width: 7em;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 5px;
+  text-align: center;
+}
+
+@supports (-ms-ime-align: auto) {
+  /* Microsoft EdgeV13&14 CSS styles go here */
+  .sellable-salesmodel-item {
+    width: 49%;
+    margin: 0.5em;
+  }
+
+  @media(max-width: 1200px) {
+    .sellable-salesmodel-item {
+      width: 100%;
+    }
+  }
+
+}
+
+@media (max-width: 400px) {
+  .sellable-salesmodel-item {
+    flex-direction: column;
+    padding: 1em 0 .5em 0;
+  }
+
+  .sellable-salesmodel-item .item-label {
+    margin-right: 0;
+    max-width: 100%;
+  }
+
+}
+
+.sellable-salesmodel-item .checkbox-div {
+  /* float: left; */
+  border-radius: 3px;
+}
+
+.sellable-salesmodel-item .price-component {
+  float: right;
+}
+
+
+.sellable-salesmodel-item .price-component .value{
+  font-size: 20px;
+  font-weight: 600;
+  vertical-align: initial;
+}
+.sellable-salesmodel-item .price-component .decimals,
+.sellable-salesmodel-item .price-component .symbol {
+  font-size: 12px;
+  font-weight: 500;
+  margin-right: 2px;  
+}
+
+.sellable-salesmodel-item.disabled .price-component,
+.sellable-salesmodel-item.disabled .item-label {
+  color: #aaa;
+}
+
+
+.sellable-salesmodel-item .user-type-addons {
+  clear: both;
+  padding: 0px;
+  padding-top: 5px;
+}
+
+.sellable-salesmodel-item .sellable-addons {
+  display: block;
+  padding: 0px 0px;
+}
+
+.sellable-salesmodel-item .sellable-addons .sellable-addon {
+  border: 0px;
+  padding: 0px 0px;
+}
+
+.sellable-salesmodel-item .sellable-addons .sellable-addon .addon-label {
+  max-width: calc(100% - 170px);
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.sellable-salesmodel-item .sellable-addons .sellable-addon.included .addon-label {
+  max-width: initial;
+  margin-right: 0px;
+}
+
+/* mobile */
+@media (max-width:768px){
+  .sellable-salesmodel-item .sellable-salesmodel-item-row {
+    flex-direction: column;
+  }
+
+  .sellable-salesmodel-item .item-label, .sellable-salesmodel-item .sellable-addons .sellable-addon .addon-label {
+    max-width: none;
+  }
+
+  .sellable-salesmodel-item .react-numeric-input {
+    margin: auto;
+    float: none;
+  }
+
+  .sellable-addon.with-price {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+}
+
+/* ipad */
+@media (max-width:1200px){
+  .sellable-salesmodel-item {
+    margin-bottom: 5px;
+    overflow: hidden;
+  }  
+}

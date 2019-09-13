@@ -1,0 +1,34 @@
+.choose-your-region-offer {
+  padding: 50px;
+  text-align: center;
+}
+
+.choose-your-region-offer .region_link {
+  display: block;
+  white-space: nowrap;
+  font-size: 18px;
+  padding: 10px;
+  margin-right: 20px;
+}
+
+.choose-your-region-offer .region_link .country-flag {
+  display: inline-block;
+  width: 32px;
+  margin-right: 5px !important;
+}
+
+.choose-your-region-offer .region_link .country-flag img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50px;
+}
+
+.choose-your-region-offer .region_link .offer-name {
+  display: inline-block
+}
+
+.choose-your-region-offer  .region_link .country-flag img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50px;
+}

@@ -1,0 +1,87 @@
+.footer-container-top
+  .container
+    .row
+      .col-lg-3.col-md-3.col-sm-3
+        ul.footer-nav-list
+          li 
+            h5 #{localizer.get('PRODUCTS')}
+          li
+            a(href="https://zang.io/products/cloud" target="_blank") Cloud
+          li
+            a(href="/zang-office/view") Office
+          li
+            a(href="/zang-spaces/view") Spaces
+      if !partnerCookie && !partnerConnection
+        .col-lg-3.col-md-3.col-sm-3
+          ul.footer-nav-list
+            li
+              h5 #{localizer.get('PARTNER_PROGRAMS')}
+            li
+              a(href="/partners/referral") #{localizer.get('REFERRAL_AGENT')}
+            li
+              a(href="/partners/sales") #{localizer.get('SALES_AGENT')}
+      .col-lg-3.col-md-3.col-sm-3
+        ul.footer-nav-list
+          li
+            h5 Company
+          li
+            a(href="https://zang.io/about-us" target="_blank") #{localizer.get('ABOUT_US')}
+          li
+            a(href="https://zang.io/news" target="_blank") #{localizer.get('NEWS_AND_PRESS')}
+          li
+            a(href="https://zang.io/careers" target="_blank") #{localizer.get('CARREERS')}
+          li
+            a(href="https://zang.io/contact" target="_blank") #{localizer.get('CONTACT_US')}
+          li
+            a(href="http://blog.zang.io/" target="_blank") #{localizer.get('BLOG')}
+      .col-lg-3.col-md-3.col-sm-3
+        ul.footer-nav-list
+          li
+            h5 Support
+          li
+            a(href="https://zang.io/support/FAQ" target="_blank") #{localizer.get('FAQS')}
+          li
+            a(href="http://docs.zang.io/" target="_blank") #{localizer.get('DOCUMENTATION')}
+.footer-container-bottom
+  .container
+    .row
+      .col-lg-12
+        .text-center
+          ul.footer-social-list
+            li
+              a(href="https://www.facebook.com/Zangio-967065406723493/" target="_blank")
+                img(src="https://zang.io/img/icons/social/icon-fb.svg")
+            li
+              a(href="https://www.instagram.com/zang_io/" target="_blank")
+                img(src="https://zang.io/img/icons/social/icon-instagram.svg")
+            li
+              a(href="https://www.linkedin.com/company/zang-inc." target="_blank")
+                img(src="https://zang.io/img/icons/social/icon-linkedin.svg")
+            li
+              a(href="https://twitter.com/Zang_io" target="_blank")
+                img(src="https://zang.io/img/icons/social/icon-twitter.svg")
+            li
+              a(href="https://www.youtube.com/channel/UCep9-yA6zvFq_cMqdewGRQw" target="_blank")
+                img(src="https://zang.io/img/icons/social/icon-youtube.svg")
+    .row
+      .col-lg-12
+        .text-center
+          ul.footer-legal-list
+            li
+              a(href="https://zang.io/legal/cloud/tos" target="_blank") #{localizer.get('TERMS_OF_SERVICE')}
+            li
+              a(href="https://zang.io/support" target="_blank") #{localizer.get('HELP')}
+            li
+              a(href="https://zang.io/legal/privacy-statement" target="_blank") #{localizer.get('PRIVACY_STATEMENT')}
+    .row
+      .col-lg-12
+        .text-center
+          .footer-copyright &copy; #{new Date().getFullYear()} #{localizer.get('ZANG_INC_ALL_RIGHTS_RESERVED')}
+.zs-global-mask
+  h1.text-center.text-300
+          
+          
+          
+          
+    
+    

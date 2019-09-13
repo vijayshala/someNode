@@ -1,0 +1,76 @@
+extends ../index
+
+block styles
+  link(href='/public_nocache/libs/jquery-ui/jquery-ui.min.css', rel='stylesheet')
+  link(href='/public_nocache/libs/jquery-ui/jquery-ui.theme.min.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/partner/partner.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/partner/partner-portal.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/partner/partner-application.css', rel='stylesheet')
+
+block mainbody
+  if success
+    include ./PartnerInfoTopSuccess
+  else
+    include ./PartnerInfoTop
+  .top-container
+    input(type='hidden' name='filterType' value='partner')
+    input(type='hidden' name='children' value=JSON.stringify(children))
+    input(type='hidden' name='productList' value=JSON.stringify(productlist))
+    - var isMSA = partner.type === CONSTANTS.PARTNER_TYPES.msa
+    if isMSA
+      input(type='hidden' name='parentPartner' value=partner._id) 
+    .container
+      .row
+        .col-md-12.col-lg-12
+          .partner-orders-filters
+            .row
+              if isMSA
+                .col-md-3.col-lg-4
+                  select.form-control.input-lg(name='partner')
+                    option(value='') #{localizer.get('ALL_COMPANIES')}
+                    each child, ch in children
+                      option(value=child._id) #{child.fields.companyName}
+              else
+                input(type='hidden' name='partner' value=children[0]._id)
+              .col-md-3.col-lg-4
+                select.form-control.input-lg(name='agent')
+                  option(value='') #{localizer.get('SELECT_AGENT')}
+                  if partner.type === CONSTANTS.PARTNER_TYPES.sales
+                    each agent, ag in children[0].agents
+                      option(value=agent._id) #{agent.user.account.displayname}
+              .col-md-3.col-lg-4
+                select.form-control.input-lg(name='product')
+                  option(value='') #{localizer.get('SELECT_PRODUCT')}
+                    each product, prd in productlist
+                      option(value=product.slug) #{product.title.resource ? localizer.get(product.title.resource) + ' (' + product.allowed_regions[0] + ')' : product.title.text}
+              .col-md-3.col-lg-4
+                select.form-control.input-lg(name='region' class=(isMSA ? 'selectRegion' : ''))
+                  option(value='') #{localizer.get('SELECT_REGION')}
+                    each region, reg in regions
+                      if (region.active)
+                        option(value=region.currency) #{(region.name.text)} (#{region.shortCode})
+
+            .row.top-buffer
+              .col-md-offset-6.col-md-2.col-lg-2
+                input.form-control.input-lg(type='text' name='from' placeholder=localizer.get('FROM'))
+              .col-md-2.col-lg-2
+                input.form-control.input-lg(type='text' name='to' placeholder=localizer.get('TO'))
+              .col-md-2.col-lg-2
+                if isMSA
+                  a.btn.btn-lg.btn-default.export-report-btn.text-500(href='/partners/orders/partner?parent=' + partner._id + '&export=true' disabled=orders.length === 0) #{localizer.get('EXPORT_REPORT')}
+                else
+                  a.btn.btn-lg.btn-default.export-report-btn.text-500(href='/partners/orders/partner?partner=' + partner._id + '&export=true' disabled=orders.length === 0) #{localizer.get('EXPORT_REPORT')}
+                  
+      .row
+        .col-lg-12
+          br
+          include ./PartnerOrdersTable
+      .row
+        .col-lg-12
+          p.text-center.text-small.text-muted #{localizer.get('PARTNER_ORDERS_RECORDS_HINT')}           
+                      
+block scripts
+  script(src='/public_nocache/libs/jquery-ui/jquery-ui.min.js')
+  script(src='/public_nocache/libs/momentjs/moment.min.js')
+  script(src='/public_nocache/javascripts/partner/partner-portal.js')
+  script(src='/public_nocache/javascripts/partner/partner-orders.js')

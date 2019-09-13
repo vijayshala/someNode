@@ -1,0 +1,47 @@
+form.request-cancelation{
+
+}
+
+form.request-cancelation label{
+  color: #c00;
+      font-size: 12px;
+      font-weight: 500;
+}
+
+form.request-cancelation .form-control{
+  border-radius: 0px !important;
+      box-shadow: none;
+      height: 44px;
+}
+
+form.request-cancelation .form-control[readonly]{
+  background-color: white;
+}
+
+form.request-cancelation textarea{
+  height: 150px !important;
+      max-height: 300px;
+      max-width: 100%;
+}
+
+
+form.request-cancelation .rc-btn, .rc-btn{
+  display: inline-block;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 30px;
+  min-width: 150px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+form.request-cancelation .rc-btn.exit, .rc-btn.exit{
+  color: #828282;
+    border: 1px solid #828282;
+}
+
+form.request-cancelation .rc-btn.submit{
+  background-color: #c00;
+  border:1px solid #c00;
+  color:white;
+}

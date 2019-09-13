@@ -1,0 +1,114 @@
+if orders.length
+  .table-responsive
+    input(type='hidden' name='UI_ONLY_DATE_FORMAT' value=CONSTANTS.UI_ONLY_DATE_FORMAT)
+    input(type='hidden' name='CURRENCY_SYMBOL' value=currency.symbol)
+    input(type='hidden' name='_csrf' value=_csrf)
+    if isAdminOrders
+      a(class='btn btn-lg btn-default export-report-btn text-500' href='/partners/orders/administration/export?&export=true') #{localizer.get('EXPORT_REPORT')}
+    table.table.zs-main-table
+      thead
+        tr
+          th.text-uppercase #{localizer.get('AGENT')}
+          th.text-uppercase #{localizer.get('PURCHASE_DATE_AND_CUSTOMER')}
+          th.text-uppercase #{localizer.get('ORDER_DETAILS')}
+          th.text-uppercase.text-center(colspan='2') #{localizer.get('FEES')}
+          //th Commission
+      tbody#partnerOrdersTableBody
+        - var  oneTimeTotal = 0;
+        - var  intervalTotal = 0;
+        each order, o in orders
+          if order.order
+            - oneTimeTotal += order.oneTimeFee;
+            - intervalTotal += order.intervalFee;
+            tr
+              td
+                h5.text-500 #{order.agent.user.account.displayname}
+                h5.text-400 #{order.partner.fields.companyName}
+                h6.text-300.text-muted ID: #{order.agent._id}
+              td
+                - var customerFirstName = order.order.accountInformation.firstName;
+                - var customerLastName = order.order.accountInformation.lastName;
+                - var customerCompanyName = order.order.accountInformation.companyName;
+                - var billingInformation = order.order.billingInformation;
+                - var billingInfo = billingInformation.billingAddress + ', ' + billingInformation.billingCity + ', ' + (billingInformation.billingStateProvince != undefined ? billingInformation.billingStateProvince + ', ' : '' ) + billingInformation.billingCountry + ', ' + billingInformation.billingPostalCode;
+                h5.text-500 #{moment(order.created).format(CONSTANTS.UI_ONLY_DATE_FORMAT)}
+                h5.text-400 #{customerFirstName} #{customerLastName} - #{customerCompanyName}
+                h6.text-400 #{billingInfo}
+              td
+                h5.text-500 Con# #{order.order.confirmationNumber}
+                - var item = order.order.items[0];
+                - var planOption = item.product.planOptions.filter(function(po) { return po.value === item.product.planOption })[0];
+                h5.text-400 #{item.product.title} : #{localizer.get(planOption ? planOption.label : '')}
+                //-
+                  h6.text-400 #{localizer.get('USERS')}: 
+                    each user, us in order.details.users
+                      if user > 0
+                        | (#{user}x) #{us};
+                  if order.details.devices
+                    h6.text-400 #{localizer.get('DEVICES')} 
+                      each device, dv in order.details.devices
+                        | (#{device}x) #{dv};
+              td(width=120)
+                h5.text-400.text-center.text-uppercase #{localizer.get('ONE_TIME_FEE')}
+                h4.text-500.text-center $ #{(order.oneTimeFee/100).formatDollars(2)}
+              td(width=120)
+                h5.text-400.text-center.text-uppercase #{localizer.get('MONTHLY_FEE')}
+                h4.text-500.text-center $ #{(order.intervalFee/100).formatDollars(2)}
+          else if (order.subscriptions[0])
+            - oneTimeTotal += order.onetime.subTotal * 100;
+            - intervalTotal += (order.subscriptions[0] ? order.subscriptions[0].subTotal * 100 : 0);
+            tr
+              td
+                h5.text-500 #{order.partnerAgent ? order.partnerAgent.user.account.displayname : localizer.get('NO_AGENT')}
+                h5.text-400 #{order.partner && order.partner.fields.companyName}
+                
+                if order.partnerAgent
+                  h6.text-300.text-muted ID: #{order.partnerAgent._id}
+              td
+                - var customerFirstName = order.contact.firstName;
+                - var customerLastName = order.contact.lastName;
+                - var customerCompanyName = order.company && order.company.name || '';
+                - var billingInfo = order.billingAddress.address1 + ', ' + order.billingAddress.city + ', ' + (order.billingAddress.state ? order.billingAddress.state + ', ' : '') + order.billingAddress.country + ', ' + order.billingAddress.zip;
+                h5.text-500 #{moment(order.created.on).format(CONSTANTS.UI_ONLY_DATE_FORMAT)}
+                h5.text-400 #{customerFirstName} #{customerLastName} - #{customerCompanyName}
+                h6.text-400 #{billingInfo}
+              td
+                h5.text-500 Con# #{order.confirmationNumber}
+                - var subscription = order.subscriptions[0];
+                - var offerTitle;
+                each item, i in order.items
+                  if item.level==0
+                    - offerTitle = item.title.resource ? localizer.get(item.title.resource): item.title.text
+                h5.text-400 #{offerTitle ? offerTitle : localizer.get('PRODUCT_NOT_FOUND')} : #{localizer.get('BILLED_' + subscription.billingPeriod.toUpperCase())}
+                //-
+                  h6.text-400 #{localizer.get('USERS')}: 
+                    each user, us in order.details.users
+                      if user > 0
+                        | (#{user}x) #{us};
+                  if order.details.devices
+                    h6.text-400 #{localizer.get('DEVICES')} 
+                      each device, dv in order.details.devices
+                        | (#{device}x) #{dv};
+              td(width=120)
+                - var itemPriceOneTime = order ? formatCurrency(order.onetime.subTotal, order.currency) : '';
+                - var itemPriceSubscription = order ? formatCurrency(order.subscriptions[0].subTotal, order.currency) : '';
+                h5.text-400.text-center.text-uppercase #{localizer.get('ONE_TIME_FEE')} (#{order.currency})
+                h4.text-500.text-center #{itemPriceOneTime}
+              td(width=120)
+                h5.text-400.text-center.text-uppercase #{localizer.get('MONTHLY_FEE')}  (#{order.currency})
+                h4.text-500.text-center #{itemPriceSubscription}
+
+      tfoot.partnerFooter
+        tr
+          td(colspan='3')
+          th.partnerTotal.text-center(colspan='2') #{localizer.get('TOTAL')}
+        tr
+          td(colspan='3')
+          td
+            h4.text-center.text-500#oneTimeTotal #{(oneTimeTotal/100).formatDollars()}
+          td
+            h4.text-center.text-500#intervalTotal #{(intervalTotal/100).formatDollars()}  
+
+else
+  h3.text-center.text-300 #{localizer.get('NO')} #{partner.type === CONSTANTS.PARTNER_TYPES.referral ? localizer.get('REFERRALS') : localizer.get('SALES')} #{localizer.get('FOUND')}
+          

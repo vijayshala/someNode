@@ -1,0 +1,17 @@
+extends ../index
+
+block styles
+  link(href='/public_nocache/stylesheets/purchaseorders/purchaseorder-list.css', rel='stylesheet')
+
+block mainbody
+  .container.bg-white
+    div.row
+      div.col-md-12
+        div.row
+          div.col-md-12
+            h1.text-center.text-300 #{localizer.get('PURCHASE_ORDERS')}
+
+
+        div.row
+          div.col-md-12
+            include ./poTable

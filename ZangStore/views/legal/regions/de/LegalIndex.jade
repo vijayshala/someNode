@@ -1,0 +1,29 @@
+extends ../../../index
+block styles
+  link(href='/public_nocache/stylesheets/legal/legal.css', rel='stylesheet')
+
+block mainbody
+  .container
+    .row
+      .col-md-12.col-lg-12
+        h1.text-300.text-center.text-white #{localizer.get('LEGAL')}
+  br
+  .container.bg-white
+      .row
+        .col-md-12.col-lg-12
+        .text-center
+            br
+            a(href='https://www.avayacloud.de/datenschutz/rechtliche-hinweise' target="_blank")
+                h4.text-400 #{localizer.get('TERMS_OF_SERVICE')}
+                br
+            br
+            a(href='https://www.avayacloud.de/datenschutz/privacy-statement' target="_blank")
+                h4.text-400 #{localizer.get('GENERAL_PRIVACY_STATEMENT')}
+                br
+            br
+            a(href=`/${region}/legal/cookie-statement`)
+                h4.text-400 #{localizer.get('COOKIES')}
+                br                
+  br
+  br
+  br

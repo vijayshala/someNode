@@ -1,0 +1,11 @@
+.zs-progress-modal(id='IPOfficeCheckoutConfirmationModal')
+  .content
+    h1.title #{localizer.get('LAST_CHANCE')}!
+    //h3.subtitle #{localizer.get('JUST_A_REMINDER')}!
+    h4.text-300.extra-text #{localizer.get('IT_SEEMS_THAT_YOU_HAVE_PLACEHOLDER_REMAINING_OF_FREE_MONEY_TO_SPEND_TOWARDS_THE_PURCHASE_OF_ANY_DEVICE_THAT_YOU_WILL_NOT_BE_ABLE_TO_CARRY_OVER_ONCE_YOUR_ORDER_HAS_BEEN_SUBMITTED_DO_YOU_WISH_TO_CONTINUE')}
+    div(style='margin-top:20px')
+      .text-center
+        button.btn.btn-danger.btn-lg.checkout-btn(id='ConfirmationModalYesBtn') #{localizer.get('IM_GOOD_PLACE_MY_ORDER')}
+      .text-center
+        a.clear-order-link(href='/zang-office/users') &longleftarrow; #{localizer.get('BUY_MORE_DEVICES')}
+      

@@ -1,0 +1,78 @@
+extends ../index
+
+block styles
+  link(href='/public_nocache/stylesheets/partner/partner.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/partner/partner-portal.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/partner/partner-application.css', rel='stylesheet')
+
+block mainbody
+  if success
+    include ./PartnerInfoTopSuccess
+  else
+    include ./PartnerInfoTop
+    .top-container
+      .container
+        case partner.type
+          when CONSTANTS.PARTNER_TYPES.msa
+            .row
+              .col-md-6.col-lg-6
+                button.btn.btn-danger.btn-lg.btn-block.text-400.text-uppercase.partner-invitation-btn(data-toggle='modal' data-target='#partnerInvitationModalCompany') &plus; #{localizer.get('ADD_COMPANY')}
+              .col-md-6.col-lg-6
+                - var buttonText = localizer.get('ADD_COMPANY_NAME_AGENT_ADMIN').replace('{COMPANY_NAME}', partner.fields.companyName)
+                button.btn.btn-danger.btn-lg.btn-block.text-400.text-uppercase.partner-invitation-btn(data-toggle='modal' data-target='#partnerInvitationModalAgent') &plus; #{buttonText}
+          when CONSTANTS.PARTNER_TYPES.sales
+            .row
+              .col-md-12.col-lg-12
+                button.btn.btn-danger.btn-block.text-400.text-uppercase.partner-invitation-btn(data-toggle='modal' data-target='#partnerInvitationModalAgent') &plus; #{localizer.get('ADD_AGENT_ADMIN')}
+        .row
+          .col-md-12.col-lg-12
+            .panel-group#agentsAccordion(role='tablist')
+              each child, ch in children
+                .panel.panel-default
+                  .panel-heading
+                    .agent-row
+                      .row
+                        .col-md-11.col-lg-11
+                          .agent-trigger-link(role='tab' data-toggle='collapse' data-parent='#agentsAccordion' href='#collapse-' + child._id)
+                            h4.panel-title
+                              span.caret.agent-trigger
+                              a(href='#') #{child.fields.companyName} #{localizer.get('AGENTS')} (#{child.agents.length})
+                        .col-md-1.col-lg-1
+                          .text-center
+                            a.btn.btn-danger(href='/partners/' + child._id + '/info' target='_blank') #{localizer.get('VIEW')}
+                  .panel-collapse.collapse(id='collapse-' + child._id)
+                    .panel-body
+                      .panel-content
+                        each agent, ag in child.agents
+                          .agent-row
+                            .row
+                              .col-md-12.col-lg-12
+                                .row
+                                  .col-md-3.col-lg-3 
+                                    h4.text-center.text-400 #{child.fields.companyName}
+                                  .col-md-3.col-lg-3
+                                    h5.text-400 #{agent.user.account.displayname}
+                                    h6.text-300.text-muted #{agent.user.account.username}
+                                  .col-md-1.col-lg-1
+                                    if agent.accessLevel < CONSTANTS.AGENT_LEVELS.AGENT
+                                      h6.text-300.text-center #{localizer.get(Object.keys(CONSTANTS.AGENT_LEVELS).find(key => CONSTANTS.AGENT_LEVELS[key] === agent.accessLevel))}
+                                  .col-md-3.col-lg-3 
+                                    h6.text-center ID: #{agent._id}
+                                  .col-md-1.col-lg-1
+                                    h5.text-center.text-uppercase #{localizer.get(agent.active ? 'ACTIVE' : 'INACTIVE')}
+                                  .col-md-1.col-lg-1
+                                    .text-center
+                                      a.btn.btn-default(href='/partners/' + child._id + '/agents/' + agent._id + '/info' target='_blank') #{localizer.get('VIEW')}
+
+
+
+            
+              
+            
+  include ./PartnerInvitationModalCompany 
+  include ./PartnerInvitationModalAgent 
+                      
+block scripts
+  script(src='/public_nocache/javascripts/partner/partner-portal.js')
+  if partner.type === CONSTANTS.PARTNER_TYPES.msa || partner.type === CONSTANTS.PARTNER_TYPES.sales
+    script(src='/public_nocache/javascripts/partner/partner-invitation.js')

@@ -1,0 +1,25 @@
+extends ../index
+
+//- block styles
+//-   link(href='/public_nocache/stylesheets/user/select-tab.css', rel='stylesheet')
+
+block mainbody
+  .container.bg-white
+    div.row
+      div.col-md-12
+        include ./UserTitle
+        include ./UserTabs
+        //- - var formAction = '/user/' + userId
+        //- - var formOnFocus = 'this.value = this.value;'
+        - var formPlaceHolder = localizer.get('SEARCH_BY_PLAN') + ' #...'
+        - var formKeyup = 'this.value = this.value.toUpperCase();'
+        //- .row.filter-by
+        //-   .col-lg-12
+        //-     span #{localizer.get('FILTER_BY')}: 
+        //-     a#offers(href=formAction + '/plans') #{localizer.get('UC_OFFERS')}
+        include ../components/ListSearchForm
+        div.row
+          div.col-md-12.order-summary #{localizer.get('ORDER_SUMMARY')}
+        div.row
+          div.col-md-12
+            include ../purchased-plans/SubscriptionsTable

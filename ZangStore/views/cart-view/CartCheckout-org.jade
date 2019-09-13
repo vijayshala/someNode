@@ -1,0 +1,213 @@
+extends ../index
+block styles
+  link(href='/public_nocache/stylesheets/cart/cart-checkout.css', rel='stylesheet')
+block mainbody
+  input(type='hidden' name='states' value=JSON.stringify(states))
+  input(type='hidden' name='selectedBillingStateProvince' value=userInfo.billingInformation.billingStateProvince)
+  input(type='hidden' name='selectedShippingStateProvince' value=userInfo.shippingInformation.shippingStateProvince)
+  form.place-order-form(method='POST', action='#' id='PlaceOrderForm')
+    input(type='hidden', name='_csrf', value=_csrf)
+    - var title = 'Billing and Shipping'
+    - var selected = 'billing'
+    - var passed = ['plan', 'number', 'devices']
+    include ../components/ZangStoreStepper
+    .container
+      div.row
+        div.col-md-12
+          .zo-error-prompt(id='errorPrompt')
+            i.fa.fa-exclamation-circle
+            span.checkoutAlert Each Zang Office plan requires at least one Standard OR Power user.
+      div.row
+        div.col-md-4
+          h3.text-danger Account Information
+          div.form-group
+            label  
+              span.text-danger &#10035;
+              | First Name
+            input.form-control(type='text', name='firstName', value=userInfo.firstName, readonly)
+            span.error-msg
+          div.form-group
+            label  
+              span.text-danger &#10035;
+              | Last Name
+            input.form-control(type='text', name='lastName', value=userInfo.lastName, readonly)
+            span.error-msg
+          div.form-group
+            label  
+              span.text-danger &#10035;
+              | Company Name
+            input.form-control(type='text', name='companyName', value=userInfo.accountInformation.companyName data-toggle="tooltip" data-placement="top" title="This will be your Zang Office Account Name.")
+            span.error-msg
+          div.form-group
+            label  
+              span.text-danger &#10035;
+              | Industry
+            select.form-control(name='industryType')
+              each industryType in industryTypes
+                option(value=industryType.value) #{industryType.description}
+            span.error-msg
+          div.form-group
+            label  
+              span.text-danger &#10035;
+              | Contact Phone Number
+            input.form-control(type='number', name='phoneNumber', value=userInfo.accountInformation.phoneNumber data-toggle="tooltip" data-placement="top" title="If you've chosen to use your existing or a toll-free number as your Zang Office number, we will try to find a local number with the extension used in this field.")
+            span.error-msg
+          div.form-group
+            label  
+              span.text-danger &#10035;
+              | Email Address
+            input.form-control(type='text', name='emailAddress', value=userInfo.username readonly)
+            span.error-msg
+        div.col-md-4
+          h3.text-danger Billing Information
+          div.form-group
+            label  
+              span.text-danger &#10035;
+              | Address
+            input.form-control(type='text', name='billingAddress' value=userInfo.billingInformation.billingAddress)
+            span.error-msg
+          div.form-group
+            label  
+              span.text-danger &#10035;
+              | Country
+            select.form-control(name='billingCountry')
+              each country in countries
+                option(value=country.keyValue selected=country.keyValue === userInfo.billingInformation.billingCountry)= country.description
+            span.error-msg
+          div.form-group
+            label  
+              span.text-danger &#10035;
+              | City
+            input.form-control(type='text', name='billingCity' value=userInfo.billingInformation.billingCity)
+            span.error-msg
+          div.row
+            div.col-md-6
+              div.form-group
+                label  
+                  span.text-danger &#10035;
+                  | State/Province
+                select.form-control(name='billingStateProvince')
+                  span.error-msg
+            div.col-md-6
+              div.form-group
+                label  
+                  span.text-danger &#10035;
+                  | Zip/Postal Code
+                input.form-control(type='text', name='billingPostalCode' value=userInfo.billingInformation.billingPostalCode)
+                span.error-msg
+          if(cards.length)
+            div.form-group
+              label  
+                span.text-danger &#10035;
+                | Credit card
+              select.form-control(name='creditCardId')
+                each card,i in cards
+                  option(value=card.hash) **** **** **** #{card.last_four} #{card.brand}
+              span.explanation
+                a(href='/billingaccount/creditcard') Manage credit cards
+          else
+            include ./CartCheckoutCreditCard
+            
+        div.col-md-4        
+          h3.text-danger Shipping Address
+          div.form-group
+            div.checkbox
+              label.checkbox-label         
+                input.copy-billing-address(type='checkbox' id='copyBillingAddress' )
+                | &nbsp;Same as Billing Address
+          div.form-group
+            label  
+              span.text-danger &#10035;
+              | Address
+            input.form-control(type='text', name='shippingAddress' value=userInfo.shippingInformation.shippingAddress)
+            span.error-msg
+          div.form-group
+            label  
+              span.text-danger &#10035;
+              | Country
+            select.form-control(name='shippingCountry')
+              each country in countries
+                option(value=country.keyValue selected=country.keyValue === userInfo.shippingInformation.shippingCountry)= country.description
+            //input.form-control.sr-only(type='text', name='shippingCountry' value=userInfo.shippingInformation.shippingCountry)
+            span.error-msg
+          div.form-group
+            label  
+              span.text-danger &#10035;
+              | City
+            input.form-control(type='text', name='shippingCity' value=userInfo.shippingInformation.shippingCity)
+            span.error-msg
+          div.row
+            div.col-md-6
+              div.form-group
+                label  
+                  span.text-danger &#10035;
+                  | State/Province
+                select.form-control(name='shippingStateProvince')
+                  span.error-msg
+            div.col-md-6
+              div.form-group
+                label  
+                  span.text-danger &#10035;
+                  | Zip/Postal Code
+                input.form-control(type='text', name='shippingPostalCode' value=userInfo.shippingInformation.shippingPostalCode)
+                span.error-msg
+          div.row
+            div.col-md-12
+              h3.text-danger Shipping Options
+          div.row
+            div.col-md-12
+              select.form-control(disabled=true)
+                option(value='' selected) FREE Shipping
+          div.row
+            div.col-md-12
+              p.free-shipping-text For a limited time, shipping within North America is free. You're welcome ;)
+          div.row
+            div.col-md-12
+              div.form-group
+                div.checkbox
+                  label.checkbox-label         
+                    input.copy-billing-address(type='checkbox' name='allowToContact' checked="checked")
+                    | &nbsp;Yes, send me email regarding zang news, applications, deals and special events!
+      div.row(style='margin-top:20px;')
+        div.col-md-12
+          div.form-group
+            label Additional Notes
+            textarea.form-control(class='order-notes', name='notes', maxlength='500')
+      div.row
+        div.col-md-12
+          include ./CartSummary
+          
+      div.row
+        div.col-md-12.text-center            
+          div.form-group
+            div.checkbox
+              label.checkbox-label         
+                input.copy-billing-address(type='checkbox' name="tosAgree")
+                | &nbsp;I have read and I agree with the above Terms Of Service
+                span.error-msg(style='display:block')
+      div.row.sr-only
+        div.col-md-12.text-center
+          a.btn.btn-primary.btn-space(href='/cart/quote' target='_blank' data-toggle="tooltip" data-placement="top" title="Print this Order Summary") 
+            | Print this quote&nbsp;
+            i.fa.fa-print
+      div.row
+        div.col-md-12.text-center
+          button.btn.btn-danger.btn-lg.checkout-btn(type='submit', id="CheckoutSubmitBtn") Place My Order - #{currency.value.toUpperCase()}#{currency.symbol} #{(cart.total/100).formatDollars(2)}
+          //button.btn.checkout-btn(style='margin-top:5px', class='', type='submit', id="CheckoutSubmitBtn") Place Your Order - #{currency.value.toUpperCase()}#{currency.symbol} #{(cart.total/100).formatDollars(2)}
+          
+      div.row
+        div.col-md-12
+          div.alert(id='checkoutAlert')
+      .zs-progress-modal
+        .content
+          h1.title Placing Your Order
+          h3.subtitle Please be patient. The process might take up to 1 minute
+          .spinner
+            img.img-responsive(src='/public_nocache/images/loading-spinner-blue.svg')
+        
+block scripts
+  script(src='/public_nocache/libs/formatter/jquery.formatter.min.js')
+  script(src='/public_nocache/javascripts/creditcard/creditcard.js')
+  script(src='/public_nocache/javascripts/cart/checkout.js')
+      
+      

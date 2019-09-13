@@ -1,0 +1,38 @@
+.address-info
+    h3.text-danger #{localizer.get('BILLING_INFORMATION')}
+    div.form-group
+        label  
+        span.text-danger 
+        | #{localizer.get('ADDRESS')}
+        input.form-control(name='billingAddress', type='text', value=userInfo.billingInformation.billingAddress)
+        span.error-msg
+    div.form-group
+        label  
+        span.text-danger 
+        | #{localizer.get('COUNTRY')}
+        select.form-control(name='billingCountry')
+        option(value='') #{localizer.get('SELECT_ONE')}
+        each country in countries
+            option(value=country.keyValue selected=country.keyValue === userInfo.billingInformation.billingCountry)= country.description
+        span.error-msg
+    div.form-group
+        label  
+        span.text-danger 
+        | #{localizer.get('CITY')}
+        input.form-control(name='billingCity', type='text', value=userInfo.billingInformation.billingCity)
+        span.error-msg
+    div.row
+        div.col-md-6
+        div.form-group
+            label  
+            span.text-danger 
+            | #{localizer.get('STATE_PROVINCE')}
+            select.form-control(name='billingStateProvince')
+            span.error-msg
+        div.col-md-6
+        div.form-group
+            label  
+            span.text-danger 
+            | #{localizer.get('ZIP_POSTAL_CODE')}
+            input.form-control(name='billingPostalCode', type='text', value=userInfo.billingInformation.billingPostalCode)
+            span.error-msg

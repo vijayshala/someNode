@@ -1,0 +1,16 @@
+extends index
+
+block styles
+  link(href='/public_nocache/stylesheets/common/browser.css', rel='stylesheet')
+
+block mainbody
+  .container.browser-container
+      h2.text-300 #{localizer.get('PLEASE_UPDATE_YOUR_BROWSER')}
+      h4.text-300 #{localizer.get('YOU_ARE_USING_OUTDATED_BROWSER')}
+      div.browsers
+            h4.text-300   
+              a.btn.solid.green.center(href='https://www.google.com/chrome/')  #{localizer.get('GOOGLE_CHROME')}
+            h4.text-300   
+              a.btn.solid.green.center(href='https://www.mozilla.org/en-US/firefox/new/')  #{localizer.get('FIREFOX')}
+      br
+      br

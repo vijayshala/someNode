@@ -1,0 +1,80 @@
+.react-number-spinner{
+  position: relative;
+  height:2em;
+  line-height: 2em;
+  display: inline-block;
+}
+.react-number-spinner .plus,
+.react-number-spinner .minus,
+.react-number-spinner .input {
+  text-align: center;
+  box-sizing: border-box;
+  position: absolute;
+  -webkit-appearance: none;
+}
+.react-number-spinner .plus:focus,
+.react-number-spinner .minus:focus,
+.react-number-spinner .input:focus {
+  outline: none;
+}
+
+
+.react-number-spinner .plus,
+.react-number-spinner .minus{
+    user-select:none;
+    font-size: 100%;
+    background: none;
+    top:0;
+    width:2em;
+    height:100%;
+    line-height: 2em;
+    border: 0px solid #ececec;   
+    background-color: #fff;
+}
+.react-number-spinner .plus:disabled,
+.react-number-spinner .minus:disabled {
+  opacity: 0.8;
+}
+
+.react-number-spinner .plus:disabled span,
+.react-number-spinner .minus:disabled span {
+  olor:#999;
+}
+
+.react-number-spinner .plus span,
+.react-number-spinner .minus span {
+  color:#333;
+  font-size: 24px;
+  line-height: 20px;
+}
+
+.react-number-spinner .minus{
+  left:0;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.react-number-spinner .plus{
+  right:0;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+.react-number-spinner .input{
+  /* font:100% "Helvetica neue", Verdana, Geneva, sans-serif; */
+  border-radius: 0;
+  border: 1px solid #ececec;
+  border-width: 1px 0;
+  padding:0 0.6em;
+  width:calc(100% - 4em);
+  left:2em;
+  right:2em;
+  top:0;
+  bottom:0;
+  box-shadow: 3px 3px 5px 2px #ddd inset;
+  font-weight: 700;
+}
+
+.react-number-spinner.no-controls .plus,
+.react-number-spinner.no-controls .minus{
+  display: none;
+}

@@ -1,0 +1,33 @@
+if userInfo
+  li.dropdown(style='margin-top:-3px;')
+    a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+      img(src=userInfo.pictureURL, class='img-responsive img-circle account__avatar__pic')
+      | #{userInfo.firstName + ' ' + userInfo.lastName}
+
+      input(value='#{userInfo.username}', style='display:none', id='usernameInput')
+      input(value='#{process.env.NODE_ENV}', style='display:none', id='envInput')
+      span.caret
+
+    ul.dropdown-menu
+      if region && region.toLowerCase() !== 'de'
+        li
+          a(href='/' + region.toLowerCase() + '/billingaccount/creditcard') #{localizer.get('MANAGE_BILLING_ACCOUNT')}
+      li
+        a(href='/user/me/info') #{localizer.get('MY_PROFILE')}
+      li
+        a(href='#{urls.identityProviderURL + "/#user"}', target="_blank") #{localizer.get('MY_SETTINGS')}
+      if partnerInfo
+        li
+          a(href='/partners/me/resolve') #{localizer.get('MY_PARTNER_PORTAL')}
+      li.divider(role='separator')
+      li
+        a(href='#{baseUrl + "/appauth/logmeout?next=" + escapedCurrentURL}') #{localizer.get('SIGN_OUT')}
+      if(developers.indexOf(userInfo.username) > -1)
+        li
+          form(action='/user/me/reset', method='POST')
+            a.developerAction(onclick='$(this).parent("form").submit();') #{localizer.get('RESET_ALL_PURCHASES')}
+else
+    li
+      a.account-link.login(href='#{baseUrl + "/appauth/login?next=" + escapedCurrentURL + urls.identityProviderLoginView}') #{localizer.get('SIGN_IN')}
+      //a.account-link.signup(href='#{urls.identityProviderURL + "/account/login?next=" + escapedCurrentURL + urls.identityProviderLoginView}') #{localizer.get('SIGN_UP')}
+//iframe(src=urls.identityProviderURL + '/appauth/checktoken.html', style="display:none", id="checkTokenFrame")

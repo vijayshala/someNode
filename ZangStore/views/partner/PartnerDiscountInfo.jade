@@ -1,0 +1,10 @@
+if partnerInfo && partnerInfo[0].status === CONSTANTS.PARTNER_STATUS_TYPES.APPROVED
+  .partner-discount
+    .container
+      .row
+        .col-lg-12
+          .text-center #{localizer.get('YOU_ARE_A')} 
+            span.text-capitalize.text-500 #{partnerInfo[0].type} #{localizer.get('AGENT')}. 
+            | #{localizer.get('A_DISCOUNT_OF')} 
+            span.percent #{(partnerInfo[0].discount*100)}% 
+            | #{localizer.get('WILL_BE_APPLIED_TO_YOUR_TOTAL_AMOUNT_AFTER_YOU_CHECKOUT')}

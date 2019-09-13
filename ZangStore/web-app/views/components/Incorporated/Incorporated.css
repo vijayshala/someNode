@@ -1,0 +1,8 @@
+.quote-incorporated-radio {
+    display: flex;
+    align-items: center;
+}
+
+.quote-incorporated-radio label {
+    padding: 1em;
+}

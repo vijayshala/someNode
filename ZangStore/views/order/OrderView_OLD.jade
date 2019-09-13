@@ -1,0 +1,47 @@
+extends ../index
+
+block styles
+  link(href='/public_nocache/stylesheets/order-view.css', rel='stylesheet')
+
+block mainbody
+  div.row
+    div.col-md-8.col-md-offset-2
+      div.row
+        div.col-md-12
+          h1.text-center.zo-main-title Confirmation # 
+            strong #{order.confirmationNumber}
+      div.row
+        div.col-md-12
+          h2.text-center Items
+          - var total = 0
+          .table-responsive
+            table.table.zs-main-table
+              thead
+                tr
+                  th Name
+                  th Quantity
+                  th Sub total
+              tbody
+              each item, i in order.items
+                - var subTotal = item.quantity * (item.product.price.interval + item.product.price.oneTime)
+                - total += subTotal
+                tr
+                  td #{item.product.title}
+                  td #{item.quantity}
+                  td #{(subTotal/100).formatDollars(2)}
+                if item.details
+                  tr
+                    td(colspan=4)
+                      include ./OrderItemDetails
+                    
+                      
+      div.row
+      div.col-md-12
+        h4 Order Notes
+        p= order.notes
+      div.row
+      div.col-md-12
+        h3.pull-right Total amount $ #{(total/100).formatDollars(2)}
+                
+          
+            

@@ -1,0 +1,60 @@
+html,
+body {
+  font-family: 'Roboto', sans-serif;
+  height: 100%;
+  font-size: 1em;
+  width: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  min-height: 100%;
+  transform: translate(0);
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 300;
+  line-height: 1.1;
+  color: inherit;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h4,
+h5,
+h6 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/*.content {*/
+
+/*flex: 2;*/
+
+/*background-color: #ab6e3d;*/
+
+/*display: flex;*/
+
+/*justify-content: flex-end;*/
+
+/*}*/
+
+/*.video {*/
+
+/*background-color: #5f3333;*/
+
+/*width: 400px;*/
+
+/*}*/
+

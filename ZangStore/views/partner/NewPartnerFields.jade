@@ -1,0 +1,341 @@
+.top-container.bg-white
+  .container
+    .row
+      .col-lg-6
+        h4.text-danger.text-500 #{localizer.get('ORGANIZATION_INFORMATION')}
+        .form-group
+          label #{localizer.get('FIRST_NAME')}
+          .input-icon.right.native
+            i.fa.fa-lock
+            input.form-control(type='text' name='firstName' value=fieldsUserInfo.firstName readonly)
+            span.error-msg
+        .form-group
+          label #{localizer.get('LAST_NAME')}
+          .input-icon.right.native
+            i.fa.fa-lock
+            input.form-control(type='text' name='lastName' value=fieldsUserInfo.lastName readonly)
+            span.error-msg
+        .form-group
+          label #{localizer.get('LEGAL_COMPANY_NAME')}
+          input.form-control(type='text' name='companyName' value=fields.companyName disabled=fieldsReadOnly)
+          span.error-msg
+        .form-group
+          label #{localizer.get('ADDRESS')} *
+          input.form-control(type='text', name='companyAddress' value=fields.companyAddress disabled=fieldsReadOnly)
+          span.error-msg
+        .form-group
+          label #{localizer.get('COUNTRY')} *
+          select.form-control(name='companyCountry' disabled=fieldsReadOnly)
+            option(value='') #{localizer.get('SELECT_ONE')}
+            each country in data.countries
+              option(value=(country.shortCode + '-' + country.name.text) selected=region.toUpperCase() == country.shortCode) #{(country.name.text)} (#{country.shortCode})
+              span.error-msg
+        .form-group
+          label #{localizer.get('CITY')} *
+          input.form-control(type='text', name='companyCity' value=fields.companyCity disabled=fieldsReadOnly)
+          span.error-msg
+        .row
+         .col-lg-6.stateRegion(class=(data.states.length > 0 ? '' : 'hidden'))
+            .form-group
+              label #{localizer.get('STATE_PROVINCE')} *
+              select.form-control(name='companyStateProvince' disabled=fieldsReadOnly)
+                option(value='') #{localizer.get('SELECT_ONE')}
+                each state in data.states
+                  option(value=state.name) #{state.name}
+               span.error-msg
+          .col-lg-6
+            .form-group
+              label #{localizer.get('ZIP_POSTAL_CODE')} *
+              input.form-control(type='text', name='companyZipPostalCode' value=fields.companyZipPostalCode disabled=fieldsReadOnly)
+              span.error-msg
+        .form-group
+          label #{localizer.get('PHONE_NUMBER')} *
+          input.form-control(type='text' name='companyPhoneNumber' value=fields.companyPhoneNumber disabled=fieldsReadOnly)
+          span.error-msg
+        .form-group
+          label #{localizer.get('WEBSITE')} *
+          input.form-control(type='text' name='companyWebsite' value=fields.companyWebsite disabled=fieldsReadOnly)
+          span.error-msg
+        .form-group
+          label #{localizer.get('EMAIL')} #{localizer.get('ADDRESS')}
+          .input-icon.right.native
+            i.fa.fa-lock
+            input.form-control(type='text' name='emailAddress' value=fieldsUserInfo.emailAddress readonly)
+            span.error-msg
+      .col-lg-6
+        h4.text-500.text-danger #{localizer.get('OPERATIONAL_ADDRESS')}
+        .form-group
+          .checkbox
+            label
+              input(type='checkbox' name='copyCompanyAddress' id='copyCompanyAddress' checked=fields.copyCompanyAddress disabled=fieldsReadOnly)
+              span.checkbox-label #{localizer.get('SAME_AS_ORGANIZATION_ADDRESS')}                            
+        .form-group(class=fields.copyCompanyAddress ? 'sr-only' : '')
+          label #{localizer.get('ADDRESS')} *
+          input.form-control(type='text', name='operationalAddress' value=fields.operationalAddress disabled=fieldsReadOnly)
+          span.error-msg   
+        .form-group(class=fields.copyCompanyAddress ? 'sr-only' : '')
+          label #{localizer.get('COUNTRY')} *
+          select.form-control(name='operationalCountry' disabled=fieldsReadOnly)
+            option(value='') #{localizer.get('SELECT_ONE')}
+            each country in data.countries
+              option(value=(country.shortCode + '-' + country.name.text) selected=region.toUpperCase() == country.shortCode) #{(country.name.text)} (#{country.shortCode})
+
+          span.error-msg 
+        .form-group(class=fields.copyCompanyAddress ? 'sr-only' : '')
+          label #{localizer.get('CITY')} *
+          input.form-control(type='text', name='operationalCity' value=fields.operationalCity disabled=fieldsReadOnly)
+          span.error-msg            
+        .row
+          .col-lg-6.stateRegionOperational(class=(data.states.length > 0 ? '' : 'hidden'))
+            .form-group(class=fields.copyCompanyAddress ? 'sr-only' : '')
+              label #{localizer.get('STATE_PROVINCE')} *
+              select.form-control(name='operationalStateProvince' disabled=fieldsReadOnly)
+                option(value='') #{localizer.get('SELECT_ONE')}
+                each state in data.states
+                  option(value=state.name) #{state.name}
+                span.error-msg
+          .col-lg-6
+            .form-group(class=fields.copyCompanyAddress ? 'sr-only' : '')
+              label #{localizer.get('ZIP_POSTAL_CODE')} *
+              input.form-control(type='text', name='operationalZipPostalCode' value=fields.operationalZipPostalCode disabled=fieldsReadOnly)
+              span.error-msg 
+        .form-group.hidden
+          h4.text-danger.text-500 #{localizer.get('ARE_YOU_AN_EXISTING_AVAYA_PARTNER')}
+          .radio
+            label
+              input(type='radio' name='isAvayaPartner' value='yes' checked=fields.isAvayaPartner === "yes" disabled=fieldsReadOnly)
+              span.radio-label #{localizer.get('YES')}
+          .radio
+            label
+              input(type='radio' name='isAvayaPartner' value='no' checked=fields.isAvayaPartner === "no" disabled=fieldsReadOnly)
+              span #{localizer.get('NO')}
+        .form-group.hidden
+          label #{localizer.get('IF_YES_PLEASE_ENTER_YOUR_AVAYA_PARTNER_ID')}
+          input.form-control(type='text', name='avayaPartnerId' value=fields.avayaPartnerId disabled=fieldsReadOnly maxlength=6)
+          span.error-msg
+    if 1===2
+      .hidden-fields
+        .row
+          .col-lg-12
+            br
+            .well.well-lg
+              p.pull-right.hint(style='font-size:10px;margin-top:-10px;margin-right:-10px;') All bank and account information is held private & secure under our terms and conditions.
+              h4.text-500.text-danger Bank Information
+              .row
+                .col-lg-6
+                  .form-group
+                    label Bank Name
+                    input.form-control(type='text', name='bankName' value=fields.bankName disabled=fieldsReadOnly)
+                    span.error-msg
+                  .form-group
+                    label Address
+                    input.form-control(type='text', name='bankAddress' value=fields.bankAddress disabled=fieldsReadOnly)
+                    span.error-msg
+                  .row
+                    .col-lg-6
+                      .form-group
+                        label Country *
+                        select.form-control(name='bankCountry' disabled=fieldsReadOnly)
+                          option(value='') - Select One -
+                          each country in data.countries
+                            option(value=country.keyValue selected=fields.bankCountry === country.keyValue) #{country.description}
+                        span.error-msg
+                    .col-lg-6                  
+                      .form-group
+                        label State/Province *
+                        select.form-control(name='bankStateProvince' disabled=fieldsReadOnly)
+                          option(value='') - Select One -
+                          each state in data.states
+                            option(value=state.keyValue selected=fields.bankStateProvince === state.keyValue) #{state.description}
+                        span.error-msg
+                  .row
+                    .col-lg-6
+                      .form-group
+                        label City
+                        input.form-control(type='text', name='bankCity' value=fields.bankCity disabled=fieldsReadOnly)
+                        span.error-msg
+                    .col-lg-6
+                      .form-group
+                        label Zip/Postal Code *
+                        input.form-control(type='text', name='bankZipPostalCode' value=fields.bankZipPostalCode disabled=fieldsReadOnly)
+                        span.error-msg              
+                .col-lg-6
+                  .row
+                    .col-lg-6
+                      .form-group
+                        label Account Number
+                        input.form-control(type='text', name='bankAccountNumber' value=fields.bankAccountNumber disabled=fieldsReadOnly)
+                        span.error-msg
+                    .col-lg-6
+                      .form-group
+                        label Bank Number
+                        input.form-control(type='text', name='bankNumber' value=fields.bankNumber disabled=fieldsReadOnly)
+                        span.error-msg
+                  .row
+                    .col-lg-6
+                      .form-group
+                        label Transit Number
+                        input.form-control(type='text', name='bankTransitNumber' value=fields.bankTransitNumber disabled=fieldsReadOnly)
+                        span.error-msg
+                    .col-lg-6
+                      .form-group
+                        label Swift Code
+                        input.form-control(type='text', name='bankSwiftCode' value=fields.bankSwiftCode disabled=fieldsReadOnly)
+                        span.error-msg
+                  .form-group
+                    label Tax Registration Number
+                    input.form-control(type='text', name='bankTaxRegistrationNumber' value=fields.bankTaxRegistrationNumber disabled=fieldsReadOnly)
+                    span.error-msg
+        .row
+          .col-lg-12
+            .question-container
+              .row
+                .col-lg-9
+                  h5 1) Does your organization have a documented compliance program in place?
+                .col-lg-3
+                  .form-group(data-parentof='question1')
+                    .radio
+                      label
+                        input.yes-no-radio(type='radio' name='question1' value='yes' checked=fields.question1 === "yes" disabled=fieldsReadOnly)
+                        span.radio-label Yes
+                    .radio
+                      label
+                        input.yes-no-radio(type='radio' name='question1' value='no' checked=fields.question1 === "no" disabled=fieldsReadOnly)
+                        span No
+                    br
+                    span.error-msg
+        .row
+          .col-lg-12
+            .question-container
+              .row
+                .col-lg-9
+                  h5 2) Does your organization provide Logistics, customs or brokerage service?
+                .col-lg-3
+                  .form-group(data-parentof='question2')
+                    .radio
+                      label
+                        input.yes-no-radio(type='radio' name='question2' value='yes' checked=fields.question2 === "yes" disabled=fieldsReadOnly)
+                        span.radio-label Yes
+                    .radio
+                      label
+                        input.yes-no-radio(type='radio' name='question2' value='no' checked=fields.question2 === "no" disabled=fieldsReadOnly)
+                        span No
+                    br
+                    span.error-msg
+        .row
+          .col-lg-12
+            .question-container
+              .row
+                .col-lg-9
+                  h5 3) Does your firm provide lobbyist services, sales support, purchasing or sourcing consulting services, or any other service that would facilitate a transaction between Avaya and another party? 
+                .col-lg-3
+                  .form-group(data-parentof='question3')
+                    .radio
+                      label
+                        input.yes-no-radio(type='radio' name='question3' value='yes' checked=fields.question3 === "yes" disabled=fieldsReadOnly)
+                        span.radio-label Yes
+                    .radio
+                      label
+                        input.yes-no-radio(type='radio' name='question3' value='no' checked=fields.question3 === "no" disabled=fieldsReadOnly)
+                        span No
+                    br
+                    span.error-msg
+        .row
+          .col-lg-12
+            .question-container
+              .row
+                .col-lg-9
+                  h5 4) To the best of your knowledge, is any key employee or senior management member of your organization a Public Official?
+                  .form-group
+                    label If yes, please provide a list of all government offices and positions held.  Indicate whether these are appointed or elected positions, and for how long the person concerned held such positions.
+                    input.form-control(type='text', name='question4Extra' value=fields.question4Extra disabled=fieldsReadOnly)
+                    span.error-msg
+                .col-lg-3
+                  .form-group(data-parentof='question4')
+                    .radio
+                      label
+                        input.yes-no-radio(type='radio' name='question4' value='yes' checked=fields.question4 === "yes" disabled=fieldsReadOnly)
+                        span.radio-label Yes
+                    .radio
+                      label
+                        input.yes-no-radio(type='radio' name='question4' value='no' checked=fields.question4 === "no" disabled=fieldsReadOnly)
+                        span No
+                    br
+                    span.error-msg
+        .row
+          .col-lg-12
+            .question-container
+              .row
+                .col-lg-9
+                  h5 5) To the best of your knowledge, is any key employee or senior management member of your organization related (by blood, marriage, current or past business association, or otherwise) to a Public Official?
+                  .form-group
+                    label If yes, please describe the relationship between such person(s) and the Public Official(s). 
+                    input.form-control(type='text', name='question5Extra' disabled=fieldsReadOnly value=fields.question5Extra)
+                    span.error-msg
+                  span.error-msg
+                .col-lg-3
+                  .form-group(data-parentof='question5')
+                    .radio
+                      label
+                        input.yes-no-radio(type='radio' name='question5' value='yes' checked=fields.question5 === "yes" disabled=fieldsReadOnly)
+                        span.radio-label Yes
+                    .radio
+                      label
+                        input.yes-no-radio(type='radio' name='question5' value='no' checked=fields.question5 === "no" disabled=fieldsReadOnly)
+                        span No
+                    br
+                    span.error-msg
+        .row
+          .col-lg-12
+            .question-container
+              .row
+                .col-lg-9
+                  h5 6) To the best of your knowledge, is any shareholder or partner in your organization, or any subsidiaries of the shareholder(s) or partner(s), owned in any part by a Public Official or a person related to a Public Official?
+                  .form-group
+                    label If yes, please list the Public Official(s) and their total percentage ownership interest. 
+                    input.form-control(type='text', name='question6Extra' value=fields.question6Extra disabled=fieldsReadOnly)
+                    span.error-msg
+                .col-lg-3
+                  .form-group(data-parentof='question6')
+                    .radio
+                      label
+                        input.yes-no-radio(type='radio' name='question6' value='yes' checked=fields.question6 === "yes" disabled=fieldsReadOnly)
+                        span.radio-label Yes
+                    .radio
+                      label
+                        input.yes-no-radio(type='radio' name='question6' value='no' checked=fields.question6 === "no" disabled=fieldsReadOnly)
+                        span No
+                    br
+                    span.error-msg
+        .row
+          .col-lg-12
+            .question-container
+              .row
+                .col-lg-9
+                  h5 7) To the best of your knowledge, does any key employee or senior management member of your organization provide financial or any other benefits to a Public Official or a member of a Public Official’s family (e.g. educational or medical assistance, housing)? 
+                  .form-group
+                    label If yes, please provide a list of all of the benefits given, the name of all recipients of such benefits and their relationship to the Public Official (e.g. cousin, sister, etc.). 
+                    input.form-control(type='text', name='question7Extra' value=fields.question7Extra disabled=fieldsReadOnly)
+                    span.error-msg
+                .col-lg-3
+                  .form-group(data-parentof='question7')
+                    .radio
+                      label
+                        input.yes-no-radio(type='radio' name='question7' value='yes' checked=fields.question7 === "yes" disabled=fieldsReadOnly)
+                        span.radio-label Yes
+                    .radio
+                      label
+                        input.yes-no-radio(type='radio' name='question7' value='no' checked=fields.question7 === "no" disabled=fieldsReadOnly)
+                        span No
+                    br
+                    span.error-msg
+    //if partnerType === 'sales'
+    //  include ./PartnerExtraFields
+            
+            
+            
+            
+            
+            
+            
+            

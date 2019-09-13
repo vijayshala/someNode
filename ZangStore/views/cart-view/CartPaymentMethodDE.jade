@@ -1,0 +1,25 @@
+div.form-group
+    h3.text-danger #{localizer.get('PAYMENT_METHOD')}
+    if currentRegion.countryISO === 'DE'
+        p.text-muted(style='font-size:11px') #{localizer.get('IBAN_CREDITOR_ID')}
+
+div.form-group
+    label  
+        span.text-danger 
+        | * #{localizer.get('INVOICING_EMAIL')}
+    input.form-control(type='text', name='billingAddress.email' value=billingAddress.email)
+    span.error-msg
+div.iban-area
+    div.form-group
+        div.credit-card-input
+            label  
+                span.text-danger 
+                | * #{localizer.get('IBAN')}
+            input.form-control(name='IBAN', type='text')
+            span.error-msg
+    div.form-group
+        label
+            input.checker.box(type='checkbox' name='IBANAuthorization' checked=false value=true)
+            | &nbsp;&nbsp;#{localizer.get('IBAN_AUTHORIZATION')}
+            br
+            span.error-msg

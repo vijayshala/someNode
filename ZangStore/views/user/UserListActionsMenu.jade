@@ -1,0 +1,10 @@
+.btn-group
+  a.btn.btn-default(href='/user/' + user._id + '/info') #{localizer.get('VIEW_DETAILS')}
+  button.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+    span.caret
+    span.sr-only Toggle Dropdown
+  ul.dropdown-menu
+    li
+      a(href='/user/' + user._id + '/orders') #{localizer.get('ORDERS')}
+    li
+      a(href='/user/' + user._id + '/plans') #{localizer.get('PLANS')}

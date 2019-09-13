@@ -1,0 +1,33 @@
+.usertype-devices {  
+  padding: 10px;
+  padding-bottom: 0px;
+  /* border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd; */
+  clear: both;
+}
+
+.three-columns .usertype-devices {
+  padding:0px;
+}
+
+.usertype-devices .checkbox-div.checked {
+  background-image: url(/images/check-white.svg);
+  background-color: #304050;
+  color: #fff;
+}
+
+.usertype-devices .btn-add-device {
+  display: block;
+  padding: 0px;
+  /* border: 2px dotted #304050;
+  border-radius: 30px;
+  text-decoration: none;
+  color: #304050; */
+  /* font-size: 18px; */
+  border-radius: 50px !important;
+}
+
+.usertype-devices .btn-add-device:hover {
+  text-decoration: underline;
+}
+

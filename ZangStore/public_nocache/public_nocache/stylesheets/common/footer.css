@@ -1,0 +1,138 @@
+.footer-container-top{
+  padding: 30px 0px 70px 0px;
+  background: #333;
+}
+
+.footer-container-top hr {
+  border-color: #A2A2A4;
+}
+
+.footer-container-top ul, .footer-container-bottom ul {
+  list-style-type: none;
+  margin:0;
+}
+
+.footer-container-top .bottom-list a, .footer-container-top .bottom-list span, .footer-container-top .bottom-list{
+  color: #A2A2A4;
+  font-weight: 300;
+  margin: 0 5px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.footer-container-top .bottom-list a:hover{
+  color:#c00;
+}
+
+.bottom-footer-links {
+  display: flex;
+  align-items: center;
+}
+
+ul.footer-nav-list li h5{
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+ul.footer-nav-list li a, ul.footer-nav-list li {
+  color: #fff;
+      text-decoration: none;
+      font-weight: 300;
+      display: block;
+      font-size: 13px;
+      padding: 1px 0;
+      word-wrap: break-word;
+}
+
+ul.footer-nav-list li a:hover{
+  color:#c00;
+}
+
+ul.footer-nav-list li a i{
+  margin-left:5px;
+}
+
+.footer-social-list a{
+  margin-right:15px;
+  color:#A2A2A4;
+}
+
+.footer-social-list a:hover {
+  color: #c00;
+}
+
+.footer-social-list a i {
+  font-size:20px;
+}
+
+
+a.optanon-alert-box-close { display:none; }
+
+div.optanon-show-settings-left { display:none; }
+
+div.optanon-show-settings-right { display:none; }
+
+
+
+div.optanon-show-settings-popup {  display:none !important; left:-9999px; }
+
+#optanon-show-settings-popup {  display:none !important;  }
+
+
+
+div.optanon-show-settings-popup-wrapper {
+
+   display: inline-block;
+
+}
+
+
+
+div.optanon-show-settings-popup-wrapper div.optanon-show-settings-middle {
+
+   border: 0;
+
+   background: 0 0!important;
+
+   float: none;
+
+   height: auto!important;
+
+   padding: 0;
+
+}
+
+div.optanon-show-settings-popup-wrapper div.optanon-show-settings-middle a.optanon-show-settings {
+
+   color: #73c1c7 !important;
+
+   font-weight: 300;
+
+   margin-top: 0!important;
+
+   float: none!important;
+
+   font-size: 15px;
+
+}
+
+a.optanon-show-settings { cursor:pointer; }
+
+div.optanon-show-settings-popup-wrapper div.optanon-show-settings-middle a.optanon-show-settings {
+  color: #A2A2A4 !important;
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif !important;
+  font-size: 14px;
+  transition: none;
+  margin-top: 2px !important;
+}
+
+div.optanon-show-settings-popup-wrapper div.optanon-show-settings-middle a.optanon-show-settings:hover {
+  color: #c00 !important;
+  text-decoration: underline !important;
+}
+
+.optanon-alert-box-wrapper {
+  background-color: rgba(0,0,0,0.85) !important;
+}

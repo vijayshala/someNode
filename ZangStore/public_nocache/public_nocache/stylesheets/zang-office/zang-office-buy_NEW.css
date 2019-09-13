@@ -1,0 +1,226 @@
+body{
+  background-color:white;
+}
+.zo-step-title{
+  font-weight:300;
+  letter-spacing: -1px;
+  font-size:41px;
+}
+
+input.zo-number{
+  border-radius:2px !important;
+  font-size:35px;
+  padding:30px;
+  text-align: center;
+  outline: none;
+  background-color:#ddd !important;
+  color:#000;
+}
+
+.zo-number-btn{
+  border: none;
+  font-size: 20px;
+  padding: 20px;
+  background: none !important;
+  color: #8e8e8e !important;
+  outline: none;
+}
+
+.zo-number-btn i{
+  font-size: 30px;
+}
+
+
+.zo-number-option{
+  margin:10px auto;
+}
+
+.zo-number-option h3{
+  font-weight: 300;
+}
+
+.zo-number-option h5{
+
+}
+
+.zo-number-option label {
+  position:relative;
+  margin-top: 25px;
+  cursor: pointer;
+}
+
+.zo-numbers-list{
+  overflow-y: scroll;
+  max-height: 200px;
+  list-style-type: none;
+  padding:0;
+  margin:0;
+}
+
+.zo-numbers-list li{
+  display: block;
+  padding: 0 10px;
+  border: 1px solid #ddd;
+  border-bottom: 0;
+  cursor: pointer;
+  font-size: 21px;
+  line-height: 51px;
+}
+
+.zo-numbers-list li:last-child{
+  border-bottom:1px solid #ddd;
+}
+
+.zo-numbers-list li.selected{
+  background-color:#2a612a;
+  color:white;
+}
+
+.zo-numbers-list li .zo-number-icon{
+  font-size: 26px;
+  vertical-align: middle;
+  color: #ccc;
+  margin-right: 10px;
+}
+
+.zo-numbers-list li.selected .zo-number-icon{
+  color:white;
+}
+
+.zo-number-option label input[type='radio']{
+  display:none;
+}
+
+.zo-number-option label input[type=radio]:checked ~ .tick{
+  display:block;
+}
+
+.zo-number-option label .box{
+  width:40px;
+  height:40px;
+  border:1px solid #ccc;
+  border-radius:0px;
+}
+
+.zo-number-option label .tick{
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 6px;
+  width: 45px;
+  height: 20px;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 3px solid red;
+  border-left: 3px solid red;
+  transform: rotate(-45deg);
+}
+
+
+.zang-office-buy-table{
+  margin-bottom: 40px;
+}
+
+.zang-office-buy-table table {
+  margin-bottom:0;
+}
+
+.zang-office-buy-table thead{
+
+}
+
+.zang-office-buy-table thead tr th{
+  vertical-align: middle !important;
+  border:0;
+  background-color:#f1f1f1;
+  font-size:16px;
+}
+
+.zang-office-buy-table .users-length{
+  color:red;
+  font-size: 17px;
+  font-weight:600;
+}
+
+.zang-office-buy-table tr td{
+  vertical-align: middle !important;
+  border:0;
+  border-top:none !important;
+}
+
+.zang-office-buy-table tr td span.strike{
+  text-decoration: line-through;
+  color: #ccc;
+}
+
+.zang-office-buy-table select[name='deviceType']{
+  display:inline-block;
+  width:80%;
+}
+
+.zang-office-buy-table .phone-image{
+  display: inline-block;
+  width:40px;
+}
+
+.zang-office-add-user-btn{
+  text-align: left;
+    font-style: italic;
+    border: 1px dashed #ddd;
+    border-radius: 15px !important;
+    color: #aaa;
+    font-size: 17px;
+}
+
+.zang-office-buy-table .radio-mine{
+  width:20px;
+  height:20px;
+}
+
+.zo-number-modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2016;
+  background-color: rgba(255,255,255,.6);
+}
+
+
+
+.zo-number-modal .content{
+  margin: 20px auto;
+  width: 600px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 0 50px rgba(0,0,0,.1);
+}
+
+
+
+.zo-number-modal .content .title {
+
+}
+
+.zo-number-modal .content .selected-number .form-control{
+  border-radius: 2px !important;
+  font-size: 35px;
+  padding: 30px;
+  text-align: center;
+  outline: none;
+  color:#000;
+}
+
+.zo-number-modal .content .footer{
+
+}
+
+
+@media (max-width:768px){
+  .zo-number-modal .content{
+    width:100%;
+  }
+
+}

@@ -1,0 +1,12 @@
+extends index
+
+block styles
+  link(href='/public_nocache/stylesheets/common/error.css', rel='stylesheet')
+
+block mainbody
+  .container.error-container
+      h2.text-300 #{localizer.get('PAGE_NOT_FOUND')}
+      h3.text-300 #{localizer.get('PAGE_NOT_FOUND_MESSAGE')}
+      h4.text-300   
+        a.btn.solid.green.center(href='/')  #{localizer.get('HOME_PAGE')}
+      pre(class=error.stack ? '' : 'sr-only') #{error.stack}

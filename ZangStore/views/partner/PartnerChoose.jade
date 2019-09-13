@@ -1,0 +1,35 @@
+extends ../index
+
+block styles
+  link(href='/public_nocache/stylesheets/partner/partner.css', rel='stylesheet')
+  
+block mainbody
+  .top-container
+    .container
+      .row
+        .col-md-12.col-lg-12
+          br
+          h1.text-center.text-300 #{localizer.get('PLEASE_CHOOSE_ONE_OF_THE_PARTNERS_YOU_ARE_ASSOCIATED_WITH')}
+          br
+      .row
+        .col-md-12.col-lg-12
+          .table-responsive.bg-white
+            table.table.zs-main-table
+              thead
+                tr
+                  th #{localizer.get('COMPANY')}
+                  th #{localizer.get('TYPE')}
+                  th #{localizer.get('RELATION')}
+                  th #{localizer.get('STATUS')}
+              tbody
+                each part, p in partnerInfo
+                  tr
+                    td
+                      if part.agent.accessLevel <= CONSTANTS.AGENT_LEVELS.ADMIN
+                        a(href='/partners/' + part._id + '/info') #{part.fields.companyName}
+                      else
+                        a(href='/partners/' + part._id + '/agents/' + part.agent._id + '/info') #{part.fields.companyName}
+                    td #{localizer.get(part.type)}
+                    td #{localizer.get(part.agent.relation)}
+                    td #{localizer.get(part.status)}
+    

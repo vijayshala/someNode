@@ -1,0 +1,36 @@
+.top-container.bg-white
+  .container
+    if parent
+      .row.partner-info
+        .col-lg-6
+          h4.text-500.text-danger #{localizer.get('MASTER_SALES_AGENT')}
+          h4.text-400 #{parent.fields.companyName}
+    .row.partner-info
+      .col-lg-6
+        h4.text-500.text-danger.text-capitalize #{resolvePartnerType(localizer, partner.type)}
+        h4.text-500 #{agent.user.account.displayname}
+        h4.text-500 #{agent.user.account.username}
+        h4.text-500 #{partner.fields.companyName}
+      .col-lg-6
+        h4.text-500 Status:&nbsp;
+          span.text-500.text-capitalize(class=partner.status) #{partner.status}
+        //- h4.text-500 Applied on: #{moment(partner.created.on).format(CONSTANTS.UI_ONLY_DATE_FORMAT)} 
+        h4.text-500 #{localizer.get('APPLIED_ON')}: #{localizer.getDate(partner.created.on)}      
+.top-container.tabs-navigation
+  .container
+    .row
+      .col-md-12
+        ul.nav.nav-tabs.nav-justified
+          li(class=active === 'info' ? 'active' : '')
+            a(href='/partners/' + partnerId + '/info') #{localizer.get('OVERVIEW')}
+          if partner.type === CONSTANTS.PARTNER_TYPES.msa || partner.type === CONSTANTS.PARTNER_TYPES.sales
+            li(class=active === 'agents' ? 'active' : '')
+              a(href='/partners/' + partnerId + '/agents') #{localizer.get('AGENTS')}
+          //- if partner.type === CONSTANTS.PARTNER_TYPES.msa
+          //-   li(class=active === 'banking' ? 'active' : '')
+          //-     a(href='/partners/' + partnerId + '/banking') #{localizer.get('BANK_INFORMATION')}
+          li(class=active === 'orders' ? 'active' : '')
+            a(href='/partners/' + partnerId + '/orders') #{partner.type === CONSTANTS.PARTNER_TYPES.referral ? 'Referrals' : 'Sales'}
+          if partner.type === CONSTANTS.PARTNER_TYPES.msa || partner.type === CONSTANTS.PARTNER_TYPES.sales
+            li(class=active === 'customers' ? 'active' : '')
+              a(href='/partners/' + partnerId + '/customers') #{localizer.get('CUSTOMERS')}

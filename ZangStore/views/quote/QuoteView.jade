@@ -1,0 +1,46 @@
+extends ../index
+
+block styles
+  link(href='/public_nocache/stylesheets/quote/quote-view.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/order/order-summary.css', rel='stylesheet')
+
+block mainbody
+  .top-container.quote-info
+    .container
+      .row
+        .col-lg-12
+          br
+          h1.text-center.text-300 #{localizer.get('QUOTE')} ID #{quoteId}
+          br
+      .row
+        .col-lg-4.col-lg-offset-4
+          table.table.quote-table.hidden
+            tr
+              td #{localizer.get('NAME')}
+              td.text-400 #{userInfo.firstName} #{userInfo.lastName}
+            tr
+              td #{localizer.get('EMAIL')}
+              td.text-400 #{userInfo.username}
+          
+        
+  - var isCheckout = false
+  - var cartItemDetails = details
+  - var isQuote = true
+  - var summaryViewType = "quote"
+  include ../order/OrderSummary
+  .top-container.buttons-container
+    .container
+      .row
+        .col-lg-12.text-center
+          button.btn.btn-primary.btn-space.quote-btn(onClick='window.print()')
+            | #{localizer.get('PRINT_THIS_QUOTE')}&nbsp;
+            i.fa.fa-print
+          button.btn.btn-danger.quote-btn(onClick='window.close()')
+            | #{localizer.get('CLOSE_THIS_WINDOW')}&nbsp;
+            i.fa.fa-times-circle
+
+block scripts
+  if utagData
+    script.
+      var utag_data = !{JSON.stringify(utagData, undefined, 4)};
+  

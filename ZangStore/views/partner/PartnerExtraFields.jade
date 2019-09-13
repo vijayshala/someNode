@@ -1,0 +1,323 @@
+.row
+  .col-lg-12
+    - var isChecked = false
+    .checkbox-group
+      h5 8) Describe you business select all that apply *
+      input.form-control(type="hidden" name="question8" value=fields.question8)
+      span.error-msg
+  .col-lg-6
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question8 && fields.question8.indexOf('None') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field="question8" value="None" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label None
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question8 && fields.question8.indexOf('Independent Sales Representative') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field="question8" value="Independent Sales Representative" checked=isChecked disabled=fieldsReadOnly) 
+          span.checkbox-label Independent Sales Representative
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question8 && fields.question8.indexOf('Website Designer / Consultant') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field="question8" value="Website Designer / Consultant" checked=isChecked disabled=fieldsReadOnly) 
+          span.checkbox-label Website Designer / Consultant 
+    .row
+      .col-lg-4
+        .form-group
+          .checkbox
+            label
+              - isChecked = fields.question8 && fields.question8.indexOf('Other') > -1
+              input.multi-choise-checkbox(type='checkbox' data-field="question8" value="Other" checked=isChecked disabled=fieldsReadOnly) 
+              span.checkbox-label Other (Please Specify):
+      .col-lg-8
+        .form-group
+          input.form-control(type='text' name='question8Extra' value=fields.question8Extra disabled=fieldsReadOnly)
+          span.error-msg
+  .col-lg-6
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question8 && fields.question8.indexOf('IT Consulting') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field="question8" value="IT Consulting" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label IT Consulting
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question8 && fields.question8.indexOf('Managed Service Provider / Value-Added Reseller') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field="question8" value="Managed Service Provider / Value-Added Reseller" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Managed Service Provider / Value-Added Reseller
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question8 && fields.question8.indexOf('Telecommunications Consulting') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field="question8" value="Telecommunications Consulting" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Telecommunications Consulting
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question8 && fields.question8.indexOf('Satelite or Wireless Dealer / Retailer') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field="question8" value="Satelite or Wireless Dealer / Retailer" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Satelite or Wireless Dealer / Retailer    
+.row
+  .col-lg-12
+    .checkbox-group
+      h5 9) Do you have any of the following certifications? *
+      input.form-control(type="hidden" name="question9" value=fields.question9)
+      span.error-msg
+  .col-lg-6
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question9 && fields.question9.indexOf('None') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field="question9" value="None" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label None
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question9 && fields.question9.indexOf('Polycom Partner') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field="question9" value="Polycom Partner" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Polycom Partner
+  .col-lg-6
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question9 && fields.question9.indexOf('Cisco Partner') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field="question9" value="Cisco Partner" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Cisco Partner
+    .row
+      .col-lg-4
+        .form-group
+          .checkbox
+            label
+              - isChecked = fields.question9 && fields.question9.indexOf('Other') > -1
+              input.multi-choise-checkbox(type='checkbox' data-field="question9" value="Other" checked=isChecked disabled=fieldsReadOnly) 
+              span.checkbox-label Other (Please Specify):
+      .col-lg-8
+        .form-group
+          input.form-control(type='text' name='question9Extra' value=fields.question9Extra disabled=fieldsReadOnly)
+          span.error-msg
+.row
+  .col-lg-12
+    .checkbox-group
+      h5 10) Do you resell any of the following products? *
+      input.form-control(type="hidden" name="question10" value=fields.question10)
+      span.error-msg
+  .col-lg-6
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question10 && fields.question10.indexOf('None') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field='question10' value="None" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label None
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question10 && fields.question10.indexOf('Aastra') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field='question10' value="Aastra" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Aastra
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question10 && fields.question10.indexOf('Cisco') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field='question10' value="Cisco" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Cisco
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question10 && fields.question10.indexOf('Jive') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field='question10' value="Jive" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Jive
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question10 && fields.question10.indexOf('Mitel') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field='question10' value="Mitel" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Mitel        
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question10 && fields.question10.indexOf('Polycom') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field='question10' value="Polycom" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Polycom            
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question10 && fields.question10.indexOf('SNOM') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field='question10' value="SNOM" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label SNOM          
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question10 && fields.question10.indexOf('Vocalocity') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field='question10' value="Vocalocity" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Vocalocity
+  .col-lg-6
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question10 && fields.question10.indexOf('8 x 8') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field='question10' value="8 x 8" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label 8 x 8
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question10 && fields.question10.indexOf('Avaya') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field='question10' value="Avaya" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Avaya
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question10 && fields.question10.indexOf('Fonality') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field='question10' value="Fonality" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Fonality
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question10 && fields.question10.indexOf('Microsoft Lync') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field='question10' value="Microsoft Lync" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Microsoft Lync
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question10 && fields.question10.indexOf('Panasonic') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field='question10' value="Panasonic" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Panasonic
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question10 && fields.question10.indexOf('Shoretel') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field='question10' value="Shoretel" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Shoretel
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question10 && fields.question10.indexOf('Toshiba') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field='question10' value="Toshiba" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Toshiba
+    .row
+      .col-lg-4
+        .form-group
+          .checkbox
+            label
+              - isChecked = fields.question10 && fields.question10.indexOf('Other') > -1
+              input.multi-choise-checkbox(type='checkbox' data-field="question10" value="Other" checked=isChecked disabled=fieldsReadOnly) 
+              span.checkbox-label Other (Please Specify):          
+      .col-lg-8
+        .form-group
+          input.form-control(type='text' name='question10Extra' value=fields.question10Extra disabled=fieldsReadOnly)
+          span.error-msg
+.row
+  .col-lg-12
+    .checkbox-group
+      h5 11) Which verticals do you sell to most? *
+      input.form-control(type="hidden" name="question11" value=fields.question11)
+      span.error-msg
+  .col-lg-6
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question11 && fields.question11.indexOf('None') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field='question11' value="None" disabled=fieldsReadOnly checked=isChecked)
+          span.checkbox-label None
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question11 && fields.question11.indexOf('Insurance') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field='question11' value="Insurance" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Insurance
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question11 && fields.question11.indexOf('Manufacturing') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field='question11' value="Manufacturing" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Manufacturing
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question11 && fields.question11.indexOf('Real Estate') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field='question11' value="Real Estate" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Real Estate    
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question11 && fields.question11.indexOf('Religion') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field='question11' value="Religion" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Religion     
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question11 && fields.question11.indexOf('Retail') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field='question11' value="Retail" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Retail         
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question11 && fields.question11.indexOf('Technology') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field='question11' value="Technology" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Technology       
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question11 && fields.question11.indexOf('Transportation') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field='question11' value="Transportation" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Transportation
+  .col-lg-6           
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question11 && fields.question11.indexOf('Automotive') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field='question11' value="Automotive" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Automotive
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question11 && fields.question11.indexOf('Banking') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field='question11' value="Banking" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Banking   
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question11 && fields.question11.indexOf('Consumer') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field='question11' value="Consumer" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Consumer    
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question11 && fields.question11.indexOf('Education') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field='question11' value="Education" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Education 
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question11 && fields.question11.indexOf('Financial') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field='question11' value="Financial" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Financial   
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question11 && fields.question11.indexOf('Food & Beverage') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field='question11' value="Food & Beverage" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Food & Beverage 
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question11 && fields.question11.indexOf('Goverment') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field='question11' value="Goverment" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Goverment   
+    .form-group
+      .checkbox
+        label
+          - isChecked = fields.question11 && fields.question11.indexOf('Healthcare') > -1
+          input.multi-choise-checkbox(type='checkbox' data-field='question11' value="Healthcare" checked=isChecked disabled=fieldsReadOnly)
+          span.checkbox-label Healthcare
+          
+          
+          
+          
+          
+          
+          
+          

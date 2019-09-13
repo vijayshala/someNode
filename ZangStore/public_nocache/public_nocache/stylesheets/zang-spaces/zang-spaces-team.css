@@ -1,0 +1,294 @@
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.zsp-selected-team{
+  margin:30px 0;
+  position:relative;
+}
+
+.zsp-selected-team .team{
+  background-color: #f1f1f1;
+      font-weight: 300;
+      padding: 20px 30px;
+      font-size:21px;
+      text-align: center;
+}
+
+.zsp-selected-team .team .type{
+  font-size:21px;
+}
+.zsp-selected-team .team .name{
+
+}
+.zsp-selected-team .team .domain{
+
+}
+
+.zsp-selected-team .trigger{
+  cursor: pointer;
+    position: absolute;
+    right: -35px;
+    top: 35px;
+}
+
+.zsp-selected-team .trigger i{
+  font-size: 26px;
+    margin-left: 20px;
+    color: #ddd;
+}
+
+.zsp-team-text{
+  text-align: center;
+      color: #73c1c7;
+      font-size: 19px;
+      line-height: 11px;
+      font-weight: 300;
+}
+
+.zsp-team-option{
+  margin:10px auto;
+  position:relative;
+  cursor: pointer;
+}
+
+
+
+.zsp-team-option h3, .zsp-team-option h5{
+  font-weight: 300;
+}
+
+.zsp-team-option {
+  position:relative;
+  cursor: pointer;
+  opacity: .8;
+  border-radius: 10px;
+  display: flex;
+}
+
+.zsp-team-option:hover{
+  opacity: 1;
+}
+
+.zsp-team-option.selected{
+  background-color:#f1f1f1;
+  opacity: 1;
+}
+
+.zsp-team-option.selected:hover{
+  opacity: .8;
+}
+
+.zsp-team-option .checkbox-container{
+  display:flex;
+  padding:10px;
+  align-items: center;
+}
+
+.zsp-team-option .text-container{
+  flex:1;
+  padding: 0px 0 15px 0;
+}
+
+.zsp-team-option .checkbox-container .box{
+  width:50px;
+  height:50px;
+  border:1px solid #ccc;
+  border-radius:30px;
+  position: relative;
+  margin: 0 auto;
+  background-color:#fff;
+}
+
+.zsp-team-option .checkbox-container .box .tick{
+  position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 30px;
+      height: 30px;
+      border-radius: 30px;
+      background-color: #c00;
+      transform: translateX(-50%) translateY(-50%);
+}
+
+.zsp-bottom-buttons{
+  text-align: center;
+  margin:30px 0;
+}
+
+.zsp-bottom-buttons .btn{
+  border-radius: 50px !important;
+      margin: 0 10px;
+      padding: 10px 60px;
+}
+
+.zsp-bottom-buttons .btn:hover{
+  color: white;
+    box-shadow: 0px 0px 30px rgba(0,0,0,.2);
+}
+
+.zsp-back-btn{
+  border: 1px solid #aaa;
+      color: #333 !important;
+      font-weight: 500;
+}
+
+.zsp-next-btn{
+  background-color: red;
+    color: white;
+    font-weight: 500;
+}
+
+
+/*NUMber modal*/
+.zsp-team-modal {
+  position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(255,255,255,.6);
+      display:none;
+      z-index:334000;
+}
+
+.zsp-team-modal .content{
+  width: 600px;
+    background-color: #fff;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-60%);
+    box-shadow: 0px 0px 30px rgba(0,0,0,.3);
+    border-radius: 2px;
+}
+
+.zsp-team-modal .content .title{
+  font-size: 41px;
+      font-weight: 300;
+      text-align: center;
+      letter-spacing: -1px;
+      color: #73c1c7;
+}
+
+.zsp-team-modal .content .subtitle{
+  font-size: 21px;
+      font-weight: 300;
+      text-align: center;
+      margin: 10px 0;
+      letter-spacing: -1px;
+}
+
+.zsp-team-modal .content .help{
+
+}
+
+.zsp-team-modal .content input[name='modalNumber']{
+  text-align: center;
+    font-size: 41px;
+    height: auto;
+    margin-bottom:10px;
+}
+.zsp-team-modal .content input[name='searchText']{
+
+}
+.zsp-company-modal .content select[name='searchSelect']{
+  margin-bottom:10px;
+}
+
+.zsp-team-modal .content .companies-list{
+  margin:10px 0;
+  height:300px;
+  overflow-y: scroll;
+  border:1px solid #ddd;
+}
+
+.zsp-team-modal .content .companies-list .list-group-item{
+  font-size:17px;
+}
+
+.zsp-team-modal .content .companies-list .list-group-item.has-contract{
+  /*background: #88c1c7;
+  color: white;*/
+}
+
+.zsp-team-modal .content .companies-list .list-group-item .badge{
+  background-color: white;
+    color: #88c1c7;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.zsp-team-modal .content .companies-list ul {
+  list-style-type: none;
+      padding: 0;
+      margin: 0;
+}
+
+.zsp-team-modal .content .companies-list a.list-group-item.selected{
+  background-color:#f5f5f5;
+}
+
+.zsp-team-modal .content .companies-list ul li{
+  padding: 15px;
+      border-bottom: 0;
+      cursor:pointer;
+      border-bottom: 1px solid #ddd;
+}
+
+.zsp-team-modal .content .companies-list ul li:last-child{
+  border-bottom: none;
+}
+
+.zsp-team-modal .content .companies-list ul li.selected{
+  background: #88c1c7;
+    color: white;
+    font-weight: 600;
+}
+
+.zsp-team-modal .content .buttons{
+  text-align: center;
+}
+
+.zsp-team-modal .content .buttons a{
+  margin: 0 10px;
+      text-decoration: none;
+      padding: 10px 40px;
+      display: inline-block;
+      border-radius: 30px;
+      cursor:pointer;
+      min-width: 130px;
+}
+
+
+
+.zsp-team-modal .content .buttons a.cancel-btn{
+  background-color: #fff;
+    border: 1px solid #ddd;
+    color: #828282;
+    font-weight: 400;
+}
+.zsp-team-modal .content .buttons a.set-btn{
+  background-color: red;
+    color: white;
+    font-weight: 500;
+}
+
+.companies-not-found-message{
+  padding:5px;
+  color:#73c1c7;
+  font-size:15px;
+  text-align: center;
+}
+
+@media (max-width:768px) {
+  .zsp-team-modal .content{
+    width:100%;
+  }
+}

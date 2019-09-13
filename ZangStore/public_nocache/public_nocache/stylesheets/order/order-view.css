@@ -1,0 +1,55 @@
+body{
+  background-color: #fff;
+  margin-bottom:30px;
+}
+
+.order-top {
+  padding:50px 0;
+  background-color: #fff;
+}
+
+.order-bottom{
+  padding:30px 0;
+  background-color: #fff;
+}
+
+.order-success-confirm-number{
+  padding: 20px;
+      margin: 30px 0;
+      border: 2px dotted #333;
+}
+
+.order-success-confirm-number h1{
+  font-weight: 300;
+    letter-spacing: -2px;
+    color: #333;
+    font-size: 41px;
+}
+
+.order-notes{
+  padding: 20px 0;
+}
+
+.info-title{
+  font-weight: 700;
+      letter-spacing: -1px;
+      color: #304050;
+}
+
+.order-summary-title{
+  font-weight: 400;
+      letter-spacing: -1px;
+      color: #304050;
+}
+
+.total-amount-title{
+  font-weight: 300;
+    letter-spacing: -1px;
+    padding-right:15px;
+}
+
+.order-instructions a {
+  color: #333333;
+  font-weight: 500;
+  text-decoration: underline;
+}

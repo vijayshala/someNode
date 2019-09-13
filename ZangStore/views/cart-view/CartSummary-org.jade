@@ -1,0 +1,27 @@
+.table-responsive
+  h3.text-center.text-danger.sr-only Order Summary - #{cart.count} #{cart.count === 1 ? 'item': 'items'} #{currency.value.toUpperCase()}#{currency.symbol} #{(cart.total/100).formatDollars(2)}
+  h3.text-center.text-danger Order Summary
+  table(class='table table-condensed cart-summary zs-main-table')
+    tbody
+      each item, i in cart.items
+        if item.product.slug === SLUG
+          - var subTotal = item.quantity * (item.product.price.interval + item.product.price.oneTime)
+            tr
+              td #{item.product.title}
+              td 
+                if !item.product.advanced
+                  | #{item.quantity}
+                else
+                  | &nbsp;
+              td $ #{(subTotal/100).formatDollars(2)}
+              td
+                if item.product.advanced
+                  a.btn-clear-advanced-product(href='/' + item.product.slug + '/number')
+                else
+                  a(href='/cart') Edit
+              td
+                a.btn.btn-primary.btn-space.pull-right.btn-clear-advanced-product(href='/cart/' + item.productId + '/remove?delete=true') Remove and Start Over
+            if item.details
+              tr
+                td(colspan=5)
+                  include ./CartItemDetails

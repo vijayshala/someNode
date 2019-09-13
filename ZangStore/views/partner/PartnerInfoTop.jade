@@ -1,0 +1,15 @@
+.top-container.agent
+  .container
+    .row
+      .col-lg-8.col-lg-offset-2
+        case partner.type
+          when CONSTANTS.PARTNER_TYPES.msa
+            h1.text-danger.text-500.text-center #{partner.fields.companyName}          
+            h1.text-danger.text-500.text-center #{localizer.get('MASTER_SALES_AGENT_PORTAL')}          
+          when CONSTANTS.PARTNER_TYPES.sales
+            h1.text-danger.text-500.text-center #{partner.fields.companyName}
+            h1.text-danger.text-500.text-center #{localizer.get('SALES_AGENT_PORTAL')}
+          when CONSTANTS.PARTNER_TYPES.referral
+            h1.text-danger.text-500.text-center #{partner.fields.companyName}
+            h1.text-danger.text-500.text-center #{localizer.get('PARTNER_PORTAL')}
+include ./PartnerInfoTopTabs

@@ -1,0 +1,89 @@
+extends ../index
+
+block mainbody
+  .container
+    div.row
+      div.col-md-12
+        div.row
+          div.col-md-12
+            h1.text-center.text-300= title
+        include ../components/BackButton
+        div.row
+          div.col-md-12
+            form(method='POST' action='/user/edit')
+              div.row
+                div.col-md-4
+                  h3.text-danger #{localizer.get('ACCOUNT_INFORMATION')}
+                  div.form-group
+                    label #{localizer.get('ACCESS_LEVEL')}
+                    select.form-control(name='accessLevel' disabled)
+                      each userLevel, l in userLevels
+                        option(value=userLevel selected=userLevel === user.accessLevel) #{l.toLowerCase().ucFirst()}
+                  div.form-group
+                    label #{localizer.get('DISPLAY_NAME')}
+                    input.form-control(type='text', name='lastName', value=user.account.displayname disabled)
+                  div.form-group
+                    label #{localizer.get('COMPANY_NAME')}
+                    input.form-control(type='text', name='companyName', value=user.accountInformation.companyName disabled)
+                  div.form-group
+                    label #{localizer.get('INDUSTRY')}
+                    input.form-control(type='text' name='industryType' value=user.accountInformation.industryType disabled)
+                  div.form-group
+                    label #{localizer.get('CONTACT_PHONE_NUMBER')}
+                    input.form-control(type='text', name='phoneNumber', value=user.accountInformation.phoneNumber disabled)
+                  div.form-group
+                    label #{localizer.get('EMAIL_ADDRESS')}
+                    input.form-control(type='text', name='emailAddress', value=user.account.username disabled)
+                  div.form-group
+                    div.checkbox
+                      label.checkbox-label         
+                        input.copy-billing-address(type='checkbox' name='allowToContact' checked=user.accountInformation.allowToContact disabled)
+                        | &nbsp;#{localizer.get('YES_SEND_ME_EMAIL_REGARDING_ZANG_NEWS_APPLICATIONS_DEALS_AND_SPECIAL_EVENTS')}
+                      a(href="" target="_blank" class="optanon-toggle-display" data-ignore-geolocation="true" style="padding-left: 20px;") Cookie Preference
+                div.col-md-4
+                  h3.text-danger #{localizer.get('BILLING_INFORMATION')}
+                  div.form-group
+                    label #{localizer.get('ADDRESS')}
+                    input.form-control(type='text', name='billingAddress' value=user.billingInformation.billingAddress disabled)
+                  div.form-group
+                    label #{localizer.get('COUNTRY')}
+                    input.form-control(name='billingCountry' value=user.billingInformation.billingCountry disabled)
+                  div.form-group
+                    label #{localizer.get('CITY')}
+                    input.form-control(type='text', name='billingCity' value=user.billingInformation.billingCity disabled)
+                  div.row
+                    div.col-md-6
+                      div.form-group
+                        label #{localizer.get('STATE_PROVINCE')}
+                        input.form-control(type='text' name='billingStateProvince' value=user.billingInformation.billingStateProvince disabled)
+                    div.col-md-6
+                      div.form-group
+                        label #{localizer.get('ZIP_POSTAL_CODE')}
+                        input.form-control(type='text', name='billingPostalCode' value=user.billingInformation.billingPostalCode disabled)
+                div.col-md-4        
+                  h3.text-danger #{localizer.get('SHIPPING_INFORMATION')}
+                  div.form-group
+                    label #{localizer.get('ADDRESS')}
+                    input.form-control(type='text', name='shippingAddress' value=user.shippingInformation.shippingAddress disabled)
+                  div.form-group
+                    label #{localizer.get('COUNTRY')}
+                    input.form-control(type='text' name='shippingCountry' value=user.shippingInformation.shippingCountry disabled)
+                  div.form-group
+                    label #{localizer.get('CITY')}
+                    input.form-control(type='text', name='shippingCity' value=user.shippingInformation.shippingCity disabled)
+                    span.error-msg
+                  div.row
+                    div.col-md-6
+                      div.form-group
+                        label #{localizer.get('STATE_PROVINCE')}
+                        input.form-control(type='text' name='shippingStateProvince' value=user.shippingInformation.shippingStateProvince disabled)
+                    div.col-md-6
+                      div.form-group
+                        label #{localizer.get('ZIP_POSTAL_CODE')}
+                        input.form-control(type='text', name='shippingPostalCode' value=user.shippingInformation.shippingPostalCode disabled)
+                        span.error-msg
+
+  
+                  
+          
+          

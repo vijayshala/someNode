@@ -1,0 +1,36 @@
+.modal.fade(tabindex='-1', role='dialog' id='partnerInvitationModalAgent')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-label='Close')
+          span(aria-hidden='true') ×
+        h4.modal-title.text-400.text-danger #{localizer.get('ADD_AN_AGENT')} #{partner.fields.companyName}
+      .modal-body
+        form.agent-invitation-form#AgentInvitationForm(method='post' action='/partners/' + partner._id + '/invite')
+          input(type='hidden' name='_csrf' value=_csrf)
+          input(type='hidden' name='inviteeType' value=CONSTANTS.PARTNER_INVITEE_TYPES.INDIVIDUAL)
+          .form-group
+            label * #{localizer.get('RELATION')}
+            select.form-control.input-lg(name='inviteeRelation' required)
+                option(value='') #{localizer.get('SELECT_ONE')}
+                each inviteeRelation, ir in CONSTANTS.AGENT_LEVELS
+                  option(value=inviteeRelation) #{localizer.get(ir)}
+          .form-group
+            label * #{localizer.get('CONTACT_NAME')}
+            input.form-control.input-lg(type='text' name='inviteeName' required) 
+          .form-group
+            label * #{localizer.get('CONTACT_EMAIL')}
+            input.form-control.input-lg(type='email' name='inviteeEmail' required)
+          
+          .checkbox
+            label
+              input(type='checkbox' name='autoActivate' checked)
+              |  #{localizer.get('AUTO_ACTIVATE_AGENT')}
+          .alert.hidden.response
+          .text-right.buttons
+            button.btn.btn-default.cancel-invitation-btn(type='reset', data-dismiss='modal') #{localizer.get('CANCEL')}
+            &nbsp;&nbsp;
+            button.btn.btn-danger.text-400(type='submit') #{localizer.get('SEND_INVITATION_EMAIL')}
+          br
+          p * #{localizer.get('THIS_FIELD_IS_REQUIRED')}
+        

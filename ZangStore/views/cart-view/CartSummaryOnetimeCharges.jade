@@ -1,0 +1,102 @@
+- var items = []
+- for (item of cart.items) {
+-   if(item.subscriptionInterval==0) {
+-     items.push(item)
+-   }
+- }
+if items.length
+  .oneTimeFeeContainer
+    .row
+      .col-lg-12
+        .detail-row
+          h3.pull-left.text-300 #{localizer.get('ONE_TIME_FEE')}
+          //- a.pull-right.edit-link.text-uppercase(href=cartItemDetails.editLinks.oneTimeFee class=isCheckout ? '' : 'sr-only') #{localizer.get('EDIT')}
+    .row
+      .col-lg-12
+        hr
+
+    each cartItem,otf in items
+      - var oneTimeFeeAmount = (cartItem.price/100).formatDollars(2);
+      .row
+        .col-lg-12
+          .detail-row
+            .pull-left
+              span.qty #{cartItem.qty}
+              span #{cartItem.title.text}                    
+            .pull-right.amount
+              .currency #{currency.symbol}
+              .whole #{oneTimeFeeAmount.split('.')[0]}
+              .decimals .#{oneTimeFeeAmount.split('.')[1]}
+    .row
+      .col-lg-12
+        .spacer
+    .row
+      .col-lg-12
+        .detail-row
+          .pull-left #{localizer.get('SUB_TOTAL')}
+          .pull-right.amount.subtotal(id= 1 === 1 ? 'oneTimeBeforeTax-render' : '')                  
+            .currency #{currency.symbol}
+            .whole #{oneTimeTotalWithoutDiscountDollar.split('.')[0]}
+            .decimals .#{oneTimeTotalWithoutDiscountDollar.split('.')[1]}
+    if cart.oneTimeTotalDiscount>0
+      .row
+        .col-lg-12
+          .detail-row.promotion.warning
+            - var oneTimeDiscountDollar = ((cart.oneTimeTotalDiscount)/100).formatDollars(2);
+            .pull-left #{localizer.get('PROMOTION')}
+            .pull-right.amount.subtotal
+              | -
+              .currency #{currency.symbol}
+              .whole #{oneTimeDiscountDollar.split('.')[0]}
+              .decimals .#{oneTimeDiscountDollar.split('.')[1]}
+    if ENABLE_PLAN_B_SOFT_LAUNCH_MODE
+      .row
+        .col-lg-12
+          .detail-row
+            .pull-left #{localizer.get('TAXES')}
+            .pull-right.withTaxField.text-muted.text-italic.text-300.amount(style=showTotalStyle) #{localizer.get('PLUS_APPLICABLE_TAXES')}
+    else
+      .row
+        .col-lg-12
+          .detail-row
+            .pull-left #{localizer.get('TAXES')}                  
+            .pull-right.taxCalculation(style='display:none;')
+              img(src="/public_nocache/images/loading-spinner-grey.gif", height='16') 
+              span.hidden #{localizer.get('CALCULATING')}
+            .pull-right.withTaxField.text-muted.text-italic.text-300.amount#oneTimeTax(style=showTotalStyle)                    
+              .currency #{currency.symbol}
+              .whole #{oneTimeTax.split('.')[0]}
+              .decimals .#{oneTimeTax.split('.')[1]}
+    .row
+      .col-lg-12
+        .spacer
+    .row
+      .col-lg-12
+        .detail-row
+          .pull-left.text-danger #{localizer.get('TOTAL')} (#{currency.symbol}#{currency.value.toUpperCase()})
+          .pull-right.taxCalculation(style='display:none;')
+            img(src="/public_nocache/images/loading-spinner-grey.gif", height='16') 
+            span.hidden #{localizer.get('CALCULATING')}
+          .pull-right.withTaxField.amount.total#oneTimeAfterTax(style=showTotalStyle)                    
+            .currency #{currency.symbol}
+            .whole #{oneTimeTotal.split('.')[0]}
+            .decimals .#{oneTimeTotal.split('.')[1]}
+    .row
+      .col-lg-12
+        .detail-row
+          .pull-left &nbsp;
+          .pull-right.text-muted.text-italic.text-300 (#{localizer.get('ONE_TIME_FEE')})
+
+    - var oneTimeDiscountDisplay = currency.symbol + (cart.oneTimeTotalDiscount/100).formatDollars(2) 
+    - var remainintOneTimeDiscount = cart.maxOneTimeDiscount - cart.oneTimeTotalDiscount;
+    - var remainingOneTimeDiscountDisplay = currency.symbol + (remainintOneTimeDiscount/100).formatDollars(2) 
+    - var infoLine1 = localizer.get('PROMOTION_DETAIL_INFO').replace('{0}', cart.totalUsersLength).replace('{1}', oneTimeDiscountDisplay)
+    - var infoLine2 = localizer.get('PROMOTION_REMAINING_DETAIL_INFO').replace('{0}', remainingOneTimeDiscountDisplay)
+    if remainintOneTimeDiscount>0 && summaryViewType === 'checkout'
+      .row
+        .col-lg-12
+          .spacer
+          .detail-row.align-left.promotion-info
+              //- span !{infoLine1}
+              //- br                  
+              span !{infoLine2}

@@ -1,0 +1,13 @@
+extends ../../../index
+
+block styles
+  link(href='/public_nocache/marketing/de/css/uc-office.css', rel='stylesheet')
+
+block mainbody  
+  if selectedLanguage=='en-US'
+    include ./en-US/uc-solution-index.html
+  else if selectedLanguage=='de-DE'
+    include ./de-DE/uc-solution-index.html
+  else  
+    include ./en-US/uc-solution-index.html
+

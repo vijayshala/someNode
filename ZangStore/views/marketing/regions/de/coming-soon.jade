@@ -1,0 +1,14 @@
+extends ../../../index
+
+block styles
+  link(href='/public_nocache/marketing/us/css/index.css', rel='stylesheet')
+
+block mainbody  
+  if selectedLanguage=='en-US'
+    include ./en-US/coming-soon.html
+  else if selectedLanguage=='de-DE'
+    include ./de-DE/coming-soon.html
+  else  
+    include ./en-US/coming-soon.html
+
+

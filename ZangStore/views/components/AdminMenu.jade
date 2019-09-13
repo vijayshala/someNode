@@ -1,0 +1,31 @@
+if hasAdminPermission
+  li.dropdown
+    a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+      img(src='/public_nocache/images/profile-icon-wht.svg' class='img-responsive img-circle partners__link__img')
+      | #{localizer.get('ADMINISTRATION')}
+      span.caret
+
+    ul.dropdown-menu
+      li.dropdown-header #{localizer.get('LISTS')}
+      li
+        a(href='/user') #{localizer.get('USERS')}
+      li
+        a(href='/orders') #{localizer.get('ORDERS')}
+      li
+        a(href='/purchased-plans') #{localizer.get('PLANS')}
+      li
+        a(href='/purchase-orders') #{localizer.get('PURCHASE_ORDERS')}
+
+      li.dropdown-header.hidden #{localizer.get('ZANG_OFFICE')}
+      li.hidden
+        a(href='/zang-office/cdrs') #{localizer.get('CDRS')}
+        a(href='/zang-office/cdrchecks') #{localizer.get('CDR_CHECKS')}
+      li.divider(role='separator')
+      li.dropdown-header #{localizer.get('PARTNER_PROGRAMS')}
+      li
+        a(href='/partners/administration') #{localizer.get('PARTNERS')}
+      li
+        a(href='/partners/administration/connections') #{localizer.get('PARTNER_CONNECTIONS')}
+      li
+        a(href='/partners/administration/orders') #{localizer.get('PARTNER_ORDERS')}
+        

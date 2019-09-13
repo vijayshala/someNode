@@ -1,0 +1,105 @@
+.user-devices-sellable-items {
+  display: grid;
+  grid-gap: 0px !important;
+  grid-template-columns: 33% 33% 33% !important;
+}
+
+.usertype-devices-selection {
+  line-height: 20px;
+  align-items: top;
+  border-right: 1px dotted #ddd;
+  padding: 10px 20px;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.usertype-devices-selection:last-child {
+  border-right: 0px dotted #ddd;
+}
+
+.usertype-devices-selection.bestdeal {
+  border: 1px solid #ddd;
+}
+
+.usertype-devices-selection:hover {
+  cursor: default;
+  /* border: 1px solid #304050;   */
+}
+.usertype-devices-selection:focus,
+.usertype-devices-selection.selected {  
+  /* border: 1px solid #304050;  
+  box-shadow: 5px 5px 20px #bbb; */
+}
+
+
+.usertype-devices-selection .item-label {
+  /* float: left;
+  margin-right: 10px; */
+  font-weight: 500;
+  /* max-width: calc(100% - 170px); */
+}
+
+
+.usertype-devices-selection .price-component {
+  /* float: right; */
+}
+
+
+.usertype-devices-selection .price-component .value{
+  font-size: 20px;
+  font-weight: 600;
+  vertical-align: initial;
+}
+.usertype-devices-selection .price-component .decimals,
+.usertype-devices-selection .price-component .symbol {
+  font-size: 12px;
+  font-weight: 500;
+  margin-right: 2px;  
+}
+
+.usertype-devices-selection.disabled .price-component,
+.usertype-devices-selection.disabled .item-label {
+  color: #aaa;
+}
+
+
+.usertype-devices-selection .user-type-addons {
+  clear: both;
+  padding: 0px;
+  padding-top: 0px;
+}
+
+.usertype-devices-selection .sellable-addons {
+  display: block;
+  padding: 0px 0px;
+}
+
+.usertype-devices-selection .sellable-addons .sellable-addon {
+  border: 0px;
+  padding: 0px 0px;
+}
+
+.usertype-devices-selection .sellable-addons .sellable-addon .addon-label {
+  max-width: calc(100% - 170px);
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.usertype-devices-selection .sellable-addons .sellable-addon.included .addon-label {
+  max-width: initial;
+  margin-right: 0px;
+}
+
+
+/* mobile */
+@media (max-width:768px){
+
+}
+
+/* ipad */
+@media (max-width:1024px){
+  .usertype-devices-selection  {
+    padding: 0px;
+    border-right: 0px;
+  }  
+}

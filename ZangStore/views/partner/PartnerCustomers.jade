@@ -1,0 +1,51 @@
+extends ../index
+
+block styles
+  link(href='/public_nocache/stylesheets/partner/partner.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/partner/partner-portal.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/partner/partner-application.css', rel='stylesheet')
+
+block mainbody
+  if success
+    include ./PartnerInfoTopSuccess
+  else
+    include ./PartnerInfoTop
+  .top-container
+      input(type='hidden' name='filterType' value='partner')
+      input(type='hidden' name='children' value=JSON.stringify(children))
+      if partner.type === CONSTANTS.PARTNER_TYPES.msa
+        input(type='hidden' name='parentPartner' value=partner._id) 
+      .container
+        .row
+          .col-md-12.col-lg-12
+            .partner-orders-filters
+              .row
+                if partner.type === CONSTANTS.PARTNER_TYPES.msa
+                  .col-md-3.col-lg-3
+                    select.form-control.input-lg(name='partner')
+                      option(value='') #{localizer.get('ALL_COMPANIES')}
+                      each child, ch in children
+                        option(value=child._id) #{child.fields.companyName}
+                else
+                  input(type='hidden' name='partner' value=children[0]._id)
+                .col-md-3.col-lg-3
+                  select.form-control.input-lg(name='agent')
+                    option(value='') #{localizer.get('SELECT_AGENT')}
+                    if partner.type === CONSTANTS.PARTNER_TYPES.sales
+                      each agent, ag in children[0].agents
+                        option(value=agent._id) #{agent.user.account.displayname}
+                .col-md-2.col-lg-2.hidden
+                  input.form-control.input-lg(type='text' name='from' placeholder=localizer.get('FROM'))
+                .col-md-2.col-lg-2.hidden
+                  input.form-control.input-lg(type='text' name='to' placeholder=localizer.get('TO'))
+  .top-container
+    .container
+      .row
+        .col-lg-12
+          include ./PartnerCustomersTable
+                      
+block scripts
+  script(src='/public_nocache/libs/jquery-ui/jquery-ui.min.js')
+  script(src='/public_nocache/libs/momentjs/moment.min.js')
+  script(src='/public_nocache/javascripts/partner/partner-portal.js')
+  script(src='/public_nocache/javascripts/partner/partner-customers.js')

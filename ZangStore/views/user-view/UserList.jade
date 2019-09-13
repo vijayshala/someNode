@@ -1,0 +1,44 @@
+extends ../index
+block styles
+  link(href='/public_nocache/stylesheets/user/user-list.css', rel='stylesheet')
+block mainbody
+  .container.bg-white
+    div.row
+      div.col-md-12
+        div.row
+          div.col-md-12
+            h1.text-center.text-300= title
+        - var formAction = '/user'
+        - var formOnFocus = 'this.value = this.value;'
+        - var formPlaceHolder = 'Search by email'
+        - var formKeyup = 'return true;'
+        include ../components/ListSearchForm
+        div.row
+          div.col-md-12 &nbsp;
+        div.row
+          div.col-md-12
+            .table-responsive
+              table.table.table-hover.zs-main-table
+                thead
+                  th #{localizer.get('NAME')}
+                  th #{localizer.get('EMAIL')}
+                  th #{localizer.get('TYPE')}
+                  th 
+                    div(style='width:180px;') #{localizer.get('ACTIONS')}
+                tbody
+                  each user,i in users
+                    tr
+                      td= user.account.displayname
+                      td= user.account.username
+                      td
+                        form(method='GET' action='/user/' + user._id + '/level')
+                          select.form-control(name='level' class='access-level' onChange='this.form.submit()' data-toggle="tooltip" data-placement="top" title="Change this User's access level")
+                            each userLevel,i in userLevels
+                              option(value=userLevel selected=userLevel === user.accessLevel) #{i.toLowerCase().ucFirst()}
+                      td
+                        include ./UserListActionsMenu
+                  
+block scripts
+  script(src='/public_nocache/javascripts/user/user-list.js')
+        
+  

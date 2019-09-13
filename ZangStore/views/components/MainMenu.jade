@@ -1,0 +1,48 @@
+- var regFlag = region && region.toUpperCase() || 'US';
+nav.navbar.navbar-inverse.zs-navbar
+  div.container
+    div.navbar-header
+      button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#main-right-menu', aria-expanded='false')
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      .nav.navbar-nav.navbar-left
+        a.nav-link(href='/'+ (region && region.toLowerCase() || 'us'))
+          img.zo-logo(src='https://storage.googleapis.com/avayastore/public_files/avaya-logo.png')
+        a.nav-link.nav-flag-icon(href='/regions/choose', title=localizer.get('CHANGE_YOUR_COUNTRY_OR_REGION'))
+          img.main-menu-region-flag(src='/public_nocache/images/regions-flags/' + regFlag + '.svg', width='22')          
+        //- a.nav-link(href='/' + region + '/uc' style="display:")
+        //-       | #{localizer.get('UNIFIED_COMMUNICATIONS')}
+        
+        //- a.nav-link(href='/' + region + '/collaboration' style="display:")
+        //-   | #{localizer.get('COLLABORATION')}
+      .collapse.navbar-collapse#main-right-menu     
+        ul.nav.navbar-nav.navbar-right
+          if !partnerCookie && !partnerConnection
+            li.dropdown.hidden
+              a.dropdown-toggle(href='/partners', role='button', aria-haspopup='true', aria-expanded='false')
+                img(src='/public_nocache/images/members-wht.svg' class='img-responsive img-circle partners__link__img')
+                | #{localizer.get('PARTNER_PROGRAMS')}
+                span.caret
+              ul.dropdown-menu
+                li
+                  a(href='/partners/referral' class="partners-link") #{localizer.get('REFERRAL_AGENT')}
+                li
+                  a(href='/partners/sales' class="partners-link") #{localizer.get('SALES_AGENT')}
+          li          
+            a.cart(href='/' + (region && region.toLowerCase() || 'us') + '/shop/cart' style="display:")
+                img(src='/public_nocache/images/cart.svg', width=40)              
+                if cart && cart.items && cart.items.length
+                  - var count = 0
+                  - for(var item of cart.items) {
+                  -   if(item.level==0) {
+                  -     count+=1;
+                  -   }
+                  - }
+                  div.bubble #{count}
+              
+          include ./AdminMenu
+          include ./AccountMenu
+include ../submenus/index
+

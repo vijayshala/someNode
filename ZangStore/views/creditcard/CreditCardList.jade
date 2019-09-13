@@ -1,0 +1,74 @@
+extends ../index
+
+block styles
+  link(href='/public_nocache/stylesheets/creditcard/creditcard-list.css', rel='stylesheet')
+
+block mainbody
+  - var summaryViewType = 'managecards'
+  input(type='hidden' name='stripeKey' value=stripeKey)
+  .container
+    div.row
+      div.col-md-12
+        div.row.bg-white
+          div.col-md-12
+            h1.text-center.text-300 #{localizer.get('MANAGE_BILLING_ACCOUNT')}
+            include ./BillingTabs
+            div.row.topmargin
+              div.col-md-4.col-md-offset-4
+                form(method='POST', action='/' + region.toLowerCase() +'/billingaccount/creditcard' id='addNewCCForm')
+                  input(type='hidden' name='_csrf' value=_csrf)
+                  include ../cart-view/CartCheckoutCreditCard
+                  div.row
+                    div.col-md-12
+                      if cart.items.length
+                        a.btn.btn-primary.btn-space(href='/' + region.toLowerCase() + '/shop/cart/checkout') #{localizer.get('BACK_TO_CHECKOUT')}
+                      button.btn.btn-primary.btn-space(id='addNewCCBtn' type='submit') #{localizer.get('ADD')}
+            .row
+              .col-md-12
+                br
+                p * #{localizer.get('THIS_FIELD_IS_REQUIRED')}
+                br
+                br
+            div.row(style='margin-top:20px;')
+              div.col-md-12
+                if(error)
+                  div.alert.alert-danger= error
+                else
+                  div.alert.alert-info #{localizer.get('USE_THE_FORM_ABOVE_TO_ADD_A_NEW_CREDIT_CARD_PLEASE_MAKE_SURE_YOUR_FILL_ALL_THE_FIELDS')}
+            div.row
+              div.col-md-12
+                table.table
+                  thead 
+                    tr
+                      th #{localizer.get('NAME')}
+                      th #{localizer.get('NUMBER')}
+                      th #{localizer.get('TYPE')}
+                      th #{localizer.get('EXPIRES')}
+                      th #{localizer.get('DEFAULT')}
+                      th #{localizer.get('DELETE')}
+                  tbody
+                  each card,i in cards
+                    tr
+                      td #{card.name}
+                      td **** **** **** #{card.last4}
+                      td #{card.brand}
+                      td #{card.exp_month} / #{card.exp_year}
+                      if card.default
+                        td #{localizer.get('DEFAULT')}
+                      else
+                        td
+                          a.set-default-credit-card(href='/' + region.toLowerCase() + '/billingaccount/' + card.id + '/setdefault') #{localizer.get('SET_DEFAULT')}
+                        
+                      td
+                        a.delete-credit-card(href='/' + region.toLowerCase() + '/billingaccount/' + card.id + '/delete') #{localizer.get('DELETE')}
+        .row
+          .col-md-12
+            br
+            br
+            br
+block scripts
+  script(src='/public_nocache/libs/formatter/jquery.formatter.min.js')
+  script(src='/public_nocache/javascripts/creditcard/creditcard.js')
+  script(src='/public_nocache/javascripts/creditcard/creditcard-list.js')
+  script(src='https://js.stripe.com/v3/', async=true)
+  script(src='/public_nocache/javascripts/creditcard/stripe_integration.js')

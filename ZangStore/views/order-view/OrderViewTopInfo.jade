@@ -1,0 +1,60 @@
+if ipofficeItem
+  - var customerSuccess = localizer.get('QUESTION_CUSTOMER_SERVICE').replace(/\{SUPPORT_EMAIL\}/g, CONSTANTS.SUPPORT_EMAILS.CLOUD_CS);
+  .row
+    .col-md-12 
+      h4.text-300(style='line-height:1.5') !{localizer.get('THANK_YOU_FOR_SHOPPING_WITH_US_WE_LL_SEND_A_CONFIRMATION_ONCE_YOUR_ITEMS_HAVE_SHIPPED_YOUR_ORDER_DETAILS_ARE_INDICATED_BELOW') + ' ' +  localizer.get('ORDER_CUSTOMER_SERVICE_SYSTEM_SETUP_INFO')}
+      - var LNP_FORM_LINK = ipofficeItem.product.metadata.links.lnp_authorization_form.link;
+      - var RODAA_LINK = ipofficeItem.product.metadata.links.rodaa_form.link;
+      - var instructions = (ipofficeItem.product.salesmodel.system && ipofficeItem.product.salesmodel.system.metadata && ipofficeItem.product.salesmodel.system.metadata.number.type=='existingNumber') ? localizer.get('ORDER_OFFICE_TRANSFER_INSTRUCTIONS').replace('{LNP_FORM_LINK}', LNP_FORM_LINK).replace('{RODAA_LINK}', RODAA_LINK).replace(/\{SUPPORT_EMAIL\}/g, CONSTANTS.SUPPORT_EMAILS.CLOUD_SUPPORT) : '';      
+      h4.text-300.order-instructions(style='line-height:1.5') !{instructions}
+      if ipofficeItem.product.salesmodel.system.metadata.number.activated === false
+        br
+        h4.text-300.text-danger(style='line-height:1.5') #{localizer.get('THERE_WAS_AN_ERROR_BUYING_ACTIVATING_THE_CHOSEN_ZANG_OFFICE_NUMBERSCLICK_START_SETTING_UP_ZANG_OFFICE_TO_ACTIVATE_BUY_YOUR_NUMBERS_MANUALLY_IN_CASE_YOUVE_CHOSEN_TO_USE_YOUR_EXISTING_NUMBER_THE_PORTING_PROCESS_WILL_NOT_BE_AFFECTED')}
+  if !sysConfigs.billing_enabled
+    .row
+      .col-lg-12
+        .spacer
+        br
+        .detail-row.promotion-pay-delay
+          span #{localizer.get('PROMOTION_DELAYED_BILLING_INFO')}
+        br
+  .row
+    .col-md-12
+      h4.text-300.order-instructions !{customerSuccess}
+  .row.hidden
+    .col-lg-4.col-md-4.col-lg-offset-2.col-md-offset-2
+      br
+      a.btn.btn-primary.btn-block.btn-lg(href=kazooConfig.officeRedirectURL + '/#/apps/voip') #{localizer.get('START_SETTING_UP_ZANG_OFFICE')}
+    .col-lg-4.col-md-4
+      br
+      a.btn.btn-danger.btn-block.btn-lg(href=urls.zangSpacesURL + '/admin?referrer=store') #{localizer.get('START_SETTING_UP_ZANG_SPACES')}
+
+if officeItem
+  .row
+    .col-md-12 
+      h4.text-300 #{localizer.get('THANK_YOU_FOR_SHOPPING_WITH_US_WE_LL_SEND_A_CONFIRMATION_ONCE_YOUR_ITEMS_HAVE_SHIPPED_YOUR_ORDER_DETAILS_ARE_INDICATED_BELOW')}
+      - var LNP_FORM_LINK = officeItem.product.metadata.links.lnp_authorization_form.link;
+      - var RODAA_LINK = officeItem.product.metadata.links.rodaa_form.link;
+      - var instructions = localizer.get('ORDER_OFFICE_TRANSFER_INSTRUCTIONS').replace('{LNP_FORM_LINK}', LNP_FORM_LINK).replace('{RODAA_LINK}', RODAA_LINK).replace(/\{SUPPORT_EMAIL\}/g, CONSTANTS.SUPPORT_EMAILS.CLOUD_SUPPORT);
+      h4.text-300.order-instructions(style='line-height:1.5') !{instructions}
+      if officeItem.product.salesmodel.system.metadata.number.activated === false
+        br
+        h4.text-300.text-danger(style='line-height:1.5') #{localizer.get('THERE_WAS_AN_ERROR_BUYING_ACTIVATING_THE_CHOSEN_ZANG_OFFICE_NUMBERSCLICK_START_SETTING_UP_ZANG_OFFICE_TO_ACTIVATE_BUY_YOUR_NUMBERS_MANUALLY_IN_CASE_YOUVE_CHOSEN_TO_USE_YOUR_EXISTING_NUMBER_THE_PORTING_PROCESS_WILL_NOT_BE_AFFECTED')}
+  
+  .row
+    .col-lg-4.col-md-4.col-lg-offset-2.col-md-offset-2
+      br
+      a.btn.btn-primary.btn-block.btn-lg(href=kazooConfig.officeRedirectURL + '/#/apps/voip') #{localizer.get('START_SETTING_UP_ZANG_OFFICE')}
+    .col-lg-4.col-md-4
+      br
+      a.btn.btn-danger.btn-block.btn-lg(href=urls.zangSpacesURL + '/admin?referrer=store') #{localizer.get('START_SETTING_UP_ZANG_SPACES')}
+if spacesItem
+  .row
+    .col-lg-12.col-md-12
+      h4.text-300(style='line-height:1.5') #{localizer.get('THANK_YOU_FOR_SHOPPING_WITH_US_YOUR_ORDER_DETAILS_ARE_INDICATED_BELOW')}
+  .row
+    .col-lg-4.col-md-4.col-lg-offset-4.col-md-offset-4      
+      br
+      .text-center
+        a.btn.btn-danger.btn-block.btn-lg(href=urls.zangSpacesURL + '/admin?referrer=store') #{localizer.get('START_SETTING_UP_ZANG_SPACES')}
+      

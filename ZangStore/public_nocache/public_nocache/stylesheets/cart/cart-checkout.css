@@ -1,0 +1,220 @@
+
+.checkbox-label{
+  line-height: 28px;
+  font-size:17px;
+}
+
+
+.order-notes{
+  max-width: 100%;
+  max-height: 300px;
+  min-height: 150px;
+}
+
+span.error-msg{
+  color:red;
+  font-size:12px;
+}
+
+span.explanation {
+  color:#929292;
+  font-size: 12px;
+}
+.legal-info {
+  font-weight: 400;
+  margin-top: 15px;
+}
+.place-order-form .form-control{
+  border: none;
+      background-color: inherit;
+      box-shadow: none;
+      border-bottom: 2px solid #ddd;
+      padding: 0;
+      font-size: 19px;
+      color: #000;
+}
+
+@media(max-width: 1198px) {
+  .checkbox-inline+.checkbox-inline, .radio-inline+.radio-inline{
+    margin-left: 0.2em !important;
+  }
+}
+
+.place-order-form .has-error .form-control{
+  border-bottom:2px solid #c00;
+}
+
+.place-order-form label{
+  color:#828282;
+  font-weight:300
+}
+
+p.free-shipping-text{
+  padding: 5px;
+    color: #828282;
+}
+
+
+.checkout-top h3.text-danger {
+  text-transform: uppercase;
+  font-size: 14px;
+  /* font-weight: 600; */
+  color: #304050;
+}
+
+label.radio-inline {
+  font-size: 1.1em !important;
+  color: #000 !important;
+  font-weight: 500 !important;
+}
+
+.checkbox-label{
+  line-height: 28px;
+  font-size:17px;
+}
+
+.checkout-top{
+  /* padding-bottom:50px; */
+  background-color:white;
+}
+
+
+.checkout-bottom{
+  padding-top:50px;
+  background-color:white;
+}
+
+.order-notes{
+  max-width: 100%;
+  max-height: 300px;
+  min-height: 150px;
+}
+
+span.error-msg{
+  color:red;
+  font-size:12px;
+}
+
+span.explanation {
+  color: #929292;
+    font-size: 12px;
+}
+
+span.explanationcc{
+  color: #929292;
+    font-size: 12px;
+    /* margin-left: 10px; */
+    position: absolute;
+    right: 0;
+    top: 0px;
+    text-decoration: underline;
+}
+
+.place-order-form .form-control{
+  border: none;
+      background-color: inherit;
+      box-shadow: none;
+      border-bottom: 2px solid #ddd;
+      padding: 5px;
+      font-size: 19px;
+      font-weight: 400;
+      color: #000;
+}
+
+
+.place-order-form .has-error .form-control{
+  border-bottom:2px solid #c00;
+}
+
+.place-order-form label{
+  color:#828282;
+  font-weight:300;
+  font-size: 11px;
+}
+
+.place-order-form label.radio-label {
+  display: block;  
+  line-height: 28px;
+}
+
+.checkout-btn{
+  margin:20px 0;
+  padding:10px 20px;
+  text-transform: uppercase;
+  background-color: green;
+  border-color: green;
+  color: #fff;
+}
+
+.checkout-btn:hover{
+  color: white;
+    box-shadow: 0px 0px 30px rgba(0,0,0,.2);
+}
+
+p.free-shipping-text{
+  padding: 5px;
+    color: #828282;
+}
+
+.place-order-form textarea{
+  border:2px solid #ddd !important;
+}
+
+#ZangOfficeCheckoutConfirmationModal .content {
+  padding: 40px 50px;
+}
+
+
+#ZangOfficeCheckoutConfirmationModal .extra-text {
+  color:#000;
+  font-weight: 400;
+}
+
+#ZangOfficeCheckoutConfirmationModal .extra-text b{
+  color:#73c1c7;
+}
+
+#ZangOfficeCheckoutConfirmationModal .clear-order-link {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.loading-tax {
+  height: 25px;
+}
+
+.cart-order-summary--ribbon {
+  position: absolute;
+  margin-top: -50px;
+  padding: 10px 15px;
+  background-color: #fff;
+  color: #304050;
+  font-weight: 500;
+  box-shadow: 0 0 8px rgba(0,0,0,.4);
+}
+
+.loader--spin {
+  display: flex;
+  justify-content: center;
+  padding-left: 50px;
+}
+
+.isDiscount {
+  color: orange;
+}
+
+.cart-incorporated {
+  display: flex;
+  flex-direction: column;
+}
+
+.radio-inline {
+  margin-left: 10px;
+}
+
+@media (max-width: 425px) {
+  .checkout-notes-submit {
+    display: flex;
+    flex-direction: column;
+  }
+}

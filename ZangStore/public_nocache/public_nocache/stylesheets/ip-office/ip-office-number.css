@@ -1,0 +1,350 @@
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.top-container {
+
+}
+
+.top-container .container {
+  background-color: #ffffff;
+  
+}
+
+.zo-selected-number{
+  margin: 15px 0;
+  position:relative;
+}
+
+.zo-selected-number .number{
+  background-color: #f1f1f1;
+      font-size: 38px;
+      font-weight: 300;
+      padding: 20px 30px;
+      text-align: center;
+}
+
+.zo-selected-number .trigger{
+  cursor: pointer;
+    position: absolute;
+    right: -35px;
+    top: 35px;
+}
+
+.zo-selected-number .trigger i{
+  font-size: 26px;
+    margin-left: 20px;
+    color: #ddd;
+}
+
+.zo-number-text{
+  text-align: center;
+      color: #73c1c7;
+      font-size: 19px;
+      line-height: 11px;
+      font-weight: 300;
+}
+
+.zo-number-option{
+  margin:10px auto;
+  position:relative;
+  cursor: pointer;
+}
+
+
+
+.zo-number-option h3, .zo-number-option h5{
+  font-weight: 300;
+}
+
+.zo-number-option {
+  position:relative;
+  cursor: pointer;
+  opacity: .8;
+  border-radius: 3px;
+  border: 1px solid #f1f1f1;
+}
+
+.zo-number-option:hover{
+  opacity: 1;
+}
+
+.zo-number-option.selected{
+  background-color:#f1f1f1;
+  opacity: 1;
+}
+
+.zo-number-option.selected:hover{
+  opacity: .8;
+}
+
+.zo-number-option .checkbox-container{
+  width:20%;
+  display:inline-block;
+}
+
+.zo-number-option .text-container{
+  width:80%;
+  display:inline-block;
+}
+
+.zo-number-option .checkbox-container .box{
+  width:50px;
+  height:50px;
+  border:1px solid #ccc;
+  border-radius:50px;
+  position: relative;
+  margin: 0 auto;
+  background-color:#fff;
+}
+
+.zo-number-option .checkbox-container .box .tick{
+    /* position: absolute;
+    top: 0px;
+    left: 6px;
+    width: 55px;
+    height: 20px;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 3px solid red;
+    border-left: 3px solid red;
+    transform: rotate(-45deg); */
+    
+    height: 30px;    
+    width: 30px;    
+    background-color: #304050;
+    border: 3px solid #304050;    
+    border-radius: 50px;
+    margin: 9px auto;
+}
+
+.zo-bottom-buttons{
+  text-align: center;
+  margin:30px 0;
+}
+
+.zo-bottom-buttons .btn{
+  
+      margin: 0 10px;
+      padding: 10px 60px;
+      text-transform: uppercase;
+}
+
+.zo-bottom-buttons .btn:hover{
+  color: white;
+  box-shadow: 0px 0px 30px rgba(0,0,0,.2);
+}
+
+.zo-back-btn{
+  border: 1px solid #304050;
+      color: #304050 !important;
+      font-weight: 500;
+}
+
+.zo-next-btn{
+  background-color: #304050;
+    color: white;
+    font-weight: 500;
+}
+
+
+/*NUMber modal*/
+.zo-number-modal {
+  position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(255,255,255,.6);
+      display:none;
+      z-index:334000;
+}
+
+.zo-number-modal .content{
+  width: 600px;
+    background-color: #fff;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-60%);
+    box-shadow: 0px 0px 30px rgba(0,0,0,.3);
+    border-radius: 2px;
+}
+
+.zo-number-modal .content .title{
+  font-size: 35px;
+      font-weight: 300;
+      text-align: center;
+      letter-spacing: -1px;
+      color: #304050;
+}
+
+.zo-number-modal .content .subtitle{
+  font-size: 21px;
+      font-weight: 300;
+      text-align: center;
+      margin: 10px 0;
+      letter-spacing: -1px;
+}
+
+.zo-number-modal .content .help{
+
+}
+
+.zo-number-modal .content input[name='modalNumber']{
+  text-align: center;
+    font-size: 41px;
+    height: auto;
+    margin-bottom:10px;
+}
+.zo-number-modal .content input[name='searchText']{
+
+}
+.zo-number-modal .content select[name='searchSelect']{
+  margin-bottom:10px;
+}
+
+.zo-number-modal .content .number-list{
+  margin:10px 0;
+  height:180px;
+  overflow-y: scroll;
+  border:1px solid #ddd;
+}
+
+.zo-number-modal .content .number-list ul {
+  list-style-type: none;
+      padding: 0;
+      margin: 0;
+}
+
+.zo-number-modal .content .number-list ul li{
+  padding: 15px;
+      border-bottom: 0;
+      cursor:pointer;
+      border-bottom: 1px solid #ddd;
+      font-weight: 500;
+}
+
+.zo-number-modal .content .number-list ul li:hover{
+  color:#304050;
+}
+
+.zo-number-modal .content .number-list ul li:last-child{
+  border-bottom: none;
+}
+
+.zo-number-modal .content .number-list ul li.selected{
+  background: #304050;
+    color: white;
+    font-weight: 500;
+}
+
+.zo-number-modal .content .buttons{
+  text-align: center;
+}
+
+.zo-number-modal .content .buttons a{
+  margin: 0 10px;
+      text-decoration: none;
+      padding: 10px 40px;
+      display: inline-block;
+      text-transform: uppercase;
+      cursor:pointer;
+}
+
+.zo-number-modal .content .buttons a.cancel-btn{
+  background-color: #fff;
+    border: 1px solid #304050;
+    color: #304050;
+    font-weight: 400;
+}
+.zo-number-modal .content .buttons a.set-btn{
+  background-color: #304050;
+    color: white;
+    font-weight: 500;
+}
+
+.numbers-not-found-message{
+  padding:5px;
+  color:#304050;
+  font-size:15px;
+  text-align: center;
+}
+
+.number-note {
+  padding: 10px;
+  font-weight: 600;
+  text-align: center;
+  width: 70%;
+  margin: auto;
+  margin-bottom: 15px;
+  font-size: 13px;
+}
+
+.select2 *{
+  outline: none;
+}
+
+.select2-dropdown {
+  z-index:334001;
+  border:1px solid #ddd;
+}
+
+.select2-results__option {
+  padding: 10px 0px;
+  font-weight: 500;
+  padding-left: 15px;
+  font-size: 17px;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  background-color:#f1f1f1;
+  color:#304050;
+}
+
+.select2-container .select2-selection--single,
+.select2-container--default .select2-selection--single {
+  border-radius: 0px;
+    height: 50px;
+    border: 1px solid #ddd;
+    font-size: 17px;
+    padding-left: 10px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: 50px;
+  
+  font-weight: 500;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height:50px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+  border-width: 8px 8px 0 8px;
+  margin-left: -15px;
+}
+
+.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+  border-width: 0 8px 8px 8px;
+}
+
+
+
+
+
+@media (max-width:768px) {
+  .number-note {
+    width: 100%;
+  }
+  .zo-number-modal .content{
+    width:100%;
+  }
+}

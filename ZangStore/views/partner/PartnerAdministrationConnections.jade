@@ -1,0 +1,54 @@
+extends ../index
+
+block styles
+  link(href='/public_nocache/stylesheets/partner/partner.css', rel='stylesheet')
+  link(href='/public_nocache/stylesheets/partner/partner-administration.css', rel='stylesheet')
+  
+block mainbody
+  .top-container.titles
+    .container
+      .row
+        .col-lg-12
+          h1.text-center.text-300 #{localizer.get('PARTNER_CONNECTIONS')}
+          h5.text-center.text-300 #{localizer.get('A_PARTNER_CONNECTION_IS_CREATED_WHEN_CUSTOMER_LANDS_ON_THE_STORE_FROM_A_PARTNERS_PERSONAL_LINK')}
+  .top-container
+    .container
+      .row
+        .col-lg-12
+          if connections.length
+            .table-responsive.bg-white
+              table.table.zs-main-table.partner-table
+                thead
+                  tr
+                    th #{localizer.get('AGENT')}
+                    th #{localizer.get('CUSTOMER')}
+                    th #{localizer.get('CREATED_ON')}
+                    th &nbsp;                    
+                tbody
+                  each connection,i in connections
+                    if connection.agent && connection.customer
+                      tr
+                        td
+                          - var partnerPictureUrl = resolvePictureUrl(connection.agent.user.account.picturefile)
+                          img.img-responsive.img-circle.pull-left(style="margin-top:25px;" width=50 height=50 src=partnerPictureUrl onerror="this.src='" + CONSTANTS.NO_PICTURE_URL + "'")
+                          .pull-left
+                            h5.text-400 #{connection.agent.user.account.displayname}
+                            h6.text-300 #{connection.agent.user.account.username}
+                            h6.text-300.text-danger.text-capitalize #{connection.partner.type} #{localizer.get('AGENT')}
+                            h6.text-300 #{connection.partner.fields.companyName}
+                        td
+                          - var customerPictureUrl = resolvePictureUrl(connection.customer.account.picturefile)
+                          img.img-responsive.img-circle.pull-left(width=50 height=50 src=customerPictureUrl onerror="this.src='" + CONSTANTS.NO_PICTURE_URL + "'")
+                          .pull-left
+                            h5.text-400 #{connection.customer.account.displayname}
+                            h6.text-300 #{connection.customer.account.username}                       
+                        td #{moment(connection.created).format(CONSTANTS.UI_DATE_FORMAT)}     
+                        td
+                          a.delete-connection-btn(href="/partners/administration/connections/" + connection._id + "/delete") #{localizer.get('DELETE')}
+            - var confirmationTitle = "Delete Partner Connection"
+            include ../components/ConfirmationModal
+          else
+            h3.text-center.text-300 #{localizer.get('NO_PARTNER_CONNECTIONS_FOUND')}
+
+block scripts
+  script(src='/public_nocache/javascripts/partner/partner-admin-actions.js')
